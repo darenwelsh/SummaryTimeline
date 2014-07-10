@@ -35,50 +35,43 @@ class SummaryTimeline
 	}
 
 	static function renderSummaryTimeline ( &$parser, $frame, $args ) {
+		// self::addCSS(); // adds the CSS files 
+
+		//The raw input looks like this:
+		// {{#summary-timeline: title=US EVA 100
+		// 	| duration = 6:30
+		// 	| row=EV1 
+		// 	| 30 Egress 
+		// 	| 40 SSRMS Setup## blue
+		// 	| 1:30 FHRC Release
+		// 	 ESP-2 FHRC
+		// 	| 20 Maneuver from ESP-2 to S1
+		// 	| 90 FHRC Install
+		// 	| 45 SSRMS Cleanup
+		// 	| 30 Get-Aheads (make this auto-fill based on EVA duration)
+		// 	| 45 Ingress
+		// 	| row=EV2
+		// 	| 30 Egress
+		// 	| 40 FHRC Prep
+		// 	| 90 FHRC Release
+		// 	| 20 MMOD Inspection
+		// 	| 110 FHRC Install
+		// 	| 10 Get-Aheads
+		// 	| 45 Ingress
+		//  }}
+
 		//The $args array looks like this:
-		//	[0] => 'Title = Block Title Example' (Such as MW page name), need to set default
-		//	EV1 
-		//  | Egress | 30 
-		//  | SSRMS Setup  | 40 
-		//  | FHRC Release  | 90
-		//  | Maneuver from ESP-2 to S1 | 20
-		//  | FHRC Install | 90
-		//  | SSRMS Cleanup | 45
-		//  | Get-Aheads | 30
-		//  | Ingress | 45
-		//  | EV2
-		//  | Egress | 30
-		//  | FHRC Prep | 40
-		//  | FHRC Release | 90
-		//  | MMOD Inspection | 20
-		//  | FHRC Install | 110
-		//  | Get-Aheads | 10
-		//  | Ingress | 45
+		//	[0] => 'title=Title of EVA'
+		//  [1] => 'duration = 6:30'
+		//  [2] => 'row=EV1'
+		//  [3] => '30 Egress'
+		//  and so on ... (everything divided by | )
 
-		self::addCSS(); // adds the CSS files 
-
-		// $var1 = stuff
-		// $var2 = stuff
-
-		// $Title = trim( $frame->expand($args[0]) );
-
-		// if ( count($args) > 1 )
-		// 	$Body = trim( $frame->expand($args[1]) );
-		// else
-		// 	$Body = "";
-
-
-		//***New method to create array of named args***
 		//Run extractOptions on $args
-		$options = self::extractOptions( $args );
+		$options = self::extractOptions( $frame, $args );
 
 		//Define the main output
-		// *******Need to allow for item and item w2
-	        // {{#if: {{{color|}}} | main-page-box-{{{color}}} | }}
-	        // {{#if: {{{style|}}} | style="{{{style|}}}" | }}>
-		$text = "<div class='item'>
-	        <div class='item-content'>
-	        <table class='main-page-box main-page-box-green'>" .
+		$text = "<table class=''>" .
 
 	        //This contains the heading of the masonry block (a wiki link to whatever is passed)
 	        "<tr><th>[[" . $options['title'] . "]]</th></tr>" .
@@ -86,7 +79,7 @@ class SummaryTimeline
 			//This contains the body of the masonry block
 			//Wiki code like links can be include; templates and wiki tables cannot
 			"<tr><td>"
-	         . $options['body'] . "</td></tr></table></div></div>";
+	         . $options['body'] . "</td></tr></table>";
 // print_r($options);
 		return $text;
 
@@ -99,17 +92,47 @@ class SummaryTimeline
 	 * @param array string $options
 	 * @return array $results
 	 */
-	static function extractOptions( array $options ) {
-		$results = array();
+	static function extractOptions( $frame, array $args ) {
+		$options = array();
+		$rows = array();
 	 
-		foreach ( $options as $option ) {
-			$pair = explode( '=', $option, 2 );
+		foreach ( $args as $arg ) {
+			//Convert args with "=" into an array of options
+			$pair = explode( '=', $frame->expand($arg) , 2 );
 			if ( count( $pair ) == 2 ) {
-				//***issue right now with trim not working - FIXIT
 				$name = strtolower(trim( $pair[0] )); //Convert to lower case so it is case-insensitive
 				$value = trim( $pair[1] );
-				$results[$name] = $value;
+
+				switch ($name) {
+				    case 'title':
+				        $title = $value;
+				        break;
+				    case 'duration':
+				    	$duration = $value;
+				        break;
+				    case 'row':
+					    //Split out the name from the value for the row
+					    $row_pair = explode( "\r\n", $value , 2 );
+					    if ( count( $row_pair ) == 2 ) {
+					    	//Add to array $rows (e.g. EV1 => @ 30 Egress ...)
+					    	$rows[$row_pair[0]] = $row_pair[1];
+					    }
+				        break;
+			        default: //What to do with args not defined above
+				}
+
+
+
+				// $options[$name] = $value;
 			}
+
+			//The following is for reference and needs work
+			// $pair = explode( '=', $frame->expand($arg) , 2 );
+			// if ( count( $pair ) == 2 ) {
+			// 	$name = strtolower(trim( $pair[0] )); //Convert to lower case so it is case-insensitive
+			// 	$value = trim( $pair[1] );
+			// 	$options[$name] = $value;
+			// }
 		}
 		//Now you've got an array that looks like this:
 		//	[title] => Block Title Example
@@ -117,7 +140,29 @@ class SummaryTimeline
 		//  [color] => Blue
 		//  [width] => 2
 
-		return $results;
+		//Check for empties, set defaults
+		//Default 'title'
+		if ( !isset($options['title']) || $options['title']=="" ) {
+		        	$options['title']= ""; //no default, but left here for future options
+	        }
+
+	    //Logic for $duration
+	    //Need logic for
+	    //1. What to do if not 14:254? (e.g. 'Dog')
+	    //2. split hours:minutes and sum minutes
+	    //3. default = 6:30
+	    if isset($value){
+	    	$input_time = explode( ':', $value , 2 );
+		    if ( count ( $input_time ) == 2) {
+		    	$hours = trim( $input_time[0] );
+		    	$minutes = trim( $input_time[1] );
+		    	$duration = ($hours * 60) + $minutes;
+		    } else {
+		    	$duration = $value;
+		    }
+		}
+
+		return $options;
 	}
 
 

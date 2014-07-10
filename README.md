@@ -13,22 +13,69 @@ This is still in development.
 The concept is to call the parser function from within MediaWiki like this:
 
 ```html
-{{#summary-timeline: EV1 
- | Egress | 30 
- | SSRMS Setup  | 40 
- | FHRC Release  | 90
- | Maneuver from ESP-2 to S1 | 20
- | FHRC Install | 90
- | SSRMS Cleanup | 45
- | Get-Aheads | 30
- | Ingress | 45
- | EV2
- | Egress | 30
- | FHRC Prep | 40
- | FHRC Release | 90
- | MMOD Inspection | 20
- | FHRC Install | 110
- | Get-Aheads | 10
- | Ingress | 45
+{{#summary-timeline: title=US EVA 100
+	| duration = 6:30 (default = 6:30)
+	| row=EV1 
+	@ 30 Egress 
+	@ 40 SSRMS Setup <bgcolor:blue>
+	@ 1:30 FHRC Release
+	 ESP-2 FHRC
+
+	@ 20 Maneuver from ESP-2 to S1
+
+	@ 90 FHRC Install
+	@ 45 SSRMS Cleanup
+	@ 30 Get-Aheads (make this auto-fill based on EVA duration)
+	@ 45 Ingress
+	| row=EV2
+	@ 30 Egress
+	@ 40 FHRC Prep
+	@ 90 FHRC Release
+	@ 20 MMOD Inspection
+	@ 110 FHRC Install
+	@ 10 Get-Aheads
+	@ 45 Ingress
+ }}
+  ```
+
+=========================
+OPTIONS
+=========================
+
+You might want a row for SSRMS:
+
+```html
+{{#summary-timeline: title=US EVA 100
+	| duration = 6:30 (default = 6:30)
+	| row=EV1 
+	| 30 Egress 
+	| 40 SSRMS Setup## blue
+	| 1:30 FHRC Release
+	 ESP-2 FHRC
+	| 20 Maneuver from ESP-2 to S1
+	| 90 FHRC Install
+	| 45 SSRMS Cleanup
+	| 30 Get-Aheads (make this auto-fill based on EVA duration)
+	| 45 Ingress
+	| row=EV2
+	| 30 Egress
+	| 40 FHRC Prep
+	| 90 FHRC Release
+	| 20 MMOD Inspection
+	| 110 FHRC Install
+	| 10 Get-Aheads
+	| 45 Ingress
+	| row = SSRMS
+	| 30 Setup
+	| 40 SSRMS Setup
+	Brakes on
+	| 1:30 FHRC Release
+	GCA as required
+	| 20 Maneuver from ESP-2 to S1
+	| 90 FHRC Install
+	GCA as required
+	| 45 SSRMS Cleanup
+	Brakes on
+	| 30 Maneuver to park position
  }}
   ```

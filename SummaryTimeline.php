@@ -24,7 +24,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name'           => 'SummaryTimeline',
 	'url'            => 'http://github.com/darenwelsh/SummaryTimeline',
 	'author'         => 'Daren Welsh',
-	'descriptionmsg' => 'Generates graphic representation of EVA summary timeline',
+	'descriptionmsg' => 'summarytimeline-desc',
 	'version'        => '0.1.0'
 );
 
@@ -48,3 +48,8 @@ $wgAutoloadClasses['SummaryTimeline'] = $dir . 'SummaryTimeline.class.php';
 #	NEED MORE INFO HERE.
 #
 $wgHooks['ParserFirstCallInit'][] = 'SummaryTimeline::setup';
+
+/**
+ *  Add CSS
+ **/
+$wgHooks['AjaxAddScript'][] = 'SummaryTimeline::addCSS';
