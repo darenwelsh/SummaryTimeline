@@ -1,0 +1,81 @@
+<includeonly>{{{info|page name=<Summary Timeline[Title]> Summary Timeline}}}
+<div id="wikiPreview" style="display: none; padding-bottom: 25px; margin-bottom: 25px; border-bottom: 1px solid #AAAAAA;"></div>
+{{{for template|Summary Timeline}}}
+
+'''EVA Title:''' {{{field|EVA Title|class=full-width}}}
+'''EVA Duration (H:M):''' {{{field|EVA Duration hour|size=2|default=6}}} : {{{field|EVA Duration minute|size=2|default=30}}}
+
+<table><tr>
+<th>MCC Coord</th>
+<th>EV1</th>
+<th>EV2</th>
+</tr>
+<tr>
+<td style="vertical-align: top;">{{{field|Coord Tasks|holds template}}}</td>
+<td style="vertical-align: top;">{{{field|EV1 Tasks|holds template}}}</td>
+<td style="vertical-align: top;">{{{field|EV2 Tasks|holds template}}}</td>
+</tr>
+</table>
+
+{{{end template}}}
+
+{{{for template|Coord Task|multiple|label=Coord Task|embed in field=Summary Timeline[Coord Tasks]|add button text=Add Task}}}
+
+Task Title: {{{field|Title|input type=text|class=full-width|placeholder=Task Title}}}
+
+Duration (H:M): {{{field|Duration hour|size=2}}} : {{{field|Duration minute|size=2}}}
+
+Related articles: {{{field|Related articles|list|class=full-width no-links-allowed|values from namespace=Main|placeholder=Related articles}}}
+
+Details: {{{field|Free text|input type=textarea|rows=1|class=full-width|autogrow|placeholder=Type full task details here}}}
+
+{{{end template}}}
+
+
+
+{{{for template|EV1 Task|multiple|label=EV1 Task|embed in field=Summary Timeline[EV1 Tasks]|add button text=Add Task}}}
+
+Task Title: {{{field|Title|input type=text|class=full-width|placeholder=Task Title}}}
+
+Duration (H:M): {{{field|Duration hour|size=2}}} : {{{field|Duration minute|size=2}}}
+
+Related articles: {{{field|Related articles|list|class=full-width no-links-allowed|values from namespace=Main|placeholder=Related articles}}}
+
+Details: {{{field|Free text|input type=textarea|rows=1|class=full-width|autogrow|placeholder=Type full task details here}}}
+
+{{{end template}}}
+
+
+
+
+{{{for template|EV2 Task|multiple|label=EV2 Task|embed in field=Summary Timeline[EV2 Tasks]|add button text=Add Task}}}
+
+Task Title: {{{field|Title|input type=text|class=full-width|placeholder=Task Title}}}
+
+Duration (H:M): {{{field|Duration hour|size=2}}} : {{{field|Duration minute|size=2}}}
+
+Related articles: {{{field|Related articles|list|class=full-width no-links-allowed|values from namespace=Main|placeholder=Related articles}}}
+
+Details: {{{field|Free text|input type=textarea|rows=1|class=full-width|autogrow|placeholder=Type full task details here}}}
+
+{{{end template}}}
+
+
+== Free text ==
+
+{{{standard input|free text|rows=0}}}
+
+{{{standard input|summary}}}
+
+{{{standard input|minor edit}}} {{{standard input|watch}}}
+
+{{{standard input|save}}} {{{standard input|preview}}} {{{standard input|changes}}} {{{standard input|cancel}}}
+</includeonly><noinclude>
+This is the "Summary Timeline" form.
+To create a page with this form, enter the page name below;
+if a page with that name already exists, you will be sent to a form to edit that page.
+
+
+{{#forminput:form=Summary Timeline}}
+
+</noinclude>

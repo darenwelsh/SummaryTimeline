@@ -60,6 +60,19 @@ class SummaryTimeline
 		// 	| 45 Ingress
 		//  }}
 
+			// Template:Summary Timeline
+			// 
+			// {{#summary-timeline: title={{{EVA Title|}}}
+			//  | duration={{{EVA Duration hour|}}}:{{{EVA Duration minute|}}}
+			//  | MCC Coord={{{Coord Tasks|}}}
+			//  | EV1={{{EV1 Tasks|}}}
+			//  | EV2={{{EV2 Tasks|}}}
+			// }}
+			// 
+			// Each of Template:Coord/EV1/EV2 Task
+			// 
+			// @@{{{Title|}}}@@{{{Duration hour|}}}@@{{{Duration minute|}}}@@{{{Related articles|}}}@@{{{Free text|}}}@@
+
 		//The $args array looks like this:
 		//	[0] => 'title=Title of EVA'
 		//  [1] => 'duration = 6:30'
@@ -71,15 +84,23 @@ class SummaryTimeline
 		$options = self::extractOptions( $frame, $args );
 
 		//Define the main output
-		$text = "<table class=''>" .
+		$text = 
+			"MCC Coord:\r\n"
+			. $options['rows']['mcc coord'] . "\r\n\r\n"
+			. "EV1:\r\n"
+			. $options['rows']['ev1'] . "\r\n\r\n"
+			. "EV2:\r\n"
+			. $options['rows']['ev2'] . "\r\n"
+
+			. "<table class=''>"
 
 	        //This contains the heading of the masonry block (a wiki link to whatever is passed)
-	        "<tr><th>[[" . $options['title'] . "]]</th></tr>" .
+	        . "<tr><th>[[" . $options['title'] . "]]" . " (" . $options['duration'] . ")</th></tr>"
 			
 			//This contains the body of the masonry block
 			//Wiki code like links can be include; templates and wiki tables cannot
-			"<tr><td>"
-	         . $options['body'] . "</td></tr></table>";
+			. "<tr><td>"
+	        . "</td></tr></table>";
 // print_r($options);
 		return $text;
 
@@ -94,7 +115,6 @@ class SummaryTimeline
 	 */
 	static function extractOptions( $frame, array $args ) {
 		$options = array();
-		$rows = array();
 	 
 		foreach ( $args as $arg ) {
 			//Convert args with "=" into an array of options
@@ -103,47 +123,44 @@ class SummaryTimeline
 				$name = strtolower(trim( $pair[0] )); //Convert to lower case so it is case-insensitive
 				$value = trim( $pair[1] );
 
+				//this switch could be consolidated
 				switch ($name) {
 				    case 'title':
-				        $title = $value;
+				        $options[$name] = $value;
 				        break;
 				    case 'duration':
-				    	$duration = $value;
+				    	$options[$name] = $value;
 				        break;
-				    case 'row':
+				    case 'mcc coord':
+					    $options['rows'][$name] = $value;
 					    //Split out the name from the value for the row
-					    $row_pair = explode( "\r\n", $value , 2 );
-					    if ( count( $row_pair ) == 2 ) {
-					    	//Add to array $rows (e.g. EV1 => @ 30 Egress ...)
-					    	$rows[$row_pair[0]] = $row_pair[1];
-					    }
+					    // \r\n wasn't working, so using
+					    // @@ to split parameters of each row value
+					    // $row_pair = explode( '=', $value , 2 );
+				    // print_r($value);
+					    // if ( count( $row_pair ) == 2 ) {
+					    // 	//Add to array $rows (e.g. EV1 => @ 30 Egress ...)
+					    // 	// $rows[$row_pair[0]] = $row_pair[1];
+					    // 	$options[$rows[trim( $row_pair[0] )]] = $row_pair[1];
+					    // }
+				        break;
+			        case 'ev1':
+				        $options['rows'][$name] = $value;
+				        break;
+			        case 'ev2':
+				        $options['rows'][$name] = $value;
 				        break;
 			        default: //What to do with args not defined above
 				}
 
-
-
-				// $options[$name] = $value;
 			}
 
-			//The following is for reference and needs work
-			// $pair = explode( '=', $frame->expand($arg) , 2 );
-			// if ( count( $pair ) == 2 ) {
-			// 	$name = strtolower(trim( $pair[0] )); //Convert to lower case so it is case-insensitive
-			// 	$value = trim( $pair[1] );
-			// 	$options[$name] = $value;
-			// }
 		}
-		//Now you've got an array that looks like this:
-		//	[title] => Block Title Example
-		//	[body]  => Body of block
-		//  [color] => Blue
-		//  [width] => 2
 
 		//Check for empties, set defaults
 		//Default 'title'
 		if ( !isset($options['title']) || $options['title']=="" ) {
-		        	$options['title']= ""; //no default, but left here for future options
+		        	$options['title']= "No title set!"; //no default, but left here for future options
 	        }
 
 	    //Logic for $duration
@@ -151,7 +168,7 @@ class SummaryTimeline
 	    //1. What to do if not 14:254? (e.g. 'Dog')
 	    //2. split hours:minutes and sum minutes
 	    //3. default = 6:30
-	    if isset($value){
+	    if ( isset($value) ) {
 	    	$input_time = explode( ':', $value , 2 );
 		    if ( count ( $input_time ) == 2) {
 		    	$hours = trim( $input_time[0] );
@@ -161,6 +178,10 @@ class SummaryTimeline
 		    	$duration = $value;
 		    }
 		}
+
+		// foreach ($variable as $key => $value) {
+		// 	# code...
+		// }
 
 		return $options;
 	}

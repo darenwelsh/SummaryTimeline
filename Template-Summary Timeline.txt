@@ -1,0 +1,27 @@
+<noinclude>
+This is the "Summary Timeline" template.
+It should be called by using the Summary Timeline form.
+
+Edit the page to see the template text.
+</noinclude><includeonly>{{{EVA Title|}}} ({{{EVA Duration hour|}}}:{{{EVA Duration minute|}}})
+<table><tr>
+<th>MCC Coord</th>
+<th>EV1</th>
+<th>EV2</th>
+</tr>
+<tr>
+<td style="vertical-align: top;">{{{Coord Tasks|}}}</td>
+<td style="vertical-align: top;">{{{EV1 Tasks|}}}</td>
+<td style="vertical-align: top;">{{{EV2 Tasks|}}}</td>
+</tr>
+</table>
+
+== Extension Output ==
+{{#summary-timeline: title={{{EVA Title|}}}
+ | duration={{{EVA Duration hour|}}}:{{{EVA Duration minute|}}}
+ | MCC Coord={{{Coord Tasks|}}}
+ | EV1={{{EV1 Tasks|}}}
+ | EV2={{{EV2 Tasks|}}}
+}}
+
+[[Category:Summary Timeline]]</includeonly>
