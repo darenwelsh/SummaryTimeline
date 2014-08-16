@@ -83,10 +83,36 @@ class SummaryTimeline
 		//Run extractOptions on $args
 		$options = self::extractOptions( $frame, $args );
 
+		//Define the MMC Coord column output
+		$textIV = "";
+		$textIVi = 0;
+		foreach ( $options['rows']['mcc coord']['tasks'] as $task ) {
+			$textIV .= $textIVi . ". " 
+			. $options['rows']['mcc coord']['tasks'][$textIVi]['title'] . ": "
+	    	. "(" . $options['rows']['mcc coord']['tasks'][$textIVi]['durationHour'] . ":"
+	    	. $options['rows']['mcc coord']['tasks'][$textIVi]['durationMinute'] . ")" . "\r\n\r\n"
+	    	. "Related articles: " . $options['rows']['mcc coord']['tasks'][$textIVi]['relatedArticles'] . "\r\n\r\n"
+	    	. "Details: " . $options['rows']['mcc coord']['tasks'][$textIVi]['details'] . "\r\n\r\n" . "\r\n\r\n";
+	    	$textIVi++;
+	    }
+
 		//Define the main output
 		$text = 
-			"MCC Coord:\r\n"
-			. $options['rows']['mcc coord'] . "\r\n\r\n"
+			"MCC Coord:\r\n\r\n"
+			
+			. $textIV
+
+
+			// . $options['rows']['mcc coord']['tasks'][1]['title'] . " ("
+	  //   	. $options['rows']['mcc coord']['tasks'][1]['durationHour'] . ":"
+	  //   	. $options['rows']['mcc coord']['tasks'][1]['durationMinute'] . ")\r\n\r\n"
+			// . "Related articles: "
+	  //   	. $options['rows']['mcc coord']['tasks'][1]['relatedArticles'] . "\r\n\r\n"
+	  //   	. "Details: "
+	  //   	. $options['rows']['mcc coord']['tasks'][1]['details']
+
+
+
 			. "EV1:\r\n"
 			. $options['rows']['ev1'] . "\r\n\r\n"
 			. "EV2:\r\n"
@@ -115,6 +141,8 @@ class SummaryTimeline
 	 */
 	static function extractOptions( $frame, array $args ) {
 		$options = array();
+		$tasks = array();
+		$taskDetails = array();
 	 
 		foreach ( $args as $arg ) {
 			//Convert args with "=" into an array of options
@@ -132,7 +160,37 @@ class SummaryTimeline
 				    	$options[$name] = $value;
 				        break;
 				    case 'mcc coord':
-					    $options['rows'][$name] = $value;
+					    // $options['rows'][$name] = $value;
+
+					    $i = 0; /* Task id */
+					    // $options['rows'][$name]['tasks'] = explode( '&&&', $value);
+					    $tasks = explode ( '&&&', $value );
+					    // foreach ( $options['rows'][$name]['tasks'] as $task ) {
+					    foreach ( $tasks as $task ) {
+					    	$taskDetails = explode( '@@@', $task);
+					    	$options['rows'][$name]['tasks'][$i]['title'] = $taskDetails[0];
+					    	$options['rows'][$name]['tasks'][$i]['durationHour'] = $taskDetails[1];
+					    	$options['rows'][$name]['tasks'][$i]['durationMinute'] = $taskDetails[2];
+					    	$options['rows'][$name]['tasks'][$i]['relatedArticles'] = $taskDetails[3];
+					    	$options['rows'][$name]['tasks'][$i]['details'] = $taskDetails[4];
+					    	print_r( $i );
+					    	// print_r( $taskDetails[0]);
+					    	// print_r( $taskDetails[1]);
+					    	// print_r( $taskDetails[2]);
+					    	// print_r( $taskDetails[3]);
+					    	// print_r( $taskDetails[4]);
+					    	print_r( $options['rows']['mcc coord']['tasks'][$i]['title'] );
+					    	print_r( $options['rows']['mcc coord']['tasks'][$i]['durationHour'] );
+					    	print_r( $options['rows']['mcc coord']['tasks'][$i]['durationMinute'] );
+					    	print_r( $options['rows']['mcc coord']['tasks'][$i]['relatedArticles'] );
+					    	print_r( $options['rows']['mcc coord']['tasks'][$i]['details'] );
+
+					    	$i++;
+					    }
+
+					    // $options[$name] = self::extractTasks( $value );
+
+
 					    //Split out the name from the value for the row
 					    // \r\n wasn't working, so using
 					    // @@ to split parameters of each row value
@@ -186,6 +244,28 @@ class SummaryTimeline
 		return $options;
 	}
 
+	static function extractTasks( string $value ) {
+		$tasks = array();
+	 
+		foreach ( $args as $arg ) {
+			//Convert args with "=" into an array of options
+			$pair = explode( '=', $frame->expand($arg) , 2 );
+			if ( count( $pair ) == 2 ) {
+				$name = strtolower(trim( $pair[0] )); //Convert to lower case so it is case-insensitive
+				$value = trim( $pair[1] );
+
+				//this switch could be consolidated
+				switch ($name) {
+			        case 'ev2':
+				        $options['rows'][$name] = $value;
+				        break;
+			        default: //What to do with args not defined above
+				}
+
+			}
+
+		}
+	}
 
 	static function addCSS ( $out ){
 		global $wgScriptPath;
