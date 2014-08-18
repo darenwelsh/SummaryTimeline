@@ -19,5 +19,5 @@ Use this format:
 |From page={{FULLPAGENAME}}
 }}
 <!-- {{{Title|}}} ({{{Duration hour|}}}:{{{Duration minute|}}}) -->
-@@{{{Title|}}}@@{{{Duration hour|}}}@@{{{Duration minute|}}}@@{{{Related articles|}}}@@{{{Free text|}}}@@
+&&&{{{Title|}}}@@@{{{Duration hour|}}}@@@{{{Duration minute|}}}@@@{{{Related articles|}}}@@@{{{Free text|}}}
 </includeonly>

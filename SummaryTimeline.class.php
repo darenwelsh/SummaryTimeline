@@ -85,7 +85,7 @@ class SummaryTimeline
 
 		//Define the MMC Coord column output
 		$textIV = "";
-		$textIVi = 0;
+		$textIVi = 1;
 		foreach ( $options['rows']['mcc coord']['tasks'] as $task ) {
 			$textIV .= $textIVi . ". " 
 			. $options['rows']['mcc coord']['tasks'][$textIVi]['title'] . ": "
@@ -101,17 +101,6 @@ class SummaryTimeline
 			"MCC Coord:\r\n\r\n"
 			
 			. $textIV
-
-
-			// . $options['rows']['mcc coord']['tasks'][1]['title'] . " ("
-	  //   	. $options['rows']['mcc coord']['tasks'][1]['durationHour'] . ":"
-	  //   	. $options['rows']['mcc coord']['tasks'][1]['durationMinute'] . ")\r\n\r\n"
-			// . "Related articles: "
-	  //   	. $options['rows']['mcc coord']['tasks'][1]['relatedArticles'] . "\r\n\r\n"
-	  //   	. "Details: "
-	  //   	. $options['rows']['mcc coord']['tasks'][1]['details']
-
-
 
 			. "EV1:\r\n"
 			. $options['rows']['ev1'] . "\r\n\r\n"
@@ -141,6 +130,7 @@ class SummaryTimeline
 	 */
 	static function extractOptions( $frame, array $args ) {
 		$options = array();
+		$tempTasks = array();
 		$tasks = array();
 		$taskDetails = array();
 	 
@@ -162,9 +152,10 @@ class SummaryTimeline
 				    case 'mcc coord':
 					    // $options['rows'][$name] = $value;
 
-					    $i = 0; /* Task id */
+					    $i = 1; /* Task id */
 					    // $options['rows'][$name]['tasks'] = explode( '&&&', $value);
-					    $tasks = explode ( '&&&', $value );
+					    $tempTasks = explode ( '&&&', $value, 2 );
+					    $tasks = explode ( '&&&', $tempTasks[1] );
 					    // foreach ( $options['rows'][$name]['tasks'] as $task ) {
 					    foreach ( $tasks as $task ) {
 					    	$taskDetails = explode( '@@@', $task);
@@ -173,18 +164,10 @@ class SummaryTimeline
 					    	$options['rows'][$name]['tasks'][$i]['durationMinute'] = $taskDetails[2];
 					    	$options['rows'][$name]['tasks'][$i]['relatedArticles'] = $taskDetails[3];
 					    	$options['rows'][$name]['tasks'][$i]['details'] = $taskDetails[4];
-					    	print_r( $i );
-					    	// print_r( $taskDetails[0]);
-					    	// print_r( $taskDetails[1]);
-					    	// print_r( $taskDetails[2]);
-					    	// print_r( $taskDetails[3]);
-					    	// print_r( $taskDetails[4]);
-					    	print_r( $options['rows']['mcc coord']['tasks'][$i]['title'] );
-					    	print_r( $options['rows']['mcc coord']['tasks'][$i]['durationHour'] );
-					    	print_r( $options['rows']['mcc coord']['tasks'][$i]['durationMinute'] );
-					    	print_r( $options['rows']['mcc coord']['tasks'][$i]['relatedArticles'] );
-					    	print_r( $options['rows']['mcc coord']['tasks'][$i]['details'] );
 
+					    	// append task duration
+					    	$options['rows'][$name]['tasksDuration'] = $options['rows'][$name]['tasksDuration'] + (60 * $taskDetails[1]) + $taskDetails[2];
+					    	print_r( $options['rows'][$name]['tasksDuration'] );
 					    	$i++;
 					    }
 
