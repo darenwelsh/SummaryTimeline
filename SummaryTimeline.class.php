@@ -37,86 +37,104 @@ class SummaryTimeline
 	static function renderSummaryTimeline ( &$parser, $frame, $args ) {
 		// self::addCSS(); // adds the CSS files 
 
-		//The raw input looks like this:
-		// {{#summary-timeline: title=US EVA 100
-		// 	| duration = 6:30
-		// 	| row=EV1 
-		// 	| 30 Egress 
-		// 	| 40 SSRMS Setup## blue
-		// 	| 1:30 FHRC Release
-		// 	 ESP-2 FHRC
-		// 	| 20 Maneuver from ESP-2 to S1
-		// 	| 90 FHRC Install
-		// 	| 45 SSRMS Cleanup
-		// 	| 30 Get-Aheads (make this auto-fill based on EVA duration)
-		// 	| 45 Ingress
-		// 	| row=EV2
-		// 	| 30 Egress
-		// 	| 40 FHRC Prep
-		// 	| 90 FHRC Release
-		// 	| 20 MMOD Inspection
-		// 	| 110 FHRC Install
-		// 	| 10 Get-Aheads
-		// 	| 45 Ingress
-		//  }}
-
-			// Template:Summary Timeline
-			// 
-			// {{#summary-timeline: title={{{EVA Title|}}}
-			//  | duration={{{EVA Duration hour|}}}:{{{EVA Duration minute|}}}
-			//  | MCC Coord={{{Coord Tasks|}}}
-			//  | EV1={{{EV1 Tasks|}}}
-			//  | EV2={{{EV2 Tasks|}}}
-			// }}
-			// 
-			// Each of Template:Coord/EV1/EV2 Task
-			// 
-			// @@{{{Title|}}}@@{{{Duration hour|}}}@@{{{Duration minute|}}}@@{{{Related articles|}}}@@{{{Free text|}}}@@
-
-		//The $args array looks like this:
-		//	[0] => 'title=Title of EVA'
-		//  [1] => 'duration = 6:30'
-		//  [2] => 'row=EV1'
-		//  [3] => '30 Egress'
-		//  and so on ... (everything divided by | )
-
 		//Run extractOptions on $args
 		$options = self::extractOptions( $frame, $args );
 
 		//Define the MMC Coord column output
 		$textIV = "";
 		$textIVi = 1;
-		foreach ( $options['rows']['mcc coord']['tasks'] as $task ) {
+		foreach ( $options['rows']['iv']['tasks'] as $task ) {
 			$textIV .= $textIVi . ". " 
-			. $options['rows']['mcc coord']['tasks'][$textIVi]['title'] . ": "
-	    	. "(" . $options['rows']['mcc coord']['tasks'][$textIVi]['durationHour'] . ":"
-	    	. $options['rows']['mcc coord']['tasks'][$textIVi]['durationMinute'] . ")" . "\r\n\r\n"
-	    	. "Related articles: " . $options['rows']['mcc coord']['tasks'][$textIVi]['relatedArticles'] . "\r\n\r\n"
-	    	. "Details: " . $options['rows']['mcc coord']['tasks'][$textIVi]['details'] . "\r\n\r\n" . "\r\n\r\n";
+			. $options['rows']['iv']['tasks'][$textIVi]['title'] . ": "
+	    	. "(" . $options['rows']['iv']['tasks'][$textIVi]['durationHour'] . ":"
+	    	. $options['rows']['iv']['tasks'][$textIVi]['durationMinute'] . ")" . "\r\n\r\n"
+	    	. "Related articles: " . $options['rows']['iv']['tasks'][$textIVi]['relatedArticles'] . "\r\n\r\n"
+	    	. "Details: " . $options['rows']['iv']['tasks'][$textIVi]['details'] . "\r\n\r\n";
 	    	$textIVi++;
+	    }
+
+		//Define the EV1 column output
+		$textEV1 = "";
+		$textEV1i = 1;
+		foreach ( $options['rows']['ev1']['tasks'] as $task ) {
+			$textEV1 .= $textEV1i . ". " 
+			. $options['rows']['ev1']['tasks'][$textEV1i]['title'] . ": "
+	    	. "(" . $options['rows']['ev1']['tasks'][$textEV1i]['durationHour'] . ":"
+	    	. $options['rows']['ev1']['tasks'][$textEV1i]['durationMinute'] . ")" . "\r\n\r\n"
+	    	. "Related articles: " . $options['rows']['ev1']['tasks'][$textEV1i]['relatedArticles'] . "\r\n\r\n"
+	    	. "Details: " . $options['rows']['ev1']['tasks'][$textEV1i]['details'] . "\r\n\r\n";
+	    	$textEV1i++;
+	    }
+
+		//Define the EV2 column output
+		$textEV2 = "";
+		$textEV2i = 1;
+		foreach ( $options['rows']['ev2']['tasks'] as $task ) {
+			$textEV2 .= $textEV2i . ". " 
+			. $options['rows']['ev2']['tasks'][$textEV2i]['title'] . ": "
+	    	. "(" . $options['rows']['ev2']['tasks'][$textEV2i]['durationHour'] . ":"
+	    	. $options['rows']['ev2']['tasks'][$textEV2i]['durationMinute'] . ")" . "\r\n\r\n"
+	    	. "Related articles: " . $options['rows']['ev2']['tasks'][$textEV2i]['relatedArticles'] . "\r\n\r\n"
+	    	. "Details: " . $options['rows']['ev2']['tasks'][$textEV2i]['details'] . "\r\n\r\n";
+	    	$textEV2i++;
 	    }
 
 		//Define the main output
 		$text = 
-			"MCC Coord:\r\n\r\n"
-			
-			. $textIV
 
-			. "EV1:\r\n"
-			. $options['rows']['ev1'] . "\r\n\r\n"
-			. "EV2:\r\n"
-			. $options['rows']['ev2'] . "\r\n"
+			"Compact Version:"
 
-			. "<table class=''>"
+			// UPDATE CLASS AND CSS
+			. "<table class='summary-timeline-full-version'>"
 
-	        //This contains the heading of the masonry block (a wiki link to whatever is passed)
-	        . "<tr><th>[[" . $options['title'] . "]]" . " (" . $options['duration'] . ")</th></tr>"
-			
-			//This contains the body of the masonry block
-			//Wiki code like links can be include; templates and wiki tables cannot
-			. "<tr><td>"
-	        . "</td></tr></table>";
-// print_r($options);
+	        //End of table
+	        . "</table>"
+
+
+			. "Full Version:" 
+
+			// UPDATE CLASS AND CSS
+			. "<table class='summary-timeline-full-version'>"
+
+	        //Header
+	        . "<tr><th>[[" . $options['title'] 
+	        . "]]" . " (" 
+        	. $options['eva duration hours'] . ":" . $options['eva duration minutes']
+        	. ")</th></tr>"
+
+	        //Rows
+	        // NEED TO ADD CSS STYLING - width=100%, etc
+			. "<tr>"
+
+			//IV Column
+			. "<td>"
+			. "<table class='summary-timeline-full-version'><tr><th>IV/MCC (" . $options['rows']['iv']['tasksDuration'] . " min)</th></tr>"
+			. "<tr><td>" . $textIV . "</td></tr></table>"
+	        . "</td>"
+
+			//EV1 Column
+			. "<td>"
+			. "<table class='summary-timeline-full-version'><tr><th>EV1 (" . $options['rows']['ev1']['tasksDuration'] . " min)</th></tr>"
+			. "<tr><td>Egress (0:" . $options['ev1 egress duration minutes'] . ")</td></tr>"
+			. "<tr><td>" . $textEV1 . "</td></tr>"
+			. "<tr><td>Ingress (0:" . $options['ev1 ingress duration minutes'] . ")</td></tr>"
+			. "</table>"
+	        . "</td>"
+
+			//EV2 Column
+			. "<td>"
+			. "<table class='summary-timeline-full-version'><tr><th>EV2 (" . $options['rows']['ev2']['tasksDuration'] . " min)</th></tr>"
+			. "<tr><td>Egress (0:" . $options['ev2 egress duration minutes'] . ")</td></tr>"
+			. "<tr><td>" . $textEV2 . "</td></tr>"
+			. "<tr><td>Ingress (0:" . $options['ev2 ingress duration minutes'] . ")</td></tr>"
+			. "</table>"
+	        . "</td>"
+
+	        // End of rows
+	        . "</tr>"
+
+	        //End of table
+	        . "</table>";
 		return $text;
 
 	}
@@ -133,6 +151,7 @@ class SummaryTimeline
 		$tempTasks = array();
 		$tasks = array();
 		$taskDetails = array();
+		$options['eva duration in minutes'] = 0;
 	 
 		foreach ( $args as $arg ) {
 			//Convert args with "=" into an array of options
@@ -146,17 +165,28 @@ class SummaryTimeline
 				    case 'title':
 				        $options[$name] = $value;
 				        break;
-				    case 'duration':
+				    case 'eva duration hours':
 				    	$options[$name] = $value;
+				    	$options['eva duration in minutes'] += (60 * $value);
 				        break;
-				    case 'mcc coord':
-					    // $options['rows'][$name] = $value;
-
+				    case 'eva duration minutes':
+				    	$options[$name] = $value;
+				    	$options['eva duration in minutes'] += $value;
+				        break;
+			        case 'ev1 egress duration minutes':
+			        case 'ev2 egress duration minutes':
+			        case 'ev1 ingress duration minutes':
+			        case 'ev2 ingress duration minutes':
+				        $options[$name] = $value;
+				        break;
+				    case 'iv': // NEED TO SPLIT OUT SO THIS DOESN'T HAVE GET-AHEADS ADDED
+				    case 'ev1':
+				    case 'ev2':
 					    $i = 1; /* Task id */
-					    // $options['rows'][$name]['tasks'] = explode( '&&&', $value);
 					    $tempTasks = explode ( '&&&', $value, 2 );
 					    $tasks = explode ( '&&&', $tempTasks[1] );
-					    // foreach ( $options['rows'][$name]['tasks'] as $task ) {
+						$tasksDuration = 0;
+					    
 					    foreach ( $tasks as $task ) {
 					    	$taskDetails = explode( '@@@', $task);
 					    	$options['rows'][$name]['tasks'][$i]['title'] = $taskDetails[0];
@@ -166,30 +196,51 @@ class SummaryTimeline
 					    	$options['rows'][$name]['tasks'][$i]['details'] = $taskDetails[4];
 
 					    	// append task duration
-					    	$options['rows'][$name]['tasksDuration'] = $options['rows'][$name]['tasksDuration'] + (60 * $taskDetails[1]) + $taskDetails[2];
-					    	print_r( $options['rows'][$name]['tasksDuration'] );
+					    	$tasksDuration += (60 * $taskDetails[1]) + $taskDetails[2];
+					    	// print_r( $options['rows'][$name]['tasksDuration'] );
 					    	$i++;
 					    }
 
+					    // NEED TO ADD EGRESS/INGRESS DURATION TO $tasksDuration
+					    // NEED TO ACCOUNT FOR EV1 vs EV2
+					    $tasksDuration += $options['ev2 egress duration minutes'] + $options['ev2 ingress duration minutes'];
+
+					    // sum of time allotted to tasks
+					    $options['rows'][$name]['tasksDuration'] = $tasksDuration;
+
 					    // $options[$name] = self::extractTasks( $value );
 
+					    // Check if $tasksDuration < $options['duration'] (EVA duration)
+					    if( $tasksDuration < $options['eva duration in minutes'] ){
+					    	// Need to add "Get Aheads" block to fill timeline gap
 
-					    //Split out the name from the value for the row
-					    // \r\n wasn't working, so using
-					    // @@ to split parameters of each row value
-					    // $row_pair = explode( '=', $value , 2 );
-				    // print_r($value);
-					    // if ( count( $row_pair ) == 2 ) {
-					    // 	//Add to array $rows (e.g. EV1 => @ 30 Egress ...)
-					    // 	// $rows[$row_pair[0]] = $row_pair[1];
-					    // 	$options[$rows[trim( $row_pair[0] )]] = $row_pair[1];
-					    // }
+					    	// Calculate difference between EVA duration and tasksDuration
+					    	$timeLeft = $options['eva duration in minutes'] - $tasksDuration;
+					    	$timeLeftHours = floor($timeLeft/60);
+					    	$timeLeftMinutes = $timeLeft%60;
+
+					    	// Chose to place this block before last task assuming that will be "Ingress"
+					    	// ADD LOGIC TO SWAP THIS BLOCK WITH ONE BEFORE IT
+					    	$options['rows'][$name]['tasks'][$i]['title'] = $options['rows'][$name]['tasks'][$i-1]['title'];
+					    	$options['rows'][$name]['tasks'][$i]['durationHour'] = $options['rows'][$name]['tasks'][$i-1]['durationHour'];
+					    	$options['rows'][$name]['tasks'][$i]['durationMinute'] = $options['rows'][$name]['tasks'][$i-1]['durationMinute'];
+					    	$options['rows'][$name]['tasks'][$i]['relatedArticles'] = $options['rows'][$name]['tasks'][$i-1]['relatedArticles'];
+					    	$options['rows'][$name]['tasks'][$i]['details'] = $options['rows'][$name]['tasks'][$i-1]['details'];
+
+					    	// Now set Get-Aheads block data
+					    	$options['rows'][$name]['tasks'][$i-1]['title'] = 'Get-Aheads';
+					    	$options['rows'][$name]['tasks'][$i-1]['durationHour'] = $timeLeftHours;
+					    	$options['rows'][$name]['tasks'][$i-1]['durationMinute'] = $timeLeftMinutes;
+					    	$options['rows'][$name]['tasks'][$i-1]['relatedArticles'] = 'Get-Ahead Task';
+					    	$options['rows'][$name]['tasks'][$i-1]['details'] = 'Auto-generated block based on total EVA duration and sum of task durations';
+					    }
+
 				        break;
 			        case 'ev1':
-				        $options['rows'][$name] = $value;
+				        // Unique things for this column?
 				        break;
 			        case 'ev2':
-				        $options['rows'][$name] = $value;
+				        // Unique things for this column?
 				        break;
 			        default: //What to do with args not defined above
 				}

@@ -128,3 +128,23 @@ table.main-page-box-purple th {
   background:   #9999cc;
   border:       1px solid #9988cc;
 }
+
+
+
+
+table.summary-timeline-full-version {
+  width:       100%;
+  border:     1px solid #220000;
+  /*background: #f5fffa;*/
+  /*margin:     0 1% 0 0;*/
+  /*padding:    5px;*/
+}
+table.summary-timeline-full-version th {
+  border:     1px solid #0000FF;
+}
+table.summary-timeline-full-version td {
+  border:     1px solid #00FF00;
+}
+table.summary-timeline-full-version tr {
+  border:     1px solid #FF0000;
+}
