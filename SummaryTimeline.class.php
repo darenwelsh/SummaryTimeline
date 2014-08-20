@@ -40,6 +40,21 @@ class SummaryTimeline
 		//Run extractOptions on $args
 		$options = self::extractOptions( $frame, $args );
 
+		//COMPACT VERSION CONTENT DEFINITIONS
+		//Define the EV1 column output
+		$compactTextEV1 = "";
+		$compactTextEV1i = 1;
+		foreach ( $options['rows']['ev1']['tasks'] as $task ) {
+			$compactTextEV1 .= "<span class='cell' style='width:"
+			. $options['rows']['ev1']['tasks'][$compactTextEV1i]['durationPercent']
+			. "%;'>"
+			. $options['rows']['ev1']['tasks'][$compactTextEV1i]['title']. $options['rows']['ev1']['tasks'][$compactTextEV1i]['durationPercent'] . " "
+	    	. "(" . $options['rows']['ev1']['tasks'][$compactTextEV1i]['durationHour'] . ":"
+	    	. $options['rows']['ev1']['tasks'][$compactTextEV1i]['durationMinute'] . ")</span>";
+	    	$compactTextEV1i++;
+	    }
+
+		//FULL VERSION CONTENT DEFINITIONS
 		//Define the MMC Coord column output
 		$textIV = "";
 		$textIVi = 1;
@@ -83,14 +98,58 @@ class SummaryTimeline
 		$text = 
 
 			"Compact Version:"
+			// Using CSS "tables"
 
+			// Begin main div
 			// UPDATE CLASS AND CSS
-			. "<table class='summary-timeline-full-version'>"
+			. "<div id='summary-timeline-compact-version'>"
 
-	        //End of table
-	        . "</table>"
+			// Begin top time labels row
+			. "<div class='row'>"
 
+			// Top time labels
+			// NEED TO ADD LOGIC TO USE EVA DURATION / 60 TO DETERMINE # OF HOUR BLOCKS
+			// FOR EVERY # OF HOUR BLOCKS, ADD SPAN
+			.	"<span class='cell' style='width:15%;'>1:00</span>"
+			.	"<span class='cell' style='background-color:red;'></span>"
 
+			// End top time labels row
+			. "</div>"
+
+			// Begin EV1 Row
+			. "<div class='row'>"
+
+			// Egress
+			.	"<span class='cell' style='width:"
+			.	$options['ev1 egress duration minutes']['durationPercent']/* Calc % of EVA duration */
+			.	"%;'>"
+			.	"Egress (0:" . $options['ev1 egress duration minutes']['durationMinutes'] . ")</span>"
+
+			// Tasks
+			.	$compactTextEV1
+
+			// Ingress
+			.	"<span class='cell' style='width:"
+			.	$options['ev1 ingress duration minutes']['durationPercent']/* Calc % of EVA duration */
+			.	"%;'>"
+			.	"Ingress (0:" . $options['ev1 ingress duration minutes']['durationMinutes'] . ")</span>"
+
+			// Extra cell (for troubleshooting)
+			// .	"<span class='cell' style='background-color:red;'></span>"
+
+			// End EV1 row
+			. "</div>"
+
+			// NEED TO ADD background-color:red(new $variable); ONCE COLOR OPTIONS ARE ADDED
+
+	        // End of main div
+	        . "</div>"
+
+			/*******************
+			
+			Full Version Output
+
+			*******************/
 			. "Full Version:" 
 
 			// UPDATE CLASS AND CSS
@@ -115,18 +174,18 @@ class SummaryTimeline
 			//EV1 Column
 			. "<td>"
 			. "<table class='summary-timeline-full-version'><tr><th>EV1 (" . $options['rows']['ev1']['tasksDuration'] . " min)</th></tr>"
-			. "<tr><td>Egress (0:" . $options['ev1 egress duration minutes'] . ")</td></tr>"
+			. "<tr><td>Egress (0:" . $options['ev1 egress duration minutes']['durationMinutes'] . ")</td></tr>"
 			. "<tr><td>" . $textEV1 . "</td></tr>"
-			. "<tr><td>Ingress (0:" . $options['ev1 ingress duration minutes'] . ")</td></tr>"
+			. "<tr><td>Ingress (0:" . $options['ev1 ingress duration minutes']['durationMinutes'] . ")</td></tr>"
 			. "</table>"
 	        . "</td>"
 
 			//EV2 Column
 			. "<td>"
 			. "<table class='summary-timeline-full-version'><tr><th>EV2 (" . $options['rows']['ev2']['tasksDuration'] . " min)</th></tr>"
-			. "<tr><td>Egress (0:" . $options['ev2 egress duration minutes'] . ")</td></tr>"
+			. "<tr><td>Egress (0:" . $options['ev2 egress duration minutes']['durationMinutes'] . ")</td></tr>"
 			. "<tr><td>" . $textEV2 . "</td></tr>"
-			. "<tr><td>Ingress (0:" . $options['ev2 ingress duration minutes'] . ")</td></tr>"
+			. "<tr><td>Ingress (0:" . $options['ev2 ingress duration minutes']['durationMinutes'] . ")</td></tr>"
 			. "</table>"
 	        . "</td>"
 
@@ -177,15 +236,19 @@ class SummaryTimeline
 			        case 'ev2 egress duration minutes':
 			        case 'ev1 ingress duration minutes':
 			        case 'ev2 ingress duration minutes':
-				        $options[$name] = $value;
+				        $options[$name]['durationMinutes'] = $value;
+				        $options[$name]['durationPercent'] = round(($value / $options['eva duration in minutes']) * 100);
 				        break;
 				    case 'iv': // NEED TO SPLIT OUT SO THIS DOESN'T HAVE GET-AHEADS ADDED
+					    // this should have blocks with "Start time" (not duration)
+					    // an option should be included to sync with a task on EV1 and/or EV2
 				    case 'ev1':
 				    case 'ev2':
 					    $i = 1; /* Task id */
 					    $tempTasks = explode ( '&&&', $value, 2 );
 					    $tasks = explode ( '&&&', $tempTasks[1] );
 						$tasksDuration = 0;
+						$tasksDurationPercentTotal = 0;
 					    
 					    foreach ( $tasks as $task ) {
 					    	$taskDetails = explode( '@@@', $task);
@@ -195,15 +258,20 @@ class SummaryTimeline
 					    	$options['rows'][$name]['tasks'][$i]['relatedArticles'] = $taskDetails[3];
 					    	$options['rows'][$name]['tasks'][$i]['details'] = $taskDetails[4];
 
+					    	// Calc task duration as % of total EVA duration
+					    	$options['rows'][$name]['tasks'][$i]['durationPercent'] = round((((60 * $taskDetails[1]) + $taskDetails[2]) / $options['eva duration in minutes']) * 100);
+
 					    	// append task duration
 					    	$tasksDuration += (60 * $taskDetails[1]) + $taskDetails[2];
+					    	// append task duration percent
+					    	$tasksDurationPercentTotal += round($options['rows'][$name]['tasks'][$i]['durationPercent']);
 					    	// print_r( $options['rows'][$name]['tasksDuration'] );
 					    	$i++;
 					    }
 
 					    // NEED TO ADD EGRESS/INGRESS DURATION TO $tasksDuration
 					    // NEED TO ACCOUNT FOR EV1 vs EV2
-					    $tasksDuration += $options['ev2 egress duration minutes'] + $options['ev2 ingress duration minutes'];
+					    $tasksDuration += $options['ev2 egress duration minutes']['durationMinutes'] + $options['ev2 ingress duration minutes']['durationMinutes'];
 
 					    // sum of time allotted to tasks
 					    $options['rows'][$name]['tasksDuration'] = $tasksDuration;
@@ -219,20 +287,30 @@ class SummaryTimeline
 					    	$timeLeftHours = floor($timeLeft/60);
 					    	$timeLeftMinutes = $timeLeft%60;
 
-					    	// Chose to place this block before last task assuming that will be "Ingress"
-					    	// ADD LOGIC TO SWAP THIS BLOCK WITH ONE BEFORE IT
-					    	$options['rows'][$name]['tasks'][$i]['title'] = $options['rows'][$name]['tasks'][$i-1]['title'];
-					    	$options['rows'][$name]['tasks'][$i]['durationHour'] = $options['rows'][$name]['tasks'][$i-1]['durationHour'];
-					    	$options['rows'][$name]['tasks'][$i]['durationMinute'] = $options['rows'][$name]['tasks'][$i-1]['durationMinute'];
-					    	$options['rows'][$name]['tasks'][$i]['relatedArticles'] = $options['rows'][$name]['tasks'][$i-1]['relatedArticles'];
-					    	$options['rows'][$name]['tasks'][$i]['details'] = $options['rows'][$name]['tasks'][$i-1]['details'];
-
 					    	// Now set Get-Aheads block data
-					    	$options['rows'][$name]['tasks'][$i-1]['title'] = 'Get-Aheads';
-					    	$options['rows'][$name]['tasks'][$i-1]['durationHour'] = $timeLeftHours;
-					    	$options['rows'][$name]['tasks'][$i-1]['durationMinute'] = $timeLeftMinutes;
-					    	$options['rows'][$name]['tasks'][$i-1]['relatedArticles'] = 'Get-Ahead Task';
-					    	$options['rows'][$name]['tasks'][$i-1]['details'] = 'Auto-generated block based on total EVA duration and sum of task durations';
+					    	$options['rows'][$name]['tasks'][$i]['title'] = 'Get-Aheads';
+					    	$options['rows'][$name]['tasks'][$i]['durationHour'] = $timeLeftHours;
+					    	$options['rows'][$name]['tasks'][$i]['durationMinute'] = $timeLeftMinutes;
+					    	$options['rows'][$name]['tasks'][$i]['relatedArticles'] = 'Get-Ahead Task';
+					    	$options['rows'][$name]['tasks'][$i]['details'] = 'Auto-generated block based on total EVA duration and sum of task durations';
+					    	// Calc task duration as % of total EVA duration
+					    	// $options['rows'][$name]['tasks'][$i]['durationPercent'] = round((((60 * $timeLeftHours) + $timeLeftMinutes) / $options['eva duration in minutes']) * 100);
+							$options['rows'][$name]['tasks'][$i]['durationPercent'] = 100 - (100 * ($tasksDuration / $options['eva duration in minutes']));
+							// NEED TO ADD EGRESS/INGRESS
+							print_r($tasksDurationPercentTotal);
+
+					    	// THE FOLLOWING WAS TO MOVE GET-AHEADS TO SECOND-TO-LAST SPOT, NO LONGER REQUIRED
+					    	// $options['rows'][$name]['tasks'][$i]['title'] = $options['rows'][$name]['tasks'][$i-1]['title'];
+					    	// $options['rows'][$name]['tasks'][$i]['durationHour'] = $options['rows'][$name]['tasks'][$i-1]['durationHour'];
+					    	// $options['rows'][$name]['tasks'][$i]['durationMinute'] = $options['rows'][$name]['tasks'][$i-1]['durationMinute'];
+					    	// $options['rows'][$name]['tasks'][$i]['relatedArticles'] = $options['rows'][$name]['tasks'][$i-1]['relatedArticles'];
+					    	// $options['rows'][$name]['tasks'][$i]['details'] = $options['rows'][$name]['tasks'][$i-1]['details'];
+					    	// Now set Get-Aheads block data
+					    	// $options['rows'][$name]['tasks'][$i-1]['title'] = 'Get-Aheads';
+					    	// $options['rows'][$name]['tasks'][$i-1]['durationHour'] = $timeLeftHours;
+					    	// $options['rows'][$name]['tasks'][$i-1]['durationMinute'] = $timeLeftMinutes;
+					    	// $options['rows'][$name]['tasks'][$i-1]['relatedArticles'] = 'Get-Ahead Task';
+					    	// $options['rows'][$name]['tasks'][$i-1]['details'] = 'Auto-generated block based on total EVA duration and sum of task durations';
 					    }
 
 				        break;

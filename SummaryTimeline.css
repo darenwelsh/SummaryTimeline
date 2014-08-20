@@ -1,21 +1,91 @@
 /**
  * This CSS file supplements MediaWiki:Common.css
- * This styling is for the output
+ * This styling is for the output of the SummaryTimeline parser function
  */
 
-body { font-family: sans-serif; }
-
-.summary-timeline {
-  max-width: 2800px;
+body { 
+  font-family: sans-serif; 
 }
 
-.summary-timeline .item {
+#summary-timeline-compact-version {
+  /*display: table;*/
+  width:   100%;
+  font-size: 75%;
+  /*border:  1px solid #444444;*/
+  padding: 0px;
+  margin:  0px;
+}
+#summary-timeline-compact-version .row {
+  /*display: table-row;*/
+  padding: 0px;
+  margin:  0px;
+  width: 100%;
+}
+#summary-timeline-compact-version .cell {
+  /*display: table-cell;*/
+  display: inline-block;
+  border:  1px solid #FC0000;
+  vertical-align: middle;
+  height:    80px;
+  padding: 0px;
+  margin:  0px;
+}
+/*#summary-timeline-compact-version .header-group { 
+  display: table-header-group; 
+}
+#summary-timeline-compact-version .row-group { 
+  display: table-row-group; 
+}
+#summary-timeline-compact-version .footer-group { 
+  display: table-footer-group; 
+}
+#summary-timeline-compact-version .column { 
+  display: table-column; 
+}
+#summary-timeline-compact-version .column-group { 
+  display: table-column-group; 
+}
+#summary-timeline-compact-version .caption { 
+  display: table-caption; 
+}
+#caption {
+  caption-side: top;
+}*/
+
+table.summary-timeline-full-version {
+  width:       100%;
+  border:     1px solid #220000;
+  /*background: #f5fffa;*/
+  /*margin:     0 1% 0 0;*/
+  /*padding:    5px;*/
+}
+table.summary-timeline-full-version th {
+  border:     1px solid #0000FF;
+}
+table.summary-timeline-full-version td {
+  border:     1px solid #00FF00;
+}
+table.summary-timeline-full-version tr {
+  border:     1px solid #FF0000;
+}
+
+
+
+
+
+
+
+
+/* OLD REFERENCE MATERIAL BELOW */
+
+
+/*.summary-timeline .item {
   float: left;
 }
 
 .item,
 .item-content {
-/*    background: #eee;*/
+    background: #eee;
 }
 
 .item {width: 300px; 
@@ -26,23 +96,13 @@ body { font-family: sans-serif; }
 
 .item.w2 { width: 610px; }
 
-/* item-content is visible, and transitions size */
 .item-content {
-/* Commented out height so blocks can be different sized heights */
-/*  height: 200px;*/
+  height: 200px;
   width: 100%;
   padding: 0px 0px 0px 0px;
- /* background: #eee;*/
   border: 0px solid #333;
   border-color: hsla(0, 0%, 0%, 0.5);
-/* Commented out rounded corners
-  border-radius: 10px;
-  -webkit-transition: width 0.4s, height 0.4s;
-     -moz-transition: width 0.4s, height 0.4s;
-       -o-transition: width 0.4s, height 0.4s;
-          transition: width 0.4s, height 0.4s;
-*/
-}
+}*/
 
 /* COMMENTED OUT HOVER COLOR CHANGING
 .item:hover .item-content {
@@ -68,7 +128,7 @@ body { font-family: sans-serif; }
 */
 
 /* Boxes like "Featured Article", "Random OCAD" and "Tutorials" on main page, default is green */
-table.main-page-box {
+/*table.main-page-box {
   width:       100%;
   border:     1px solid #cef2e0;
   background: #f5fffa;
@@ -127,24 +187,6 @@ table.main-page-box-purple {
 table.main-page-box-purple th {
   background:   #9999cc;
   border:       1px solid #9988cc;
-}
+}*/
 
 
-
-
-table.summary-timeline-full-version {
-  width:       100%;
-  border:     1px solid #220000;
-  /*background: #f5fffa;*/
-  /*margin:     0 1% 0 0;*/
-  /*padding:    5px;*/
-}
-table.summary-timeline-full-version th {
-  border:     1px solid #0000FF;
-}
-table.summary-timeline-full-version td {
-  border:     1px solid #00FF00;
-}
-table.summary-timeline-full-version tr {
-  border:     1px solid #FF0000;
-}
