@@ -17,10 +17,11 @@
 /*
 Considerations for improvement
 
-* Cell colors
+* Cell colors with key to denote color meanings
 * Tasks coupled between EV1 and EV2
 * Sync points
 * Text outside of cell with line pointer for small cells (in compact version only)
+* Or, have [1] with [1] Task Title underneath like a reference
 * Eclipse constraints (shade cell, shade time rows?)
 
 * Timeline rows (above and below?)
@@ -65,47 +66,149 @@ class SummaryTimeline
 
 		//Calculate relative position for hour time ticker marks
 		$compactTimeTickerText = "";
-		$hours = floor($options['eva duration in minutes'] / 60);
-		$hourTickerDivWidth = floor(100 / $hours);
-		for ($i = 0; $i < $hours; $i++) {
-		    $compactTimeTickerText .= "<div class='time' style='width:" . $hourTickerDivWidth . "%;'>" . $i . ":00</div>";
+		// $hours should be like 6.5 to get full duration properly
+		$hours = $options['eva duration in minutes'] / 60;
+		$hourTickerDivWidth = (100 / $hours);
+		//Hour 0:00
+		$compactTimeTickerText .= "<div class='time' "
+			. "style='width:" . floor($hourTickerDivWidth) . "%;"
+		    . " margin-left: 0%;"
+		    . "'>0:00</div>";
+	    //Hours in the middle
+		for ($i = 1; $i < $hours-1; $i++) {
+		    $compactTimeTickerText .= "<div class='time' style='width:" 
+		    . ((floor($hourTickerDivWidth * ($i+1))) - (floor($hourTickerDivWidth * ($i))))
+		    . "%;"
+		    . " margin-left:" . (floor($hourTickerDivWidth * $i)) . "%;"
+		    . "'>" . $i . ":00</div>";
 		}
-		$compactTimeTickerText .= "<div class='time' >" . $i . ":00</div>";
+		//Final Hour ticker
+		$compactTimeTickerText .= "<div class='time' "
+			. "style='"
+			. "width:" . (100 - (((floor($hourTickerDivWidth * ($i))) - (floor($hourTickerDivWidth * ($i-1)))) + (floor($hourTickerDivWidth * ($i-1))))) . "%;"
+		    . " margin-left:" 
+		    . (((floor($hourTickerDivWidth * ($i))) - (floor($hourTickerDivWidth * ($i-1)))) + (floor($hourTickerDivWidth * ($i-1))))
+		    . "%;"
+		    . "'>" . $i . ":00</div>";
+
 
 		//COMPACT VERSION CONTENT DEFINITIONS
 		//Define the EV1 column output
+	    $compactTextEV1SumOfDurationMinutes = 0;
 		$compactTextEV1 = "";
+
+		// Egress
+		$compactTextEV1 .= "<div class='cell-border block' style='width:"
+		.	$options['ev1 egress duration minutes']['durationPercent']/* Calc % of EVA duration */
+		.	"%;"
+	    .	" margin-left: 0%;"
+		.	"'>"
+			. 	"<div class='cell-body'>"
+			.	"Egress (0:" . $options['ev1 egress duration minutes']['durationMinutes'] . ")"
+			.	"</div>"
+		. "</div>";
+		$compactTextEV1SumOfDurationMinutes += $options['ev1 egress duration minutes']['durationMinutes'];
+
+		// Tasks
+		// NEED TO FIND BUG
+		// 1% ERROR SOMEWHERE IN HERE
+		// FHRC REMOVE IS LEFT 1% OF WHERE IT SHOULD BE
+		// modify WIDTH setting to base off of sum of previous margin-left values
 		$compactTextEV1i = 1;
 		foreach ( $options['rows']['ev1']['tasks'] as $task ) {
 			$compactTextEV1 .= 
-			"<div class='cell-border' style='width:"
-			. $options['rows']['ev1']['tasks'][$compactTextEV1i]['durationPercent']
-			. "%;'>"
+			"<div class='cell-border block' style='width:"
+			// . $options['rows']['ev1']['tasks'][$compactTextEV1i]['durationPercent']
+			. (/* margin-left of next block */
+				(floor((($compactTextEV1SumOfDurationMinutes //Total tasks duration in minutes so far
+					//Duration in minutes of next task
+					+ ( (60 * $options['rows']['ev1']['tasks'][($compactTextEV1i)]['durationHour']) 
+						+ $options['rows']['ev1']['tasks'][($compactTextEV1i)]['durationMinute'] ) )
+					/ $options['eva duration in minutes'])*100))
+				 - (floor(($compactTextEV1SumOfDurationMinutes / $options['eva duration in minutes'])*100)) )
+			. "%;"
+			. " margin-left: "
+			. (floor(($compactTextEV1SumOfDurationMinutes / $options['eva duration in minutes'])*100)) //sum of widths so far
+			. "%;"
+			. "'>"
 				. "<div class='cell-body'>"
 				. $options['rows']['ev1']['tasks'][$compactTextEV1i]['title'] . " "
 		    	. "(" . $options['rows']['ev1']['tasks'][$compactTextEV1i]['durationHour'] . ":"
 		    	. $options['rows']['ev1']['tasks'][$compactTextEV1i]['durationMinute'] . ")"
 				. "</div>"
 			. "</div>";
+	    	$compactTextEV1SumOfDurationMinutes += ( (60 * $options['rows']['ev1']['tasks'][$compactTextEV1i]['durationHour']) + $options['rows']['ev1']['tasks'][$compactTextEV1i]['durationMinute'] );
 	    	$compactTextEV1i++;
 	    }
 
+		// Ingress
+		$compactTextEV1 .= "<div class='cell-border block' style='width:"
+		.	(100 - (floor(($compactTextEV1SumOfDurationMinutes / $options['eva duration in minutes'])*100)))
+		.	"%;"
+	    .	" margin-left: "
+	    .	(floor(($compactTextEV1SumOfDurationMinutes / $options['eva duration in minutes'])*100))
+	    .	"%'>"
+			. 	"<div class='cell-body'>"
+			.	"Ingress (0:" . $options['ev1 ingress duration minutes']['durationMinutes'] . ")"
+			.	"</div>"
+		. "</div>";
+
+
 		//Define the EV2 column output
+	    $compactTextEV2SumOfDurationMinutes = 0;
 		$compactTextEV2 = "";
+
+		// Egress
+		$compactTextEV2 .= "<div class='cell-border block' style='width:"
+		.	$options['ev2 egress duration minutes']['durationPercent']/* Calc % of EVA duration */
+		.	"%;"
+	    .	" margin-left: 0%;"
+		.	"'>"
+			. 	"<div class='cell-body'>"
+			.	"Egress (0:" . $options['ev2 egress duration minutes']['durationMinutes'] . ")"
+			.	"</div>"
+		. "</div>";
+		$compactTextEV2SumOfDurationMinutes += $options['ev2 egress duration minutes']['durationMinutes'];
+
+		// Tasks
 		$compactTextEV2i = 1;
 		foreach ( $options['rows']['ev2']['tasks'] as $task ) {
 			$compactTextEV2 .= 
-			"<div class='cell-border' style='width:"
-			. $options['rows']['ev2']['tasks'][$compactTextEV2i]['durationPercent']
-			. "%;'>"
+			"<div class='cell-border block' style='width:"
+			. (/* margin-left of next block */
+				(floor((($compactTextEV2SumOfDurationMinutes //Total tasks duration in minutes so far
+					//Duration in minutes of next task
+					+ ( (60 * $options['rows']['ev2']['tasks'][($compactTextEV2i)]['durationHour']) 
+						+ $options['rows']['ev2']['tasks'][($compactTextEV2i)]['durationMinute'] ) )
+					/ $options['eva duration in minutes'])*100))
+				 - (floor(($compactTextEV2SumOfDurationMinutes / $options['eva duration in minutes'])*100)) )
+			. "%;"
+			. " margin-left: "
+			. (floor(($compactTextEV2SumOfDurationMinutes / $options['eva duration in minutes'])*100)) //sum of widths so far
+			. "%;"
+			. "'>"
 				. "<div class='cell-body'>"
 				. $options['rows']['ev2']['tasks'][$compactTextEV2i]['title'] . " "
 		    	. "(" . $options['rows']['ev2']['tasks'][$compactTextEV2i]['durationHour'] . ":"
 		    	. $options['rows']['ev2']['tasks'][$compactTextEV2i]['durationMinute'] . ")"
 				. "</div>"
 			. "</div>";
+	    	$compactTextEV2SumOfDurationMinutes += ( (60 * $options['rows']['ev2']['tasks'][$compactTextEV2i]['durationHour']) + $options['rows']['ev2']['tasks'][$compactTextEV2i]['durationMinute'] );
 	    	$compactTextEV2i++;
 	    }
+
+		// Ingress
+		$compactTextEV2 .= "<div class='cell-border block' style='width:"
+		.	(100 - (floor(($compactTextEV2SumOfDurationMinutes / $options['eva duration in minutes'])*100)))
+		.	"%;"
+	    .	" margin-left: "
+	    .	(floor(($compactTextEV2SumOfDurationMinutes / $options['eva duration in minutes'])*100))
+	    .	"%'>"
+			. 	"<div class='cell-body'>"
+			.	"Ingress (0:" . $options['ev2 ingress duration minutes']['durationMinutes'] . ")"
+			.	"</div>"
+		. "</div>";
+
 
 		//FULL VERSION CONTENT DEFINITIONS
 		//Define the MMC Coord column output
@@ -162,7 +265,7 @@ class SummaryTimeline
 			// Begin left label column
 			// display: inline-block; height: 100%; width: 50px; 
 				. "<div class='left column'>"
-				. "<div class='time row' style='border-left-width: 0px;'>"
+				. "<div class='row' style='border-left-width: 0px; '>"
 				. "</div>"
 				. "<div class='tasks row'>"
 					. "EV1"
@@ -181,10 +284,6 @@ class SummaryTimeline
 			. "<div class='row'>"
 
 			// Top time labels
-			// NEED TO ADD LOGIC TO USE EVA DURATION / 60 TO DETERMINE # OF HOUR BLOCKS
-			// // FOR EVERY # OF HOUR BLOCKS, ADD DIV
-			// .	"<div class='time' style='width:" . $hourTickerDivWidth . "%;'>1:00</div>"
-			// .	"<div class='time' style='width:" . $hourTickerDivWidth . "%;'>2:00</div>"
 			. $compactTimeTickerText
 
 			// End top time labels row
@@ -193,60 +292,16 @@ class SummaryTimeline
 			// Begin EV1 Row
 			. "<div class='row'>"
 
-			// Egress
-			. "<div class='cell-border' style='width:"
-			.	$options['ev1 egress duration minutes']['durationPercent']/* Calc % of EVA duration */
-			.	"%;'>"
-				. 	"<div class='cell-body'>"
-				.	"Egress (0:" . $options['ev1 egress duration minutes']['durationMinutes'] . ")"
-				.	"</div>"
-			. "</div>"
-
-			// Tasks
 			.	$compactTextEV1
-
-			// Ingress
-			. "<div class='cell-border' style='width:"
-			.	$options['ev1 ingress duration minutes']['durationPercent']/* Calc % of EVA duration */
-			.	"%;'>"
-				. 	"<div class='cell-body'>"
-				.	"Ingress (0:" . $options['ev1 ingress duration minutes']['durationMinutes'] . ")"
-				.	"</div>"
-			. "</div>"
-
-			// Extra cell (for troubleshooting)
-			// .	"<div class='cell' style='background-color:red;'></div>"
 
 			// End EV1 row
 			. "</div>"
 
-
 			// Begin EV2 Row
 			. "<div class='row'>"
 
-			// Egress
-			. "<div class='cell-border' style='width:"
-			.	$options['ev2 egress duration minutes']['durationPercent']/* Calc % of EVA duration */
-			.	"%;'>"
-				. 	"<div class='cell-body'>"
-				.	"Egress (0:" . $options['ev2 egress duration minutes']['durationMinutes'] . ")"
-				.	"</div>"
-			. "</div>"
-
 			// Tasks
 			.	$compactTextEV2
-
-			// Ingress
-			. "<div class='cell-border' style='width:"
-			.	$options['ev2 ingress duration minutes']['durationPercent']/* Calc % of EVA duration */
-			.	"%;'>"
-				. 	"<div class='cell-body'>"
-				.	"Ingress (0:" . $options['ev2 ingress duration minutes']['durationMinutes'] . ")"
-				.	"</div>"
-			. "</div>"
-
-			// Extra cell (for troubleshooting)
-			// .	"<div class='cell' style='background-color:red;'></div>"
 
 			// End EV2 row
 			. "</div>"
@@ -356,13 +411,13 @@ class SummaryTimeline
 			        case 'ev1 egress duration minutes':
 			        case 'ev1 ingress duration minutes':
 				        $options[$name]['durationMinutes'] = $value;
-				        $options[$name]['durationPercent'] = round(($value / $options['eva duration in minutes']) * 100);
+				        $options[$name]['durationPercent'] = floor(($value / $options['eva duration in minutes']) * 100);
 				        $tasksDurationPercentTotal['ev1'] += $options[$name]['durationPercent'];
 				        break;
 			        case 'ev2 egress duration minutes':
 			        case 'ev2 ingress duration minutes':
 				        $options[$name]['durationMinutes'] = $value;
-				        $options[$name]['durationPercent'] = round(($value / $options['eva duration in minutes']) * 100);
+				        $options[$name]['durationPercent'] = floor(($value / $options['eva duration in minutes']) * 100);
 				        $tasksDurationPercentTotal['ev2'] += $options[$name]['durationPercent'];
 				        break;
 				    case 'iv': // NEED TO SPLIT OUT SO THIS DOESN'T HAVE GET-AHEADS ADDED

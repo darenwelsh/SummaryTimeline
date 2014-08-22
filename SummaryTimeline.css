@@ -39,7 +39,6 @@ body {
     margin-left: 25px;
 }
 #summary-timeline-compact-version .row {
-  /*display: table-row;*/
   display: inline-block;
   border:  0px solid #FC0000;
   padding: 0px;
@@ -52,7 +51,9 @@ body {
   height: 20px;
   border-left: solid #DDDDDD;
   border-left-width: 1px;
-  /*padding: 0px 1px;*/
+  padding: 0px 1px;
+  float: left;
+  margin-right: -100%;
 
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -62,19 +63,24 @@ body {
 #summary-timeline-compact-version .tasks {
   height: 70px;
   border: 0px solid #dddddd;
+  line-height: 70px;
+}
+#summary-timeline-compact-version .block {
+  float: left;
+  margin-right: -100%;
 }
 #summary-timeline-compact-version .cell-border {
   display: inline-block;
-  border:  0px solid #FC0000;
+  border:  0px solid #BBBBBB;
   background-color: blue;
   vertical-align: middle;
   height:    70px;
   padding: 0px;
-  margin:  0px;
+  /*margin:  0px;*/
 }
 #summary-timeline-compact-version .cell-body {
   display: inline-block;
-  border:  1px solid #FC0000;
+  border:  1px solid #BBBBBB;
   background-color: white;
   vertical-align: middle;
   height:    100%;
