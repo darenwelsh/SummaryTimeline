@@ -8,7 +8,6 @@ body {
 }
 
 #summary-timeline-compact-version {
-  /*display: table;*/
   width:   100%;
   font-size: 75%;
   border:  0px solid #444444;
@@ -17,10 +16,10 @@ body {
 }
 #summary-timeline-compact-version .container {
   position: relative;
+  margin: 10px 50px 10px 20px;
 }
 
 #summary-timeline-compact-version .column {
-  /*display: table-cell;*/
   display: inline-block;
   /*border:  1px solid #FC0000;*/
   background-color: white;
@@ -31,14 +30,13 @@ body {
   margin:  0px;
 }
 #summary-timeline-compact-version .left {
-    width: 30px;
+    width: 25px;
     position: absolute;
     top: 0;
     left: 0;
 }
 #summary-timeline-compact-version .right {
-    margin-left: 30px;
-    /*width: 100%;*/
+    margin-left: 25px;
 }
 #summary-timeline-compact-version .row {
   /*display: table-row;*/
@@ -47,26 +45,41 @@ body {
   padding: 0px;
   margin:  0px;
   width: 100%;
+  vertical-align: middle;
+}
+#summary-timeline-compact-version .time {
+  display: inline-block;
+  height: 20px;
+  border-left: solid #DDDDDD;
+  border-left-width: 1px;
+  /*padding: 0px 1px;*/
+
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#summary-timeline-compact-version .tasks {
+  height: 70px;
+  border: 0px solid #dddddd;
 }
 #summary-timeline-compact-version .cell-border {
-  /*display: table-cell;*/
   display: inline-block;
   border:  0px solid #FC0000;
   background-color: blue;
   vertical-align: middle;
-  height:    80px;
+  height:    70px;
   padding: 0px;
   margin:  0px;
 }
 #summary-timeline-compact-version .cell-body {
-  /*display: table-cell;*/
   display: inline-block;
   border:  1px solid #FC0000;
   background-color: white;
   vertical-align: middle;
   height:    100%;
   width:     100%;
-  padding: 0px;
+  padding: 0px 1px;
   margin:  0px;
 
   -moz-box-sizing: border-box;
@@ -74,6 +87,7 @@ body {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
+
 /*#summary-timeline-compact-version .header-group { 
   display: table-header-group; 
 }

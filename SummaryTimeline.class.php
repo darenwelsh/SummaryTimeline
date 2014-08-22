@@ -63,6 +63,15 @@ class SummaryTimeline
 		//Run extractOptions on $args
 		$options = self::extractOptions( $frame, $args );
 
+		//Calculate relative position for hour time ticker marks
+		$compactTimeTickerText = "";
+		$hours = floor($options['eva duration in minutes'] / 60);
+		$hourTickerDivWidth = floor(100 / $hours);
+		for ($i = 0; $i < $hours; $i++) {
+		    $compactTimeTickerText .= "<div class='time' style='width:" . $hourTickerDivWidth . "%;'>" . $i . ":00</div>";
+		}
+		$compactTimeTickerText .= "<div class='time' >" . $i . ":00</div>";
+
 		//COMPACT VERSION CONTENT DEFINITIONS
 		//Define the EV1 column output
 		$compactTextEV1 = "";
@@ -152,23 +161,31 @@ class SummaryTimeline
 
 			// Begin left label column
 			// display: inline-block; height: 100%; width: 50px; 
-			. "<div class='left column' style='background-color: orange;'>"
-			. "EV1"
+				. "<div class='left column'>"
+				. "<div class='time row' style='border-left-width: 0px;'>"
+				. "</div>"
+				. "<div class='tasks row'>"
+					. "EV1"
+				. "</div>"
+				. "<div class='tasks row'>"
+					. "EV2"
+				. "</div>"
 
 			// End left label column
 			. "</div>"
 
 			// Begin main body column
-			. "<div class='right column' style='height: 100%; '>"
+			. "<div class='right column'>"
 
 			// Begin top time labels row
 			. "<div class='row'>"
 
 			// Top time labels
 			// NEED TO ADD LOGIC TO USE EVA DURATION / 60 TO DETERMINE # OF HOUR BLOCKS
-			// FOR EVERY # OF HOUR BLOCKS, ADD DIV
-			.	"<div class='cell' style='width:15%;'>1:00</div>"
-			.	"<div class='cell' style='background-color:red;'></div>"
+			// // FOR EVERY # OF HOUR BLOCKS, ADD DIV
+			// .	"<div class='time' style='width:" . $hourTickerDivWidth . "%;'>1:00</div>"
+			// .	"<div class='time' style='width:" . $hourTickerDivWidth . "%;'>2:00</div>"
+			. $compactTimeTickerText
 
 			// End top time labels row
 			. "</div>"
