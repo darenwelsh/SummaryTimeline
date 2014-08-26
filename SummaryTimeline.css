@@ -68,6 +68,8 @@ body {
 #summary-timeline-compact-version .task-block {
   float: left;
   margin-right: -100%;
+  font-family: arial;
+  font-size: 8pt;
 }
 #summary-timeline-compact-version .cell-border {
   display: inline-block;
@@ -95,6 +97,7 @@ body {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
+
 
 /*#summary-timeline-compact-version .header-group { 
   display: table-header-group; 
@@ -181,31 +184,6 @@ table.summary-timeline-full-version tr {
 /* OLD REFERENCE MATERIAL BELOW */
 
 
-/*.summary-timeline .item {
-  float: left;
-}
-
-.item,
-.item-content {
-    background: #eee;
-}
-
-.item {width: 300px; 
-  border: none;
-  background: transparent;
-  margin: 0px 10px 10px 0px;
-}
-
-.item.w2 { width: 610px; }
-
-.item-content {
-  height: 200px;
-  width: 100%;
-  padding: 0px 0px 0px 0px;
-  border: 0px solid #333;
-  border-color: hsla(0, 0%, 0%, 0.5);
-}*/
-
 /* COMMENTED OUT HOVER COLOR CHANGING
 .item:hover .item-content {
   border-color: white;
@@ -229,27 +207,5 @@ table.summary-timeline-full-version tr {
 }
 */
 
-/* Boxes like "Featured Article", "Random OCAD" and "Tutorials" on main page, default is green */
-/*table.main-page-box {
-  width:       100%;
-  border:     1px solid #cef2e0;
-  background: #f5fffa;
-  margin:     0 1% 0 0;
-  padding:    5px;
-}
-table.main-page-box th {
-  color:      black;
-  padding:    10px 7px 10px 7px;
-  background: #cef2e0;
-  border:     1px solid #a3bfb1;
-  text-align: left;
-  font-size:  130%;
-}
-table.main-page-box td {
-  padding:    8px 2px 0px 2px;
-  font-size:      110%;
-  vertical-align: top;
-}
-*/
 
 

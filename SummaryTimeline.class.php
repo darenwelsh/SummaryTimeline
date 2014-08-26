@@ -129,9 +129,18 @@ class SummaryTimeline
 			. "%;"
 			. "'>"
 				. "<div class='cell-body " . $options['rows']['ev1']['tasks'][$compactTextEV1i]['color'] . "'>"
+				//***********************************************
+				//ADDING ANOTHER NESTED DIV TO TEST TEXT OVERFLOW
+				//***********************************************
+				// . "<div style='overflow: visible;'>"
+				. "<div class='responsive-text'>"
 				. $options['rows']['ev1']['tasks'][$compactTextEV1i]['title'] . " "
 		    	. "(" . $options['rows']['ev1']['tasks'][$compactTextEV1i]['durationHour'] . ":"
 		    	. $options['rows']['ev1']['tasks'][$compactTextEV1i]['durationMinute'] . ")"
+				. "</div>"
+				//***********************************************
+				//ADDING ANOTHER NESTED DIV TO TEST TEXT OVERFLOW
+				//***********************************************
 				. "</div>"
 			. "</div>";
 	    	$compactTextEV1SumOfDurationMinutes += ( (60 * $options['rows']['ev1']['tasks'][$compactTextEV1i]['durationHour']) + $options['rows']['ev1']['tasks'][$compactTextEV1i]['durationMinute'] );
@@ -567,7 +576,7 @@ class SummaryTimeline
 	static function addCSS ( $out ){
 		global $wgScriptPath;
 
-		// $out->addScriptFile( $wgScriptPath .'/extensions/SummaryTimeline/bigtext.js' );
+		$out->addScriptFile( $wgScriptPath .'/extensions/SummaryTimeline/SummaryTimeline.js' );
 
 		$out->addLink( array(
 			'rel' => 'stylesheet',
