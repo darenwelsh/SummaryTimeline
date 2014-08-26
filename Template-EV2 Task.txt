@@ -4,6 +4,7 @@ Use this format:
 {{EV2 Task
 |Title=
 |Duration=
+|Color=
 |Related articles=
 |Free text=
 }}
@@ -15,9 +16,10 @@ Use this format:
 |Assigned to#list=EV2
 |Duration={{{Duration hour|}}}:{{{Duration minute|}}}
 |Related article#list={{{Related articles|}}}
+|Color={{{Color|}}}
 |Free text={{{Free text|}}}
 |From page={{FULLPAGENAME}}
 }}
 <!-- {{{Title|}}} ({{{Duration hour|}}}:{{{Duration minute|}}}) -->
-&&&{{{Title|}}}@@@{{{Duration hour|}}}@@@{{{Duration minute|}}}@@@{{{Related articles|}}}@@@{{{Free text|}}}
+&&&{{{Title|}}}@@@{{{Duration hour|}}}@@@{{{Duration minute|}}}@@@{{{Related articles|}}}@@@{{{Color|}}}@@@{{{Free text|}}}
 </includeonly>

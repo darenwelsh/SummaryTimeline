@@ -3,7 +3,23 @@ This is the "Summary Timeline" template.
 It should be called by using the Summary Timeline form.
 
 Edit the page to see the template text.
-</noinclude><includeonly>{{{EVA Title|}}} ({{{EVA Duration hour|}}}:{{{EVA Duration minute|}}})
+</noinclude><includeonly>
+
+== Extension Output ==
+{{#summary-timeline: title={{{EVA Title|}}}
+ | EVA Duration hours={{{EVA Duration hour|}}}
+ | EVA Duration minutes={{{EVA Duration minute|}}}
+ | EV1 Egress Duration minutes={{{EV1 Egress Duration minute|}}}
+ | EV2 Egress Duration minutes={{{EV2 Egress Duration minute|}}}
+ | EV1 Ingress Duration minutes={{{EV1 Ingress Duration minute|}}}
+ | EV2 Ingress Duration minutes={{{EV2 Ingress Duration minute|}}}
+ | IV={{{Coord Tasks|}}}
+ | EV1={{{EV1 Tasks|}}}
+ | EV2={{{EV2 Tasks|}}}
+}}
+
+== Raw Template Output ==
+{{{EVA Title|}}} ({{{EVA Duration hour|}}}:{{{EVA Duration minute|}}})
 <table><tr>
 <th>MCC Coord</th>
 <th>EV1</th>
@@ -15,13 +31,5 @@ Edit the page to see the template text.
 <td style="vertical-align: top;">{{{EV2 Tasks|}}}</td>
 </tr>
 </table>
-
-== Extension Output ==
-{{#summary-timeline: title={{{EVA Title|}}}
- | duration={{{EVA Duration hour|}}}:{{{EVA Duration minute|}}}
- | MCC Coord={{{Coord Tasks|}}}
- | EV1={{{EV1 Tasks|}}}
- | EV2={{{EV2 Tasks|}}}
-}}
 
 [[Category:Summary Timeline]]</includeonly>
