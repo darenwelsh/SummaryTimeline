@@ -65,7 +65,7 @@ body {
   border: 0px solid #dddddd;
   line-height: 70px;
 }
-#summary-timeline-compact-version .block {
+#summary-timeline-compact-version .task-block {
   float: left;
   margin-right: -100%;
 }

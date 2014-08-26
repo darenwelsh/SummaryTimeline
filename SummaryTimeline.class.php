@@ -99,7 +99,7 @@ class SummaryTimeline
 		$compactTextEV1 = "";
 
 		// Egress
-		$compactTextEV1 .= "<div class='cell-border block' style='width:"
+		$compactTextEV1 .= "<div class='cell-border task-block' style='width:"
 		.	$options['ev1 egress duration minutes']['durationPercent']/* Calc % of EVA duration */
 		.	"%;"
 	    .	" margin-left: 0%;"
@@ -114,7 +114,7 @@ class SummaryTimeline
 		$compactTextEV1i = 1;
 		foreach ( $options['rows']['ev1']['tasks'] as $task ) {
 			$compactTextEV1 .= 
-			"<div class='cell-border block' style='width:"
+			"<div class='cell-border task-block' style='width:"
 			// . $options['rows']['ev1']['tasks'][$compactTextEV1i]['durationPercent']
 			. (/* margin-left of next block */
 				(floor((($compactTextEV1SumOfDurationMinutes //Total tasks duration in minutes so far
@@ -139,7 +139,7 @@ class SummaryTimeline
 	    }
 
 		// Ingress
-		$compactTextEV1 .= "<div class='cell-border block' style='width:"
+		$compactTextEV1 .= "<div class='cell-border task-block' style='width:"
 		.	(100 - (floor(($compactTextEV1SumOfDurationMinutes / $options['eva duration in minutes'])*100)))
 		.	"%;"
 	    .	" margin-left: "
@@ -156,7 +156,7 @@ class SummaryTimeline
 		$compactTextEV2 = "";
 
 		// Egress
-		$compactTextEV2 .= "<div class='cell-border block' style='width:"
+		$compactTextEV2 .= "<div class='cell-border task-block' style='width:"
 		.	$options['ev2 egress duration minutes']['durationPercent']/* Calc % of EVA duration */
 		.	"%;"
 	    .	" margin-left: 0%;"
@@ -171,7 +171,7 @@ class SummaryTimeline
 		$compactTextEV2i = 1;
 		foreach ( $options['rows']['ev2']['tasks'] as $task ) {
 			$compactTextEV2 .= 
-			"<div class='cell-border block' style='width:"
+			"<div class='cell-border task-block' style='width:"
 			. (/* margin-left of next block */
 				(floor((($compactTextEV2SumOfDurationMinutes //Total tasks duration in minutes so far
 					//Duration in minutes of next task
@@ -195,7 +195,7 @@ class SummaryTimeline
 	    }
 
 		// Ingress
-		$compactTextEV2 .= "<div class='cell-border block' style='width:"
+		$compactTextEV2 .= "<div class='cell-border task-block' style='width:"
 		.	(100 - (floor(($compactTextEV2SumOfDurationMinutes / $options['eva duration in minutes'])*100)))
 		.	"%;"
 	    .	" margin-left: "
