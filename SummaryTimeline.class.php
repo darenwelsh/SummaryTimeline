@@ -20,6 +20,7 @@ Considerations for improvement
 * Cell colors with key to denote color meanings
 * Tasks coupled between EV1 and EV2
 * Sync points
+* This needs to have additional Get-Ahead block calculation just before the sync point
 * Text outside of cell with line pointer for small cells (in compact version only)
 * Or, have [1] with [1] Task Title underneath like a reference
 * Eclipse constraints (shade cell, shade time rows?)
@@ -110,10 +111,6 @@ class SummaryTimeline
 		$compactTextEV1SumOfDurationMinutes += $options['ev1 egress duration minutes']['durationMinutes'];
 
 		// Tasks
-		// NEED TO FIND BUG
-		// 1% ERROR SOMEWHERE IN HERE
-		// FHRC REMOVE IS LEFT 1% OF WHERE IT SHOULD BE
-		// modify WIDTH setting to base off of sum of previous margin-left values
 		$compactTextEV1i = 1;
 		foreach ( $options['rows']['ev1']['tasks'] as $task ) {
 			$compactTextEV1 .= 
@@ -131,7 +128,7 @@ class SummaryTimeline
 			. (floor(($compactTextEV1SumOfDurationMinutes / $options['eva duration in minutes'])*100)) //sum of widths so far
 			. "%;"
 			. "'>"
-				. "<div class='cell-body'>"
+				. "<div class='cell-body " . $options['rows']['ev1']['tasks'][$compactTextEV1i]['color'] . "'>"
 				. $options['rows']['ev1']['tasks'][$compactTextEV1i]['title'] . " "
 		    	. "(" . $options['rows']['ev1']['tasks'][$compactTextEV1i]['durationHour'] . ":"
 		    	. $options['rows']['ev1']['tasks'][$compactTextEV1i]['durationMinute'] . ")"
@@ -187,7 +184,7 @@ class SummaryTimeline
 			. (floor(($compactTextEV2SumOfDurationMinutes / $options['eva duration in minutes'])*100)) //sum of widths so far
 			. "%;"
 			. "'>"
-				. "<div class='cell-body'>"
+				. "<div class='cell-body " . $options['rows']['ev2']['tasks'][$compactTextEV2i]['color'] . "'>"
 				. $options['rows']['ev2']['tasks'][$compactTextEV2i]['title'] . " "
 		    	. "(" . $options['rows']['ev2']['tasks'][$compactTextEV2i]['durationHour'] . ":"
 		    	. $options['rows']['ev2']['tasks'][$compactTextEV2i]['durationMinute'] . ")"
@@ -434,10 +431,16 @@ class SummaryTimeline
 					    foreach ( $tasks as $task ) {
 					    	$taskDetails = explode( '@@@', $task);
 					    	$options['rows'][$name]['tasks'][$i]['title'] = $taskDetails[0];
+					    	if ($taskDetails[1] == ''){$taskDetails[1] = '0';}
 					    	$options['rows'][$name]['tasks'][$i]['durationHour'] = $taskDetails[1];
+					    	if ($taskDetails[2] == ''|'0'){$taskDetails[2] = '00';}
+					    	if ( strlen($taskDetails[2]) == 1 ){
+					    		$temp = $taskDetails[2];
+					    		$taskDetails[2] = '0' . $temp;}
 					    	$options['rows'][$name]['tasks'][$i]['durationMinute'] = $taskDetails[2];
 					    	$options['rows'][$name]['tasks'][$i]['relatedArticles'] = $taskDetails[3];
-					    	$options['rows'][$name]['tasks'][$i]['details'] = $taskDetails[4];
+					    	$options['rows'][$name]['tasks'][$i]['color'] = $taskDetails[4];
+					    	$options['rows'][$name]['tasks'][$i]['details'] = $taskDetails[5];
 
 					    	// Calc task duration as % of total EVA duration
 					    	$options['rows'][$name]['tasks'][$i]['durationPercent'] = round((((60 * $taskDetails[1]) + $taskDetails[2]) / $options['eva duration in minutes']) * 100);
@@ -473,6 +476,7 @@ class SummaryTimeline
 					    	$options['rows'][$name]['tasks'][$i]['durationHour'] = $timeLeftHours;
 					    	$options['rows'][$name]['tasks'][$i]['durationMinute'] = $timeLeftMinutes;
 					    	$options['rows'][$name]['tasks'][$i]['relatedArticles'] = 'Get-Ahead Task';
+					    	$options['rows'][$name]['tasks'][$i]['color'] = 'white';
 					    	$options['rows'][$name]['tasks'][$i]['details'] = 'Auto-generated block based on total EVA duration and sum of task durations';
 					    	// Calc task duration as % of total EVA duration
 					    	// $options['rows'][$name]['tasks'][$i]['durationPercent'] = round((((60 * $timeLeftHours) + $timeLeftMinutes) / $options['eva duration in minutes']) * 100);
@@ -563,7 +567,7 @@ class SummaryTimeline
 	static function addCSS ( $out ){
 		global $wgScriptPath;
 
-// 		$out->addScriptFile( $wgScriptPath .'/extensions/SummaryTimeline/summary-timeline.js' );
+		// $out->addScriptFile( $wgScriptPath .'/extensions/SummaryTimeline/bigtext.js' );
 
 		$out->addLink( array(
 			'rel' => 'stylesheet',
