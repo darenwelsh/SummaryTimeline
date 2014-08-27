@@ -17,7 +17,10 @@
 /*
 Considerations for improvement
 
-* Cell colors with key to denote color meanings
+* Add EVA Title (not just US EVA x, but also hardware-based)
+
+* Add key to denote color meanings
+* Add field in form to provide key entries (at top?)
 * Tasks coupled between EV1 and EV2
 * Sync points
 * This needs to have additional Get-Ahead block calculation just before the sync point
@@ -25,8 +28,14 @@ Considerations for improvement
 * Or, have [1] with [1] Task Title underneath like a reference
 * Eclipse constraints (shade cell, shade time rows?)
 
-* Timeline rows (above and below?)
-* EV1/2 labels
+* Timeline row below?
+
+* Not just "IV" row/column, but be able to add more for SSRMS, eclipses, etc
+
+* Text align middle?
+
+* How to implement in EVA pages? Sub-page is probably best
+* Option for compact, full, or both versions - or just display both on sub-page?
 
 * Split some parts into separate functions
 * Clean up foreach() calls
@@ -130,16 +139,15 @@ class SummaryTimeline
 			. "'>"
 				. "<div class='cell-body " . $options['rows']['ev1']['tasks'][$compactTextEV1i]['color'] . "'>"
 				//***********************************************
-				//ADDING ANOTHER NESTED DIV TO TEST TEXT OVERFLOW
+				//      TASK BLOCKS
 				//***********************************************
-				// . "<div style='overflow: visible;'>"
 				. "<div class='responsive-text'>"
 				. $options['rows']['ev1']['tasks'][$compactTextEV1i]['title'] . " "
 		    	. "(" . $options['rows']['ev1']['tasks'][$compactTextEV1i]['durationHour'] . ":"
 		    	. $options['rows']['ev1']['tasks'][$compactTextEV1i]['durationMinute'] . ")"
 				. "</div>"
 				//***********************************************
-				//ADDING ANOTHER NESTED DIV TO TEST TEXT OVERFLOW
+				// 
 				//***********************************************
 				. "</div>"
 			. "</div>";
@@ -271,12 +279,12 @@ class SummaryTimeline
 			// Begin left label column
 			// display: inline-block; height: 100%; width: 50px; 
 				. "<div class='left column'>"
-				. "<div class='row' style='border-left-width: 0px; '>"
+				. "<div class='row' style='height: 20px; border-left-width: 0px; '>"
 				. "</div>"
-				. "<div class='tasks row'>"
+				. "<div class='tasks row' style='font-weight: bold;'>"
 					. "EV1"
 				. "</div>"
-				. "<div class='tasks row'>"
+				. "<div class='tasks row' style='font-weight: bold;'>"
 					. "EV2"
 				. "</div>"
 
@@ -313,6 +321,18 @@ class SummaryTimeline
 			. "</div>"
 
 			// NEED TO ADD background-color:red(new $variable); ONCE COLOR OPTIONS ARE ADDED
+
+			// Begin Footer Row
+			. "<div class='row'>"
+
+			// Footer Entries
+			// This is driven by SummaryTimeline.js
+			. "<div id='summary-timeline-footer' class='footer'>"
+				//Entries will be placed here by the JS
+			. "</div>"
+
+			// End Footer row
+			. "</div>"
 
 			// End of main body column div
 			. "</div>"

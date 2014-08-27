@@ -16,20 +16,39 @@ getTextWidth = function(text, font) {
     return metrics;
 };
 
-console.log(getTextWidth("hello there! asdf asdf ", "bold 12pt arial"));  // reports 84
-
+function evaluateBlockText() {
 $(".responsive-text").each( function(i,e){
-  var text = $(e).text();
-  var textWidth = getTextWidth(text, "8pt arial");
-  var divWidth = $(e).width();
+  var text = $(e).text(); //Text in div "FHRC Prep (0:15)"
+  var textWidth = getTextWidth(text, "8pt arial").width; //Width of entire text
+  var divWidth = $(e).width(); //Width of div
+  var textWords = text.split(" "); //split the text into individual words
+  var textWordWidth = []; //Width of each word
 
-  //split the text into individual words
-  var textWords = text.split(" ");
   //get width of each word
+  var i = 0; //counter
   textWords.forEach(function(word){
     //compare wordWidth to divWidth
-    console.log(getTextWidth(word, "8pt arial"));
+    textWordWidth[i] = getTextWidth(word, "8pt arial").width;
+    console.log(textWordWidth[i]);
+    if(textWordWidth[i] > divWidth){
+      //Erase the text in this div and write it elsewhere (TBD)
+      $("#summary-timeline-footer").append( "[" + i + "] " + text + "<br />");
+      $(e).text("[" + i + "]").attr('hidden-text',text);
+      // console.log("It won't fit!");
+    }
+    i++;
   });
 
-  console.log(text, ":", divWidth, "(div); ", textWidth, "(text)");
+//Modify counter to be numerical for footer instead of just using i
+//Have sections for each row (EV1, EV2, etc): This can be left column with contents in right column
+//Address case when browser is resized bigger: Move text from footer back into block
+//After resize, clear footer div ("reset")
+//if(.attr('hidden-text')), test it again
+
+  // console.log(text, ":", divWidth, "(div); ", textWidth, "(text)");
 });
+}
+
+$(document).ready(evaluateBlockText);
+
+$(window).resize(evaluateBlockText);

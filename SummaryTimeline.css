@@ -97,29 +97,12 @@ body {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-
-
-/*#summary-timeline-compact-version .header-group { 
-  display: table-header-group; 
+#summary-timeline-compact-version .footer {
+  border:  0px solid #BBBBBB;
+  padding: 0px;
+  margin:  0px;
+  width:   100%;
 }
-#summary-timeline-compact-version .row-group { 
-  display: table-row-group; 
-}
-#summary-timeline-compact-version .footer-group { 
-  display: table-footer-group; 
-}
-#summary-timeline-compact-version .column { 
-  display: table-column; 
-}
-#summary-timeline-compact-version .column-group { 
-  display: table-column-group; 
-}
-#summary-timeline-compact-version .caption { 
-  display: table-caption; 
-}
-#caption {
-  caption-side: top;
-}*/
 
 /* TASK BLOCK COLORS */
 #summary-timeline-compact-version .white {
