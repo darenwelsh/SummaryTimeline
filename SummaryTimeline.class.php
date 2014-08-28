@@ -30,6 +30,8 @@ Considerations for improvement
 
 * Timeline row below?
 
+* Should compact version allow for "compact details" (different than full details)?
+
 * Not just "IV" row/column, but be able to add more for SSRMS, eclipses, etc
 
 * Text align middle?
@@ -45,6 +47,17 @@ Considerations for improvement
 * Consider shrink/expand on-click for each cell
 
 * IV column needs to allow for events to sync with time or EV1/2 task begin
+
+* Use internal objects so a single wiki page can query multiple EVAs or tasks
+* Modify so extension can be used to format these query results
+
+* Update class names to allow for multiple summary timelines on one page with unique footers/styles
+
+* {{Display Summary Timeline}} template:
+* {{Summary Timeline | US EVA 100 version 1}}
+* {{Summary Timeline | US EVA 100 version 2}}
+
+* jQuery hover to highlight task block and footer entry on mouseover
 
 */
 
@@ -113,8 +126,10 @@ class SummaryTimeline
 		.	"%;"
 	    .	" margin-left: 0%;"
 		.	"'>"
-			. 	"<div class='cell-body'>"
+			. 	"<div class='cell-body gray'>"
+			.	"<div class='responsive-text'>"
 			.	"Egress (0:" . $options['ev1 egress duration minutes']['durationMinutes'] . ")"
+			.	"</div>"
 			.	"</div>"
 		. "</div>";
 		$compactTextEV1SumOfDurationMinutes += $options['ev1 egress duration minutes']['durationMinutes'];
@@ -162,8 +177,10 @@ class SummaryTimeline
 	    .	" margin-left: "
 	    .	(floor(($compactTextEV1SumOfDurationMinutes / $options['eva duration in minutes'])*100))
 	    .	"%'>"
-			. 	"<div class='cell-body'>"
+			. 	"<div class='cell-body gray'>"
+			.	"<div class='responsive-text'>"
 			.	"Ingress (0:" . $options['ev1 ingress duration minutes']['durationMinutes'] . ")"
+			.	"</div>"
 			.	"</div>"
 		. "</div>";
 
@@ -279,12 +296,12 @@ class SummaryTimeline
 			// Begin left label column
 			// display: inline-block; height: 100%; width: 50px; 
 				. "<div class='left column'>"
-				. "<div class='row' style='height: 20px; border-left-width: 0px; '>"
+				. "<div class='summary-timeline-row' style='height: 20px; border-left-width: 0px; '>"
 				. "</div>"
-				. "<div class='tasks row' style='font-weight: bold;'>"
+				. "<div class='tasks summary-timeline-row' style='font-weight: bold;'>"
 					. "EV1"
 				. "</div>"
-				. "<div class='tasks row' style='font-weight: bold;'>"
+				. "<div class='tasks summary-timeline-row' style='font-weight: bold;'>"
 					. "EV2"
 				. "</div>"
 
@@ -295,7 +312,7 @@ class SummaryTimeline
 			. "<div class='right column'>"
 
 			// Begin top time labels row
-			. "<div class='row'>"
+			. "<div class='summary-timeline-row'>"
 
 			// Top time labels
 			. $compactTimeTickerText
@@ -304,7 +321,7 @@ class SummaryTimeline
 			. "</div>"
 
 			// Begin EV1 Row
-			. "<div class='row'>"
+			. "<div id='summary-timeline-ev1-row' class='summary-timeline-row'>"
 
 			.	$compactTextEV1
 
@@ -312,7 +329,7 @@ class SummaryTimeline
 			. "</div>"
 
 			// Begin EV2 Row
-			. "<div class='row'>"
+			. "<div id='summary-timeline-ev2-row' class='summary-timeline-row'>"
 
 			// Tasks
 			.	$compactTextEV2
@@ -323,7 +340,7 @@ class SummaryTimeline
 			// NEED TO ADD background-color:red(new $variable); ONCE COLOR OPTIONS ARE ADDED
 
 			// Begin Footer Row
-			. "<div class='row'>"
+			. "<div class='summary-timeline-row'>"
 
 			// Footer Entries
 			// This is driven by SummaryTimeline.js

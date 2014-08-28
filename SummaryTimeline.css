@@ -38,9 +38,9 @@ body {
 #summary-timeline-compact-version .right {
     margin-left: 25px;
 }
-#summary-timeline-compact-version .row {
+#summary-timeline-compact-version .summary-timeline-row {
   display: inline-block;
-  border:  0px solid #FC0000;
+  border:  0px solid #000000;
   padding: 0px;
   margin:  0px;
   width: 100%;
@@ -49,7 +49,7 @@ body {
 #summary-timeline-compact-version .time {
   display: inline-block;
   height: 20px;
-  border-left: solid #DDDDDD;
+  border-left: solid #BBBBBB;
   border-left-width: 1px;
   padding: 0px 1px;
   float: left;
@@ -82,7 +82,7 @@ body {
 }
 #summary-timeline-compact-version .cell-body {
   display: inline-block;
-  border:  1px solid #BBBBBB;
+  border:  1px solid #000000;
   background-color: white;
   vertical-align: middle;
   height:    100%;
@@ -105,9 +105,12 @@ body {
 }
 
 /* TASK BLOCK COLORS */
+#summary-timeline-compact-version .gray {
+  background-color:   #E6E6E6;
+}
 #summary-timeline-compact-version .white {
   /*border:       1px solid #aaaaaa;*/
-  background-color:   #E6E6E6;
+  background-color:   #FFFFFF;
 }
 #summary-timeline-compact-version .red {
   background-color:   #FF1F1F;
