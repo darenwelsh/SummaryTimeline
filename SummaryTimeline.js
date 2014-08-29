@@ -26,6 +26,39 @@ function assignBlockIDs(){
   });
 }
 
+function writeFooter(){
+  var footerCols = []; //Titles of columns in footer
+
+  $(".summary-timeline-tasks-row").each( function(i,e){
+    var rowIDFull = $(e).attr('id');
+    var rowID = rowIDFull.slice(21);
+    var rowNeedsFooter = false;
+    //Determine which rows (actors) have hidden text
+    $(e).find(".responsive-text.has-hidden-text").each( function(i,e){
+      rowNeedsFooter = true;
+    });
+    if (rowNeedsFooter==true){
+      footerCols.push(rowID);
+    }
+    //For only blocks with hidden text
+    $(e).find(".responsive-text.has-hidden-text").each( function(i,e){
+      var blockID = $(e).attr('summary-timeline-row-block-id');
+      var blockIDSplit = blockID.split("-",2) //This could be problematic if someone uses "-"in the row title
+      var blockRowLabel = blockIDSplit[0];
+      var blockRowIndex = parseInt(blockIDSplit[1])+1;
+      $("#summary-timeline-footer").append( blockRowLabel 
+        + ": [" + blockRowIndex + "] " + $(e).attr('hidden-text') + "<br />");
+    });
+  });
+  //Create as many columns as necessary for each row with footer info
+  var numCols = footerCols.length;
+  var footerColWidth = Math.floor(100 / numCols);
+  $("#summary-timeline-footer").append( 
+    //For every footerCols, add a div width=footerColWidth
+    //Add hidden-text entries
+  );
+}
+
 function evaluateBlockText() {
   $(".responsive-text").each( function(i,e){
     var text = $(e).text(); //Text in div "FHRC Prep (0:15)"
@@ -41,21 +74,23 @@ function evaluateBlockText() {
     textWords.forEach(function(word){
       //compare wordWidth to divWidth
       textWordWidth[i] = getTextWidth(word, "8pt arial").width;
-      // console.log(textWordWidth[i]);
       if(textWordWidth[i] > divWidth){
         itWontFit = true;
       }
       // i++;
     });
     if(itWontFit == true){
-      //Move text to footer
       var blockID = $(e).attr('summary-timeline-row-block-id');
       var blockIDSplit = blockID.split("-",2) //This could be problematic if someone uses "-"in the row title
       var blockRowLabel = blockIDSplit[0];
+      //Check if blockRowLabel exists in FooterCols
+      //If not, append blockRowLabel to FooterCols
+      //Eventually, count FooterCols to divide footer into columns (float them in a row)
       var blockRowIndex = parseInt(blockIDSplit[1])+1;
-      $("#summary-timeline-footer").append( blockRowLabel + ": [" + blockRowIndex + "] " + text + "<br />");
+      //Move text to footer
+      // $("#summary-timeline-footer").append( blockRowLabel + ": [" + blockRowIndex + "] " + text + "<br />");
       //Change text to reference id for footer entry
-      $(e).text("[" + (i+1) + "]").attr('hidden-text',text).addClass('has-hidden-text');
+      $(e).text("[" + blockRowIndex + "]").attr('hidden-text',text).addClass('has-hidden-text');
     }
 
   //Have sections for each row (EV1, EV2, etc): This can be left column with contents in right column
@@ -63,10 +98,6 @@ function evaluateBlockText() {
     // console.log(text, ":", divWidth, "(div); ", textWidth, "(text)");
   });
 }
-
-// function textToFooter(text){
-
-// }
 
 function clearFooter(){
   $(".footer").each( function(i,e){
@@ -79,19 +110,21 @@ function resetBlockText(){
   $(".has-hidden-text").each( function(i,e){
     //copy text back into div
     var tempText = $(e).attr('hidden-text');
-    $(e).text(tempText).removeClass('has-hidden-text');
+    $(e).text(tempText).removeClass('has-hidden-text').removeAttr('hidden-text');
   });
 }
 
 $(document).ready( function(){
   assignBlockIDs();
   evaluateBlockText();
+  writeFooter();
 });
 
 $(window).resize( function(){
   clearFooter();
   resetBlockText();
   evaluateBlockText();
+  writeFooter();
 });
 
 // For each row id, run all the above
