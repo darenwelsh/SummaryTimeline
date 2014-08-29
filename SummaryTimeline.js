@@ -15,10 +15,13 @@ getTextWidth = function(text, font) {
     var metrics = context.measureText(text);
     return metrics;
 };
+
 function assignBlockIDs(){
-  $(".summary-timeline-row").each( function(i,e){
-    $(".summary-timeline-row .responsive-text").each( function(i,e){
-      $(e).attr('summary-timeline-row-block-id',i);
+  $(".summary-timeline-tasks-row").each( function(i,e){
+    var rowIDFull = $(e).attr('id');
+    var rowID = rowIDFull.slice(21);
+    $(e).find(".responsive-text").each( function(i,e){
+      $(e).attr('summary-timeline-row-block-id',rowID + '-' + i); 
     });
   });
 }
@@ -32,10 +35,9 @@ function evaluateBlockText() {
     var textWordWidth = []; //Width of each word
     var itWontFit = false; //Will the text fit in the div?
 
-    //NEED TO ADD CHECK FOR MORE THAN THREE WORDS (PLUS TIME)
+    //NEED TO ADD CHECK FOR HEIGHT ... or MORE THAN THREE WORDS (PLUS TIME)
 
     //get width of each word
-    // var i = 0; //counter
     textWords.forEach(function(word){
       //compare wordWidth to divWidth
       textWordWidth[i] = getTextWidth(word, "8pt arial").width;
@@ -47,14 +49,17 @@ function evaluateBlockText() {
     });
     if(itWontFit == true){
       //Move text to footer
-      $("#summary-timeline-footer").append( "[" + (i+1) + "] " + text + "<br />");
+      var blockID = $(e).attr('summary-timeline-row-block-id');
+      var blockIDSplit = blockID.split("-",2) //This could be problematic if someone uses "-"in the row title
+      var blockRowLabel = blockIDSplit[0];
+      var blockRowIndex = parseInt(blockIDSplit[1])+1;
+      $("#summary-timeline-footer").append( blockRowLabel + ": [" + blockRowIndex + "] " + text + "<br />");
       //Change text to reference id for footer entry
       $(e).text("[" + (i+1) + "]").attr('hidden-text',text).addClass('has-hidden-text');
     }
 
-  //Modify counter to be numerical for footer instead of just using i
   //Have sections for each row (EV1, EV2, etc): This can be left column with contents in right column
-// class ev1
+  // div id = ev1, ev2, etc
     // console.log(text, ":", divWidth, "(div); ", textWidth, "(text)");
   });
 }

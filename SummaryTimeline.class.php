@@ -59,6 +59,9 @@ Considerations for improvement
 
 * jQuery hover to highlight task block and footer entry on mouseover
 
+* Try rounding biggest container div to nearest 5px to help rounding issues
+* Try min-width as an alternate (in CSS)
+
 */
 
 class SummaryTimeline
@@ -127,7 +130,7 @@ class SummaryTimeline
 	    .	" margin-left: 0%;"
 		.	"'>"
 			. 	"<div class='cell-body gray'>"
-			.	"<div class='responsive-text'>"
+			.	"<div row-id='EV1' class='responsive-text'>"
 			.	"Egress (0:" . $options['ev1 egress duration minutes']['durationMinutes'] . ")"
 			.	"</div>"
 			.	"</div>"
@@ -195,38 +198,51 @@ class SummaryTimeline
 		.	"%;"
 	    .	" margin-left: 0%;"
 		.	"'>"
-			. 	"<div class='cell-body'>"
+			. 	"<div class='cell-body gray'>"
+			.	"<div class='responsive-text'>"
 			.	"Egress (0:" . $options['ev2 egress duration minutes']['durationMinutes'] . ")"
+			.	"</div>"
 			.	"</div>"
 		. "</div>";
 		$compactTextEV2SumOfDurationMinutes += $options['ev2 egress duration minutes']['durationMinutes'];
 
 		// Tasks
-		$compactTextEV2i = 1;
-		foreach ( $options['rows']['ev2']['tasks'] as $task ) {
-			$compactTextEV2 .= 
-			"<div class='cell-border task-block' style='width:"
-			. (/* margin-left of next block */
-				(floor((($compactTextEV2SumOfDurationMinutes //Total tasks duration in minutes so far
-					//Duration in minutes of next task
-					+ ( (60 * $options['rows']['ev2']['tasks'][($compactTextEV2i)]['durationHour']) 
-						+ $options['rows']['ev2']['tasks'][($compactTextEV2i)]['durationMinute'] ) )
-					/ $options['eva duration in minutes'])*100))
-				 - (floor(($compactTextEV2SumOfDurationMinutes / $options['eva duration in minutes'])*100)) )
-			. "%;"
-			. " margin-left: "
-			. (floor(($compactTextEV2SumOfDurationMinutes / $options['eva duration in minutes'])*100)) //sum of widths so far
-			. "%;"
-			. "'>"
-				. "<div class='cell-body " . $options['rows']['ev2']['tasks'][$compactTextEV2i]['color'] . "'>"
-				. $options['rows']['ev2']['tasks'][$compactTextEV2i]['title'] . " "
-		    	. "(" . $options['rows']['ev2']['tasks'][$compactTextEV2i]['durationHour'] . ":"
-		    	. $options['rows']['ev2']['tasks'][$compactTextEV2i]['durationMinute'] . ")"
-				. "</div>"
-			. "</div>";
-	    	$compactTextEV2SumOfDurationMinutes += ( (60 * $options['rows']['ev2']['tasks'][$compactTextEV2i]['durationHour']) + $options['rows']['ev2']['tasks'][$compactTextEV2i]['durationMinute'] );
-	    	$compactTextEV2i++;
-	    }
+		// if( count($options['rows']['ev2']['tasks']) > 0 ){
+			$compactTextEV2i = 1;
+			foreach ( $options['rows']['ev2']['tasks'] as $task ) {
+				$compactTextEV2 .= 
+				"<div class='cell-border task-block' style='width:"
+				// . $options['rows']['ev2']['tasks'][$compactTextEV2i]['durationPercent']
+				. (/* margin-left of next block */
+					(floor((($compactTextEV2SumOfDurationMinutes //Total tasks duration in minutes so far
+						//Duration in minutes of next task
+						+ ( (60 * $options['rows']['ev2']['tasks'][($compactTextEV2i)]['durationHour']) 
+							+ $options['rows']['ev2']['tasks'][($compactTextEV2i)]['durationMinute'] ) )
+						/ $options['eva duration in minutes'])*100))
+					 - (floor(($compactTextEV2SumOfDurationMinutes / $options['eva duration in minutes'])*100)) )
+				. "%;"
+				. " margin-left: "
+				. (floor(($compactTextEV2SumOfDurationMinutes / $options['eva duration in minutes'])*100)) //sum of widths so far
+				. "%;"
+				. "'>"
+					. "<div class='cell-body " . $options['rows']['ev2']['tasks'][$compactTextEV2i]['color'] . "'>"
+					//***********************************************
+					//      TASK BLOCKS
+					//***********************************************
+					. "<div class='responsive-text'>"
+					. $options['rows']['ev2']['tasks'][$compactTextEV2i]['title'] . " "
+			    	. "(" . $options['rows']['ev2']['tasks'][$compactTextEV2i]['durationHour'] . ":"
+			    	. $options['rows']['ev2']['tasks'][$compactTextEV2i]['durationMinute'] . ")"
+					. "</div>"
+					//***********************************************
+					// 
+					//***********************************************
+					. "</div>"
+				. "</div>";
+		    	$compactTextEV2SumOfDurationMinutes += ( (60 * $options['rows']['ev2']['tasks'][$compactTextEV2i]['durationHour']) + $options['rows']['ev2']['tasks'][$compactTextEV2i]['durationMinute'] );
+		    	$compactTextEV2i++;
+		    }
+		// }
 
 		// Ingress
 		$compactTextEV2 .= "<div class='cell-border task-block' style='width:"
@@ -235,8 +251,10 @@ class SummaryTimeline
 	    .	" margin-left: "
 	    .	(floor(($compactTextEV2SumOfDurationMinutes / $options['eva duration in minutes'])*100))
 	    .	"%'>"
-			. 	"<div class='cell-body'>"
+			. 	"<div class='cell-body gray'>"
+			.	"<div class='responsive-text'>"
 			.	"Ingress (0:" . $options['ev2 ingress duration minutes']['durationMinutes'] . ")"
+			.	"</div>"
 			.	"</div>"
 		. "</div>";
 
@@ -284,8 +302,15 @@ class SummaryTimeline
 		//Define the main output
 		$text = 
 
-			"Compact Version:"
+			"Compact Version:<br />"
 			// Using CSS "tables"
+
+			// Title
+			. "<div style='position: relative; margin: 10px 10px 0px 10px;
+				font-weight: bold;'>[[" . $options['title'] . "]] (" 
+        	. $options['eva duration hours'] . ":" . $options['eva duration minutes']
+        	. ")"
+			. "</div>"
 
 			// Begin main div
 			. "<div id='summary-timeline-compact-version'>"
@@ -296,7 +321,7 @@ class SummaryTimeline
 			// Begin left label column
 			// display: inline-block; height: 100%; width: 50px; 
 				. "<div class='left column'>"
-				. "<div class='summary-timeline-row' style='height: 20px; border-left-width: 0px; '>"
+				. "<div class='summary-timeline-row' style='height: 0px; border-left-width: 0px; '>"
 				. "</div>"
 				. "<div class='tasks summary-timeline-row' style='font-weight: bold;'>"
 					. "EV1"
@@ -321,7 +346,7 @@ class SummaryTimeline
 			. "</div>"
 
 			// Begin EV1 Row
-			. "<div id='summary-timeline-ev1-row' class='summary-timeline-row'>"
+			. "<div id='summary-timeline-row-EV1' class='summary-timeline-row summary-timeline-tasks-row'>"
 
 			.	$compactTextEV1
 
@@ -329,7 +354,7 @@ class SummaryTimeline
 			. "</div>"
 
 			// Begin EV2 Row
-			. "<div id='summary-timeline-ev2-row' class='summary-timeline-row'>"
+			. "<div id='summary-timeline-row-EV2' class='summary-timeline-row summary-timeline-tasks-row'>"
 
 			// Tasks
 			.	$compactTextEV2
@@ -470,34 +495,36 @@ class SummaryTimeline
 				    case 'ev1':
 				    case 'ev2':
 					    $i = 1; /* Task id */
-					    $tempTasks = explode ( '&&&', $value, 2 );
-					    $tasks = explode ( '&&&', $tempTasks[1] );
 						$tasksDuration = 0;
-					    
-					    foreach ( $tasks as $task ) {
-					    	$taskDetails = explode( '@@@', $task);
-					    	$options['rows'][$name]['tasks'][$i]['title'] = $taskDetails[0];
-					    	if ($taskDetails[1] == ''){$taskDetails[1] = '0';}
-					    	$options['rows'][$name]['tasks'][$i]['durationHour'] = $taskDetails[1];
-					    	if ($taskDetails[2] == ''|'0'){$taskDetails[2] = '00';}
-					    	if ( strlen($taskDetails[2]) == 1 ){
-					    		$temp = $taskDetails[2];
-					    		$taskDetails[2] = '0' . $temp;}
-					    	$options['rows'][$name]['tasks'][$i]['durationMinute'] = $taskDetails[2];
-					    	$options['rows'][$name]['tasks'][$i]['relatedArticles'] = $taskDetails[3];
-					    	$options['rows'][$name]['tasks'][$i]['color'] = $taskDetails[4];
-					    	$options['rows'][$name]['tasks'][$i]['details'] = $taskDetails[5];
+					    if($value != ""){
+						    $tempTasks = explode ( '&&&', $value, 2 );
+						    $tasks = explode ( '&&&', $tempTasks[1] );
+						    
+						    foreach ( $tasks as $task ) {
+						    	$taskDetails = explode( '@@@', $task);
+						    	$options['rows'][$name]['tasks'][$i]['title'] = $taskDetails[0];
+						    	if ($taskDetails[1] == ''){$taskDetails[1] = '0';}
+						    	$options['rows'][$name]['tasks'][$i]['durationHour'] = $taskDetails[1];
+						    	if ($taskDetails[2] == ''|'0'){$taskDetails[2] = '00';}
+						    	if ( strlen($taskDetails[2]) == 1 ){
+						    		$temp = $taskDetails[2];
+						    		$taskDetails[2] = '0' . $temp;}
+						    	$options['rows'][$name]['tasks'][$i]['durationMinute'] = $taskDetails[2];
+						    	$options['rows'][$name]['tasks'][$i]['relatedArticles'] = $taskDetails[3];
+						    	$options['rows'][$name]['tasks'][$i]['color'] = $taskDetails[4];
+						    	$options['rows'][$name]['tasks'][$i]['details'] = $taskDetails[5];
 
-					    	// Calc task duration as % of total EVA duration
-					    	$options['rows'][$name]['tasks'][$i]['durationPercent'] = round((((60 * $taskDetails[1]) + $taskDetails[2]) / $options['eva duration in minutes']) * 100);
+						    	// Calc task duration as % of total EVA duration
+						    	$options['rows'][$name]['tasks'][$i]['durationPercent'] = round((((60 * $taskDetails[1]) + $taskDetails[2]) / $options['eva duration in minutes']) * 100);
 
-					    	// append task duration
-					    	$tasksDuration += (60 * $taskDetails[1]) + $taskDetails[2];
-					    	// append task duration percent
-					    	$tasksDurationPercentTotal[$name] += $options['rows'][$name]['tasks'][$i]['durationPercent'];
-					    	// print_r( $tasksDurationPercentTotal['ev1'] );
-					    	$i++;
-					    }
+						    	// append task duration
+						    	$tasksDuration += (60 * $taskDetails[1]) + $taskDetails[2];
+						    	// append task duration percent
+						    	$tasksDurationPercentTotal[$name] += $options['rows'][$name]['tasks'][$i]['durationPercent'];
+						    	// print_r( $tasksDurationPercentTotal['ev1'] );
+						    	$i++;
+						    }
+						}
 
 					    // NEED TO ADD EGRESS/INGRESS DURATION TO $tasksDuration
 					    // NEED TO ACCOUNT FOR EV1 vs EV2
@@ -519,7 +546,12 @@ class SummaryTimeline
 
 					    	// Now set Get-Aheads block data
 					    	$options['rows'][$name]['tasks'][$i]['title'] = 'Get-Aheads';
+						    	if ($timeLeftHours == ''){$timeLeftHours = '0';}
 					    	$options['rows'][$name]['tasks'][$i]['durationHour'] = $timeLeftHours;
+						    	if ($timeLeftMinutes == ''|'0'){$timeLeftMinutes = '00';}
+						    	if ( strlen($timeLeftMinutes) == 1 ){
+						    		$temp = $timeLeftMinutes;
+						    		$timeLeftMinutes = '0' . $temp;}
 					    	$options['rows'][$name]['tasks'][$i]['durationMinute'] = $timeLeftMinutes;
 					    	$options['rows'][$name]['tasks'][$i]['relatedArticles'] = 'Get-Ahead Task';
 					    	$options['rows'][$name]['tasks'][$i]['color'] = 'white';
@@ -527,21 +559,7 @@ class SummaryTimeline
 					    	// Calc task duration as % of total EVA duration
 					    	// $options['rows'][$name]['tasks'][$i]['durationPercent'] = round((((60 * $timeLeftHours) + $timeLeftMinutes) / $options['eva duration in minutes']) * 100);
 							$options['rows'][$name]['tasks'][$i]['durationPercent'] = 100 - $tasksDurationPercentTotal[$name];
-							// NEED TO ADD EGRESS/INGRESS
-							// print_r($tasksDurationPercentTotal['ev1']);
 
-					    	// THE FOLLOWING WAS TO MOVE GET-AHEADS TO SECOND-TO-LAST SPOT, NO LONGER REQUIRED
-					    	// $options['rows'][$name]['tasks'][$i]['title'] = $options['rows'][$name]['tasks'][$i-1]['title'];
-					    	// $options['rows'][$name]['tasks'][$i]['durationHour'] = $options['rows'][$name]['tasks'][$i-1]['durationHour'];
-					    	// $options['rows'][$name]['tasks'][$i]['durationMinute'] = $options['rows'][$name]['tasks'][$i-1]['durationMinute'];
-					    	// $options['rows'][$name]['tasks'][$i]['relatedArticles'] = $options['rows'][$name]['tasks'][$i-1]['relatedArticles'];
-					    	// $options['rows'][$name]['tasks'][$i]['details'] = $options['rows'][$name]['tasks'][$i-1]['details'];
-					    	// Now set Get-Aheads block data
-					    	// $options['rows'][$name]['tasks'][$i-1]['title'] = 'Get-Aheads';
-					    	// $options['rows'][$name]['tasks'][$i-1]['durationHour'] = $timeLeftHours;
-					    	// $options['rows'][$name]['tasks'][$i-1]['durationMinute'] = $timeLeftMinutes;
-					    	// $options['rows'][$name]['tasks'][$i-1]['relatedArticles'] = 'Get-Ahead Task';
-					    	// $options['rows'][$name]['tasks'][$i-1]['details'] = 'Auto-generated block based on total EVA duration and sum of task durations';
 					    }
 
 				        break;
