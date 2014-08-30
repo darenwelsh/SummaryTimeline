@@ -107,6 +107,17 @@ body {
   margin:  0px;
   width:   100%;
 }
+#summary-timeline-compact-version .footer-column {
+  float: left;
+  display: inline-block;
+  border:  0px solid #BBBBBB;
+  padding: 0px;
+  margin-top:  0px;
+  margin-right: 10px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  /*width:   100%;*/
+}
 
 /* TASK BLOCK COLORS */
 #summary-timeline-compact-version .gray {

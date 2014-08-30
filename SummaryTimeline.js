@@ -31,32 +31,28 @@ function writeFooter(){
 
   $(".summary-timeline-tasks-row").each( function(i,e){
     var rowIDFull = $(e).attr('id');
-    var rowID = rowIDFull.slice(21);
+    var rowID = rowIDFull.slice(21); //"EV1", "EV2", etc
+    var rowFooterContents = ""; //Contents of each column in footer
     var rowNeedsFooter = false;
     //Determine which rows (actors) have hidden text
-    $(e).find(".responsive-text.has-hidden-text").each( function(i,e){
+    $(e).find(".responsive-text.has-hidden-text").each( function(index,el){
       rowNeedsFooter = true;
-    });
-    if (rowNeedsFooter==true){
-      footerCols.push(rowID);
-    }
-    //For only blocks with hidden text
-    $(e).find(".responsive-text.has-hidden-text").each( function(i,e){
-      var blockID = $(e).attr('summary-timeline-row-block-id');
+      var blockID = $(el).attr('summary-timeline-row-block-id');
       var blockIDSplit = blockID.split("-",2) //This could be problematic if someone uses "-"in the row title
       var blockRowLabel = blockIDSplit[0];
       var blockRowIndex = parseInt(blockIDSplit[1])+1;
-      $("#summary-timeline-footer").append( blockRowLabel 
-        + ": [" + blockRowIndex + "] " + $(e).attr('hidden-text') + "<br />");
+      rowFooterContents += ( "[" + blockRowIndex + "] " + $(el).attr('hidden-text') + "<br />");
+
     });
+    if(rowNeedsFooter==true){
+      $("#summary-timeline-footer").append( 
+        "<div class='footer-column'>"
+        + "<span style='font-weight: bold;'>" + rowID + ":</span><br />"
+        + rowFooterContents
+        + "</div>"
+      );
+    }
   });
-  //Create as many columns as necessary for each row with footer info
-  var numCols = footerCols.length;
-  var footerColWidth = Math.floor(100 / numCols);
-  $("#summary-timeline-footer").append( 
-    //For every footerCols, add a div width=footerColWidth
-    //Add hidden-text entries
-  );
 }
 
 function evaluateBlockText() {
@@ -66,7 +62,6 @@ function evaluateBlockText() {
     var divWidth = $(e).width(); //Width of div
     var textWords = text.split(" "); //split the text into individual words
     var textWordWidth = []; //Width of each word
-    var itWontFit = false; //Will the text fit in the div?
 
     //NEED TO ADD CHECK FOR HEIGHT ... or MORE THAN THREE WORDS (PLUS TIME)
 
@@ -75,27 +70,14 @@ function evaluateBlockText() {
       //compare wordWidth to divWidth
       textWordWidth[i] = getTextWidth(word, "8pt arial").width;
       if(textWordWidth[i] > divWidth){
-        itWontFit = true;
+        var blockID = $(e).attr('summary-timeline-row-block-id');
+        var blockIDSplit = blockID.split("-",2) //This could be problematic if someone uses "-"in the row title
+        var blockRowLabel = blockIDSplit[0];
+        var blockRowIndex = parseInt(blockIDSplit[1])+1;
+        //Move text to footer
+        $(e).text("[" + blockRowIndex + "]").attr('hidden-text',text).addClass('has-hidden-text');
       }
-      // i++;
     });
-    if(itWontFit == true){
-      var blockID = $(e).attr('summary-timeline-row-block-id');
-      var blockIDSplit = blockID.split("-",2) //This could be problematic if someone uses "-"in the row title
-      var blockRowLabel = blockIDSplit[0];
-      //Check if blockRowLabel exists in FooterCols
-      //If not, append blockRowLabel to FooterCols
-      //Eventually, count FooterCols to divide footer into columns (float them in a row)
-      var blockRowIndex = parseInt(blockIDSplit[1])+1;
-      //Move text to footer
-      // $("#summary-timeline-footer").append( blockRowLabel + ": [" + blockRowIndex + "] " + text + "<br />");
-      //Change text to reference id for footer entry
-      $(e).text("[" + blockRowIndex + "]").attr('hidden-text',text).addClass('has-hidden-text');
-    }
-
-  //Have sections for each row (EV1, EV2, etc): This can be left column with contents in right column
-  // div id = ev1, ev2, etc
-    // console.log(text, ":", divWidth, "(div); ", textWidth, "(text)");
   });
 }
 
