@@ -17,34 +17,40 @@
 /*
 Considerations for improvement
 
-* Add EVA Title (not just US EVA x, but also hardware-based)
-
+* COMPACT OUTPUT:
+* Add EVA Title (US EVA 100 version 2)
+* Add link to Related article (US EVA 100 or C2V2)
 * Add key to denote color meanings
-* Add field in form to provide key entries (at top?)
+* Text align middle?
+* jQuery hover to highlight task block and footer entry on mouseover
+* Try rounding biggest container div to nearest 5px to help rounding issues
+* Try min-width as an alternate (in CSS)
+* Allow titles to link to wiki pages (html vs text)
+
+* FORM:
+* Color key designation (what does each color mean?)
+* Task depends on launch-date, task-completion, inhibit, etc
 * Tasks coupled between EV1 and EV2
 * Sync points
 * This needs to have additional Get-Ahead block calculation just before the sync point
-* Text outside of cell with line pointer for small cells (in compact version only)
-* Or, have [1] with [1] Task Title underneath like a reference
-* Eclipse constraints (shade cell, shade time rows?)
+* Icons for new block or moving block are too big
+* Consider shrink/expand on-click for each cell
 
-* Timeline row below?
+* FULL OUTPUT:
+* Clean up divs and css
+* Use same architecture as compact version for sizing
 
+* CONCEPTS:
 * Should compact version allow for "compact details" (different than full details)?
 
 * Not just "IV" row/column, but be able to add more for SSRMS, eclipses, etc
-
-* Text align middle?
+* Eclipse constraints (shade cell, shade time rows?)
 
 * How to implement in EVA pages? Sub-page is probably best
 * Option for compact, full, or both versions - or just display both on sub-page?
 
 * Split some parts into separate functions
 * Clean up foreach() calls
-
-* Improve form
-* Icons for new block or moving block are too big
-* Consider shrink/expand on-click for each cell
 
 * IV column needs to allow for events to sync with time or EV1/2 task begin
 
@@ -57,10 +63,6 @@ Considerations for improvement
 * {{Summary Timeline | US EVA 100 version 1}}
 * {{Summary Timeline | US EVA 100 version 2}}
 
-* jQuery hover to highlight task block and footer entry on mouseover
-
-* Try rounding biggest container div to nearest 5px to help rounding issues
-* Try min-width as an alternate (in CSS)
 
 */
 
