@@ -10,18 +10,21 @@
 |Title=Inhibit Pad
 |Duration hour=
 |Duration minute=10
+|Color=white
 |Related articles=Inhibit Pad
 |Free text=
 }}{{Coord Task
 |Title=Coffee Break
 |Duration hour=
 |Duration minute=30
+|Color=white
 |Related articles=
 |Free text=Drink Coffee!
 }}{{Coord Task
 |Title=Check Email
 |Duration hour=1
 |Duration minute=05
+|Color=white
 |Related articles=Helmet, MAG
 |Free text=Ignore the crew
 }}
@@ -29,42 +32,49 @@
 |Title=SSRMS Setup
 |Duration hour=
 |Duration minute=30
+|Color=green
 |Related articles=
 |Free text=
 }}{{EV1 Task
-|Title=Take Pictures
+|Title=Take Some Pictures
 |Duration hour=
-|Duration minute=15
+|Duration minute=5
+|Color=blue
 |Related articles=
 |Free text=
 }}{{EV1 Task
 |Title=FHRC Prep
 |Duration hour=
 |Duration minute=15
+|Color=orange
 |Related articles=
 |Free text=
 }}{{EV1 Task
 |Title=SAFER Test
 |Duration hour=
 |Duration minute=30
+|Color=yellow
 |Related articles=SAFER
 |Free text=
 }}{{EV1 Task
 |Title=FHRC Remove
 |Duration hour=
 |Duration minute=45
+|Color=orange
 |Related articles=
 |Free text=
 }}{{EV1 Task
 |Title=FHRC Translate
 |Duration hour=1
 |Duration minute=15
+|Color=orange
 |Related articles=
 |Free text=
 }}{{EV1 Task
 |Title=FHRC Install
 |Duration hour=1
 |Duration minute=
+|Color=orange
 |Related articles=
 |Free text=
 }}
@@ -72,7 +82,43 @@
 |Title=RPCM R&R
 |Duration hour=
 |Duration minute=50
+|Color=purple
 |Related articles=RPCM
+|Free text=
+}}{{EV2 Task
+|Title=FHRC Prep
+|Duration hour=
+|Duration minute=40
+|Color=orange
+|Related articles=
+|Free text=
+}}{{EV2 Task
+|Title=Jettison EV1
+|Duration hour=
+|Duration minute=10
+|Color=red
+|Related articles=
+|Free text=
+}}{{EV2 Task
+|Title=Regret the previous task
+|Duration hour=
+|Duration minute=10
+|Color=purple
+|Related articles=
+|Free text=
+}}{{EV2 Task
+|Title=Dream of Unicorns
+|Duration hour=1
+|Duration minute=
+|Color=pink
+|Related articles=
+|Free text=
+}}{{EV2 Task
+|Title=Do stuff
+|Duration hour=
+|Duration minute=17
+|Color=blue
+|Related articles=
 |Free text=
 }}
 }}
