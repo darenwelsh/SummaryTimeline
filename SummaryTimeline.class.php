@@ -17,7 +17,7 @@
 /*
 Considerations for improvement
 
-* COMPACT OUTPUT:
+COMPACT OUTPUT:
 * Add EVA Title (US EVA 100 version 2)
 * Add link to Related article (US EVA 100 or C2V2)
 * Add key to denote color meanings
@@ -27,7 +27,15 @@ Considerations for improvement
 * Try min-width as an alternate (in CSS)
 * Allow titles to link to wiki pages (html vs text)
 
-* FORM:
+TEMPLATE:
+* Add index to internal object in case I need it for future use
+{{#ask: [[Task::+]]
+ |?Has text title
+ |?Assigned to
+ | sort=Assigned to
+}}
+
+FORM:
 * Color key designation (what does each color mean?)
 * Task depends on launch-date, task-completion, inhibit, etc
 * Tasks coupled between EV1 and EV2
@@ -36,11 +44,11 @@ Considerations for improvement
 * Icons for new block or moving block are too big
 * Consider shrink/expand on-click for each cell
 
-* FULL OUTPUT:
+FULL OUTPUT:
 * Clean up divs and css
 * Use same architecture as compact version for sizing
 
-* CONCEPTS:
+CONCEPTS:
 * Should compact version allow for "compact details" (different than full details)?
 
 * Not just "IV" row/column, but be able to add more for SSRMS, eclipses, etc
@@ -56,6 +64,7 @@ Considerations for improvement
 
 * Use internal objects so a single wiki page can query multiple EVAs or tasks
 * Modify so extension can be used to format these query results
+* Extra output to display interdependencies
 
 * Update class names to allow for multiple summary timelines on one page with unique footers/styles
 
