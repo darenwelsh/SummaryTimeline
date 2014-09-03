@@ -1,9 +1,10 @@
 {{Summary Timeline
-|EVA Title=US EVA 100
+|EVA Title=US EVA 100 Version 2
+|Related article=US EVA 100, FHRC R&R, SSRMS, RPCM
 |EVA Duration hour=6
 |EVA Duration minute=30
 |EV1 Egress Duration minute=30
-|EV2 Egress Duration minute=30
+|EV2 Egress Duration minute=20
 |EV1 Ingress Duration minute=45
 |EV2 Ingress Duration minute=45
 |Coord Tasks={{Coord Task
@@ -23,7 +24,7 @@
 }}{{Coord Task
 |Title=Check Email
 |Duration hour=1
-|Duration minute=05
+|Duration minute=03
 |Color=white
 |Related articles=Helmet, MAG
 |Free text=Ignore the crew
@@ -95,21 +96,21 @@
 }}{{EV2 Task
 |Title=Jettison EV1
 |Duration hour=
-|Duration minute=10
+|Duration minute=15
 |Color=red
 |Related articles=
 |Free text=
 }}{{EV2 Task
 |Title=Regret the previous task
 |Duration hour=
-|Duration minute=10
+|Duration minute=15
 |Color=purple
 |Related articles=
 |Free text=
 }}{{EV2 Task
 |Title=Dream of Unicorns
 |Duration hour=1
-|Duration minute=
+|Duration minute=2
 |Color=pink
 |Related articles=
 |Free text=
@@ -121,4 +122,5 @@
 |Related articles=
 |Free text=
 }}
+|EVA Related Articles=US EVA 100
 }}

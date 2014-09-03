@@ -15,10 +15,11 @@ Use this format:
 |Has text title={{{Title|}}}
 |Assigned to#list=EV1
 |Duration={{{Duration hour|}}}:{{{Duration minute|}}}
+|Related article#list={{{Related article|}}}
 |Color={{{Color|}}}
-|Related article#list={{{Related articles|}}}
 |Free text={{{Free text|}}}
 |From page={{FULLPAGENAME}}
+|Parent related article#list={{#show: {{PAGENAME}} | ?Related article}}
 }}
 <!-- {{{Title|}}} ({{{Duration hour|}}}:{{{Duration minute|}}}) -->
 &&&{{{Title|}}}@@@{{{Duration hour|}}}@@@{{{Duration minute|}}}@@@{{{Related articles|}}}@@@{{{Color|}}}@@@{{{Free text|}}}

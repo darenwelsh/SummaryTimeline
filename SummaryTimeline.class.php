@@ -72,6 +72,7 @@ CONCEPTS:
 * {{Summary Timeline | US EVA 100 version 1}}
 * {{Summary Timeline | US EVA 100 version 2}}
 
+* Bingo time (red dashed line on both versions)
 
 */
 
@@ -477,7 +478,16 @@ class SummaryTimeline
 				//this switch could be consolidated
 				switch ($name) {
 				    case 'title':
-				        $options[$name] = $value;
+					    if ( !isset($value) || $value=="" ) {
+				        	$options['title']= "No title set!";
+				        } else {
+				        	$options[$name] = $value;
+				        }
+				        break;
+			        case 'parent related article':
+				        if ( isset($value) ) {
+				        	$options[$name] = $value;
+				        }
 				        break;
 				    case 'eva duration hours':
 				    	$options[$name] = $value;
@@ -589,25 +599,25 @@ class SummaryTimeline
 
 		//Check for empties, set defaults
 		//Default 'title'
-		if ( !isset($options['title']) || $options['title']=="" ) {
-		        	$options['title']= "No title set!"; //no default, but left here for future options
-	        }
+		// if ( !isset($options['title']) || $options['title']=="" ) {
+		//         	$options['title']= "No title set!"; //no default, but left here for future options
+	 //        }
 
 	    //Logic for $duration
 	    //Need logic for
 	    //1. What to do if not 14:254? (e.g. 'Dog')
 	    //2. split hours:minutes and sum minutes
 	    //3. default = 6:30
-	    if ( isset($value) ) {
-	    	$input_time = explode( ':', $value , 2 );
-		    if ( count ( $input_time ) == 2) {
-		    	$hours = trim( $input_time[0] );
-		    	$minutes = trim( $input_time[1] );
-		    	$duration = ($hours * 60) + $minutes;
-		    } else {
-		    	$duration = $value;
-		    }
-		}
+	 //    if ( isset($value) ) {
+	 //    	$input_time = explode( ':', $value , 2 );
+		//     if ( count ( $input_time ) == 2) {
+		//     	$hours = trim( $input_time[0] );
+		//     	$minutes = trim( $input_time[1] );
+		//     	$duration = ($hours * 60) + $minutes;
+		//     } else {
+		//     	$duration = $value;
+		//     }
+		// }
 
 		// foreach ($variable as $key => $value) {
 		// 	# code...

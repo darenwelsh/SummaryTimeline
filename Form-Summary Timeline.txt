@@ -4,6 +4,8 @@
 
 '''EVA Title:''' {{{field|EVA Title}}}
 
+'''Related Articles:''' {{{field|Related article|list}}}
+
 '''EVA Duration (HH:MM):''' {{{field|EVA Duration hour|size=2|default=6}}} : {{{field|EVA Duration minute|size=2|default=30}}}
 
 <table><tr>

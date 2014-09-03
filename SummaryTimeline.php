@@ -23,7 +23,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'SummaryTimeline',
 	'url'            => 'http://github.com/darenwelsh/SummaryTimeline',
-	'author'         => 'Daren Welsh',
+	'author'         => '[https://www.mediawiki.org/wiki/User:Darenwelsh Daren Welsh]',
 	'descriptionmsg' => 'summarytimeline-desc',
 	'version'        => '0.1.0'
 );

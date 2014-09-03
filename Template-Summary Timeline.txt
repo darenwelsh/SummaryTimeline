@@ -7,6 +7,7 @@ Edit the page to see the template text.
 
 == Extension Output ==
 {{#summary-timeline: title={{{EVA Title|}}}
+ | EVA Related Articles={{{Related article|}}}
  | EVA Duration hours={{{EVA Duration hour|}}}
  | EVA Duration minutes={{{EVA Duration minute|}}}
  | EV1 Egress Duration minutes={{{EV1 Egress Duration minute|}}}
@@ -31,5 +32,7 @@ Edit the page to see the template text.
 <td style="vertical-align: top;">{{{EV2 Tasks|}}}</td>
 </tr>
 </table>
+
+{{#arraymap:{{{Related article|}}}|,|x|[[Related article::x]]}}
 
 [[Category:Summary Timeline]]</includeonly>
