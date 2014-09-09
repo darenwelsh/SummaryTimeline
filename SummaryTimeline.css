@@ -7,20 +7,20 @@ body {
   font-family: sans-serif; 
 }
 
-#summary-timeline-compact-version {
+.summary-timeline-compact-version {
   width:   100%;
   font-size: 75%;
   border:  0px solid #444444;
   padding: 0px;
   margin:  0px 0px 0px 0px;
 }
-#summary-timeline-compact-version .container {
+.summary-timeline-compact-version .container {
   position: relative;
   margin: 0px 50px 10px 20px;
   padding: 0px;
 }
 
-#summary-timeline-compact-version .column {
+.summary-timeline-compact-version .column {
   display: inline-block;
   /*border:  1px solid #FC0000;*/
   background-color: white;
@@ -30,16 +30,16 @@ body {
   padding: 0px;
   margin:  0px;
 }
-#summary-timeline-compact-version .left {
+.summary-timeline-compact-version .left {
     width: 25px;
     position: absolute;
     top: 3px; /*Adjust for borders above*/
     left: 0px;
 }
-#summary-timeline-compact-version .right {
+.summary-timeline-compact-version .right {
     margin-left: 25px;
 }
-#summary-timeline-compact-version .summary-timeline-row {
+.summary-timeline-compact-version .summary-timeline-row {
   display: inline-block;
   border:  0px solid #000000;
   padding: 0px;
@@ -47,7 +47,7 @@ body {
   width: 100%;
   vertical-align: middle;
 }
-#summary-timeline-compact-version .time {
+.summary-timeline-compact-version .time {
   display: inline-block;
   height: 20px;
   border-left: solid #BBBBBB;
@@ -61,18 +61,18 @@ body {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-#summary-timeline-compact-version .tasks {
+.summary-timeline-compact-version .tasks {
   height: 70px;
   border: 0px solid #dddddd;
   line-height: 70px;
 }
-#summary-timeline-compact-version .task-block {
+.summary-timeline-compact-version .task-block {
   float: left;
   margin-right: -100%;
   font-family: arial;
   font-size: 8pt;
 }
-#summary-timeline-compact-version .cell-border {
+.summary-timeline-compact-version .cell-border {
   display: inline-block;
   border:  0px solid #BBBBBB;
   background-color: blue;
@@ -81,7 +81,7 @@ body {
   padding: 0px;
   /*margin:  0px;*/
 }
-#summary-timeline-compact-version .cell-body {
+.summary-timeline-compact-version .cell-body {
   display: inline-block;
   border:  1px solid #000000;
   background-color: white;
@@ -99,7 +99,7 @@ body {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-#summary-timeline-compact-version .footer {
+.summary-timeline-compact-version .footer {
   /*border:  0px solid #BBBBBB;*/
   border-top: solid #BBBBBB;
   border-top-width: 1px;
@@ -107,7 +107,7 @@ body {
   margin:  0px;
   width:   100%;
 }
-#summary-timeline-compact-version .footer-column {
+.summary-timeline-compact-version .footer-column {
   float: left;
   display: inline-block;
   border:  0px solid #BBBBBB;
@@ -120,32 +120,32 @@ body {
 }
 
 /* TASK BLOCK COLORS */
-#summary-timeline-compact-version .gray {
+.summary-timeline-compact-version .gray {
   background-color:   #E6E6E6;
 }
-#summary-timeline-compact-version .white {
+.summary-timeline-compact-version .white {
   /*border:       1px solid #aaaaaa;*/
   background-color:   #FFFFFF;
 }
-#summary-timeline-compact-version .red {
+.summary-timeline-compact-version .red {
   background-color:   #FF1F1F;
 }
-#summary-timeline-compact-version .orange {
+.summary-timeline-compact-version .orange {
   background-color:   #FF9830;
 }
-#summary-timeline-compact-version .yellow {
+.summary-timeline-compact-version .yellow {
   background-color:   #FFF582;
 }
-#summary-timeline-compact-version .blue {
+.summary-timeline-compact-version .blue {
   background-color:   #5496FF;
 }
-#summary-timeline-compact-version .green {
+.summary-timeline-compact-version .green {
   background-color:   #5CE070;
 }
-#summary-timeline-compact-version .pink {
+.summary-timeline-compact-version .pink {
   background-color:   #FF69A0;
 }
-#summary-timeline-compact-version .purple {
+.summary-timeline-compact-version .purple {
   background-color:   #C757FF;
 }
 

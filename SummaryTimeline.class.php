@@ -336,7 +336,7 @@ class SummaryTimeline
 			. "</div>"
 
 			// Begin main div
-			. "<div id='summary-timeline-compact-version'>"
+			. "<div class='summary-timeline-compact-version' id='summary-timeline-compact-version-" . $options['st index'] . "'>"
 
 			// Begin outer container
 			. "<div class='container'>"
@@ -392,7 +392,8 @@ class SummaryTimeline
 
 			// Footer Entries
 			// This is driven by SummaryTimeline.js
-			. "<div id='summary-timeline-footer' class='footer'>"
+			// . "<div id='summary-timeline-footer-" . $options['st index'] . "' class='footer'>"
+			. "<div id='summary-timeline-footer-" . $options['st index'] . "' class='footer'>"
 				//Entries will be placed here by the JS
 			. "</div>"
 
@@ -498,6 +499,9 @@ class SummaryTimeline
 				        } else {
 				        	$options['format'] = "compact";
 				        }
+				        break;
+			        case 'st index':
+				        $options[$name] = $value;
 				        break;
 				    case 'title':
 					    if ( !isset($value) || $value=="" ) {

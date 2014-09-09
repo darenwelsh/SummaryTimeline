@@ -11,6 +11,7 @@ DEPENDENCIES
 Extension:Semantic Mediawiki
 Extension:Semantic Forms
 Extension:Variables
+Extension:NumerAlpha
 other extensions
 form, templates, properties
 

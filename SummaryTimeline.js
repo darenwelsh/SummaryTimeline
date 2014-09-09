@@ -28,31 +28,36 @@ function assignBlockIDs(){
 
 function writeFooter(){
   var footerCols = []; //Titles of columns in footer
+  $(".summary-timeline-compact-version").each( function(indexA,elementA){
 
-  $(".summary-timeline-tasks-row").each( function(i,e){
-    var rowIDFull = $(e).attr('id');
-    var rowID = rowIDFull.slice(21); //"EV1", "EV2", etc
-    var rowFooterContents = ""; //Contents of each column in footer
-    var rowNeedsFooter = false;
-    //Determine which rows (actors) have hidden text
-    $(e).find(".responsive-text.has-hidden-text").each( function(index,el){
-      rowNeedsFooter = true;
-      var blockID = $(el).attr('summary-timeline-row-block-id');
-      var blockIDSplit = blockID.split("-",2) //This could be problematic if someone uses "-"in the row title
-      var blockRowLabel = blockIDSplit[0];
-      var blockRowIndex = parseInt(blockIDSplit[1])+1;
-      rowFooterContents += ( "[" + blockRowIndex + "] " + $(el).attr('hidden-text') + "<br />");
+    $(elementA).find(".summary-timeline-tasks-row").each( function(i,e){
+      var rowIDFull = $(e).attr('id');
+      var rowID = rowIDFull.slice(21); //"EV1", "EV2", etc
+      var rowFooterContents = ""; //Contents of each column in footer
+      var rowNeedsFooter = false;
+      //Determine which rows (actors) have hidden text
+      $(e).find(".responsive-text.has-hidden-text").each( function(index,el){
+        rowNeedsFooter = true;
+        var blockID = $(el).attr('summary-timeline-row-block-id');
+        var blockIDSplit = blockID.split("-",2) //This could be problematic if someone uses "-"in the row title
+        var blockRowLabel = blockIDSplit[0];
+        var blockRowIndex = parseInt(blockIDSplit[1])+1;
+        rowFooterContents += ( "[" + blockRowIndex + "] " + $(el).attr('hidden-text') + "<br />");
 
+      });
+      if(rowNeedsFooter==true){ 
+        var tempFooterID = "#summary-timeline-footer-" + (indexA + 1);
+        $(tempFooterID).append( 
+          "<div class='footer-column'>"
+          + "<span style='font-weight: bold;'>" + rowID + ":</span><br />"
+          + rowFooterContents
+          + "</div>"
+        );
+      }
     });
-    if(rowNeedsFooter==true){
-      $("#summary-timeline-footer").append( 
-        "<div class='footer-column'>"
-        + "<span style='font-weight: bold;'>" + rowID + ":</span><br />"
-        + rowFooterContents
-        + "</div>"
-      );
-    }
+
   });
+
 }
 
 function evaluateBlockText() {
@@ -99,7 +104,7 @@ function resetBlockText(){
 $(document).ready( function(){
   assignBlockIDs();
   evaluateBlockText();
-  writeFooter();
+  writeFooter(); 
 });
 
 $(window).resize( function(){
