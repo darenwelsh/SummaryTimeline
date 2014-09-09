@@ -1,10 +1,10 @@
-<includeonly>{{{info|page name=<Summary Timeline[Title]> Summary Timeline}}}
+<includeonly>{{{info|page name=<Summary Timeline[EVA Title]> Summary Timeline}}}
 <div id="wikiPreview" style="display: none; padding-bottom: 25px; margin-bottom: 25px; border-bottom: 1px solid #AAAAAA;"></div>
 {{{for template|Summary Timeline}}}
 
 '''EVA Title:''' {{{field|EVA Title}}}
 
-'''Related Articles:''' {{{field|Related article|list}}}
+'''Related Articles:''' {{{field|Related article|class=full-width no-links-allowed|values from namespace=Main|list|placeholder=Related articles}}}
 
 '''EVA Duration (HH:MM):''' {{{field|EVA Duration hour|size=2|default=6}}} : {{{field|EVA Duration minute|size=2|default=30}}}
 
@@ -36,11 +36,11 @@
 
 Task Title: {{{field|Title|input type=text|class=full-width|placeholder=Task Title}}}
 
-Duration (H:M): {{{field|Duration hour|size=2}}} : {{{field|Duration minute|size=2}}}
+Duration (H:M): {{{field|Duration hour|size=2|default=0}}} : {{{field|Duration minute|size=2|default=00}}}
 
 Color: {{{field|Color|input type=dropdown|values=white,red,orange,yellow,blue,green,pink,purple|default=white|mandatory}}}
 
-Related articles: {{{field|Related articles|list|class=full-width no-links-allowed|values from namespace=Main|placeholder=Related articles}}}
+Related articles: {{{field|Related article|list|class=full-width no-links-allowed|values from namespace=Main|placeholder=Related articles}}}
 
 Details: {{{field|Free text|input type=textarea|rows=1|class=full-width|autogrow|placeholder=Type full task details here}}}
 
@@ -52,11 +52,11 @@ Details: {{{field|Free text|input type=textarea|rows=1|class=full-width|autogrow
 
 Task Title: {{{field|Title|input type=text|class=full-width|placeholder=Task Title}}}
 
-Duration (H:M): {{{field|Duration hour|size=2}}} : {{{field|Duration minute|size=2}}}
+Duration (H:M): {{{field|Duration hour|size=2|default=0}}} : {{{field|Duration minute|size=2|default=00}}}
 
 Color: {{{field|Color|input type=dropdown|values=white,red,orange,yellow,blue,green,pink,purple|default=white|mandatory}}}
 
-Related articles: {{{field|Related articles|list|class=full-width no-links-allowed|values from namespace=Main|placeholder=Related articles}}}
+Related articles: {{{field|Related article|list|class=full-width no-links-allowed|values from namespace=Main|placeholder=Related articles}}}
 
 Details: {{{field|Free text|input type=textarea|rows=1|class=full-width|autogrow|placeholder=Type full task details here}}}
 
@@ -69,11 +69,11 @@ Details: {{{field|Free text|input type=textarea|rows=1|class=full-width|autogrow
 
 Task Title: {{{field|Title|input type=text|class=full-width|placeholder=Task Title}}}
 
-Duration (H:M): {{{field|Duration hour|size=2}}} : {{{field|Duration minute|size=2}}}
+Duration (H:M): {{{field|Duration hour|size=2|default=0}}} : {{{field|Duration minute|size=2|default=00}}}
 
 Color: {{{field|Color|input type=dropdown|values=white,red,orange,yellow,blue,green,pink,purple|default=white|mandatory}}}
 
-Related articles: {{{field|Related articles|list|class=full-width no-links-allowed|values from namespace=Main|placeholder=Related articles}}}
+Related articles: {{{field|Related article|list|class=full-width no-links-allowed|values from namespace=Main|placeholder=Related articles}}}
 
 Details: {{{field|Free text|input type=textarea|rows=1|class=full-width|autogrow|placeholder=Type full task details here}}}
 

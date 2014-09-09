@@ -1,126 +1,125 @@
 {{Summary Timeline
 |EVA Title=US EVA 100 Version 2
-|Related article=US EVA 100, FHRC R&R, SSRMS, RPCM
+|Related article=Daren Welsh, US EVA 100, FHRC R&R,
 |EVA Duration hour=6
 |EVA Duration minute=30
-|EV1 Egress Duration minute=30
-|EV2 Egress Duration minute=20
-|EV1 Ingress Duration minute=45
-|EV2 Ingress Duration minute=45
+|EV1 Egress Duration minute=35
+|EV2 Egress Duration minute=45
+|EV1 Ingress Duration minute=40
+|EV2 Ingress Duration minute=55
 |Coord Tasks={{Coord Task
 |Title=Inhibit Pad
-|Duration hour=
-|Duration minute=10
+|Duration hour=0
+|Duration minute=15
 |Color=white
-|Related articles=Inhibit Pad
+|Related article=Inhibit Pad
 |Free text=
 }}{{Coord Task
 |Title=Coffee Break
-|Duration hour=
-|Duration minute=30
+|Duration hour=0
+|Duration minute=31
 |Color=white
-|Related articles=
+|Related article=
 |Free text=Drink Coffee!
 }}{{Coord Task
 |Title=Check Email
 |Duration hour=1
-|Duration minute=03
+|Duration minute=02
 |Color=white
-|Related articles=Helmet, MAG
+|Related article=Helmet, MAG
 |Free text=Ignore the crew
 }}
 |EV1 Tasks={{EV1 Task
 |Title=SSRMS Setup
-|Duration hour=
+|Duration hour=0
 |Duration minute=30
 |Color=green
-|Related articles=
-|Free text=
-}}{{EV1 Task
-|Title=Take Some Pictures
-|Duration hour=
-|Duration minute=5
-|Color=blue
-|Related articles=
+|Related article=
 |Free text=
 }}{{EV1 Task
 |Title=FHRC Prep
-|Duration hour=
+|Duration hour=0
 |Duration minute=15
 |Color=orange
-|Related articles=
+|Related article=FHRC
 |Free text=
 }}{{EV1 Task
 |Title=SAFER Test
-|Duration hour=
+|Duration hour=0
 |Duration minute=30
 |Color=yellow
-|Related articles=SAFER
+|Related article=SAFER
+|Free text=
+}}{{EV1 Task
+|Title=Take Some Pictures
+|Duration hour=0
+|Duration minute=5
+|Color=blue
+|Related article=
 |Free text=
 }}{{EV1 Task
 |Title=FHRC Remove
-|Duration hour=
+|Duration hour=0
 |Duration minute=45
 |Color=orange
-|Related articles=
+|Related article=FHRC
 |Free text=
 }}{{EV1 Task
 |Title=FHRC Translate
 |Duration hour=1
 |Duration minute=15
 |Color=orange
-|Related articles=
+|Related article=FHRC
 |Free text=
 }}{{EV1 Task
 |Title=FHRC Install
 |Duration hour=1
-|Duration minute=
+|Duration minute=1
 |Color=orange
-|Related articles=
+|Related article=FHRC
 |Free text=
 }}
 |EV2 Tasks={{EV2 Task
 |Title=RPCM R&R
-|Duration hour=
+|Duration hour=0
 |Duration minute=50
 |Color=purple
-|Related articles=RPCM
+|Related article=RPCM
 |Free text=
 }}{{EV2 Task
 |Title=FHRC Prep
-|Duration hour=
+|Duration hour=0
 |Duration minute=40
 |Color=orange
-|Related articles=
+|Related article=FHRC
 |Free text=
 }}{{EV2 Task
 |Title=Jettison EV1
-|Duration hour=
+|Duration hour=0
 |Duration minute=15
 |Color=red
-|Related articles=
+|Related article=EV1
 |Free text=
 }}{{EV2 Task
 |Title=Regret the previous task
-|Duration hour=
+|Duration hour=0
 |Duration minute=15
 |Color=purple
-|Related articles=
+|Related article=
 |Free text=
 }}{{EV2 Task
 |Title=Dream of Unicorns
 |Duration hour=1
-|Duration minute=2
+|Duration minute=1
 |Color=pink
-|Related articles=
+|Related article=
 |Free text=
 }}{{EV2 Task
 |Title=Do stuff
-|Duration hour=
-|Duration minute=17
+|Duration hour=0
+|Duration minute=16
 |Color=blue
-|Related articles=
+|Related article=
 |Free text=
 }}
-|EVA Related Articles=US EVA 100
 }}

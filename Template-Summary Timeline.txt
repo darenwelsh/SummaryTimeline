@@ -4,19 +4,74 @@ It should be called by using the Summary Timeline form.
 
 Edit the page to see the template text.
 </noinclude><includeonly>
+{{#vardefine:EVATitle|{{{EVA Title|}}}}}
+{{#vardefine:pageRelatedArticle|{{#arraymap:{{{Related article|}}}|,|x|[[x]]}}}}
+{{#vardefine:EVADurationHour|{{{EVA Duration hour|}}}}}
+{{#vardefine:EVADurationMinute|{{{EVA Duration minute|}}}}}
+{{#set: EVA Title = {{{EVA Title|}}} }}
+{{#set: Duration hour = {{{EVA Duration hour|}}} }}
+{{#set: Duration minute = {{{EVA Duration minute|}}} }}
+{{#set_internal:Task
+|Index=1
+|Has text title=Egress
+|Assigned to#list=EV1
+|Duration={{{EV1 Egress Duration minute|}}}
+|Duration minute={{{EV1 Egress Duration minute|}}}
+|Related article#list=Egress
+|Color=gray
+|Free text=
+|From page={{FULLPAGENAME}}
+|EVA title={{#var:EVATitle}}
+|Parent related article#list={{#var:pageRelatedArticle}}
+|EVA Duration={{#var:EVADurationHour}}:{{#var:EVADurationMinute}}
+}}{{#set_internal:Task
+|Index=1
+|Has text title=Egress
+|Assigned to#list=EV2
+|Duration={{{EV2 Egress Duration minute|}}}
+|Duration minute={{{EV2 Egress Duration minute|}}}
+|Related article#list=Egress
+|Color=gray
+|Free text=
+|From page={{FULLPAGENAME}}
+|EVA title={{#var:EVATitle}}
+|Parent related article#list={{#var:pageRelatedArticle}}
+|EVA Duration={{#var:EVADurationHour}}:{{#var:EVADurationMinute}}
+}}
 
 == Extension Output ==
-{{#summary-timeline: title={{{EVA Title|}}}
- | EVA Related Articles={{{Related article|}}}
- | EVA Duration hours={{{EVA Duration hour|}}}
- | EVA Duration minutes={{{EVA Duration minute|}}}
- | EV1 Egress Duration minutes={{{EV1 Egress Duration minute|}}}
- | EV2 Egress Duration minutes={{{EV2 Egress Duration minute|}}}
- | EV1 Ingress Duration minutes={{{EV1 Ingress Duration minute|}}}
- | EV2 Ingress Duration minutes={{{EV2 Ingress Duration minute|}}}
- | IV={{{Coord Tasks|}}}
- | EV1={{{EV1 Tasks|}}}
- | EV2={{{EV2 Tasks|}}}
+To display the output on another page, use the following template:
+
+<nowiki>{{Summary Timeline Output | </nowiki>{{PAGENAME}}<nowiki> }}</nowiki>
+
+{{Summary Timeline Output | {{PAGENAME}} }}
+
+{{#set_internal:Task
+|Index=100
+|Has text title=Ingress
+|Assigned to#list=EV1
+|Duration={{{EV1 Ingress Duration minute|}}}
+|Duration minute={{{EV1 Ingress Duration minute|}}}
+|Related article#list=Egress
+|Color=gray
+|Free text=
+|From page={{FULLPAGENAME}}
+|EVA title={{#var:EVATitle}}
+|Parent related article#list={{#var:pageRelatedArticle}}
+|EVA Duration={{#var:EVADurationHour}}:{{#var:EVADurationMinute}}
+}}{{#set_internal:Task
+|Index=100
+|Has text title=Ingress
+|Assigned to#list=EV2
+|Duration={{{EV2 Ingress Duration minute|}}}
+|Duration minute={{{EV2 Ingress Duration minute|}}}
+|Related article#list=Ingress
+|Color=gray
+|Free text=
+|From page={{FULLPAGENAME}}
+|EVA title={{#var:EVATitle}}
+|Parent related article#list={{#var:pageRelatedArticle}}
+|EVA Duration={{#var:EVADurationHour}}:{{#var:EVADurationMinute}}
 }}
 
 == Raw Template Output ==

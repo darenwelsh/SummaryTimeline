@@ -5,6 +5,16 @@ This extension creates a graphic representation of an EVA summary timeline.
 The input is an array of tasks and durations for two crew members.
 
 =========================
+DEPENDENCIES
+=========================
+
+Extension:Semantic Mediawiki
+Extension:Semantic Forms
+Extension:Variables
+other extensions
+form, templates, properties
+
+=========================
 USAGE
 =========================
 

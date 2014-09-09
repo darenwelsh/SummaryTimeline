@@ -1,0 +1,48 @@
+{{Summary Timeline
+|EVA Title=3A SSU Visitation EVA
+|Related article=SSU
+|EVA Duration hour=6
+|EVA Duration minute=30
+|EV1 Egress Duration minute=30
+|EV2 Egress Duration minute=30
+|EV1 Ingress Duration minute=45
+|EV2 Ingress Duration minute=45
+|Coord Tasks=
+|EV1 Tasks={{EV1 Task
+|Title=Visit the SSU
+|Duration hour=1
+|Duration minute=05
+|Color=red
+|Related article=
+|Free text=
+}}{{EV1 Task
+|Title=Talk to the SSU
+|Duration hour=0
+|Duration minute=30
+|Color=blue
+|Related article=
+|Free text=
+}}{{EV1 Task
+|Title=Photograph the SSU
+|Duration hour=0
+|Duration minute=15
+|Color=pink
+|Related article=
+|Free text=
+}}{{EV1 Task
+|Title=Quietly retreat from the SSU
+|Duration hour=1
+|Duration minute=00
+|Color=yellow
+|Related article=
+|Free text=
+}}
+|EV2 Tasks={{EV2 Task
+|Title=Just hang out
+|Duration hour=3
+|Duration minute=00
+|Color=purple
+|Related article=
+|Free text=
+}}
+}}

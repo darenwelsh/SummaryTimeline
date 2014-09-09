@@ -12,15 +12,20 @@ Use this format:
 
 
 </noinclude><includeonly>{{#set_internal:Task
+|Index={{#counter: EV2 }}
 |Has text title={{{Title|}}}
 |Assigned to#list=EV2
-|Duration={{{Duration hour|}}}:{{{Duration minute|}}}
+|Duration={{{Duration hour|00}}}:{{{Duration minute|00}}}
+|Duration hour={{{Duration hour|00}}}
+|Duration minute={{{Duration minute|00}}}
 |Related article#list={{{Related article|}}}
 |Color={{{Color|}}}
 |Free text={{{Free text|}}}
 |From page={{FULLPAGENAME}}
-|Parent related article#list={{#show: {{PAGENAME}} | ?Related article}}
+|EVA title={{#var:EVATitle}}
+|Parent related article#list={{#var:pageRelatedArticle}}
+|EVA Duration={{#var:EVADurationHour}}:{{#var:EVADurationMinute}}
 }}
 <!-- {{{Title|}}} ({{{Duration hour|}}}:{{{Duration minute|}}}) -->
-&&&{{{Title|}}}@@@{{{Duration hour|}}}@@@{{{Duration minute|}}}@@@{{{Related articles|}}}@@@{{{Color|}}}@@@{{{Free text|}}}
+&&&{{{Title|}}}@@@{{{Duration hour|}}}@@@{{{Duration minute|}}}@@@{{{Related article|}}}@@@{{{Color|}}}@@@{{{Free text|}}}
 </includeonly>
