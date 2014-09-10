@@ -61,7 +61,7 @@ function writeFooter(){
 }
 
 function evaluateBlockText() {
-  $(".responsive-text").each( function(i,e){
+  $(".responsive-text").each( function(i,e){ 
     var text = $(e).text(); //Text in div "FHRC Prep (0:15)"
     var textWidth = getTextWidth(text, "8pt arial").width; //Width of entire text
     var divWidth = $(e).width(); //Width of div
@@ -86,6 +86,33 @@ function evaluateBlockText() {
   });
 }
 
+function reEvaluateBlockText() {
+  //An attempt to increase the block width as necessary
+  //Currently this doesn't work because the remaining blocks have already been created and positioned
+  $(".task-block").each (function (index,element){
+    $(element).find(".responsive-text").each( function(i,e){ 
+      var text = $(e).text(); //Text in div "FHRC Prep (0:15)"
+      var textWidth = getTextWidth(text, "8pt arial").width; //Width of entire text
+      var divWidth = $(e).width(); //Width of div
+      var textWords = text.split(" "); //split the text into individual words
+      var textWordWidth = []; //Width of each word
+
+      //get width of each word
+      textWords.forEach(function(word){
+        //compare wordWidth to divWidth
+        textWordWidth[i] = getTextWidth(word, "8pt arial").width;
+        if(textWordWidth[i] > divWidth){ 
+          //Make div width bigger
+          var newWidth = $(element).width() + 1;
+          console.log(newWidth);
+          $(element).width(newWidth);
+          reEvaluateBlockText();
+        }
+      });
+    });
+  });
+}
+
 function clearFooter(){
   $(".footer").each( function(i,e){
     $(e).text("");
@@ -101,10 +128,11 @@ function resetBlockText(){
   });
 }
 
-$(document).ready( function(){
+$(document).ready( function(){ 
   assignBlockIDs();
   evaluateBlockText();
   writeFooter(); 
+  // reEvaluateBlockText();
 });
 
 $(window).resize( function(){

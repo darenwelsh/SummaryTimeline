@@ -17,26 +17,17 @@
 /*
 Considerations for improvement
 
-JS:
-* Assign ID to each summary timeline so footers are unique (currently displays all footers in one summary timeline)
-
 COMPACT OUTPUT:
 * Add key to denote color meanings
-* Text align middle?
 * jQuery hover to highlight task block and footer entry on mouseover
 * Try rounding biggest container div to nearest 5px to help rounding issues
-* Try min-width as an alternate (in CSS)
 * Allow titles to link to wiki pages (html vs text)
 
 TEMPLATE:
-* Add index to internal object in case I need it for future use
-{{#ask: [[Task::+]]
- |?Has text title
- |?Assigned to
- | sort=Assigned to
-}}
+
 
 FORM:
+* Check for min duration (10 min?)?
 * Color key designation (what does each color mean?)
 * Task depends on launch-date, task-completion, inhibit, etc
 * Tasks coupled between EV1 and EV2
@@ -77,6 +68,8 @@ CONCEPTS:
 * Bingo time (red dashed line on both versions)
 
 * Add logic to handle sum of tasks > EVA duration
+
+* Change addCSS to addScripts
 
 */
 
@@ -156,19 +149,22 @@ class SummaryTimeline
 		// Tasks
 		$compactTextEV1i = 1;
 		foreach ( $options['rows']['ev1']['tasks'] as $task ) {
-			$compactTextEV1 .= 
-			"<div class='cell-border task-block' style='width:"
-			// . $options['rows']['ev1']['tasks'][$compactTextEV1i]['durationPercent']
-			. (/* margin-left of next block */
+			$blockWidth = (/* margin-left of next block */
 				(floor((($compactTextEV1SumOfDurationMinutes //Total tasks duration in minutes so far
 					//Duration in minutes of next task
 					+ ( (60 * $options['rows']['ev1']['tasks'][($compactTextEV1i)]['durationHour']) 
 						+ $options['rows']['ev1']['tasks'][($compactTextEV1i)]['durationMinute'] ) )
 					/ $options['eva duration in minutes'])*100))
-				 - (floor(($compactTextEV1SumOfDurationMinutes / $options['eva duration in minutes'])*100)) )
+				 - (floor(($compactTextEV1SumOfDurationMinutes / $options['eva duration in minutes'])*100)) );
+			$blockMarginLeft = (floor(($compactTextEV1SumOfDurationMinutes / $options['eva duration in minutes'])*100));
+
+			$compactTextEV1 .= 
+			"<div class='cell-border task-block' style='width:"
+			. $blockWidth
 			. "%;"
 			. " margin-left: "
-			. (floor(($compactTextEV1SumOfDurationMinutes / $options['eva duration in minutes'])*100)) //sum of widths so far
+			. $blockMarginLeft
+			// . (floor(($compactTextEV1SumOfDurationMinutes / $options['eva duration in minutes'])*100)) //sum of widths so far
 			. "%;"
 			. "'>"
 				. "<div class='cell-body " . $options['rows']['ev1']['tasks'][$compactTextEV1i]['color'] . "'>"
@@ -559,6 +555,10 @@ class SummaryTimeline
 						    		$temp = $taskDetails[2];
 						    		$taskDetails[2] = '0' . $temp;}
 						    	$options['rows'][$name]['tasks'][$i]['durationMinute'] = $taskDetails[2];
+						    	//Lame attempt to set min block width - move value out?
+						    	// if ($options['rows'][$name]['tasks'][$i]['durationHour'] == 0 && $options['rows'][$name]['tasks'][$i]['durationMinute']<15){
+						    	// 	$options['rows'][$name]['tasks'][$i]['blockWidth'] = 15;
+						    	// }
 						    	$options['rows'][$name]['tasks'][$i]['relatedArticles'] = $taskDetails[3];
 						    	$options['rows'][$name]['tasks'][$i]['color'] = $taskDetails[4];
 						    	$options['rows'][$name]['tasks'][$i]['details'] = $taskDetails[5];
