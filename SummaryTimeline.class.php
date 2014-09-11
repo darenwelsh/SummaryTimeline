@@ -17,18 +17,21 @@
 /*
 Considerations for improvement
 
+STUFF TO DO BEFORE INITIAL RELEASE:
+* BUG - intermittent occurrence of Egress moving to block #2 (after 1st task)
+*     - not sure if this is due to #counter implementation in template:Summary Timeline
+* Full output php/css/js
+* Explore options to add "actor" (SSRMS, IV, Eclipse, etc)
+* Add key to denote color meanings (top of form, in both outputs)
+
 COMPACT OUTPUT:
-* Add key to denote color meanings
 * jQuery hover to highlight task block and footer entry on mouseover
 * Try rounding biggest container div to nearest 5px to help rounding issues
 * Allow titles to link to wiki pages (html vs text)
 
-TEMPLATE:
-
-
 FORM:
+* Related article for each task is not autocompleting, but EVA RA is - why?
 * Check for min duration (10 min?)?
-* Color key designation (what does each color mean?)
 * Task depends on launch-date, task-completion, inhibit, etc
 * Tasks coupled between EV1 and EV2
 * Sync points
@@ -47,23 +50,16 @@ CONCEPTS:
 * Not just "IV" row/column, but be able to add more for SSRMS, eclipses, etc
 * Eclipse constraints (shade cell, shade time rows?)
 
-* How to implement in EVA pages? Sub-page is probably best
-* Option for compact, full, or both versions - or just display both on sub-page?
+* How to implement in EVA pages? Sub-page is probably best with link on Template:EVA
 
 * Split some parts into separate functions
 * Clean up foreach() calls
 
 * IV column needs to allow for events to sync with time or EV1/2 task begin
 
-* Use internal objects so a single wiki page can query multiple EVAs or tasks
-* Modify so extension can be used to format these query results
-* Extra output to display interdependencies
+* Extra output to display interdependencies between tasks or even EVAs
 
-* Update class names to allow for multiple summary timelines on one page with unique footers/styles
-
-* {{Display Summary Timeline}} template:
-* {{Summary Timeline | US EVA 100 version 1}}
-* {{Summary Timeline | US EVA 100 version 2}}
+* Update class names to allow for multiple summary timelines on one page with unique footers/styles (done?)
 
 * Bingo time (red dashed line on both versions)
 
@@ -316,14 +312,25 @@ class SummaryTimeline
 
 		if ($options['format'] == 'compact'){
 
-			$text .= "Compact Version:<br />"
-			// Using CSS "tables"
+			/**********************
+			
+			Compact Version Output
 
+			**********************/
+
+			// Using CSS "tables"
 			// Title
-			. "<div style='position: relative; margin: 10px 10px 0px 10px;
+			$text .= "<div style='position: relative; margin: 10px 10px 0px 10px;
 				font-weight: bold;'>[[" . $options['title link'] . "|" . $options['title'] . "]] (" 
-        	. $options['eva duration hours'] . ":" . $options['eva duration minutes']
-        	. ")"
+        	. $options['eva duration hours'] . ":";
+
+	    	if ( strlen($options['eva duration minutes']) == 1 ){
+	    		$text .= "0" . $options['eva duration minutes'];
+	    	} else {
+				$text .= $options['eva duration minutes'];
+	    	}
+
+        	$text .=  ")"
 			. "</div>"
 
 			// EVA related articles
@@ -332,13 +339,12 @@ class SummaryTimeline
 			. "</div>"
 
 			// Begin main div
-			. "<div class='summary-timeline-compact-version' id='summary-timeline-compact-version-" . $options['st index'] . "'>"
+			. "<div class='summary-timeline-compact-version' id='summary-timeline-" . $options['st index'] . "'>"
 
 			// Begin outer container
 			. "<div class='container'>"
 
 			// Begin left label column
-			// display: inline-block; height: 100%; width: 50px; 
 				. "<div class='left column'>"
 				. "<div class='summary-timeline-row' style='height: 0px; border-left-width: 0px; '>"
 				. "</div>"
@@ -407,56 +413,137 @@ class SummaryTimeline
 
 	    } elseif ($options['format'] == 'full'){
 
-			$text .= "Full Version:" 
-
 			/*******************
 			
 			Full Version Output
 
 			*******************/
 
-			// UPDATE CLASS AND CSS
-			. "<table class='summary-timeline-full-version'>"
+			// Using CSS "tables"
+			// Title
+			$text .= "<div style='position: relative; margin: 10px 10px 0px 10px;
+				font-weight: bold;'>[[" . $options['title link'] . "|" . $options['title'] . "]] (" 
+        	. $options['eva duration hours'] . ":";
 
-	        //Header
-	        . "<tr><th>[[" . $options['title'] 
-	        . "]]" . " (" 
-        	. $options['eva duration hours'] . ":" . $options['eva duration minutes']
-        	. ")</th></tr>"
+	    	if ( strlen($options['eva duration minutes']) == 1 ){
+	    		$text .= "0" . $options['eva duration minutes'];
+	    	} else {
+				$text .= $options['eva duration minutes'];
+	    	}       	
+
+        	$text .= ")"
+			. "</div>"
+
+			// EVA related articles
+			. "<div style='position: relative; margin: 0px 10px 0px 10px;
+				font-size: 75%;'>Related articles: " . $options['parent related article']
+			. "</div>"
+
+			// Begin main div
+			. "<div class='summary-timeline-full-version' id='summary-timeline-" . $options['st index'] . "'>"
+
+			// Begin outer container
+			. "<div class='container'>"
+			. "<div class='content'>"
+
+			// Begin header row
+			. "<div class='summary-timeline-row'>"
+
+			// Header
+			//NEED TO SET LEFT/RIGHT TIME TICKERS TO STATIC PX WIDTH, LEAVE MIDDLE COLS TO remaining%
+			. "<div class='summary-timeline-column' style='width:5%; margin-left: 0%;'>"
+				. "<div class='summary-timeline-header'>PET</div>"
+			. "</div>"
+			. "<div class='summary-timeline-column' style='width:30%; margin-left: 5%;'>"
+				. "<div class='summary-timeline-header'>IV</div>"
+			. "</div>"
+			. "<div class='summary-timeline-column' style='width:30%; margin-left: 35%;'>"
+				. "<div class='summary-timeline-header'>EV1</div>"
+			. "</div>"
+			. "<div class='summary-timeline-column' style='width:30%; margin-left: 65%;'>"
+				. "<div class='summary-timeline-header'>EV2</div>"
+			. "</div>"
+			. "<div class='summary-timeline-column' style='width:5%; margin-left: 95%;'>"
+				. "<div class='summary-timeline-header'>&nbsp;</div>"
+			. "</div>"
+
+			// End header row
+			. "</div>"
+
+			// Begin main body row
+			// . "<div class='right column'>"
+			. "<div class='summary-timeline-row'>"
+
+			//NEED TO SET LEFT/RIGHT TIME TICKERS TO STATIC PX WIDTH, LEAVE MIDDLE COLS TO remaining%
+			. "<div class='summary-timeline-column' style='width:5%; margin-left: 0%;'>"
+				. "<div class='summary-timeline-header'>0:00</div>"
+			. "</div>"
+			. "<div class='summary-timeline-column' style='width:30%; margin-left: 5%;'>"
+				. "<div class='summary-timeline-header'></div>"
+			. "</div>"
+			. "<div class='summary-timeline-column' style='width:30%; margin-left: 35%;'>"
+				. "<div class='summary-timeline-header'>EV1 Tasks</div>"
+			. "</div>"
+			. "<div class='summary-timeline-column' style='width:30%; margin-left: 65%;'>"
+				. "<div class='summary-timeline-header'>EV2 Tasks</div>"
+			. "</div>"
+			. "<div class='summary-timeline-column' style='width:5%; margin-left: 95%;'>"
+				. "<div class='summary-timeline-header'>0:00</div>"
+			. "</div>"
+
+			// Begin left time labels column
+			// . "<div class='summary-timeline-row'>"
+
+			// Left time labels
+			// . $compactTimeTickerText
+
+
+
+			// CONVERT ALL TABLE ELEMENTS TO DIVS
+			// . "<table class='summary-timeline-full-version'>"
 
 	        //Rows
-	        // NEED TO ADD CSS STYLING - width=100%, etc
-			. "<tr>"
+			// . "<tr>"
 
 			//IV Column
-			. "<td>"
-			. "<table class='summary-timeline-full-version'><tr><th>IV/MCC (" . $options['rows']['iv']['tasksDuration'] . " min)</th></tr>"
-			. "<tr><td>" . $textIV . "</td></tr></table>"
-	        . "</td>"
+			// . "<td>"
+			// . "<table class='summary-timeline-full-version'><tr><th>IV/MCC (" . $options['rows']['iv']['tasksDuration'] . " min)</th></tr>"
+			// . "<tr><td>" . $textIV . "</td></tr></table>"
+	  //       . "</td>"
 
 			//EV1 Column
-			. "<td>"
-			. "<table class='summary-timeline-full-version'><tr><th>EV1 (" . $options['rows']['ev1']['tasksDuration'] . " min)</th></tr>"
-			. "<tr><td>Egress (0:" . $options['ev1 egress duration minutes']['durationMinutes'] . ")</td></tr>"
-			. "<tr><td>" . $textEV1 . "</td></tr>"
-			. "<tr><td>Ingress (0:" . $options['ev1 ingress duration minutes']['durationMinutes'] . ")</td></tr>"
-			. "</table>"
-	        . "</td>"
+			// . "<td>"
+			// . "<table class='summary-timeline-full-version'><tr><th>EV1 (" . $options['rows']['ev1']['tasksDuration'] . " min)</th></tr>"
+			// . "<tr><td>Egress (0:" . $options['ev1 egress duration minutes']['durationMinutes'] . ")</td></tr>"
+			// . "<tr><td>" . $textEV1 . "</td></tr>"
+			// . "<tr><td>Ingress (0:" . $options['ev1 ingress duration minutes']['durationMinutes'] . ")</td></tr>"
+			// . "</table>"
+	  //       . "</td>"
 
 			//EV2 Column
-			. "<td>"
-			. "<table class='summary-timeline-full-version'><tr><th>EV2 (" . $options['rows']['ev2']['tasksDuration'] . " min)</th></tr>"
-			. "<tr><td>Egress (0:" . $options['ev2 egress duration minutes']['durationMinutes'] . ")</td></tr>"
-			. "<tr><td>" . $textEV2 . "</td></tr>"
-			. "<tr><td>Ingress (0:" . $options['ev2 ingress duration minutes']['durationMinutes'] . ")</td></tr>"
-			. "</table>"
-	        . "</td>"
+			// . "<td>"
+			// . "<table class='summary-timeline-full-version'><tr><th>EV2 (" . $options['rows']['ev2']['tasksDuration'] . " min)</th></tr>"
+			// . "<tr><td>Egress (0:" . $options['ev2 egress duration minutes']['durationMinutes'] . ")</td></tr>"
+			// . "<tr><td>" . $textEV2 . "</td></tr>"
+			// . "<tr><td>Ingress (0:" . $options['ev2 ingress duration minutes']['durationMinutes'] . ")</td></tr>"
+			// . "</table>"
+	        // . "</td>"
 
 	        // End of rows
-	        . "</tr>"
+	        // . "</tr>"
 
 	        //End of table
-	        . "</table>";
+	        // . "</table>"
+
+			// End main body row
+			. "</div>"
+
+			// End of outer container div
+			. "</div>"
+			. "</div>"
+
+	        // End of main div
+	        . "</div>";
 	    }
 		return $text;
 
@@ -489,7 +576,8 @@ class SummaryTimeline
 
 				//this switch could be consolidated
 				switch ($name) {
-					case 'format':
+					case 'format': 
+						$value = strtolower($value);
 						if ( $value=="full" ) {
 				        	$options['format'] = "full";
 				        } else {

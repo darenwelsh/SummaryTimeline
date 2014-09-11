@@ -2,7 +2,7 @@
 <div id="wikiPreview" style="display: none; padding-bottom: 25px; margin-bottom: 25px; border-bottom: 1px solid #AAAAAA;"></div>
 {{{for template|Summary Timeline}}}
 
-'''EVA Title:''' {{{field|EVA Title}}}
+'''EVA Title:''' {{{field|EVA Title|placeholder=FHRC EVA 1 Version B}}}
 
 '''Related Articles:''' {{{field|Related article|class=full-width no-links-allowed|values from namespace=Main|list|placeholder=Related articles}}}
 
@@ -15,13 +15,13 @@
 </tr>
 <tr>
 <td>
-<td>Egress Duration (minutes):{{{field|EV1 Egress Duration minute|size=2|default=30}}}</td>
-<td>Egress Duration (minutes):{{{field|EV2 Egress Duration minute|size=2|default=30}}}</td>
+<td style="text-align: center;">Egress Duration (minutes):{{{field|EV1 Egress Duration minute|size=2|default=30}}}</td>
+<td style="text-align: center;">Egress Duration (minutes):{{{field|EV2 Egress Duration minute|size=2|default=30}}}</td>
 </tr>
 <tr>
 <td>
-<td>Ingress Duration (minutes):{{{field|EV1 Ingress Duration minute|size=2|default=45}}}</td>
-<td>Ingress Duration (minutes):{{{field|EV2 Ingress Duration minute|size=2|default=45}}}</td>
+<td style="text-align: center;">Ingress Duration (minutes):{{{field|EV1 Ingress Duration minute|size=2|default=45}}}</td>
+<td style="text-align: center;">Ingress Duration (minutes):{{{field|EV2 Ingress Duration minute|size=2|default=45}}}</td>
 </tr>
 <tr>
 <td style="vertical-align: top;">{{{field|Coord Tasks|holds template}}}</td>
@@ -36,7 +36,7 @@
 
 Task Title: {{{field|Title|input type=text|class=full-width|placeholder=Task Title}}}
 
-Duration (H:M): {{{field|Duration hour|size=2|default=0}}} : {{{field|Duration minute|size=2|default=00}}}
+Duration (H:M): <div>{{{field|Duration hour|size=1|default=0}}}:{{{field|Duration minute|size=2|default=00}}}</div>
 
 Color: {{{field|Color|input type=dropdown|values=white,red,orange,yellow,blue,green,pink,purple|default=white|mandatory}}}
 
@@ -52,7 +52,7 @@ Details: {{{field|Free text|input type=textarea|rows=1|class=full-width|autogrow
 
 Task Title: {{{field|Title|input type=text|class=full-width|placeholder=Task Title}}}
 
-Duration (H:M): {{{field|Duration hour|size=2|default=0}}} : {{{field|Duration minute|size=2|default=00}}}
+Duration (H:M): <div>{{{field|Duration hour|size=1|default=0}}}:{{{field|Duration minute|size=2|default=00}}}</div>
 
 Color: {{{field|Color|input type=dropdown|values=white,red,orange,yellow,blue,green,pink,purple|default=white|mandatory}}}
 
@@ -69,7 +69,7 @@ Details: {{{field|Free text|input type=textarea|rows=1|class=full-width|autogrow
 
 Task Title: {{{field|Title|input type=text|class=full-width|placeholder=Task Title}}}
 
-Duration (H:M): {{{field|Duration hour|size=2|default=0}}} : {{{field|Duration minute|size=2|default=00}}}
+Duration (H:M): <div>{{{field|Duration hour|size=1|default=0}}}:{{{field|Duration minute|size=2|default=00}}}</div>
 
 Color: {{{field|Color|input type=dropdown|values=white,red,orange,yellow,blue,green,pink,purple|default=white|mandatory}}}
 

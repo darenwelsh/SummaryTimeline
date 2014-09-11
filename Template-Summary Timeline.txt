@@ -12,7 +12,7 @@ Edit the page to see the template text.
 {{#set: Duration hour = {{{EVA Duration hour|}}} }}
 {{#set: Duration minute = {{{EVA Duration minute|}}} }}
 {{#set_internal:Task
-|Index=1
+|Index=0
 |Has text title=Egress
 |Assigned to#list=EV1
 |Duration={{{EV1 Egress Duration minute|}}}
@@ -25,7 +25,7 @@ Edit the page to see the template text.
 |Parent related article#list={{#var:pageRelatedArticle}}
 |EVA Duration={{#var:EVADurationHour}}:{{#var:EVADurationMinute}}
 }}{{#set_internal:Task
-|Index=1
+|Index=0
 |Has text title=Egress
 |Assigned to#list=EV2
 |Duration={{{EV2 Egress Duration minute|}}}
@@ -42,9 +42,14 @@ Edit the page to see the template text.
 == Extension Output ==
 To display the output on another page, use the following template:
 
-<nowiki>{{Summary Timeline Output | </nowiki>{{PAGENAME}}<nowiki> }}</nowiki>
+Compact version: <nowiki>{{Summary Timeline Output | </nowiki>{{PAGENAME}}<nowiki> }}</nowiki>
+
+Full version: <nowiki>{{Summary Timeline Output | </nowiki>{{PAGENAME}}<nowiki> | Full }}</nowiki>
 
 {{Summary Timeline Output | {{PAGENAME}} }}
+
+
+{{Summary Timeline Output | {{PAGENAME}} | Full }}
 
 {{#set_internal:Task
 |Index=100

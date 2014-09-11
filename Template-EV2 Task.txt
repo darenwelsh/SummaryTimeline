@@ -1,13 +1,24 @@
 <noinclude>
 Use this format:
 <pre>
-{{EV2 Task
+{{EV1 Task
 |Title=
 |Duration=
 |Color=
 |Related articles=
 |Free text=
 }}
+
+{{Task
+|Actor=EV2
+|Title={{{Title|}}}
+|Duration hour={{{Duration hour|}}}
+|Duration minute={{{Duration minute|}}}
+|Color={{{Color|}}}
+|Related article={{{Related article|}}}
+|Free text={{{Free text|}}}
+}}
+
 </pre>
 
 

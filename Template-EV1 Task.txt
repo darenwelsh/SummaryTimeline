@@ -8,6 +8,17 @@ Use this format:
 |Related articles=
 |Free text=
 }}
+
+{{Task
+|Actor=EV1
+|Title={{{Title|}}}
+|Duration hour={{{Duration hour|}}}
+|Duration minute={{{Duration minute|}}}
+|Color={{{Color|}}}
+|Related article={{{Related article|}}}
+|Free text={{{Free text|}}}
+}}
+
 </pre>
 
 
