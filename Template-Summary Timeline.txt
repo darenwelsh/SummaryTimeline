@@ -8,9 +8,11 @@ Edit the page to see the template text.
 {{#vardefine:pageRelatedArticle|{{#arraymap:{{{Related article|}}}|,|x|[[x]]}}}}
 {{#vardefine:EVADurationHour|{{{EVA Duration hour|}}}}}
 {{#vardefine:EVADurationMinute|{{{EVA Duration minute|}}}}}
+{{#vardefine:DependsOn|{{{Depends on|}}}}}
 {{#set: EVA Title = {{{EVA Title|}}} }}
 {{#set: Duration hour = {{{EVA Duration hour|}}} }}
 {{#set: Duration minute = {{{EVA Duration minute|}}} }}
+{{#set: Depends on = {{{Depends on|}}} }}
 {{#set_internal:Task
 |Index=0
 |Has text title=Egress
@@ -93,6 +95,7 @@ Full version: <nowiki>{{Summary Timeline Output | </nowiki>{{PAGENAME}}<nowiki> 
 </tr>
 </table>
 
+{{#arraymap:{{{Depends on|}}}|,|x|[[Depends on::x]]}}
 {{#arraymap:{{{Related article|}}}|,|x|[[Related article::x]]}}
 
 [[Category:Summary Timeline]]</includeonly>

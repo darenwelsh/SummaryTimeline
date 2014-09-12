@@ -18,11 +18,27 @@
 Considerations for improvement
 
 STUFF TO DO BEFORE INITIAL RELEASE:
-* BUG - intermittent occurrence of Egress moving to block #2 (after 1st task)
-*     - not sure if this is due to #counter implementation in template:Summary Timeline
-* Full output php/css/js
-* Explore options to add "actor" (SSRMS, IV, Eclipse, etc)
 * Add key to denote color meanings (top of form, in both outputs)
+* Explore options to add "actor" (SSRMS, IV, Eclipse, etc)
+** Template:EV1 Task,etc becomes Template:Actor1/2/3/... 
+** Pass Property:Actor name from form to template/php
+** How does form allow for adding a column? Suppress for now?
+
+ONE-PAGE VERSION (like page 1 of our timeline procedures)
+
+FULL VERSION (more of an outline format)
+* Add IV back in; rename all "COORD" references to "IV"
+* Add if checks to only display when there is a value
+* Color blocks
+* Color key
+* Make columns fill height
+
+* Property:Depends on - should this only allow values from SIO-Task and Mission? Probably not.
+*    Task depends on can be a list of {{EVA NAME}}{{TASK NAME}}
+*    Hover over task and its dependencies flash/highlight
+
+TEMPLATE
+* Remove raw output? SIO is the only required content?
 
 COMPACT OUTPUT:
 * jQuery hover to highlight task block and footer entry on mouseover
@@ -66,6 +82,8 @@ CONCEPTS:
 * Add logic to handle sum of tasks > EVA duration
 
 * Change addCSS to addScripts
+
+* jQueryUI for add-ons
 
 */
 
@@ -277,7 +295,7 @@ class SummaryTimeline
 	    	. "(" . $options['rows']['iv']['tasks'][$textIVi]['durationHour'] . ":"
 	    	. $options['rows']['iv']['tasks'][$textIVi]['durationMinute'] . ")" . "\r\n\r\n"
 	    	. "Related articles: " . $options['rows']['iv']['tasks'][$textIVi]['relatedArticles'] . "\r\n\r\n"
-	    	. "Details: " . $options['rows']['iv']['tasks'][$textIVi]['details'] . "\r\n\r\n";
+	    	. "Details: " . $options['rows']['iv']['tasks'][$textIVi]['details'] . "\r\n\r\n\r\n";
 	    	$textIVi++;
 	    }
 
@@ -290,7 +308,7 @@ class SummaryTimeline
 	    	. "(" . $options['rows']['ev1']['tasks'][$textEV1i]['durationHour'] . ":"
 	    	. $options['rows']['ev1']['tasks'][$textEV1i]['durationMinute'] . ")" . "\r\n\r\n"
 	    	. "Related articles: " . $options['rows']['ev1']['tasks'][$textEV1i]['relatedArticles'] . "\r\n\r\n"
-	    	. "Details: " . $options['rows']['ev1']['tasks'][$textEV1i]['details'] . "\r\n\r\n";
+	    	. "Details: " . $options['rows']['ev1']['tasks'][$textEV1i]['details'] . "\r\n\r\n\r\n";
 	    	$textEV1i++;
 	    }
 
@@ -303,7 +321,7 @@ class SummaryTimeline
 	    	. "(" . $options['rows']['ev2']['tasks'][$textEV2i]['durationHour'] . ":"
 	    	. $options['rows']['ev2']['tasks'][$textEV2i]['durationMinute'] . ")" . "\r\n\r\n"
 	    	. "Related articles: " . $options['rows']['ev2']['tasks'][$textEV2i]['relatedArticles'] . "\r\n\r\n"
-	    	. "Details: " . $options['rows']['ev2']['tasks'][$textEV2i]['details'] . "\r\n\r\n";
+	    	. "Details: " . $options['rows']['ev2']['tasks'][$textEV2i]['details'] . "\r\n\r\n\r\n";
 	    	$textEV2i++;
 	    }
 
@@ -331,6 +349,11 @@ class SummaryTimeline
 	    	}
 
         	$text .=  ")"
+			. "</div>"
+
+			// Task dependencies
+			. "<div style='position: relative; margin: 0px 10px 0px 10px;
+				font-size: 75%;'>Dependencies: " . $options['depends on']
 			. "</div>"
 
 			// EVA related articles
@@ -419,7 +442,7 @@ class SummaryTimeline
 
 			*******************/
 
-			// Using CSS "tables"
+			// NEED TO SPLIT TO "FULL" AND "ONE-PAGE" VERSION
 			// Title
 			$text .= "<div style='position: relative; margin: 10px 10px 0px 10px;
 				font-weight: bold;'>[[" . $options['title link'] . "|" . $options['title'] . "]] (" 
@@ -451,21 +474,21 @@ class SummaryTimeline
 
 			// Header
 			//NEED TO SET LEFT/RIGHT TIME TICKERS TO STATIC PX WIDTH, LEAVE MIDDLE COLS TO remaining%
-			. "<div class='summary-timeline-column' style='width:5%; margin-left: 0%;'>"
-				. "<div class='summary-timeline-header'>PET</div>"
-			. "</div>"
-			. "<div class='summary-timeline-column' style='width:30%; margin-left: 5%;'>"
+			// . "<div class='summary-timeline-column' style='width:5%; margin-left: 0%;'>"
+				// . "<div class='summary-timeline-header'>PET</div>"
+			// . "</div>"
+			. "<div class='summary-timeline-column' style='width:33%; margin-left: 0%;'>"
 				. "<div class='summary-timeline-header'>IV</div>"
 			. "</div>"
-			. "<div class='summary-timeline-column' style='width:30%; margin-left: 35%;'>"
+			. "<div class='summary-timeline-column' style='width:33%; margin-left: 33%;'>"
 				. "<div class='summary-timeline-header'>EV1</div>"
 			. "</div>"
-			. "<div class='summary-timeline-column' style='width:30%; margin-left: 65%;'>"
+			. "<div class='summary-timeline-column' style='width:34%; margin-left: 66%;'>"
 				. "<div class='summary-timeline-header'>EV2</div>"
 			. "</div>"
-			. "<div class='summary-timeline-column' style='width:5%; margin-left: 95%;'>"
-				. "<div class='summary-timeline-header'>&nbsp;</div>"
-			. "</div>"
+			// . "<div class='summary-timeline-column' style='width:5%; margin-left: 95%;'>"
+				// . "<div class='summary-timeline-header'>&nbsp;</div>"
+			// . "</div>"
 
 			// End header row
 			. "</div>"
@@ -475,21 +498,21 @@ class SummaryTimeline
 			. "<div class='summary-timeline-row'>"
 
 			//NEED TO SET LEFT/RIGHT TIME TICKERS TO STATIC PX WIDTH, LEAVE MIDDLE COLS TO remaining%
-			. "<div class='summary-timeline-column' style='width:5%; margin-left: 0%;'>"
-				. "<div class='summary-timeline-header'>0:00</div>"
+			// . "<div class='summary-timeline-column' style='width:5%; margin-left: 0%;'>"
+				// . "<div class='summary-timeline-header'>0:00</div>"
+			// . "</div>"
+			. "<div class='summary-timeline-column' style='width:33%; margin-left: 0%;'>"
+				. "<div class='summary-timeline-body'>". $textIV . "</div>"
 			. "</div>"
-			. "<div class='summary-timeline-column' style='width:30%; margin-left: 5%;'>"
-				. "<div class='summary-timeline-header'></div>"
+			. "<div class='summary-timeline-column' style='width:33%; margin-left: 33%;'>"
+				. "<div class='summary-timeline-body'>". $textEV1 . "</div>"
 			. "</div>"
-			. "<div class='summary-timeline-column' style='width:30%; margin-left: 35%;'>"
-				. "<div class='summary-timeline-header'>EV1 Tasks</div>"
+			. "<div class='summary-timeline-column' style='width:34%; margin-left: 66%;'>"
+				. "<div class='summary-timeline-body'>". $textEV2 . "</div>"
 			. "</div>"
-			. "<div class='summary-timeline-column' style='width:30%; margin-left: 65%;'>"
-				. "<div class='summary-timeline-header'>EV2 Tasks</div>"
-			. "</div>"
-			. "<div class='summary-timeline-column' style='width:5%; margin-left: 95%;'>"
-				. "<div class='summary-timeline-header'>0:00</div>"
-			. "</div>"
+			// . "<div class='summary-timeline-column' style='width:5%; margin-left: 95%;'>"
+				// . "<div class='summary-timeline-header'>0:00</div>"
+			// . "</div>"
 
 			// Begin left time labels column
 			// . "<div class='summary-timeline-row'>"
@@ -594,6 +617,11 @@ class SummaryTimeline
 				        	$titleParts = explode( '@@@', $value);
 				        	$options[$name] = $titleParts[0];
 				        	$options['title link'] = $titleParts[1];
+				        }
+				        break;
+			        case 'depends on':
+				        if ( isset($value) ) {
+				        	$options[$name] = $value;
 				        }
 				        break;
 			        case 'parent related article':

@@ -4,6 +4,8 @@
 
 '''EVA Title:''' {{{field|EVA Title|placeholder=FHRC EVA 1 Version B}}}
 
+'''Depends on''': {{{field|Depends on|list|class=full-width no-links-allowed|values from namespace=Main|list|placeholder=SpX-5, US EVA 27}}}
+
 '''Related Articles:''' {{{field|Related article|class=full-width no-links-allowed|values from namespace=Main|list|placeholder=Related articles}}}
 
 '''EVA Duration (HH:MM):''' {{{field|EVA Duration hour|size=2|default=6}}} : {{{field|EVA Duration minute|size=2|default=30}}}

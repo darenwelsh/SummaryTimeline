@@ -37,6 +37,6 @@ Use this format:
 |Parent related article#list={{#var:pageRelatedArticle}}
 |EVA Duration={{#var:EVADurationHour}}:{{#var:EVADurationMinute}}
 }}
-<!-- {{{Title|}}} ({{{Duration hour|}}}:{{{Duration minute|}}}) -->
+{{{Title|}}} ({{{Duration hour|}}}:{{{Duration minute|}}}) 
 &&&{{{Title|}}}@@@{{{Duration hour|}}}@@@{{{Duration minute|}}}@@@{{{Related article|}}}@@@{{{Color|}}}@@@{{{Free text|}}}
 </includeonly>

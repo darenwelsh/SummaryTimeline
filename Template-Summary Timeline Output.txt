@@ -6,8 +6,11 @@ For the compact version (default):
 For the full version:
 <pre>{{Summary Timeline Output | Page name of summary timeline to display | Full }}</pre>
 
-</noinclude><includeonly>{{#summary-timeline: format={{{2|}}}
+</noinclude><includeonly>{{#summary-timeline:
+ | format={{{2|}}}
+ | st index={{#counter: SummaryTimeline }}
  | title={{#show: {{{1|}}} | ?EVA title }}@@@{{{1|}}}
+ | depends on={{#show: {{{1|}}} | ?Depends on }}
  | Parent Related Article={{#show: {{{1|}}} | ?Related article }}
  | EVA Duration hours={{#show: {{{1|}}} | ?Duration hour }}
  | EVA Duration minutes={{#show: {{{1|}}} | ?Duration minute }}
@@ -23,6 +26,7 @@ For the full version:
 |?Has text title=Title
 |?Duration hour=Duration hour
 |?Duration minute=Duration minute
+|?Depends on#list=Depends on
 |?Related article=Related article
 |?Color=Color
 |named args=yes
@@ -37,6 +41,7 @@ For the full version:
 |?Has text title=Title
 |?Duration hour=Duration hour
 |?Duration minute=Duration minute
+|?Depends on#list=Depends on
 |?Related article=Related article
 |?Color=Color
 |named args=yes

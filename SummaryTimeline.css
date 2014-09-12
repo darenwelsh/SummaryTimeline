@@ -164,25 +164,26 @@ body {
 }
 .summary-timeline-full-version .container {
   position: relative;
-  border:  1px solid #444444;
+  /*border:  1px solid #444444;*/
   margin: 0px 50px 10px 20px;
   padding: 0px;
 }
 .summary-timeline-full-version .container:before{
   content: "";
   display: block;
-  padding-top: 60%;  /* initial ratio of 1:1*/
+  /*padding-top: 60%;   This keeps the container to a set aspect ratio*/
 }
-.summary-timeline-full-version .content{
+/*Commented out until this is split to one-page version*/
+/*.summary-timeline-full-version .content{
   position:  absolute;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-}
+}*/
 .summary-timeline-full-version .summary-timeline-row {
   display: inline-block;
-  border:  0px solid #ff0000;
+  border:  1px solid #000000;
   padding: 0px;
   margin:  0px;
   width: 100%;
@@ -191,7 +192,8 @@ body {
 .summary-timeline-full-version .summary-timeline-column {
   display: inline-block;
   /*height: 20px;*/
-  /*border: 1px solid #000000;*/
+  /*border-left: 1px solid #000000;*/
+  /*border-right: 1px solid #000000;*/
   padding: 0px;
   float: left;
   margin-right: -100%;
@@ -200,14 +202,22 @@ body {
 .summary-timeline-full-version .summary-timeline-header {
   /*display: inline-block;*/
   height: 20px;
-  border: 1px solid #000000;
+  /*border: 1px solid #000000;*/
   /*padding: 0px 2px 0px 2px;*/
   /*float: left;*/
   /*margin-right: -100%;*/
   /*margin-left: 0px;*/
   text-align: center;
 }
-
+.summary-timeline-full-version .summary-timeline-body {
+  /*display: inline-block;*/
+  /*height: 20px;*/
+  /*border: 1px solid #000000;*/
+  padding: 0px 2px 0px 2px;
+  /*float: left;*/
+  margin: 0px;
+  text-align: left;
+}
 
 
 
