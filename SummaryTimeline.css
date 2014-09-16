@@ -109,8 +109,8 @@ body {
 }
 .summary-timeline-compact-version .footer {
   /*border:  0px solid #BBBBBB;*/
-  border-top: solid #BBBBBB;
-  border-top-width: 1px;
+  /*border-top: solid #BBBBBB;*/
+  /*border-top-width: 1px;*/
   padding: 0px;
   margin:  0px;
   width:   100%;
