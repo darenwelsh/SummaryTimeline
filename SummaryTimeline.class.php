@@ -137,10 +137,6 @@ class SummaryTimeline
 		    // . " margin-left:" . (floor($colorKeyDivWidth * ($i-1))) . "%;"
 		    // . "'>" . $i . "</div>";
 		// }
-		if ($options['color white meaning'] != '') {
-			$colorKeyText .= "<div class='color-key white'>"
-			. $options['color white meaning'] . "</div>";
-		}
 		if ($options['color red meaning'] != '') {
 			$colorKeyText .= "<div class='color-key red'>"
 			. $options['color red meaning'] . "</div>";
@@ -153,21 +149,25 @@ class SummaryTimeline
 			$colorKeyText .= "<div class='color-key yellow'>"
 			. $options['color yellow meaning'] . "</div>";
 		}
+		if ($options['color green meaning'] != '') {
+			$colorKeyText .= "<div class='color-key green'>"
+			. $options['color green meaning'] . "</div>";
+		}
 		if ($options['color blue meaning'] != '') {
 			$colorKeyText .= "<div class='color-key blue'>"
 			. $options['color blue meaning'] . "</div>";
 		}
-		if ($options['color green meaning'] != '') {
-			$colorKeyText .= "<div class='color-key green'>"
-			. $options['color green meaning'] . "</div>";
+		if ($options['color purple meaning'] != '') {
+			$colorKeyText .= "<div class='color-key purple'>"
+			. $options['color purple meaning'] . "</div>";
 		}
 		if ($options['color pink meaning'] != '') {
 			$colorKeyText .= "<div class='color-key pink'>"
 			. $options['color pink meaning'] . "</div>";
 		}
-		if ($options['color purple meaning'] != '') {
-			$colorKeyText .= "<div class='color-key purple'>"
-			. $options['color purple meaning'] . "</div>";
+		if ($options['color white meaning'] != '') {
+			$colorKeyText .= "<div class='color-key white'>"
+			. $options['color white meaning'] . "</div>";
 		}
 
 		//Calculate relative position for hour time ticker marks
