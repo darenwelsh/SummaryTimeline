@@ -14,14 +14,14 @@
 
 If you use the color feature for a task, briefly describe what that color indicates here.
 <table>
-<tr><td>White</td><td>{{{field|Color White Meaning|input type=text|size=40}}}</td></tr>
 <tr><td>Red</td><td>{{{field|Color Red Meaning|input type=text|size=40}}}</td></tr>
 <tr><td>Orange</td><td>{{{field|Color Orange Meaning|input type=text|size=40}}}</td></tr>
 <tr><td>Yellow</td><td>{{{field|Color Yellow Meaning|input type=text|size=40}}}</td></tr>
-<tr><td>Blue</td><td>{{{field|Color Blue Meaning|input type=text|size=40}}}</td></tr>
 <tr><td>Green</td><td>{{{field|Color Green Meaning|input type=text|size=40}}}</td></tr>
-<tr><td>Pink</td><td>{{{field|Color Pink Meaning|input type=text|size=40}}}</td></tr>
+<tr><td>Blue</td><td>{{{field|Color Blue Meaning|input type=text|size=40}}}</td></tr>
 <tr><td>Purple</td><td>{{{field|Color Purple Meaning|input type=text|size=40}}}</td></tr>
+<tr><td>Pink</td><td>{{{field|Color Pink Meaning|input type=text|size=40}}}</td></tr>
+<tr><td>White</td><td>{{{field|Color White Meaning|input type=text|size=40}}}</td></tr>
 </table>
 
 <table><tr>
@@ -54,7 +54,7 @@ Task Title: {{{field|Title|input type=text|class=full-width|placeholder=Task Tit
 
 Duration (H:M): <div>{{{field|Duration hour|size=1|default=0}}}:{{{field|Duration minute|size=2|default=00}}}</div>
 
-Color: {{{field|Color|input type=dropdown|values=white,red,orange,yellow,blue,green,pink,purple|default=white|mandatory}}}
+Color: {{{field|Color|input type=dropdown|values=red,orange,yellow,green,blue,purple,pink,white|default=white|mandatory}}}
 
 Related articles: {{{field|Related article|list|class=full-width no-links-allowed|values from namespace=Main|placeholder=Related articles}}}
 
@@ -70,7 +70,7 @@ Task Title: {{{field|Title|input type=text|class=full-width|placeholder=Task Tit
 
 Duration (H:M): <div>{{{field|Duration hour|size=1|default=0}}}:{{{field|Duration minute|size=2|default=00}}}</div>
 
-Color: {{{field|Color|input type=dropdown|values=white,red,orange,yellow,blue,green,pink,purple|default=white|mandatory}}}
+Color: {{{field|Color|input type=dropdown|values=red,orange,yellow,green,blue,purple,pink,white|default=white|mandatory}}}
 
 Related articles: {{{field|Related article|list|class=full-width no-links-allowed|values from namespace=Main|placeholder=Related articles}}}
 
@@ -87,7 +87,7 @@ Task Title: {{{field|Title|input type=text|class=full-width|placeholder=Task Tit
 
 Duration (H:M): <div>{{{field|Duration hour|size=1|default=0}}}:{{{field|Duration minute|size=2|default=00}}}</div>
 
-Color: {{{field|Color|input type=dropdown|values=white,red,orange,yellow,blue,green,pink,purple|default=white|mandatory}}}
+Color: {{{field|Color|input type=dropdown|values=red,orange,yellow,green,blue,purple,pink,white|default=white|mandatory}}}
 
 Related articles: {{{field|Related article|list|class=full-width no-links-allowed|values from namespace=Main|placeholder=Related articles}}}
 
