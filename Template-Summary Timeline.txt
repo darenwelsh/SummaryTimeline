@@ -54,6 +54,8 @@ To display the output on another page, use the following template:
 
 Compact version: <nowiki>{{Summary Timeline Output | </nowiki>{{PAGENAME}}<nowiki> }}</nowiki>
 
+Compact version with fixed pixel width (change "400"): <nowiki>{{Summary Timeline Output | </nowiki>{{PAGENAME}}<nowiki> | Compact | 400 }}</nowiki>
+
 Full version: <nowiki>{{Summary Timeline Output | </nowiki>{{PAGENAME}}<nowiki> | Full }}</nowiki>
 
 {{Summary Timeline Output | {{PAGENAME}} }}
