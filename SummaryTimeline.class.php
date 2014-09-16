@@ -18,14 +18,10 @@
 Considerations for improvement
 
 STUFF TO DO BEFORE INITIAL RELEASE:
-* ROYGBIV (pink after violet? white last?)
-* Property:Duration in minutes (calculate and save in Template:ST)
 * Explore options to add "actor" (SSRMS, IV, Eclipse, etc)
 ** Template:EV1 Task,etc becomes Template:Actor1/2/3/... 
 ** Pass Property:Actor name from form to template/php
 ** How does form allow for adding a column? Suppress for now?
-
-* Change addCSS to addScripts
 
 * Property:Depends on - should this only allow values from SIO-Task and Mission? Probably not.
 *    Task depends on can be a list of 
@@ -123,8 +119,6 @@ class SummaryTimeline
 	}
 
 	static function renderSummaryTimeline ( &$parser, $frame, $args ) {
-		// self::addCSS(); // adds the CSS files 
-
 		//Run extractOptions on $args
 		$options = self::extractOptions( $frame, $args );
 
@@ -392,10 +386,18 @@ class SummaryTimeline
 			Compact Version Output
 
 			**********************/
+			// Outer container
+			$text .= "<div style='display: block;'><div style='display: inline-block; width: ";
 
-			// Using CSS "tables"
+			// If user specified a fixed width in pixels
+			if ( $options['fixedwidth'] != "" ){
+				$text .= $options['fixedwidth'] . "px";
+			} else $text .= "100%";
+
+			$text .= ";'>"
+
 			// Title
-			$text .= "<div style='position: relative; margin: 10px 10px 0px 10px;
+			. "<div style='position: relative; margin: 10px 10px 0px 10px;
 				font-weight: bold;'>[[" . $options['title link'] . "|" . $options['title'] . "]] (" 
         	. $options['eva duration hours'] . ":";
 
@@ -495,7 +497,10 @@ class SummaryTimeline
 			. "</div>"
 
 	        // End of main div
-	        . "</div>";
+	        . "</div>"
+
+	        // End of outer container
+	        . "</div></div>";
 
 	    } elseif ($options['format'] == 'full'){
 
@@ -666,9 +671,14 @@ class SummaryTimeline
 					case 'format': 
 						$value = strtolower($value);
 						if ( $value=="full" ) {
-				        	$options['format'] = "full";
+				        	$options[$name] = "full";
 				        } else {
-				        	$options['format'] = "compact";
+				        	$options[$name] = "compact";
+				        }
+				        break;
+					case 'fixedwidth': 
+						if ( $value != "" ) {
+				        	$options[$name] = $value;
 				        }
 				        break;
 			        case 'st index':
@@ -880,7 +890,7 @@ class SummaryTimeline
 		}
 	}
 
-	static function addCSS ( $out ){
+	static function addScripts ( $out ){
 		global $wgScriptPath;
 
 		$out->addScriptFile( $wgScriptPath .'/extensions/SummaryTimeline/SummaryTimeline.js' );

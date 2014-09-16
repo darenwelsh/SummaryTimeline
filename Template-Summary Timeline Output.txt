@@ -3,11 +3,15 @@
 For the compact version (default):
 <pre>{{Summary Timeline Output | Page name of summary timeline to display | Compact }}</pre>
 
+To force the compact version to a fixed pixel width to fit on a specific page:
+<pre>{{Summary Timeline Output | Page name of summary timeline to display | Compact | 123 }}</pre>
+
 For the full version:
 <pre>{{Summary Timeline Output | Page name of summary timeline to display | Full }}</pre>
 
 </noinclude><includeonly>{{#summary-timeline:
  | format={{{2|}}}
+ | fixedwidth={{{3|}}}
  | st index={{#counter: SummaryTimeline }}
  | title={{#show: {{{1|}}} | ?EVA title }}@@@{{{1|}}}
  | depends on={{#show: {{{1|}}} | ?Depends on }}

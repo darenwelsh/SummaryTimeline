@@ -52,4 +52,4 @@ $wgHooks['ParserFirstCallInit'][] = 'SummaryTimeline::setup';
 /**
  *  Add CSS
  **/
-$wgHooks['AjaxAddScript'][] = 'SummaryTimeline::addCSS';
+$wgHooks['AjaxAddScript'][] = 'SummaryTimeline::addScripts';
