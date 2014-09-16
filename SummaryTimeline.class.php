@@ -25,11 +25,9 @@ STUFF TO DO BEFORE INITIAL RELEASE:
 
 * Property:Depends on - should this only allow values from SIO-Task and Mission? Probably not.
 *    Task depends on can be a list of 
-*     {{EV1}}##{{TASK NAME}}
-*     {{EVA NAME}}##{{EV2}}##{{TASK NAME}}
+*     {{EV1}}##{{TASK NAME}},
+*     {{EVA NAME}}##{{EV2}}##{{TASK NAME}},
 *     {{MISSION NAME}}##{{HARDWARE NAME}}
-
-* How to implement in EVA pages? Sub-page is probably best with link on Template:EVA
 
 
 ------
@@ -58,7 +56,7 @@ COMPACT OUTPUT:
 * Allow titles to link to wiki pages (html vs text)
 
 FORM:
-* Related article for each task is not autocompleting, but EVA RA is - why?
+* Related article for each task is not autocompleting, but EVA RA is - why? MM on ops does, on dev does not
 * Check for min duration (10 min?)?
 * Task depends on launch-date, task-completion, inhibit, etc
 * Tasks coupled between EV1 and EV2
