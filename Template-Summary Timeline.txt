@@ -9,6 +9,14 @@ Edit the page to see the template text.
 {{#vardefine:EVADurationHour|{{{EVA Duration hour|}}}}}
 {{#vardefine:EVADurationMinute|{{{EVA Duration minute|}}}}}
 {{#vardefine:DependsOn|{{{Depends on|}}}}}
+{{#vardefine:ColorWhiteMeaning|{{{Color White Meaning|}}}}}
+{{#vardefine:ColorRedMeaning|{{{Color Red Meaning|}}}}}
+{{#vardefine:ColorOrangeMeaning|{{{Color Orange Meaning|}}}}}
+{{#vardefine:ColorYellowMeaning|{{{Color Yellow Meaning|}}}}}
+{{#vardefine:ColorBlueMeaning|{{{Color Blue Meaning|}}}}}
+{{#vardefine:ColorGreenMeaning|{{{Color Green Meaning|}}}}}
+{{#vardefine:ColorPinkMeaning|{{{Color Pink Meaning|}}}}}
+{{#vardefine:ColorPurpleMeaning|{{{Color Purple Meaning|}}}}}
 {{#set: EVA Title = {{{EVA Title|}}} }}
 {{#set: Duration hour = {{{EVA Duration hour|}}} }}
 {{#set: Duration minute = {{{EVA Duration minute|}}} }}
@@ -83,6 +91,22 @@ Full version: <nowiki>{{Summary Timeline Output | </nowiki>{{PAGENAME}}<nowiki> 
 
 == Raw Template Output ==
 {{{EVA Title|}}} ({{{EVA Duration hour|}}}:{{{EVA Duration minute|}}})
+
+White:{{{Color White Meaning|}}}
+
+Red: {{{Color Red Meaning|}}}
+
+Orange:{{{Color Orange Meaning|}}}
+
+Yellow:{{{Color Yellow Meaning|}}}
+
+Blue:{{{Color Blue Meaning|}}}
+
+Green:{{{Color Green Meaning|}}}
+
+Pink:{{{Color Pink Meaning|}}}
+
+Purple:{{{Color Purple Meaning|}}}
 <table><tr>
 <th>MCC Coord</th>
 <th>EV1</th>
@@ -97,5 +121,13 @@ Full version: <nowiki>{{Summary Timeline Output | </nowiki>{{PAGENAME}}<nowiki> 
 
 {{#arraymap:{{{Depends on|}}}|,|x|[[Depends on::x]]}}
 {{#arraymap:{{{Related article|}}}|,|x|[[Related article::x]]}}
+{{#set: Color White Meaning={{{Color White Meaning|}}}}}
+{{#set: Color Red Meaning={{{Color Red Meaning|}}}}}
+{{#set: Color Orange Meaning={{{Color Orange Meaning|}}}}}
+{{#set: Color Yellow Meaning={{{Color Yellow Meaning|}}}}}
+{{#set: Color Blue Meaning={{{Color Blue Meaning|}}}}}
+{{#set: Color Green Meaning={{{Color Green Meaning|}}}}}
+{{#set: Color Pink Meaning={{{Color Pink Meaning|}}}}}
+{{#set: Color Purple Meaning={{{Color Purple Meaning|}}}}}
 
 [[Category:Summary Timeline]]</includeonly>

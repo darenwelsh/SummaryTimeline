@@ -16,10 +16,15 @@ body {
 }
 .summary-timeline-compact-version .container {
   position: relative;
-  margin: 0px 50px 10px 20px;
+  margin: 5px 50px 10px 10px;
   padding: 0px;
 }
-
+.summary-timeline-compact-version .color-key {
+  display: inline-block;
+  margin: 0px 5px 0px 0px;
+  padding: 3px;
+  border: 1px solid #000000;
+}
 .summary-timeline-compact-version .column {
   display: inline-block;
   /*border:  1px solid #FC0000;*/

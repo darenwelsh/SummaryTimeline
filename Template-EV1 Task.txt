@@ -36,6 +36,14 @@ Use this format:
 |EVA title={{#var:EVATitle}}
 |Parent related article#list={{#var:pageRelatedArticle}}
 |EVA Duration={{#var:EVADurationHour}}:{{#var:EVADurationMinute}}
+|Color White Meaning={{#var:ColorWhiteMeaning}}
+|Color Red Meaning={{#var:ColorRedMeaning}}
+|Color Orange Meaning={{#var:ColorOrangeMeaning}}
+|Color Yellow Meaning={{#var:ColorYellowMeaning}}
+|Color Blue Meaning={{#var:ColorBlueMeaning}}
+|Color Green Meaning={{#var:ColorGreenMeaning}}
+|Color Pink Meaning={{#var:ColorPinkMeaning}}
+|Color Purple Meaning={{#var:ColorPurpleMeaning}}
 }}
 {{{Title|}}} ({{{Duration hour|}}}:{{{Duration minute|}}}) 
 &&&{{{Title|}}}@@@{{{Duration hour|}}}@@@{{{Duration minute|}}}@@@{{{Related article|}}}@@@{{{Color|}}}@@@{{{Free text|}}}

@@ -10,6 +10,20 @@
 
 '''EVA Duration (HH:MM):''' {{{field|EVA Duration hour|size=2|default=6}}} : {{{field|EVA Duration minute|size=2|default=30}}}
 
+'''Color Key:'''
+
+If you use the color feature for a task, briefly describe what that color indicates here.
+<table>
+<tr><td>White</td><td>{{{field|Color White Meaning|input type=text|size=40}}}</td></tr>
+<tr><td>Red</td><td>{{{field|Color Red Meaning|input type=text|size=40}}}</td></tr>
+<tr><td>Orange</td><td>{{{field|Color Orange Meaning|input type=text|size=40}}}</td></tr>
+<tr><td>Yellow</td><td>{{{field|Color Yellow Meaning|input type=text|size=40}}}</td></tr>
+<tr><td>Blue</td><td>{{{field|Color Blue Meaning|input type=text|size=40}}}</td></tr>
+<tr><td>Green</td><td>{{{field|Color Green Meaning|input type=text|size=40}}}</td></tr>
+<tr><td>Pink</td><td>{{{field|Color Pink Meaning|input type=text|size=40}}}</td></tr>
+<tr><td>Purple</td><td>{{{field|Color Purple Meaning|input type=text|size=40}}}</td></tr>
+</table>
+
 <table><tr>
 <th>MCC Coord</th>
 <th>EV1</th>

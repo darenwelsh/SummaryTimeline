@@ -18,27 +18,43 @@
 Considerations for improvement
 
 STUFF TO DO BEFORE INITIAL RELEASE:
-* Add key to denote color meanings (top of form, in both outputs)
+* ROYGBIV (pink after violet? white last?)
+* Property:Duration in minutes (calculate and save in Template:ST)
 * Explore options to add "actor" (SSRMS, IV, Eclipse, etc)
 ** Template:EV1 Task,etc becomes Template:Actor1/2/3/... 
 ** Pass Property:Actor name from form to template/php
 ** How does form allow for adding a column? Suppress for now?
 
+* Change addCSS to addScripts
+
+* Property:Depends on - should this only allow values from SIO-Task and Mission? Probably not.
+*    Task depends on can be a list of 
+*     {{EV1}}##{{TASK NAME}}
+*     {{EVA NAME}}##{{EV2}}##{{TASK NAME}}
+*     {{MISSION NAME}}##{{HARDWARE NAME}}
+
+* How to implement in EVA pages? Sub-page is probably best with link on Template:EVA
+
+
+------
+
 ONE-PAGE VERSION (like page 1 of our timeline procedures)
+* Keep aspect ratio (11x8.5)
+* Truncate details if it doesn't fit
 
 FULL VERSION (more of an outline format)
-* Add IV back in; rename all "COORD" references to "IV"
-* Add if checks to only display when there is a value
+* Add IV back in
+** rename all "COORD" references to "IV"
+** remove egress/ingress from all other actors
+** Add if checks to only display when there is a value
 * Color blocks
 * Color key
 * Make columns fill height
 
-* Property:Depends on - should this only allow values from SIO-Task and Mission? Probably not.
-*    Task depends on can be a list of {{EVA NAME}}{{TASK NAME}}
-*    Hover over task and its dependencies flash/highlight
-
 TEMPLATE
-* Remove raw output? SIO is the only required content?
+* Remove raw output? 
+** SIO is the only required content?
+** Better document how each component works
 
 COMPACT OUTPUT:
 * jQuery hover to highlight task block and footer entry on mouseover
@@ -61,29 +77,28 @@ FULL OUTPUT:
 * Add link to Related article (US EVA 100 or C2V2)
 
 CONCEPTS:
-* Should compact version allow for "compact details" (different than full details)?
-
-* Not just "IV" row/column, but be able to add more for SSRMS, eclipses, etc
-* Eclipse constraints (shade cell, shade time rows?)
-
-* How to implement in EVA pages? Sub-page is probably best with link on Template:EVA
+* Actors
+** Not just "IV" row/column, but be able to add more for SSRMS, eclipses, etc
+** Eclipse constraints (shade cell, shade time rows?)
 
 * Split some parts into separate functions
 * Clean up foreach() calls
 
-* IV column needs to allow for events to sync with time or EV1/2 task begin
+* Sync points
+** Is this the same as dependencies within an EVA?
+** IV column needs to allow for events to sync with time or EV1/2 task begin
 
-* Extra output to display interdependencies between tasks or even EVAs
-
-* Update class names to allow for multiple summary timelines on one page with unique footers/styles (done?)
+* Dependencies
+** Extra output to display interdependencies between tasks or even EVAs
+**    Hover over task and its dependencies flash/highlight on page above
 
 * Bingo time (red dashed line on both versions)
 
 * Add logic to handle sum of tasks > EVA duration
 
-* Change addCSS to addScripts
-
 * jQueryUI for add-ons
+
+* Task Homeless List
 
 */
 
@@ -112,6 +127,48 @@ class SummaryTimeline
 
 		//Run extractOptions on $args
 		$options = self::extractOptions( $frame, $args );
+
+		//Generate color key
+		$colorKeyText = "";
+		// $colorKeyDivWidth = floor(100 / 8);
+		// for ($i = 1; $i <= $options['number of colors designated']; $i++) {
+		    // $colorKeyText .= "<div style='display: inline-block;"
+		    // . " width:" . ((floor($colorKeyDivWidth * ($i+1))) - (floor($colorKeyDivWidth * ($i)))) . "%;"
+		    // . " margin-left:" . (floor($colorKeyDivWidth * ($i-1))) . "%;"
+		    // . "'>" . $i . "</div>";
+		// }
+		if ($options['color white meaning'] != '') {
+			$colorKeyText .= "<div class='color-key white'>"
+			. $options['color white meaning'] . "</div>";
+		}
+		if ($options['color red meaning'] != '') {
+			$colorKeyText .= "<div class='color-key red'>"
+			. $options['color red meaning'] . "</div>";
+		}
+		if ($options['color orange meaning'] != '') {
+			$colorKeyText .= "<div class='color-key orange'>"
+			. $options['color orange meaning'] . "</div>";
+		}
+		if ($options['color yellow meaning'] != '') {
+			$colorKeyText .= "<div class='color-key yellow'>"
+			. $options['color yellow meaning'] . "</div>";
+		}
+		if ($options['color blue meaning'] != '') {
+			$colorKeyText .= "<div class='color-key blue'>"
+			. $options['color blue meaning'] . "</div>";
+		}
+		if ($options['color green meaning'] != '') {
+			$colorKeyText .= "<div class='color-key green'>"
+			. $options['color green meaning'] . "</div>";
+		}
+		if ($options['color pink meaning'] != '') {
+			$colorKeyText .= "<div class='color-key pink'>"
+			. $options['color pink meaning'] . "</div>";
+		}
+		if ($options['color purple meaning'] != '') {
+			$colorKeyText .= "<div class='color-key purple'>"
+			. $options['color purple meaning'] . "</div>";
+		}
 
 		//Calculate relative position for hour time ticker marks
 		$compactTimeTickerText = "";
@@ -364,6 +421,12 @@ class SummaryTimeline
 			// Begin main div
 			. "<div class='summary-timeline-compact-version' id='summary-timeline-" . $options['st index'] . "'>"
 
+			// Color key
+			. "<div style='"
+			. "position: relative; margin: 0px 10px 0px 10px;"
+				. "'>" . $colorKeyText
+			. "</div>"
+
 			// Begin outer container
 			. "<div class='container'>"
 
@@ -589,6 +652,7 @@ class SummaryTimeline
 		$tasksDurationPercentTotal['ev1'] = 0;
 		$tasksDurationPercentTotal['ev2'] = 0;
 		$tasksDurationPercentTotal['iv'] = 0; /* This will be removed once the IV section is fixed */
+		$options['number of colors designated'] = 0;
 	 
 		foreach ( $args as $arg ) {
 			//Convert args with "=" into an array of options
@@ -737,6 +801,19 @@ class SummaryTimeline
 
 					    }
 
+				        break;
+			        case 'color white meaning':
+			        case 'color red meaning':
+			        case 'color orange meaning':
+			        case 'color yellow meaning':
+			        case 'color blue meaning':
+			        case 'color green meaning':
+			        case 'color pink meaning':
+			        case 'color purple meaning':
+				        if ( isset($value) && $value!="" ) {
+				        	$options[$name] = $value;
+				        	$options['number of colors designated'] ++;
+				        }
 				        break;
 			        case 'ev1':
 				        // Unique things for this column? Would have to split above into these two (can't do both cases)

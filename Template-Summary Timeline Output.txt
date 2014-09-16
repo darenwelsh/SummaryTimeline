@@ -49,4 +49,12 @@ For the full version:
 |template=ST Query Result
 |sort=Assigned to, Index
 }}
+ | Color White Meaning={{#show: {{{1|}}} | ?Color White Meaning }}
+ | Color Red Meaning={{#show: {{{1|}}} | ?Color Red Meaning }}
+ | Color Orange Meaning={{#show: {{{1|}}} | ?Color Orange Meaning }}
+ | Color Yellow Meaning={{#show: {{{1|}}} | ?Color Yellow Meaning }}
+ | Color Blue Meaning={{#show: {{{1|}}} | ?Color Blue Meaning }}
+ | Color Green Meaning={{#show: {{{1|}}} | ?Color Green Meaning }}
+ | Color Pink Meaning={{#show: {{{1|}}} | ?Color Pink Meaning }}
+ | Color Purple Meaning={{#show: {{{1|}}} | ?Color Purple Meaning }}
 }}</includeonly>
