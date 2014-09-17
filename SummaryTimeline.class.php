@@ -18,6 +18,10 @@
 Considerations for improvement
 
 STUFF TO DO BEFORE INITIAL RELEASE:
+* JS: text for exceeding height limit
+
+* Full version details are not showing up even without html
+
 * Explore options to add "actor" (SSRMS, IV, Eclipse, etc)
 ** Template:EV1 Task,etc becomes Template:Actor1/2/3/... 
 ** Pass Property:Actor name from form to template/php
@@ -32,6 +36,10 @@ STUFF TO DO BEFORE INITIAL RELEASE:
 
 ------
 
+OVERVIEW PAGE
+* EVA/Launch/ROBO Dates
+* Dependencies
+
 ONE-PAGE VERSION (like page 1 of our timeline procedures)
 * Keep aspect ratio (11x8.5)
 * Truncate details if it doesn't fit
@@ -44,6 +52,7 @@ FULL VERSION (more of an outline format)
 * Color blocks
 * Color key
 * Make columns fill height
+* HTML vs text (html currently breaks it)
 
 TEMPLATE
 * Remove raw output? 
@@ -749,7 +758,7 @@ class SummaryTimeline
 						    	// }
 						    	$options['rows'][$name]['tasks'][$i]['relatedArticles'] = $taskDetails[3];
 						    	$options['rows'][$name]['tasks'][$i]['color'] = $taskDetails[4];
-						    	$options['rows'][$name]['tasks'][$i]['details'] = $taskDetails[5];
+						    	$options['rows'][$name]['tasks'][$i]['details'] = trim($taskDetails[5]);
 
 						    	// Calc task duration as % of total EVA duration
 						    	$options['rows'][$name]['tasks'][$i]['durationPercent'] = round((((60 * $taskDetails[1]) + $taskDetails[2]) / $options['eva duration in minutes']) * 100);
@@ -789,7 +798,7 @@ class SummaryTimeline
 					    	$options['rows'][$name]['tasks'][$i]['durationMinute'] = $options['rows'][$name]['tasks'][$i-1]['durationMinute'];
 					    	$options['rows'][$name]['tasks'][$i]['relatedArticles'] = $options['rows'][$name]['tasks'][$i-1]['relatedArticles'];
 					    	$options['rows'][$name]['tasks'][$i]['color'] = $options['rows'][$name]['tasks'][$i-1]['color'];
-					    	$options['rows'][$name]['tasks'][$i]['details'] = $options['rows'][$name]['tasks'][$i-1]['details'];
+					    	$options['rows'][$name]['tasks'][$i]['details'] = trim($options['rows'][$name]['tasks'][$i-1]['details']);
 
 					    	// Now set Get-Aheads block data
 					    	$options['rows'][$name]['tasks'][$i-1]['title'] = 'Get-Aheads';
