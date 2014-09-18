@@ -67,14 +67,14 @@ function evaluateBlockText() {
     var divWidth = $(e).width(); //Width of div
     var textWords = text.split(" "); //split the text into individual words
     var textWordWidth = []; //Width of each word
-
-    //NEED TO ADD CHECK FOR HEIGHT ... or MORE THAN THREE WORDS (PLUS TIME)
+    var textHeight = $(e).prop('scrollHeight');
+    var cellHeight = $(e).parent().outerHeight();
 
     //get width of each word
     textWords.forEach(function(word){
-      //compare wordWidth to divWidth
+      //compare wordWidth to divWidth and textHeight to cellHeight
       textWordWidth[i] = getTextWidth(word, "8pt arial").width;
-      if(textWordWidth[i] > divWidth){
+      if(textWordWidth[i] > divWidth || textHeight > cellHeight){
         var blockID = $(e).attr('summary-timeline-row-block-id');
         var blockIDSplit = blockID.split("-",2) //This could be problematic if someone uses "-"in the row title
         var blockRowLabel = blockIDSplit[0];

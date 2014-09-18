@@ -93,8 +93,9 @@ body {
   border:  1px solid #000000;
   background-color: white;
   vertical-align: middle;
-  /*line-height: normal;*/
-  height:    100%;
+  line-height: normal;
+  /*height:    100%;*/
+  height:    70px;
   width:     100%;
   padding: 0px 1px;
   margin:  0px;
@@ -106,6 +107,9 @@ body {
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
+}
+.summary-timeline-compact-version .responsive-text {
+
 }
 .summary-timeline-compact-version .footer {
   /*border:  0px solid #BBBBBB;*/
