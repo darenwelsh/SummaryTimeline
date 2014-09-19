@@ -18,14 +18,15 @@
 Considerations for improvement
 
 STUFF TO DO BEFORE INITIAL RELEASE:
-* JS: text for exceeding height limit
-
 * Full version details are not showing up even without html
 
 * Explore options to add "actor" (SSRMS, IV, Eclipse, etc)
 ** Template:EV1 Task,etc becomes Template:Actor1/2/3/... 
 ** Pass Property:Actor name from form to template/php
+** Remove Egress/Ingress and just have user enter those like any other task (cleans up non-EV timelines)
 ** How does form allow for adding a column? Suppress for now?
+
+* Test out non-EV timelines like SSRMS or launch
 
 * Property:Depends on - should this only allow values from SIO-Task and Mission? Probably not.
 *    Task depends on can be a list of 
@@ -35,6 +36,13 @@ STUFF TO DO BEFORE INITIAL RELEASE:
 
 
 ------
+
+COMPACT OUTPUT:
+* Add small color key block to footer elements (JS)
+* jQuery hover to highlight task block and footer entry on mouseover
+** Popup (on hover) shows Details
+* Try rounding biggest container div to nearest 5px to help rounding issues
+* Allow titles to link to wiki pages (html vs text)
 
 OVERVIEW PAGE
 * EVA/Launch/ROBO Dates
@@ -58,11 +66,6 @@ TEMPLATE
 * Remove raw output? 
 ** SIO is the only required content?
 ** Better document how each component works
-
-COMPACT OUTPUT:
-* jQuery hover to highlight task block and footer entry on mouseover
-* Try rounding biggest container div to nearest 5px to help rounding issues
-* Allow titles to link to wiki pages (html vs text)
 
 FORM:
 * Related article for each task is not autocompleting, but EVA RA is - why? MM on ops does, on dev does not
@@ -131,44 +134,13 @@ class SummaryTimeline
 
 		//Generate color key
 		$colorKeyText = "";
-		// $colorKeyDivWidth = floor(100 / 8);
-		// for ($i = 1; $i <= $options['number of colors designated']; $i++) {
-		    // $colorKeyText .= "<div style='display: inline-block;"
-		    // . " width:" . ((floor($colorKeyDivWidth * ($i+1))) - (floor($colorKeyDivWidth * ($i)))) . "%;"
-		    // . " margin-left:" . (floor($colorKeyDivWidth * ($i-1))) . "%;"
-		    // . "'>" . $i . "</div>";
-		// }
-		if ($options['color red meaning'] != '') {
-			$colorKeyText .= "<div class='color-key red'>"
-			. $options['color red meaning'] . "</div>";
-		}
-		if ($options['color orange meaning'] != '') {
-			$colorKeyText .= "<div class='color-key orange'>"
-			. $options['color orange meaning'] . "</div>";
-		}
-		if ($options['color yellow meaning'] != '') {
-			$colorKeyText .= "<div class='color-key yellow'>"
-			. $options['color yellow meaning'] . "</div>";
-		}
-		if ($options['color green meaning'] != '') {
-			$colorKeyText .= "<div class='color-key green'>"
-			. $options['color green meaning'] . "</div>";
-		}
-		if ($options['color blue meaning'] != '') {
-			$colorKeyText .= "<div class='color-key blue'>"
-			. $options['color blue meaning'] . "</div>";
-		}
-		if ($options['color purple meaning'] != '') {
-			$colorKeyText .= "<div class='color-key purple'>"
-			. $options['color purple meaning'] . "</div>";
-		}
-		if ($options['color pink meaning'] != '') {
-			$colorKeyText .= "<div class='color-key pink'>"
-			. $options['color pink meaning'] . "</div>";
-		}
-		if ($options['color white meaning'] != '') {
-			$colorKeyText .= "<div class='color-key white'>"
-			. $options['color white meaning'] . "</div>";
+		$colors = array("red","orange","yellow","green","blue","purple","pink","white"); 
+		foreach ($colors as $value) {
+			if ($options["color $value meaning"] != '') {
+				$colorKeyText .= "<div class='color-key'>"
+				. "<div style='height: 10px;' class='$value'></div>"
+				. "<div style='padding: 2px;'>" . $options["color $value meaning"] . "</div></div>";
+			}
 		}
 
 		//Calculate relative position for hour time ticker marks
@@ -204,20 +176,6 @@ class SummaryTimeline
 	    $compactTextEV1SumOfDurationMinutes = 0;
 		$compactTextEV1 = "";
 
-		// Egress
-		// $compactTextEV1 .= "<div class='cell-border task-block' style='width:"
-		// .	$options['ev1 egress duration minutes']['durationPercent']/* Calc % of EVA duration */
-		// .	"%;"
-	 //    .	" margin-left: 0%;"
-		// .	"'>"
-		// 	. 	"<div class='cell-body gray'>"
-		// 	.	"<div row-id='EV1' class='responsive-text'>"
-		// 	.	"Egress (0:" . $options['ev1 egress duration minutes']['durationMinutes'] . ")"
-		// 	.	"</div>"
-		// 	.	"</div>"
-		// . "</div>";
-		// $compactTextEV1SumOfDurationMinutes += $options['ev1 egress duration minutes']['durationMinutes'];
-
 		// Tasks
 		$compactTextEV1i = 1;
 		foreach ( $options['rows']['ev1']['tasks'] as $task ) {
@@ -239,10 +197,11 @@ class SummaryTimeline
 			// . (floor(($compactTextEV1SumOfDurationMinutes / $options['eva duration in minutes'])*100)) //sum of widths so far
 			. "%;"
 			. "'>"
-				. "<div class='cell-body " . $options['rows']['ev1']['tasks'][$compactTextEV1i]['color'] . "'>"
+				. "<div class='cell-body'>"
 				//***********************************************
 				//      TASK BLOCKS
 				//***********************************************
+				. "<div style='height: 10px;' class='" . $options['rows']['ev1']['tasks'][$compactTextEV1i]['color'] . "'></div>"
 				. "<div class='responsive-text'>"
 				. $options['rows']['ev1']['tasks'][$compactTextEV1i]['title'] . " "
 		    	. "(" . $options['rows']['ev1']['tasks'][$compactTextEV1i]['durationHour'] . ":"
@@ -257,38 +216,9 @@ class SummaryTimeline
 	    	$compactTextEV1i++;
 	    }
 
-		// Ingress
-		// $compactTextEV1 .= "<div class='cell-border task-block' style='width:"
-		// .	(100 - (floor(($compactTextEV1SumOfDurationMinutes / $options['eva duration in minutes'])*100)))
-		// .	"%;"
-	 //    .	" margin-left: "
-	 //    .	(floor(($compactTextEV1SumOfDurationMinutes / $options['eva duration in minutes'])*100))
-	 //    .	"%'>"
-		// 	. 	"<div class='cell-body gray'>"
-		// 	.	"<div class='responsive-text'>"
-		// 	.	"Ingress (0:" . $options['ev1 ingress duration minutes']['durationMinutes'] . ")"
-		// 	.	"</div>"
-		// 	.	"</div>"
-		// . "</div>";
-
-
 		//Define the EV2 column output
 	    $compactTextEV2SumOfDurationMinutes = 0;
 		$compactTextEV2 = "";
-
-		// Egress
-		// $compactTextEV2 .= "<div class='cell-border task-block' style='width:"
-		// .	$options['ev2 egress duration minutes']['durationPercent']/* Calc % of EVA duration */
-		// .	"%;"
-	 //    .	" margin-left: 0%;"
-		// .	"'>"
-		// 	. 	"<div class='cell-body gray'>"
-		// 	.	"<div class='responsive-text'>"
-		// 	.	"Egress (0:" . $options['ev2 egress duration minutes']['durationMinutes'] . ")"
-		// 	.	"</div>"
-		// 	.	"</div>"
-		// . "</div>";
-		// $compactTextEV2SumOfDurationMinutes += $options['ev2 egress duration minutes']['durationMinutes'];
 
 		// Tasks
 		// if( count($options['rows']['ev2']['tasks']) > 0 ){
@@ -309,10 +239,11 @@ class SummaryTimeline
 				. (floor(($compactTextEV2SumOfDurationMinutes / $options['eva duration in minutes'])*100)) //sum of widths so far
 				. "%;"
 				. "'>"
-					. "<div class='cell-body " . $options['rows']['ev2']['tasks'][$compactTextEV2i]['color'] . "'>"
+					. "<div class='cell-body'>"
 					//***********************************************
 					//      TASK BLOCKS
 					//***********************************************
+					. "<div style='height: 10px;' class='" . $options['rows']['ev2']['tasks'][$compactTextEV2i]['color'] . "'></div>"
 					. "<div class='responsive-text'>"
 					. $options['rows']['ev2']['tasks'][$compactTextEV2i]['title'] . " "
 			    	. "(" . $options['rows']['ev2']['tasks'][$compactTextEV2i]['durationHour'] . ":"
@@ -328,19 +259,6 @@ class SummaryTimeline
 		    }
 		// }
 
-		// Ingress
-		// $compactTextEV2 .= "<div class='cell-border task-block' style='width:"
-		// .	(100 - (floor(($compactTextEV2SumOfDurationMinutes / $options['eva duration in minutes'])*100)))
-		// .	"%;"
-	 //    .	" margin-left: "
-	 //    .	(floor(($compactTextEV2SumOfDurationMinutes / $options['eva duration in minutes'])*100))
-	 //    .	"%'>"
-		// 	. 	"<div class='cell-body gray'>"
-		// 	.	"<div class='responsive-text'>"
-		// 	.	"Ingress (0:" . $options['ev2 ingress duration minutes']['durationMinutes'] . ")"
-		// 	.	"</div>"
-		// 	.	"</div>"
-		// . "</div>";
 
 
 		//FULL VERSION CONTENT DEFINITIONS
@@ -718,18 +636,18 @@ class SummaryTimeline
 				    	$options[$name] = $value;
 				    	$options['eva duration in minutes'] += $value;
 				        break;
-			        case 'ev1 egress duration minutes':
-			        case 'ev1 ingress duration minutes':
-				        $options[$name]['durationMinutes'] = $value;
-				        $options[$name]['durationPercent'] = floor(($value / $options['eva duration in minutes']) * 100);
-				        $tasksDurationPercentTotal['ev1'] += $options[$name]['durationPercent'];
-				        break;
-			        case 'ev2 egress duration minutes':
-			        case 'ev2 ingress duration minutes':
-				        $options[$name]['durationMinutes'] = $value;
-				        $options[$name]['durationPercent'] = floor(($value / $options['eva duration in minutes']) * 100);
-				        $tasksDurationPercentTotal['ev2'] += $options[$name]['durationPercent'];
-				        break;
+			        // case 'ev1 egress duration minutes':
+			        // case 'ev1 ingress duration minutes':
+				        // $options[$name]['durationMinutes'] = $value;
+				        // $options[$name]['durationPercent'] = floor(($value / $options['eva duration in minutes']) * 100);
+				        // $tasksDurationPercentTotal['ev1'] += $options[$name]['durationPercent'];
+				        // break;
+			        // case 'ev2 egress duration minutes':
+			        // case 'ev2 ingress duration minutes':
+				        // $options[$name]['durationMinutes'] = $value;
+				        // $options[$name]['durationPercent'] = floor(($value / $options['eva duration in minutes']) * 100);
+				        // $tasksDurationPercentTotal['ev2'] += $options[$name]['durationPercent'];
+				        // break;
 				    case 'iv': // NEED TO SPLIT OUT SO THIS DOESN'T HAVE GET-AHEADS ADDED
 					    // this should have blocks with "Start time" (not duration)
 					    // an option should be included to sync with a task on EV1 and/or EV2

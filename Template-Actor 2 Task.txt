@@ -23,12 +23,14 @@ Use this format:
 
 
 </noinclude><includeonly>{{#set_internal:Task
-|Index={{#counter: EV1 }}
+|Index={{#counter: Actor2 }}
+|Actor={{#var:Actor2name}}
 |Has text title={{{Title|}}}
-|Assigned to#list=EV1
+|Assigned to#list={{#var:Actor2name}}
 |Duration={{{Duration hour|00}}}:{{{Duration minute|00}}}
 |Duration hour={{{Duration hour|00}}}
 |Duration minute={{{Duration minute|00}}}
+|Duration in minutes={{#expr: (({{{Duration hour|0}}} * 60) + {{{Duration minute|0}}}) }}
 |Related article#list={{{Related article|}}}
 |Color={{{Color|}}}
 |Free text={{{Free text|}}}

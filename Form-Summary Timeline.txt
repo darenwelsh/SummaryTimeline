@@ -4,6 +4,8 @@
 
 '''EVA Title:''' {{{field|EVA Title|placeholder=FHRC EVA 1 Version B}}}
 
+The output of this form will be saved to a page entitled "<Your EVA Title> Summary Timeline" (it will add "Summary Timeline").
+
 '''Depends on''': {{{field|Depends on|list|class=full-width no-links-allowed|values from namespace=Main|list|placeholder=SpX-5, US EVA 27}}}
 
 '''Related Articles:''' {{{field|Related article|class=full-width no-links-allowed|values from namespace=Main|list|placeholder=Related articles}}}
@@ -21,42 +23,37 @@ If you use the color feature for a task, briefly describe what that color indica
 <tr><td>Blue</td><td>{{{field|Color Blue Meaning|input type=text|size=40}}}</td></tr>
 <tr><td>Purple</td><td>{{{field|Color Purple Meaning|input type=text|size=40}}}</td></tr>
 <tr><td>Pink</td><td>{{{field|Color Pink Meaning|input type=text|size=40}}}</td></tr>
-<tr><td>White</td><td>{{{field|Color White Meaning|input type=text|size=40}}}</td></tr>
+<tr><td>Gray</td><td>{{{field|Color Gray Meaning|input type=text|size=40}}}</td></tr>
 </table>
 
 <table><tr>
-<th>MCC Coord</th>
-<th>EV1</th>
-<th>EV2</th>
+<th>Actor 1</th>
+<th>Actor 2</th>
+<th>Actor 3</th>
 </tr>
 <tr>
-<td>
-<td style="text-align: center;">Egress Duration (minutes):{{{field|EV1 Egress Duration minute|size=2|default=30}}}</td>
-<td style="text-align: center;">Egress Duration (minutes):{{{field|EV2 Egress Duration minute|size=2|default=30}}}</td>
+<td style="text-align: center;">Actor name:{{{field|Actor 1 name|size=20|placeholder=IV}}}</td>
+<td style="text-align: center;">Actor name:{{{field|Actor 2 name|size=20|placeholder=EV1}}}</td>
+<td style="text-align: center;">Actor name:{{{field|Actor 3 name|size=20|placeholder=EV2}}}</td>
 </tr>
 <tr>
-<td>
-<td style="text-align: center;">Ingress Duration (minutes):{{{field|EV1 Ingress Duration minute|size=2|default=45}}}</td>
-<td style="text-align: center;">Ingress Duration (minutes):{{{field|EV2 Ingress Duration minute|size=2|default=45}}}</td>
-</tr>
-<tr>
-<td style="vertical-align: top;">{{{field|Coord Tasks|holds template}}}</td>
-<td style="vertical-align: top;">{{{field|EV1 Tasks|holds template}}}</td>
-<td style="vertical-align: top;">{{{field|EV2 Tasks|holds template}}}</td>
+<td style="vertical-align: top;">{{{field|Actor 1 Tasks|holds template}}}</td>
+<td style="vertical-align: top;">{{{field|Actor 2 Tasks|holds template}}}</td>
+<td style="vertical-align: top;">{{{field|Actor 3 Tasks|holds template}}}</td>
 </tr>
 </table>
 
 {{{end template}}}
 
-{{{for template|Coord Task|multiple|label=Coord Task|embed in field=Summary Timeline[Coord Tasks]|add button text=Add Task}}}
+{{{for template|Actor 1 Task|multiple|label=Actor 1 Task|embed in field=Summary Timeline[Actor 1 Tasks]|add button text=Add Task}}}
 
 Task Title: {{{field|Title|input type=text|class=full-width|placeholder=Task Title}}}
 
 Duration (H:M): <div>{{{field|Duration hour|size=1|default=0}}}:{{{field|Duration minute|size=2|default=00}}}</div>
 
-Color: {{{field|Color|input type=dropdown|values=red,orange,yellow,green,blue,purple,pink,white|default=white|mandatory}}}
+Color: {{{field|Color|input type=dropdown|values=red,orange,yellow,green,blue,purple,pink,gray|default=gray|mandatory}}}
 
-Related articles: {{{field|Related article|list|class=full-width no-links-allowed|values from namespace=Main|placeholder=Related articles}}}
+Related articles: {{{field|Related article|class=full-width no-links-allowed|values from namespace=Main|list|placeholder=Related articles}}}
 
 Details: {{{field|Free text|input type=textarea|rows=1|class=full-width|autogrow|placeholder=Type full task details here}}}
 
@@ -64,15 +61,15 @@ Details: {{{field|Free text|input type=textarea|rows=1|class=full-width|autogrow
 
 
 
-{{{for template|EV1 Task|multiple|label=EV1 Tasks|embed in field=Summary Timeline[EV1 Tasks]|add button text=Add Task}}}
+{{{for template|Actor 2 Task|multiple|label=Actor 2 Tasks|embed in field=Summary Timeline[Actor 2 Tasks]|add button text=Add Task}}}
 
 Task Title: {{{field|Title|input type=text|class=full-width|placeholder=Task Title}}}
 
 Duration (H:M): <div>{{{field|Duration hour|size=1|default=0}}}:{{{field|Duration minute|size=2|default=00}}}</div>
 
-Color: {{{field|Color|input type=dropdown|values=red,orange,yellow,green,blue,purple,pink,white|default=white|mandatory}}}
+Color: {{{field|Color|input type=dropdown|values=red,orange,yellow,green,blue,purple,pink,gray|default=gray|mandatory}}}
 
-Related articles: {{{field|Related article|list|class=full-width no-links-allowed|values from namespace=Main|placeholder=Related articles}}}
+Related articles: {{{field|Related article|class=full-width no-links-allowed|values from namespace=Main|list|placeholder=Related articles}}}
 
 Details: {{{field|Free text|input type=textarea|rows=1|class=full-width|autogrow|placeholder=Type full task details here}}}
 
@@ -81,15 +78,15 @@ Details: {{{field|Free text|input type=textarea|rows=1|class=full-width|autogrow
 
 
 
-{{{for template|EV2 Task|multiple|label=EV2 Tasks|embed in field=Summary Timeline[EV2 Tasks]|add button text=Add Task}}}
+{{{for template|Actor 3 Task|multiple|label=Actor 3 Tasks|embed in field=Summary Timeline[Actor 3 Tasks]|add button text=Add Task}}}
 
 Task Title: {{{field|Title|input type=text|class=full-width|placeholder=Task Title}}}
 
 Duration (H:M): <div>{{{field|Duration hour|size=1|default=0}}}:{{{field|Duration minute|size=2|default=00}}}</div>
 
-Color: {{{field|Color|input type=dropdown|values=red,orange,yellow,green,blue,purple,pink,white|default=white|mandatory}}}
+Color: {{{field|Color|input type=dropdown|values=red,orange,yellow,green,blue,purple,pink,gray|default=gray|mandatory}}}
 
-Related articles: {{{field|Related article|list|class=full-width no-links-allowed|values from namespace=Main|placeholder=Related articles}}}
+Related articles: {{{field|Related article|class=full-width no-links-allowed|values from namespace=Main|list|placeholder=Related articles}}}
 
 Details: {{{field|Free text|input type=textarea|rows=1|class=full-width|autogrow|placeholder=Type full task details here}}}
 

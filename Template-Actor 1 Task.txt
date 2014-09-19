@@ -1,7 +1,7 @@
 <noinclude>
 Use this format:
 <pre>
-{{Coord Task
+{{Actor 1 Task
 |Title=
 |Duration=
 |Color=
@@ -10,7 +10,7 @@ Use this format:
 }}
 
 {{Task
-|Actor=IV
+|Actor={{{Actor 1 name|}}}
 |Title={{{Title|}}}
 |Duration hour={{{Duration hour|}}}
 |Duration minute={{{Duration minute|}}}
@@ -23,12 +23,14 @@ Use this format:
 
 
 </noinclude><includeonly>{{#set_internal:Task
-|Index={{#counter: IV }}
+|Index={{#counter: Actor1 }}
+|Actor={{#var:Actor1name}}
 |Has text title={{{Title|}}}
-|Assigned to#list=IV
+|Assigned to#list={{#var:Actor1name}}
 |Duration={{{Duration hour|00}}}:{{{Duration minute|00}}}
 |Duration hour={{{Duration hour|00}}}
 |Duration minute={{{Duration minute|00}}}
+|Duration in minutes={{#expr: (({{{Duration hour|0}}} * 60) + {{{Duration minute|0}}}) }}
 |Related article#list={{{Related article|}}}
 |Color={{{Color|}}}
 |Free text={{{Free text|}}}

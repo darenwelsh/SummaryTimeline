@@ -3,13 +3,14 @@ This is the "Summary Timeline" template.
 It should be called by using the Summary Timeline form.
 
 Edit the page to see the template text.
+
 </noinclude><includeonly>
 {{#vardefine:EVATitle|{{{EVA Title|}}}}}
 {{#vardefine:pageRelatedArticle|{{#arraymap:{{{Related article|}}}|,|x|[[x]]}}}}
 {{#vardefine:EVADurationHour|{{{EVA Duration hour|}}}}}
 {{#vardefine:EVADurationMinute|{{{EVA Duration minute|}}}}}
 {{#vardefine:DependsOn|{{{Depends on|}}}}}
-{{#vardefine:ColorWhiteMeaning|{{{Color White Meaning|}}}}}
+{{#vardefine:ColorGrayMeaning|{{{Color Gray Meaning|}}}}}
 {{#vardefine:ColorRedMeaning|{{{Color Red Meaning|}}}}}
 {{#vardefine:ColorOrangeMeaning|{{{Color Orange Meaning|}}}}}
 {{#vardefine:ColorYellowMeaning|{{{Color Yellow Meaning|}}}}}
@@ -17,37 +18,13 @@ Edit the page to see the template text.
 {{#vardefine:ColorGreenMeaning|{{{Color Green Meaning|}}}}}
 {{#vardefine:ColorPinkMeaning|{{{Color Pink Meaning|}}}}}
 {{#vardefine:ColorPurpleMeaning|{{{Color Purple Meaning|}}}}}
+{{#vardefine:Actor1name|{{{Actor 1 name|}}}}}
+{{#vardefine:Actor2name|{{{Actor 2 name|}}}}}
+{{#vardefine:Actor3name|{{{Actor 3 name|}}}}}
 {{#set: EVA Title = {{{EVA Title|}}} }}
 {{#set: Duration hour = {{{EVA Duration hour|}}} }}
 {{#set: Duration minute = {{{EVA Duration minute|}}} }}
 {{#set: Depends on = {{{Depends on|}}} }}
-{{#set_internal:Task
-|Index=0
-|Has text title=Egress
-|Assigned to#list=EV1
-|Duration={{{EV1 Egress Duration minute|}}}
-|Duration minute={{{EV1 Egress Duration minute|}}}
-|Related article#list=Egress
-|Color=gray
-|Free text=
-|From page={{FULLPAGENAME}}
-|EVA title={{#var:EVATitle}}
-|Parent related article#list={{#var:pageRelatedArticle}}
-|EVA Duration={{#var:EVADurationHour}}:{{#var:EVADurationMinute}}
-}}{{#set_internal:Task
-|Index=0
-|Has text title=Egress
-|Assigned to#list=EV2
-|Duration={{{EV2 Egress Duration minute|}}}
-|Duration minute={{{EV2 Egress Duration minute|}}}
-|Related article#list=Egress
-|Color=gray
-|Free text=
-|From page={{FULLPAGENAME}}
-|EVA title={{#var:EVATitle}}
-|Parent related article#list={{#var:pageRelatedArticle}}
-|EVA Duration={{#var:EVADurationHour}}:{{#var:EVADurationMinute}}
-}}
 
 == Extension Output ==
 To display the output on another page, use the following template:
@@ -63,38 +40,11 @@ Full version: <nowiki>{{Summary Timeline Output | </nowiki>{{PAGENAME}}<nowiki> 
 
 {{Summary Timeline Output | {{PAGENAME}} | Full }}
 
-{{#set_internal:Task
-|Index=100
-|Has text title=Ingress
-|Assigned to#list=EV1
-|Duration={{{EV1 Ingress Duration minute|}}}
-|Duration minute={{{EV1 Ingress Duration minute|}}}
-|Related article#list=Egress
-|Color=gray
-|Free text=
-|From page={{FULLPAGENAME}}
-|EVA title={{#var:EVATitle}}
-|Parent related article#list={{#var:pageRelatedArticle}}
-|EVA Duration={{#var:EVADurationHour}}:{{#var:EVADurationMinute}}
-}}{{#set_internal:Task
-|Index=100
-|Has text title=Ingress
-|Assigned to#list=EV2
-|Duration={{{EV2 Ingress Duration minute|}}}
-|Duration minute={{{EV2 Ingress Duration minute|}}}
-|Related article#list=Ingress
-|Color=gray
-|Free text=
-|From page={{FULLPAGENAME}}
-|EVA title={{#var:EVATitle}}
-|Parent related article#list={{#var:pageRelatedArticle}}
-|EVA Duration={{#var:EVADurationHour}}:{{#var:EVADurationMinute}}
-}}
 
 == Raw Template Output ==
 {{{EVA Title|}}} ({{{EVA Duration hour|}}}:{{{EVA Duration minute|}}})
 
-White:{{{Color White Meaning|}}}
+Gray:{{{Color Gray Meaning|}}}
 
 Red: {{{Color Red Meaning|}}}
 
@@ -110,20 +60,20 @@ Pink:{{{Color Pink Meaning|}}}
 
 Purple:{{{Color Purple Meaning|}}}
 <table><tr>
-<th>MCC Coord</th>
-<th>EV1</th>
-<th>EV2</th>
+<th>Actor 1</th>
+<th>Actor 2</th>
+<th>Actor 3</th>
 </tr>
 <tr>
-<td style="vertical-align: top;">{{{Coord Tasks|}}}</td>
-<td style="vertical-align: top;">{{{EV1 Tasks|}}}</td>
-<td style="vertical-align: top;">{{{EV2 Tasks|}}}</td>
+<td style="vertical-align: top;">{{{Actor 1 Tasks|}}}</td>
+<td style="vertical-align: top;">{{{Actor 2 Tasks|}}}</td>
+<td style="vertical-align: top;">{{{Actor 3 Tasks|}}}</td>
 </tr>
 </table>
 
 {{#arraymap:{{{Depends on|}}}|,|x|[[Depends on::x]]}}
 {{#arraymap:{{{Related article|}}}|,|x|[[Related article::x]]}}
-{{#set: Color White Meaning={{{Color White Meaning|}}}}}
+{{#set: Color Gray Meaning={{{Color Gray Meaning|}}}}}
 {{#set: Color Red Meaning={{{Color Red Meaning|}}}}}
 {{#set: Color Orange Meaning={{{Color Orange Meaning|}}}}}
 {{#set: Color Yellow Meaning={{{Color Yellow Meaning|}}}}}
