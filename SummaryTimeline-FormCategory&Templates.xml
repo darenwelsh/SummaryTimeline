@@ -38,16 +38,14 @@
     <ns>106</ns>
     <id>11810</id>
     <revision>
-      <id>53064</id>
-      <parentid>53042</parentid>
-      <timestamp>2014-09-23T17:17:16Z</timestamp>
+      <id>53100</id>
+      <parentid>53064</parentid>
+      <timestamp>2014-09-23T20:03:17Z</timestamp>
       <contributor>
         <username>Lwelsh</username>
         <id>2</id>
       </contributor>
-      <minor/>
-      <comment>Text replacement - &quot;[[Category:Used for Summary Timeline Extension]]&quot; to &quot;[[Category:Form Used for Summary Timeline Extension]]&quot;</comment>
-      <text xml:space="preserve" bytes="6122">&lt;includeonly&gt;{{{info|page name=&lt;Summary Timeline[EVA Title]&gt; Summary Timeline}}}
+      <text xml:space="preserve" bytes="6117">&lt;includeonly&gt;{{{info|page name=&lt;Summary Timeline[EVA Title]&gt; Summary Timeline}}}
 &lt;div id=&quot;wikiPreview&quot; style=&quot;display: none; padding-bottom: 25px; margin-bottom: 25px; border-bottom: 1px solid #AAAAAA;&quot;&gt;&lt;/div&gt;
 {{{for template|Summary Timeline}}}
 
@@ -55,7 +53,7 @@
 
 The output of this form will be saved to a page entitled &quot;&lt;Your EVA Title&gt; Summary Timeline&quot; (it will add &quot;Summary Timeline&quot;).
 
-'''Depends on''': {{{field|Depends on|list|class=full-width no-links-allowed|values from namespace=Main|list|placeholder=SpX-5, US EVA 27}}}
+'''Depends on''': {{{field|Depends on|class=full-width no-links-allowed|values from namespace=Main|list|placeholder=SpX-5, US EVA 27}}}
 
 '''Related Articles:''' {{{field|Related article|class=full-width no-links-allowed|values from namespace=Main|list|placeholder=Related articles}}}
 
@@ -171,7 +169,7 @@ if a page with that name already exists, you will be sent to a form to edit that
 
 [[Category:Form Used for Summary Timeline Extension]]
 &lt;/noinclude&gt;</text>
-      <sha1>m21nx20ncwbi1z63u1350ug3sof7u7y</sha1>
+      <sha1>3dj7j8hyiw38gdmuwntoye0jatahjm2</sha1>
       <model>wikitext</model>
       <format>text/x-wiki</format>
     </revision>
