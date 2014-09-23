@@ -20,12 +20,6 @@ Considerations for improvement
 STUFF TO DO BEFORE INITIAL RELEASE:
 * Full version details are not showing up even without html
 
-* Explore options to add "actor" (SSRMS, IV, Eclipse, etc)
-** Template:EV1 Task,etc becomes Template:Actor1/2/3/... 
-** Pass Property:Actor name from form to template/php
-** Remove Egress/Ingress and just have user enter those like any other task (cleans up non-EV timelines)
-** How does form allow for adding a column? Suppress for now?
-
 * Test out non-EV timelines like SSRMS or launch
 
 * Property:Depends on - should this only allow values from SIO-Task and Mission? Probably not.
@@ -33,6 +27,7 @@ STUFF TO DO BEFORE INITIAL RELEASE:
 *     {{EV1}}##{{TASK NAME}},
 *     {{EVA NAME}}##{{EV2}}##{{TASK NAME}},
 *     {{MISSION NAME}}##{{HARDWARE NAME}}
+
 
 
 ------
@@ -43,6 +38,7 @@ COMPACT OUTPUT:
 ** Popup (on hover) shows Details
 * Try rounding biggest container div to nearest 5px to help rounding issues
 * Allow titles to link to wiki pages (html vs text)
+* Add JS to test actor name width vs col width and use JQuery to increase left width and right margin-left and reduce container margin-right
 
 OVERVIEW PAGE
 * EVA/Launch/ROBO Dates
@@ -71,6 +67,7 @@ FORM:
 * Related article for each task is not autocompleting, but EVA RA is - why? MM on ops does, on dev does not
 * Check for min duration (10 min?)?
 * Task depends on launch-date, task-completion, inhibit, etc
+* ADD field TaskStartTime (add to form, Actor 1/2/3 Task template, query and results templates, php)
 * Tasks coupled between EV1 and EV2
 * Sync points
 * This needs to have additional Get-Ahead block calculation just before the sync point
@@ -84,7 +81,7 @@ FULL OUTPUT:
 
 CONCEPTS:
 * Actors
-** Not just "IV" row/column, but be able to add more for SSRMS, eclipses, etc
+** Allow for 3 actors now, add up to 5 or 6 later and add SemanticForms element
 ** Eclipse constraints (shade cell, shade time rows?)
 
 * Split some parts into separate functions
@@ -171,134 +168,96 @@ class SummaryTimeline
 		    . "'>" . $i . ":00</div>";
 
 
-		//COMPACT VERSION CONTENT DEFINITIONS
-		//Define the EV1 column output
-	    $compactTextEV1SumOfDurationMinutes = 0;
-		$compactTextEV1 = "";
+	    // *************************************
+		//  COMPACT VERSION CONTENT DEFINITIONS
+	    // *************************************
+	    foreach ( $options['rows'] as &$actor ){ 
+			if( $actor['display in compact view']=='true' && count( $actor['tasks']) > 0 ){
+			    $compactTextActorSumOfDurationMinutes = 0;
+				$actor['compact text'] = "";
 
-		// Tasks
-		$compactTextEV1i = 1;
-		foreach ( $options['rows']['ev1']['tasks'] as $task ) {
-			$blockWidth = (/* margin-left of next block */
-				(floor((($compactTextEV1SumOfDurationMinutes //Total tasks duration in minutes so far
-					//Duration in minutes of next task
-					+ ( (60 * $options['rows']['ev1']['tasks'][($compactTextEV1i)]['durationHour']) 
-						+ $options['rows']['ev1']['tasks'][($compactTextEV1i)]['durationMinute'] ) )
-					/ $options['eva duration in minutes'])*100))
-				 - (floor(($compactTextEV1SumOfDurationMinutes / $options['eva duration in minutes'])*100)) );
-			$blockMarginLeft = (floor(($compactTextEV1SumOfDurationMinutes / $options['eva duration in minutes'])*100));
+				// Tasks
+				$compactTexti = 1;
+				foreach ( $actor['tasks'] as $task ) {
+					$blockWidth = (/* margin-left of next block */
+						(floor((($compactTextActorSumOfDurationMinutes //Total tasks duration in minutes so far
+							//Duration in minutes of next task
+							+ ( (60 * $actor['tasks'][($compactTexti)]['durationHour']) 
+								+ $actor['tasks'][($compactTexti)]['durationMinute'] ) )
+							/ $options['eva duration in minutes'])*100))
+						 - (floor(($compactTextActorSumOfDurationMinutes / $options['eva duration in minutes'])*100)) );
+					$blockMarginLeft = (floor(($compactTextActorSumOfDurationMinutes / $options['eva duration in minutes'])*100));
 
-			$compactTextEV1 .= 
-			"<div class='cell-border task-block' style='width:"
-			. $blockWidth
-			. "%;"
-			. " margin-left: "
-			. $blockMarginLeft
-			// . (floor(($compactTextEV1SumOfDurationMinutes / $options['eva duration in minutes'])*100)) //sum of widths so far
-			. "%;"
-			. "'>"
-				. "<div class='cell-body'>"
-				//***********************************************
-				//      TASK BLOCKS
-				//***********************************************
-				. "<div style='height: 10px;' class='" . $options['rows']['ev1']['tasks'][$compactTextEV1i]['color'] . "'></div>"
-				. "<div class='responsive-text'>"
-				. $options['rows']['ev1']['tasks'][$compactTextEV1i]['title'] . " "
-		    	. "(" . $options['rows']['ev1']['tasks'][$compactTextEV1i]['durationHour'] . ":"
-		    	. $options['rows']['ev1']['tasks'][$compactTextEV1i]['durationMinute'] . ")"
-				. "</div>"
-				//***********************************************
-				// 
-				//***********************************************
-				. "</div>"
-			. "</div>";
-	    	$compactTextEV1SumOfDurationMinutes += ( (60 * $options['rows']['ev1']['tasks'][$compactTextEV1i]['durationHour']) + $options['rows']['ev1']['tasks'][$compactTextEV1i]['durationMinute'] );
-	    	$compactTextEV1i++;
-	    }
+					$actor['compact text'] .= 
+					"<div class='cell-border task-block' style='width:"
+					. $blockWidth
+					. "%;"
+					. " margin-left: "
+					. $blockMarginLeft
+					. "%;"
+					. "'>"
+						. "<div class='cell-body'>"
+						//***********************************************
+						//      TASK BLOCKS
+						//***********************************************
+						. "<div style='height: 10px;' class='" . $actor['tasks'][$compactTexti]['color'] . "'></div>"
+						. "<div class='responsive-text'>"
+						. $actor['tasks'][$compactTexti]['title'] . " "
+				    	. "(" . $actor['tasks'][$compactTexti]['durationHour'] . ":"
+				    	. $actor['tasks'][$compactTexti]['durationMinute'] . ")"
+						. "</div>"
+						//***********************************************
+						// 
+						//***********************************************
+						. "</div>"
+					. "</div>";
+			    	$compactTextActorSumOfDurationMinutes += ( (60 * $actor['tasks'][$compactTexti]['durationHour']) + $actor['tasks'][$compactTexti]['durationMinute'] );
+			    	$compactTexti++;
+			    }
+			}
+		} unset($actor);
 
-		//Define the EV2 column output
-	    $compactTextEV2SumOfDurationMinutes = 0;
-		$compactTextEV2 = "";
-
-		// Tasks
-		// if( count($options['rows']['ev2']['tasks']) > 0 ){
-			$compactTextEV2i = 1;
-			foreach ( $options['rows']['ev2']['tasks'] as $task ) {
-				$compactTextEV2 .= 
-				"<div class='cell-border task-block' style='width:"
-				// . $options['rows']['ev2']['tasks'][$compactTextEV2i]['durationPercent']
-				. (/* margin-left of next block */
-					(floor((($compactTextEV2SumOfDurationMinutes //Total tasks duration in minutes so far
-						//Duration in minutes of next task
-						+ ( (60 * $options['rows']['ev2']['tasks'][($compactTextEV2i)]['durationHour']) 
-							+ $options['rows']['ev2']['tasks'][($compactTextEV2i)]['durationMinute'] ) )
-						/ $options['eva duration in minutes'])*100))
-					 - (floor(($compactTextEV2SumOfDurationMinutes / $options['eva duration in minutes'])*100)) )
-				. "%;"
-				. " margin-left: "
-				. (floor(($compactTextEV2SumOfDurationMinutes / $options['eva duration in minutes'])*100)) //sum of widths so far
-				. "%;"
-				. "'>"
-					. "<div class='cell-body'>"
-					//***********************************************
-					//      TASK BLOCKS
-					//***********************************************
-					. "<div style='height: 10px;' class='" . $options['rows']['ev2']['tasks'][$compactTextEV2i]['color'] . "'></div>"
-					. "<div class='responsive-text'>"
-					. $options['rows']['ev2']['tasks'][$compactTextEV2i]['title'] . " "
-			    	. "(" . $options['rows']['ev2']['tasks'][$compactTextEV2i]['durationHour'] . ":"
-			    	. $options['rows']['ev2']['tasks'][$compactTextEV2i]['durationMinute'] . ")"
-					. "</div>"
-					//***********************************************
-					// 
-					//***********************************************
-					. "</div>"
-				. "</div>";
-		    	$compactTextEV2SumOfDurationMinutes += ( (60 * $options['rows']['ev2']['tasks'][$compactTextEV2i]['durationHour']) + $options['rows']['ev2']['tasks'][$compactTextEV2i]['durationMinute'] );
-		    	$compactTextEV2i++;
-		    }
-		// }
 
 
 
 		//FULL VERSION CONTENT DEFINITIONS
-		//Define the MMC Coord column output
-		$textIV = "";
-		$textIVi = 1;
-		foreach ( $options['rows']['iv']['tasks'] as $task ) {
-			$textIV .= $textIVi . ". " 
-			. $options['rows']['iv']['tasks'][$textIVi]['title'] . ": "
-	    	. "(" . $options['rows']['iv']['tasks'][$textIVi]['durationHour'] . ":"
-	    	. $options['rows']['iv']['tasks'][$textIVi]['durationMinute'] . ")" . "\r\n\r\n"
-	    	. "Related articles: " . $options['rows']['iv']['tasks'][$textIVi]['relatedArticles'] . "\r\n\r\n"
-	    	. "Details: " . $options['rows']['iv']['tasks'][$textIVi]['details'] . "\r\n\r\n\r\n";
-	    	$textIVi++;
+		//Define the Actor1 column output
+		$textActor1 = "";
+		$textActor1i = 1;
+		foreach ( $options['rows']['actor1']['tasks'] as $task ) {
+			$textActor1 .= $textActor1i . ". " 
+			. $options['rows']['actor1']['tasks'][$textActor1i]['title'] . ": "
+	    	. "(" . $options['rows']['actor1']['tasks'][$textActor1i]['durationHour'] . ":"
+	    	. $options['rows']['actor1']['tasks'][$textActor1i]['durationMinute'] . ")" . "\r\n\r\n"
+	    	. "Related articles: " . $options['rows']['actor1']['tasks'][$textActor1i]['relatedArticles'] . "\r\n\r\n"
+	    	. "Details: " . $options['rows']['actor1']['tasks'][$textActor1i]['details'] . "\r\n\r\n\r\n";
+	    	$textActor1i++;
 	    }
 
-		//Define the EV1 column output
-		$textEV1 = "";
-		$textEV1i = 1;
-		foreach ( $options['rows']['ev1']['tasks'] as $task ) {
-			$textEV1 .= $textEV1i . ". " 
-			. $options['rows']['ev1']['tasks'][$textEV1i]['title'] . ": "
-	    	. "(" . $options['rows']['ev1']['tasks'][$textEV1i]['durationHour'] . ":"
-	    	. $options['rows']['ev1']['tasks'][$textEV1i]['durationMinute'] . ")" . "\r\n\r\n"
-	    	. "Related articles: " . $options['rows']['ev1']['tasks'][$textEV1i]['relatedArticles'] . "\r\n\r\n"
-	    	. "Details: " . $options['rows']['ev1']['tasks'][$textEV1i]['details'] . "\r\n\r\n\r\n";
-	    	$textEV1i++;
+		//Define the Actor2 column output
+		$textActor2 = "";
+		$textActor2i = 1;
+		foreach ( $options['rows']['actor2']['tasks'] as $task ) {
+			$textActor2 .= $textActor2i . ". " 
+			. $options['rows']['actor2']['tasks'][$textActor2i]['title'] . ": "
+	    	. "(" . $options['rows']['actor2']['tasks'][$textActor2i]['durationHour'] . ":"
+	    	. $options['rows']['actor2']['tasks'][$textActor2i]['durationMinute'] . ")" . "\r\n\r\n"
+	    	. "Related articles: " . $options['rows']['actor2']['tasks'][$textActor2i]['relatedArticles'] . "\r\n\r\n"
+	    	. "Details: " . $options['rows']['actor2']['tasks'][$textActor2i]['details'] . "\r\n\r\n\r\n";
+	    	$textActor2i++;
 	    }
 
-		//Define the EV2 column output
-		$textEV2 = "";
-		$textEV2i = 1;
-		foreach ( $options['rows']['ev2']['tasks'] as $task ) {
-			$textEV2 .= $textEV2i . ". " 
-			. $options['rows']['ev2']['tasks'][$textEV2i]['title'] . ": "
-	    	. "(" . $options['rows']['ev2']['tasks'][$textEV2i]['durationHour'] . ":"
-	    	. $options['rows']['ev2']['tasks'][$textEV2i]['durationMinute'] . ")" . "\r\n\r\n"
-	    	. "Related articles: " . $options['rows']['ev2']['tasks'][$textEV2i]['relatedArticles'] . "\r\n\r\n"
-	    	. "Details: " . $options['rows']['ev2']['tasks'][$textEV2i]['details'] . "\r\n\r\n\r\n";
-	    	$textEV2i++;
+		//Define the Actor3 column output
+		$textActor3 = "";
+		$textActor3i = 1;
+		foreach ( $options['rows']['actor3']['tasks'] as $task ) {
+			$textActor3 .= $textActor3i . ". " 
+			. $options['rows']['actor3']['tasks'][$textActor3i]['title'] . ": "
+	    	. "(" . $options['rows']['actor3']['tasks'][$textActor3i]['durationHour'] . ":"
+	    	. $options['rows']['actor3']['tasks'][$textActor3i]['durationMinute'] . ")" . "\r\n\r\n"
+	    	. "Related articles: " . $options['rows']['actor3']['tasks'][$textActor3i]['relatedArticles'] . "\r\n\r\n"
+	    	. "Details: " . $options['rows']['actor3']['tasks'][$textActor3i]['details'] . "\r\n\r\n\r\n";
+	    	$textActor3i++;
 	    }
 
 		//Define the main output
@@ -332,7 +291,7 @@ class SummaryTimeline
 				$text .= $options['eva duration minutes'];
 	    	}
 
-        	$text .=  ")"
+        	$text .= ")"
 			. "</div>"
 
 			// Task dependencies
@@ -358,18 +317,24 @@ class SummaryTimeline
 			. "<div class='container'>"
 
 			// Begin left label column
-				. "<div class='left column'>"
-				. "<div class='summary-timeline-row' style='height: 0px; border-left-width: 0px; '>"
-				. "</div>"
-				. "<div class='tasks summary-timeline-row' style='font-weight: bold;'>"
-					. "EV1"
-				. "</div>"
-				. "<div class='tasks summary-timeline-row' style='font-weight: bold;'>"
-					. "EV2"
-				. "</div>"
+			. "<div class='left column'>"
+			. "<div class='summary-timeline-row' style='height: 0px; border-left-width: 0px; '>"
+			. "</div>";
+
+				foreach ( $options['rows'] as $actor ){ 
+					if( $actor['display in compact view']=='true' && count( $actor['tasks']) > 0 ){
+					// Begin Actor Row
+					$text .= "<div class='tasks summary-timeline-row' style='font-weight: bold;'>"
+
+					. $actor['name']
+
+					// End Actor row
+					. "</div>";
+					}
+				}
 
 			// End left label column
-			. "</div>"
+			$text .= "</div>"
 
 			// Begin main body column
 			. "<div class='right column'>"
@@ -381,29 +346,23 @@ class SummaryTimeline
 			. $compactTimeTickerText
 
 			// End top time labels row
-			. "</div>"
+			. "</div>";
 
-			// Begin EV1 Row
-			. "<div id='summary-timeline-row-EV1' class='summary-timeline-row summary-timeline-tasks-row'>"
+			// Actor Rows
+			foreach ( $options['rows'] as $actor ){ 
+				if( $actor['display in compact view']=='true' && count( $actor['tasks']) > 0 ){
+				// Begin Actor Row
+				$text .= "<div id='summary-timeline-row-" . $actor['name'] . "' class='summary-timeline-row summary-timeline-tasks-row'>"
 
-			.	$compactTextEV1
+				. $actor['compact text']
 
-			// End EV1 row
-			. "</div>"
-
-			// Begin EV2 Row
-			. "<div id='summary-timeline-row-EV2' class='summary-timeline-row summary-timeline-tasks-row'>"
-
-			// Tasks
-			.	$compactTextEV2
-
-			// End EV2 row
-			. "</div>"
-
-			// NEED TO ADD background-color:red(new $variable); ONCE COLOR OPTIONS ARE ADDED
+				// End Actor row
+				. "</div>";
+				}
+			}
 
 			// Begin Footer Row
-			. "<div class='summary-timeline-row'>"
+			$text .= "<div class='summary-timeline-row'>"
 
 			// Footer Entries
 			// This is driven by SummaryTimeline.js
@@ -471,13 +430,13 @@ class SummaryTimeline
 				// . "<div class='summary-timeline-header'>PET</div>"
 			// . "</div>"
 			. "<div class='summary-timeline-column' style='width:33%; margin-left: 0%;'>"
-				. "<div class='summary-timeline-header'>IV</div>"
+				. "<div class='summary-timeline-header'>" . $options['actor 1 name'] . "</div>"
 			. "</div>"
 			. "<div class='summary-timeline-column' style='width:33%; margin-left: 33%;'>"
-				. "<div class='summary-timeline-header'>EV1</div>"
+				. "<div class='summary-timeline-header'>" . $options['actor 2 name'] . "</div>"
 			. "</div>"
 			. "<div class='summary-timeline-column' style='width:34%; margin-left: 66%;'>"
-				. "<div class='summary-timeline-header'>EV2</div>"
+				. "<div class='summary-timeline-header'>" . $options['actor 3 name'] . "</div>"
 			. "</div>"
 			// . "<div class='summary-timeline-column' style='width:5%; margin-left: 95%;'>"
 				// . "<div class='summary-timeline-header'>&nbsp;</div>"
@@ -495,13 +454,13 @@ class SummaryTimeline
 				// . "<div class='summary-timeline-header'>0:00</div>"
 			// . "</div>"
 			. "<div class='summary-timeline-column' style='width:33%; margin-left: 0%;'>"
-				. "<div class='summary-timeline-body'>". $textIV . "</div>"
+				. "<div class='summary-timeline-body'>". $textActor1 . "</div>"
 			. "</div>"
 			. "<div class='summary-timeline-column' style='width:33%; margin-left: 33%;'>"
-				. "<div class='summary-timeline-body'>". $textEV1 . "</div>"
+				. "<div class='summary-timeline-body'>". $textActor2 . "</div>"
 			. "</div>"
 			. "<div class='summary-timeline-column' style='width:34%; margin-left: 66%;'>"
-				. "<div class='summary-timeline-body'>". $textEV2 . "</div>"
+				. "<div class='summary-timeline-body'>". $textActor3 . "</div>"
 			. "</div>"
 			// . "<div class='summary-timeline-column' style='width:5%; margin-left: 95%;'>"
 				// . "<div class='summary-timeline-header'>0:00</div>"
@@ -579,9 +538,11 @@ class SummaryTimeline
 		$taskDetails = array();
 		$options['eva duration in minutes'] = 0;
 		$tasksDurationPercentTotal = array();
-		$tasksDurationPercentTotal['ev1'] = 0;
-		$tasksDurationPercentTotal['ev2'] = 0;
-		$tasksDurationPercentTotal['iv'] = 0; /* This will be removed once the IV section is fixed */
+		$tasksDurationPercentTotal['actor1'] = 0;
+		$tasksDurationPercentTotal['actor2'] = 0;
+		$tasksDurationPercentTotal['actor3'] = 0;
+		// $tasksDurationPercentTotal['ev2'] = 0; DELETE
+		// $tasksDurationPercentTotal['iv'] = 0; /* This will be removed once the IV section is fixed */
 		$options['number of colors designated'] = 0;
 	 
 		foreach ( $args as $arg ) {
@@ -636,27 +597,78 @@ class SummaryTimeline
 				    	$options[$name] = $value;
 				    	$options['eva duration in minutes'] += $value;
 				        break;
-			        // case 'ev1 egress duration minutes':
-			        // case 'ev1 ingress duration minutes':
-				        // $options[$name]['durationMinutes'] = $value;
-				        // $options[$name]['durationPercent'] = floor(($value / $options['eva duration in minutes']) * 100);
-				        // $tasksDurationPercentTotal['ev1'] += $options[$name]['durationPercent'];
-				        // break;
-			        // case 'ev2 egress duration minutes':
-			        // case 'ev2 ingress duration minutes':
-				        // $options[$name]['durationMinutes'] = $value;
-				        // $options[$name]['durationPercent'] = floor(($value / $options['eva duration in minutes']) * 100);
-				        // $tasksDurationPercentTotal['ev2'] += $options[$name]['durationPercent'];
-				        // break;
-				    case 'iv': // NEED TO SPLIT OUT SO THIS DOESN'T HAVE GET-AHEADS ADDED
+			        case 'actor 1 name':
+				        if ( isset($value) &&  $value != "" ) {
+				        	$options[$name] = $value;
+				        	$options['rows']['actor1']['name'] = $value;
+				        } else {
+				        	$options[$name] = 'Actor 1';
+				        	$options['rows']['actor1']['name'] = 'Actor 1';
+				        }
+				        break;
+			        case 'actor 2 name':
+				        if ( isset($value) &&  $value != "" ) {
+				        	$options[$name] = $value;
+				        	$options['rows']['actor2']['name'] = $value;
+				        } else {
+				        	$options[$name] = 'Actor 2';
+				        	$options['rows']['actor2']['name'] = 'Actor 2';
+				        }
+				        break;
+			        case 'actor 3 name':
+				        if ( isset($value) &&  $value != "" ) {
+				        	$options[$name] = $value;
+				        	$options['rows']['actor3']['name'] = $value;
+				        } else {
+				        	$options[$name] = 'Actor 3';
+				        	$options['rows']['actor3']['name'] = 'Actor 3';
+				        }
+				        break;
+			        case 'actor 1 display in compact view':
+				        if ( isset($value) ) {
+				        	$options[$name] = $value;
+				        	$options['rows']['actor1']['display in compact view'] = $value;
+				        }
+				        break;
+			        case 'actor 2 display in compact view':
+				        if ( isset($value) ) {
+				        	$options[$name] = $value;
+				        	$options['rows']['actor2']['display in compact view'] = $value;
+				        }
+				        break;
+			        case 'actor 3 display in compact view':
+				        if ( isset($value) ) {
+				        	$options[$name] = $value;
+				        	$options['rows']['actor3']['display in compact view'] = $value;
+				        }
+				        break;
+			        case 'actor 1 enable get aheads':
+				        if ( isset($value) ) {
+				        	$options[$name] = $value;
+				        	$options['rows']['actor1']['enable get aheads'] = $value;
+				        }
+				        break;
+			        case 'actor 2 enable get aheads':
+				        if ( isset($value) ) {
+				        	$options[$name] = $value;
+				        	$options['rows']['actor2']['enable get aheads'] = $value;
+				        }
+				        break;
+			        case 'actor 3 enable get aheads':
+				        if ( isset($value) ) {
+				        	$options[$name] = $value;
+				        	$options['rows']['actor3']['enable get aheads'] = $value;
+				        }
+				        break;
+				    case 'actor1': // NEED TO SPLIT OUT SO THIS DOESN'T HAVE GET-AHEADS ADDED
 					    // this should have blocks with "Start time" (not duration)
 					    // an option should be included to sync with a task on EV1 and/or EV2
 					    // break;
-				    case 'ev1':
-				    case 'ev2':
+				    case 'actor2':
+				    case 'actor3':
 					    $i = 1; /* Task id */
 						$tasksDuration = 0;
-					    if($value != ""){
+					    if( isset($value) && $value!="" ){
 						    $tempTasks = explode ( '&&&', $value, 2 );
 						    $tasks = explode ( '&&&', $tempTasks[1] );
 						    
@@ -702,7 +714,7 @@ class SummaryTimeline
 					    // $options[$name] = self::extractTasks( $value );
 
 					    // Check if $tasksDuration < $options['duration'] (EVA duration)
-					    if( $tasksDuration < $options['eva duration in minutes'] ){
+					    if( $options['rows'][$name]['enable get aheads']=='true' && $tasksDuration < $options['eva duration in minutes'] ){
 					    	// Need to add "Get Aheads" block to fill timeline gap
 
 					    	// Calculate difference between EVA duration and tasksDuration

@@ -32,9 +32,19 @@ If you use the color feature for a task, briefly describe what that color indica
 <th>Actor 3</th>
 </tr>
 <tr>
-<td style="text-align: center;">Actor name:{{{field|Actor 1 name|size=20|placeholder=IV}}}</td>
-<td style="text-align: center;">Actor name:{{{field|Actor 2 name|size=20|placeholder=EV1}}}</td>
-<td style="text-align: center;">Actor name:{{{field|Actor 3 name|size=20|placeholder=EV2}}}</td>
+<td style="text-align: center;">Actor name:{{{field|Actor 1 name|input type=text|size=10|placeholder=IV}}}</td>
+<td style="text-align: center;">Actor name:{{{field|Actor 2 name|input type=text|size=10|placeholder=EV1}}}</td>
+<td style="text-align: center;">Actor name:{{{field|Actor 3 name|input type=text|size=10|placeholder=EV2}}}</td>
+</tr>
+<tr>
+<td style="text-align: center;">Check to include in compact view:{{{field|Actor 1 Display in Compact View|input type=checkbox|default=no}}}</td>
+<td style="text-align: center;">Check to include in compact view:{{{field|Actor 2 Display in Compact View|input type=checkbox|default=yes}}}</td>
+<td style="text-align: center;">Check to include in compact view:{{{field|Actor 3 Display in Compact View|input type=checkbox|default=yes}}}</td>
+</tr>
+<tr>
+<td style="text-align: center;">Check to enable get-ahead calculator:{{{field|Actor 1 Enable Get Aheads|input type=checkbox|default=no}}}</td>
+<td style="text-align: center;">Check to enable get-ahead calculator:{{{field|Actor 2 Enable Get Aheads|input type=checkbox|default=yes}}}</td>
+<td style="text-align: center;">Check to enable get-ahead calculator:{{{field|Actor 3 Enable Get Aheads|input type=checkbox|default=yes}}}</td>
 </tr>
 <tr>
 <td style="vertical-align: top;">{{{field|Actor 1 Tasks|holds template}}}</td>

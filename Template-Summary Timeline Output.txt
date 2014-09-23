@@ -9,12 +9,6 @@ To force the compact version to a fixed pixel width to fit on a specific page:
 For the full version:
 <pre>{{Summary Timeline Output | Page name of summary timeline to display | Full }}</pre>
 
-<pre>
- | EV1 Egress Duration minutes={{#ask: [[From page::{{{1|}}}]] [[Has text title::Egress]] [[Assigned to::EV1]] |?Duration= |mainlabel=- }}
- | EV2 Egress Duration minutes={{#ask: [[From page::{{{1|}}}]] [[Has text title::Egress]] [[Assigned to::EV2]] |?Duration= |mainlabel=- }}
- | EV1 Ingress Duration minutes={{#ask: [[From page::{{{1|}}}]] [[Has text title::Ingress]] [[Assigned to::EV1]] |?Duration= |mainlabel=- }}
- | EV2 Ingress Duration minutes={{#ask: [[From page::{{{1|}}}]] [[Has text title::Ingress]] [[Assigned to::EV2]] |?Duration= |mainlabel=- }}
-</pre>
 
 </noinclude><includeonly>{{#summary-timeline:
  | format={{{2|}}}
@@ -25,8 +19,16 @@ For the full version:
  | Parent Related Article={{#show: {{{1|}}} | ?Related article }}
  | EVA Duration hours={{#show: {{{1|}}} | ?Duration hour }}
  | EVA Duration minutes={{#show: {{{1|}}} | ?Duration minute }}
- | IV=
- | EV1={{#ask: [[From page::{{{1|}}}]] [[Assigned to::EV1]] 
+ | Actor 1 name = {{#show: {{{1|}}} | ?Actor 1 name }}
+ | Actor 2 name = {{#show: {{{1|}}} | ?Actor 2 name }}
+ | Actor 3 name = {{#show: {{{1|}}} | ?Actor 3 name }}
+ | Actor 1 Display in Compact View = {{#show: {{{1|}}} |?Actor 1 Display in Compact View }}
+ | Actor 2 Display in Compact View = {{#show: {{{1|}}} |?Actor 2 Display in Compact View }}
+ | Actor 3 Display in Compact View = {{#show: {{{1|}}} |?Actor 3 Display in Compact View }}
+ | Actor 1 Enable Get Aheads = {{#show: {{{1|}}} | ?Actor 1 Enable Get Aheads }}
+ | Actor 2 Enable Get Aheads = {{#show: {{{1|}}} | ?Actor 2 Enable Get Aheads }}
+ | Actor 3 Enable Get Aheads = {{#show: {{{1|}}} | ?Actor 3 Enable Get Aheads }}
+ | Actor1={{#ask: [[From page::{{{1|}}}]] [[Assigned to::Actor1]] 
 | ?#=FromPage
 |mainlabel=-
 |?Index=Index
@@ -36,12 +38,13 @@ For the full version:
 |?Depends on#list=Depends on
 |?Related article=Related article
 |?Color=Color
+|?Actor
 |named args=yes
 |format=template
 |template=ST Query Result
 |sort=Assigned to, Index
 }}
- | EV2={{#ask: [[From page::{{{1|}}}]] [[Assigned to::EV2]] 
+ | Actor2={{#ask: [[From page::{{{1|}}}]] [[Assigned to::Actor2]] 
 | ?#=FromPage
 |mainlabel=-
 |?Index=Index
@@ -51,6 +54,23 @@ For the full version:
 |?Depends on#list=Depends on
 |?Related article=Related article
 |?Color=Color
+|?Actor
+|named args=yes
+|format=template
+|template=ST Query Result
+|sort=Assigned to, Index
+}}
+ | Actor3={{#ask: [[From page::{{{1|}}}]] [[Assigned to::Actor3]] 
+| ?#=FromPage
+|mainlabel=-
+|?Index=Index
+|?Has text title=Title
+|?Duration hour=Duration hour
+|?Duration minute=Duration minute
+|?Depends on#list=Depends on
+|?Related article=Related article
+|?Color=Color
+|?Actor
 |named args=yes
 |format=template
 |template=ST Query Result

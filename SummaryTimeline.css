@@ -16,7 +16,7 @@ body {
 }
 .summary-timeline-compact-version .container {
   position: relative;
-  margin: 5px 50px 10px 10px;
+  margin: 5px 115px 10px 10px;
   padding: 0px;
 }
 .summary-timeline-compact-version .color-key {
@@ -36,13 +36,14 @@ body {
   margin:  0px;
 }
 .summary-timeline-compact-version .left {
-    width: 25px;
+    width: 70px;
     position: absolute;
     top: 3px; /*Adjust for borders above*/
     left: 0px;
+    text-align: center;
 }
 .summary-timeline-compact-version .right {
-    margin-left: 25px;
+    margin-left: 70px;
 }
 .summary-timeline-compact-version .summary-timeline-row {
   display: inline-block;

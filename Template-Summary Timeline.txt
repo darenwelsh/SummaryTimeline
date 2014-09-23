@@ -18,13 +18,22 @@ Edit the page to see the template text.
 {{#vardefine:ColorGreenMeaning|{{{Color Green Meaning|}}}}}
 {{#vardefine:ColorPinkMeaning|{{{Color Pink Meaning|}}}}}
 {{#vardefine:ColorPurpleMeaning|{{{Color Purple Meaning|}}}}}
-{{#vardefine:Actor1name|{{{Actor 1 name|}}}}}
-{{#vardefine:Actor2name|{{{Actor 2 name|}}}}}
-{{#vardefine:Actor3name|{{{Actor 3 name|}}}}}
+{{#vardefine:Actor1name|{{{Actor 1 name|Actor 1}}}}}
+{{#vardefine:Actor2name|{{{Actor 2 name|Actor 2}}}}}
+{{#vardefine:Actor3name|{{{Actor 3 name|Actor 3}}}}}
 {{#set: EVA Title = {{{EVA Title|}}} }}
 {{#set: Duration hour = {{{EVA Duration hour|}}} }}
 {{#set: Duration minute = {{{EVA Duration minute|}}} }}
 {{#set: Depends on = {{{Depends on|}}} }}
+{{#set: Actor 1 name = {{{Actor 1 name|Actor 1}}} }}
+{{#set: Actor 2 name = {{{Actor 2 name|Actor 2}}} }}
+{{#set: Actor 3 name = {{{Actor 3 name|Actor 3}}} }}
+{{#set: Actor 1 Display in Compact View = {{{Actor 1 Display in Compact View|}}} }}
+{{#set: Actor 2 Display in Compact View = {{{Actor 2 Display in Compact View|}}} }}
+{{#set: Actor 3 Display in Compact View = {{{Actor 3 Display in Compact View|}}} }}
+{{#set: Actor 1 Enable Get Aheads = {{{Actor 1 Enable Get Aheads|}}} }}
+{{#set: Actor 2 Enable Get Aheads = {{{Actor 2 Enable Get Aheads|}}} }}
+{{#set: Actor 3 Enable Get Aheads = {{{Actor 3 Enable Get Aheads|}}} }}
 
 == Extension Output ==
 To display the output on another page, use the following template:
@@ -60,9 +69,9 @@ Pink:{{{Color Pink Meaning|}}}
 
 Purple:{{{Color Purple Meaning|}}}
 <table><tr>
-<th>Actor 1</th>
-<th>Actor 2</th>
-<th>Actor 3</th>
+<th>{{#var:Actor1name|Actor 1}}</th>
+<th>{{#var:Actor2name|Actor 2}}</th>
+<th>{{#var:Actor3name|Actor 3}}</th>
 </tr>
 <tr>
 <td style="vertical-align: top;">{{{Actor 1 Tasks|}}}</td>
