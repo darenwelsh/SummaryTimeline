@@ -29,7 +29,7 @@ require_once "$IP/extensions/SummaryTimeline/SummaryTimeline.php";
 ```
 
 Import the following two files using the "Import files" feature in MediaWiki:
-* SummaryTimeline-Form&Templates.xml
+* SummaryTimeline-FormCategory&Templates.xml
 * SummaryTimeline-Properties.xml
 
 Additionally, you may import the following file to see some example pages:
@@ -40,6 +40,7 @@ For reference, these pages have been given the following categories to ease in t
 * Form Used for Summary Timeline Extension
 * Template Used for Summary Timeline Extension
 * Property Used for Summary Timeline Extension
+* Category Used for Summary Timeline Extension
 * Summary Timeline Extension Demo Page
 
 =========================

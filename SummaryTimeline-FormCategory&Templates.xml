@@ -507,115 +507,20 @@ Use this format:
     </revision>
   </page>
   <page>
-    <title>Template:Summary Timeline</title>
-    <ns>10</ns>
-    <id>11806</id>
+    <title>Category:Summary Timeline</title>
+    <ns>14</ns>
+    <id>11811</id>
     <revision>
-      <id>53083</id>
-      <parentid>52998</parentid>
-      <timestamp>2014-09-23T17:17:57Z</timestamp>
+      <id>53096</id>
+      <parentid>52374</parentid>
+      <timestamp>2014-09-23T19:16:41Z</timestamp>
       <contributor>
         <username>Lwelsh</username>
         <id>2</id>
       </contributor>
-      <minor/>
-      <comment>Text replacement - &quot;[[Category:Used for Summary Timeline Extension]]&quot; to &quot;[[Category:Template Used for Summary Timeline Extension]]&quot;</comment>
-      <text xml:space="preserve" bytes="3812">&lt;noinclude&gt;
-This is the &quot;Summary Timeline&quot; template.
-It should be called by using the Summary Timeline form.
-
-Edit the page to see the template text.
-
-[[Category:Template Used for Summary Timeline Extension]]
-&lt;/noinclude&gt;&lt;includeonly&gt;
-{{#vardefine:EVATitle|{{{EVA Title|}}}}}
-{{#vardefine:pageRelatedArticle|{{#arraymap:{{{Related article|}}}|,|x|[[x]]}}}}
-{{#vardefine:EVADurationHour|{{{EVA Duration hour|}}}}}
-{{#vardefine:EVADurationMinute|{{{EVA Duration minute|}}}}}
-{{#vardefine:DependsOn|{{{Depends on|}}}}}
-{{#vardefine:ColorGrayMeaning|{{{Color Gray Meaning|}}}}}
-{{#vardefine:ColorRedMeaning|{{{Color Red Meaning|}}}}}
-{{#vardefine:ColorOrangeMeaning|{{{Color Orange Meaning|}}}}}
-{{#vardefine:ColorYellowMeaning|{{{Color Yellow Meaning|}}}}}
-{{#vardefine:ColorBlueMeaning|{{{Color Blue Meaning|}}}}}
-{{#vardefine:ColorGreenMeaning|{{{Color Green Meaning|}}}}}
-{{#vardefine:ColorPinkMeaning|{{{Color Pink Meaning|}}}}}
-{{#vardefine:ColorPurpleMeaning|{{{Color Purple Meaning|}}}}}
-{{#vardefine:Actor1name|{{{Actor 1 name|Actor 1}}}}}
-{{#vardefine:Actor2name|{{{Actor 2 name|Actor 2}}}}}
-{{#vardefine:Actor3name|{{{Actor 3 name|Actor 3}}}}}
-{{#set: EVA Title = {{{EVA Title|}}} }}
-{{#set: Duration hour = {{{EVA Duration hour|}}} }}
-{{#set: Duration minute = {{{EVA Duration minute|}}} }}
-{{#set: Depends on = {{{Depends on|}}} }}
-{{#set: Actor 1 name = {{{Actor 1 name|Actor 1}}} }}
-{{#set: Actor 2 name = {{{Actor 2 name|Actor 2}}} }}
-{{#set: Actor 3 name = {{{Actor 3 name|Actor 3}}} }}
-{{#set: Actor 1 Display in Compact View = {{{Actor 1 Display in Compact View|}}} }}
-{{#set: Actor 2 Display in Compact View = {{{Actor 2 Display in Compact View|}}} }}
-{{#set: Actor 3 Display in Compact View = {{{Actor 3 Display in Compact View|}}} }}
-{{#set: Actor 1 Enable Get Aheads = {{{Actor 1 Enable Get Aheads|}}} }}
-{{#set: Actor 2 Enable Get Aheads = {{{Actor 2 Enable Get Aheads|}}} }}
-{{#set: Actor 3 Enable Get Aheads = {{{Actor 3 Enable Get Aheads|}}} }}
-
-== Extension Output ==
-To display the output on another page, use the following template:
-
-Compact version: &lt;nowiki&gt;{{Summary Timeline Output | &lt;/nowiki&gt;{{PAGENAME}}&lt;nowiki&gt; }}&lt;/nowiki&gt;
-
-Compact version with fixed pixel width (change &quot;400&quot;): &lt;nowiki&gt;{{Summary Timeline Output | &lt;/nowiki&gt;{{PAGENAME}}&lt;nowiki&gt; | Compact | 400 }}&lt;/nowiki&gt;
-
-Full version: &lt;nowiki&gt;{{Summary Timeline Output | &lt;/nowiki&gt;{{PAGENAME}}&lt;nowiki&gt; | Full }}&lt;/nowiki&gt;
-
-{{Summary Timeline Output | {{PAGENAME}} }}
-
-
-{{Summary Timeline Output | {{PAGENAME}} | Full }}
-
-
-== Raw Template Output ==
-{{{EVA Title|}}} ({{{EVA Duration hour|}}}:{{{EVA Duration minute|}}})
-
-Gray:{{{Color Gray Meaning|}}}
-
-Red: {{{Color Red Meaning|}}}
-
-Orange:{{{Color Orange Meaning|}}}
-
-Yellow:{{{Color Yellow Meaning|}}}
-
-Blue:{{{Color Blue Meaning|}}}
-
-Green:{{{Color Green Meaning|}}}
-
-Pink:{{{Color Pink Meaning|}}}
-
-Purple:{{{Color Purple Meaning|}}}
-&lt;table&gt;&lt;tr&gt;
-&lt;th&gt;{{#var:Actor1name|Actor 1}}&lt;/th&gt;
-&lt;th&gt;{{#var:Actor2name|Actor 2}}&lt;/th&gt;
-&lt;th&gt;{{#var:Actor3name|Actor 3}}&lt;/th&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;vertical-align: top;&quot;&gt;{{{Actor 1 Tasks|}}}&lt;/td&gt;
-&lt;td style=&quot;vertical-align: top;&quot;&gt;{{{Actor 2 Tasks|}}}&lt;/td&gt;
-&lt;td style=&quot;vertical-align: top;&quot;&gt;{{{Actor 3 Tasks|}}}&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/table&gt;
-
-{{#arraymap:{{{Depends on|}}}|,|x|[[Depends on::x]]}}
-{{#arraymap:{{{Related article|}}}|,|x|[[Related article::x]]}}
-{{#set: Color Gray Meaning={{{Color Gray Meaning|}}}}}
-{{#set: Color Red Meaning={{{Color Red Meaning|}}}}}
-{{#set: Color Orange Meaning={{{Color Orange Meaning|}}}}}
-{{#set: Color Yellow Meaning={{{Color Yellow Meaning|}}}}}
-{{#set: Color Blue Meaning={{{Color Blue Meaning|}}}}}
-{{#set: Color Green Meaning={{{Color Green Meaning|}}}}}
-{{#set: Color Pink Meaning={{{Color Pink Meaning|}}}}}
-{{#set: Color Purple Meaning={{{Color Purple Meaning|}}}}}
-
-[[Category:Summary Timeline]]&lt;/includeonly&gt;</text>
-      <sha1>4fg6doucjr9eizb7t8jsdn2bma48shk</sha1>
+      <text xml:space="preserve" bytes="96">[[Has default form::Summary Timeline]]
+[[Category:Category Used for Summary Timeline Extension]]</text>
+      <sha1>jmlpyocbq63xrgav0purfxgctmrinr8</sha1>
       <model>wikitext</model>
       <format>text/x-wiki</format>
     </revision>
