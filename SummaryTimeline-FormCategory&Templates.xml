@@ -38,20 +38,22 @@
     <ns>106</ns>
     <id>11810</id>
     <revision>
-      <id>53100</id>
-      <parentid>53064</parentid>
-      <timestamp>2014-09-23T20:03:17Z</timestamp>
+      <id>53136</id>
+      <parentid>53100</parentid>
+      <timestamp>2014-09-23T22:23:56Z</timestamp>
       <contributor>
         <username>Lwelsh</username>
         <id>2</id>
       </contributor>
-      <text xml:space="preserve" bytes="6117">&lt;includeonly&gt;{{{info|page name=&lt;Summary Timeline[EVA Title]&gt; Summary Timeline}}}
+      <text xml:space="preserve" bytes="6639">&lt;includeonly&gt;{{{info|page name=&lt;Summary Timeline[EVA Title]&gt; Summary Timeline}}}
 &lt;div id=&quot;wikiPreview&quot; style=&quot;display: none; padding-bottom: 25px; margin-bottom: 25px; border-bottom: 1px solid #AAAAAA;&quot;&gt;&lt;/div&gt;
 {{{for template|Summary Timeline}}}
 
+The output of this form will be saved to a page entitled &quot;&lt;EVA Title&gt; Summary Timeline&quot; (it will add &quot;Summary Timeline&quot; to the end). Use something that is not tied to a date like &quot;Lab LTL IFHX R&amp;R EVA 1&quot; or &quot;EVA Ice Cream Sandwich&quot;. You may also choose to create multiple versions of your timeline during the development phase such as &quot;EVA Ice Cream Sandwich Version 1&quot; and &quot;EVA Ice Cream Sandwich Version 2&quot;.
+
 '''EVA Title:''' {{{field|EVA Title|input type=text|size=50|placeholder=FHRC EVA 1 Version B}}}
 
-The output of this form will be saved to a page entitled &quot;&lt;Your EVA Title&gt; Summary Timeline&quot; (it will add &quot;Summary Timeline&quot;).
+List any dependencies in the next field. If this EVA is dependent on the completion of a prior EVA, list that EVA. If it depends on hardware launching on a vehicle (such as [[SpX-5]]), list the vehicle mission and the hardware page name.
 
 '''Depends on''': {{{field|Depends on|class=full-width no-links-allowed|values from namespace=Main|list|placeholder=SpX-5, US EVA 27}}}
 
@@ -169,7 +171,7 @@ if a page with that name already exists, you will be sent to a form to edit that
 
 [[Category:Form Used for Summary Timeline Extension]]
 &lt;/noinclude&gt;</text>
-      <sha1>3dj7j8hyiw38gdmuwntoye0jatahjm2</sha1>
+      <sha1>jp34h31f7lgg1g57w9tcunvp8pav0pe</sha1>
       <model>wikitext</model>
       <format>text/x-wiki</format>
     </revision>
@@ -288,39 +290,17 @@ For the full version:
     <ns>10</ns>
     <id>11807</id>
     <revision>
-      <id>53061</id>
-      <parentid>52999</parentid>
-      <timestamp>2014-09-23T17:17:14Z</timestamp>
+      <id>53108</id>
+      <parentid>53106</parentid>
+      <timestamp>2014-09-23T21:37:33Z</timestamp>
       <contributor>
         <username>Lwelsh</username>
         <id>2</id>
       </contributor>
-      <minor/>
-      <comment>Text replacement - &quot;[[Category:Used for Summary Timeline Extension]]&quot; to &quot;[[Category:Template Used for Summary Timeline Extension]]&quot;</comment>
-      <text xml:space="preserve" bytes="1265">&lt;noinclude&gt;
-Use this format:
-&lt;pre&gt;
-{{Actor 1 Task
-|Title=
-|Duration=
-|Color=
-|Related articles=
-|Free text=
-}}
+      <text xml:space="preserve" bytes="789">&lt;noinclude&gt;
+This template is used with the Summary Timeline form.
 
-{{Task
-|Actor={{{Actor 1 name|}}}
-|Title={{{Title|}}}
-|Duration hour={{{Duration hour|}}}
-|Duration minute={{{Duration minute|}}}
-|Color={{{Color|}}}
-|Related article={{{Related article|}}}
-|Free text={{{Free text|}}}
-}}
-
-&lt;/pre&gt;
-
-[[Category:Template Used for Summary Timeline Extension]]
+[[Category:Used for Summary Timeline Extension]]
 &lt;/noinclude&gt;&lt;includeonly&gt;{{#set_internal:Task
 |Index={{#counter: Actor1 }}
 |Actor={{#var:Actor1name}}
@@ -337,11 +317,8 @@ Use this format:
 |EVA title={{#var:EVATitle}}
 |Parent related article#list={{#var:pageRelatedArticle}}
 |EVA Duration={{#var:EVADurationHour}}:{{#var:EVADurationMinute}}
-}}
-&lt;!-- {{{Title|}}} ({{{Duration hour|}}}:{{{Duration minute|}}}) --&gt;
-&amp;&amp;&amp;{{{Title|}}}@@@{{{Duration hour|}}}@@@{{{Duration minute|}}}@@@{{{Related article|}}}@@@{{{Color|}}}@@@{{{Free text|}}}
-&lt;/includeonly&gt;</text>
-      <sha1>s54qmii6bce0cuktxpa3i09s3tarqlx</sha1>
+}}&lt;/includeonly&gt;</text>
+      <sha1>0pepm8u5sped1pwg198rmrqhzmiz26z</sha1>
       <model>wikitext</model>
       <format>text/x-wiki</format>
     </revision>
@@ -375,37 +352,15 @@ Use this format:
     <ns>10</ns>
     <id>11808</id>
     <revision>
-      <id>53077</id>
-      <parentid>53000</parentid>
-      <timestamp>2014-09-23T17:17:42Z</timestamp>
+      <id>53109</id>
+      <parentid>53077</parentid>
+      <timestamp>2014-09-23T21:38:00Z</timestamp>
       <contributor>
         <username>Lwelsh</username>
         <id>2</id>
       </contributor>
-      <minor/>
-      <comment>Text replacement - &quot;[[Category:Used for Summary Timeline Extension]]&quot; to &quot;[[Category:Template Used for Summary Timeline Extension]]&quot;</comment>
-      <text xml:space="preserve" bytes="1619">&lt;noinclude&gt;
-Use this format:
-&lt;pre&gt;
-{{EV1 Task
-|Title=
-|Duration=
-|Color=
-|Related articles=
-|Free text=
-}}
-
-{{Task
-|Actor=EV1
-|Title={{{Title|}}}
-|Duration hour={{{Duration hour|}}}
-|Duration minute={{{Duration minute|}}}
-|Color={{{Color|}}}
-|Related article={{{Related article|}}}
-|Free text={{{Free text|}}}
-}}
-
-&lt;/pre&gt;
+      <text xml:space="preserve" bytes="1180">&lt;noinclude&gt;
+This template is used with the Summary Timeline form.
 
 [[Category:Template Used for Summary Timeline Extension]]
 &lt;/noinclude&gt;&lt;includeonly&gt;{{#set_internal:Task
@@ -432,11 +387,8 @@ Use this format:
 |Color Green Meaning={{#var:ColorGreenMeaning}}
 |Color Pink Meaning={{#var:ColorPinkMeaning}}
 |Color Purple Meaning={{#var:ColorPurpleMeaning}}
-}}
-{{{Title|}}} ({{{Duration hour|}}}:{{{Duration minute|}}}) 
-&amp;&amp;&amp;{{{Title|}}}@@@{{{Duration hour|}}}@@@{{{Duration minute|}}}@@@{{{Related article|}}}@@@{{{Color|}}}@@@{{{Free text|}}}
-&lt;/includeonly&gt;</text>
-      <sha1>ihxe9eux5mrpuzrutv0erdisr0q7ih1</sha1>
+}}&lt;/includeonly&gt;</text>
+      <sha1>axo9h25gipugdu3riz2p0v11tcn74z4</sha1>
       <model>wikitext</model>
       <format>text/x-wiki</format>
     </revision>
@@ -446,37 +398,15 @@ Use this format:
     <ns>10</ns>
     <id>11809</id>
     <revision>
-      <id>53082</id>
-      <parentid>53001</parentid>
-      <timestamp>2014-09-23T17:17:51Z</timestamp>
+      <id>53112</id>
+      <parentid>53082</parentid>
+      <timestamp>2014-09-23T21:41:41Z</timestamp>
       <contributor>
         <username>Lwelsh</username>
         <id>2</id>
       </contributor>
-      <minor/>
-      <comment>Text replacement - &quot;[[Category:Used for Summary Timeline Extension]]&quot; to &quot;[[Category:Template Used for Summary Timeline Extension]]&quot;</comment>
-      <text xml:space="preserve" bytes="1245">&lt;noinclude&gt;
-Use this format:
-&lt;pre&gt;
-{{EV1 Task
-|Title=
-|Duration=
-|Color=
-|Related articles=
-|Free text=
-}}
-
-{{Task
-|Actor=EV2
-|Title={{{Title|}}}
-|Duration hour={{{Duration hour|}}}
-|Duration minute={{{Duration minute|}}}
-|Color={{{Color|}}}
-|Related article={{{Related article|}}}
-|Free text={{{Free text|}}}
-}}
-
-&lt;/pre&gt;
+      <text xml:space="preserve" bytes="798">&lt;noinclude&gt;
+This template is used with the Summary Timeline form.
 
 [[Category:Template Used for Summary Timeline Extension]]
 &lt;/noinclude&gt;&lt;includeonly&gt;{{#set_internal:Task
@@ -495,11 +425,8 @@ Use this format:
 |EVA title={{#var:EVATitle}}
 |Parent related article#list={{#var:pageRelatedArticle}}
 |EVA Duration={{#var:EVADurationHour}}:{{#var:EVADurationMinute}}
-}}
-&lt;!-- {{{Title|}}} ({{{Duration hour|}}}:{{{Duration minute|}}}) --&gt;
-&amp;&amp;&amp;{{{Title|}}}@@@{{{Duration hour|}}}@@@{{{Duration minute|}}}@@@{{{Related article|}}}@@@{{{Color|}}}@@@{{{Free text|}}}
-&lt;/includeonly&gt;</text>
-      <sha1>q0d306qxxjfg7ph4jyw26qgdmq7g2mw</sha1>
+}}&lt;/includeonly&gt;</text>
+      <sha1>3guk434s3w0vz80zcvfju5tsdu329iv</sha1>
       <model>wikitext</model>
       <format>text/x-wiki</format>
     </revision>

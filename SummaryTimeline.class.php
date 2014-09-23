@@ -18,20 +18,18 @@
 Considerations for improvement
 
 STUFF TO DO BEFORE INITIAL RELEASE:
-* Test out non-EV timelines like SSRMS or launch
-
 * Property:Depends on - should this only allow values from SIO-Task and Mission? Probably not.
 *    Task depends on can be a list of 
-*     {{EV1}}##{{TASK NAME}},
-*     {{EVA NAME}}##{{EV2}}##{{TASK NAME}},
-*     {{MISSION NAME}}##{{HARDWARE NAME}}
+*     Actor1##{{TASK NAME}},
+*     {{EVA NAME}}##{{EV2}}##{{TASK NAME}}, //[[SSU EVA]] ([[SSU EVA Summary Timeline]])
+*     {{MISSION NAME}}##{{HARDWARE NAME}}  // Manifest
 
 
 
 ------
 
 COMPACT OUTPUT:
-* Add small color key block to footer elements (JS)
+* Get-Aheads is currently always second-to-last. This doesn't work for non-EVA (w/ Ingress) timelines
 * jQuery hover to highlight task block and footer entry on mouseover
 ** Popup (on hover) shows Details
 * Try rounding biggest container div to nearest 5px to help rounding issues
