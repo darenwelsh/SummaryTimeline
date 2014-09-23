@@ -294,12 +294,12 @@ class SummaryTimeline
 
 			// Task dependencies
 			. "<div style='position: relative; margin: 0px 10px 0px 10px;
-				font-size: 75%;'>Dependencies: " . $options['depends on']
+				font-size: 100%;'>Dependencies: " . $options['depends on']
 			. "</div>"
 
 			// EVA related articles
 			. "<div style='position: relative; margin: 0px 10px 0px 10px;
-				font-size: 75%;'>Related articles: " . $options['parent related article']
+				font-size: 100%;'>Related articles: " . $options['parent related article']
 			. "</div>"
 
 			// Begin main div

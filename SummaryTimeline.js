@@ -63,7 +63,7 @@ function writeFooter(){
 function evaluateBlockText() {
   $(".responsive-text").each( function(i,e){ 
     var text = $(e).text(); //Text in div "FHRC Prep (0:15)"
-    var textWidth = getTextWidth(text, "8pt arial").width; //Width of entire text
+    var textWidth = getTextWidth(text, "10.5pt arial").width; //Width of entire text
     var divWidth = $(e).width(); //Width of div
     var textWords = text.split(" "); //split the text into individual words
     var textWordWidth = []; //Width of each word
@@ -73,8 +73,8 @@ function evaluateBlockText() {
     //get width of each word
     textWords.forEach(function(word){
       //compare wordWidth to divWidth and textHeight to cellHeight
-      textWordWidth[i] = getTextWidth(word, "8pt arial").width;
-      if(textWordWidth[i] > divWidth || textHeight > cellHeight){
+      textWordWidth[i] = getTextWidth(word, "10.5pt arial").width;
+      if(textWordWidth[i] > divWidth || textHeight > (.8 * cellHeight)){ // .8 multiplier for cellHeight to fix overlap issue
         var blockID = $(e).attr('summary-timeline-row-block-id');
         var blockIDSplit = blockID.split("-",2) //This could be problematic if someone uses "-"in the row title
         var blockRowLabel = blockIDSplit[0];
@@ -92,7 +92,7 @@ function reEvaluateBlockText() {
   $(".task-block").each (function (index,element){
     $(element).find(".responsive-text").each( function(i,e){ 
       var text = $(e).text(); //Text in div "FHRC Prep (0:15)"
-      var textWidth = getTextWidth(text, "8pt arial").width; //Width of entire text
+      var textWidth = getTextWidth(text, "9pt arial").width; //Width of entire text
       var divWidth = $(e).width(); //Width of div
       var textWords = text.split(" "); //split the text into individual words
       var textWordWidth = []; //Width of each word
@@ -100,7 +100,7 @@ function reEvaluateBlockText() {
       //get width of each word
       textWords.forEach(function(word){
         //compare wordWidth to divWidth
-        textWordWidth[i] = getTextWidth(word, "8pt arial").width;
+        textWordWidth[i] = getTextWidth(word, "9pt arial").width;
         if(textWordWidth[i] > divWidth){ 
           //Make div width bigger
           var newWidth = $(element).width() + 1;

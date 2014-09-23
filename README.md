@@ -38,9 +38,9 @@ Additionally, you may import the following file to see some example pages:
 For reference, these pages have been given the following categories to ease in the export process:
 
 * Form Used for Summary Timeline Extension
+* Category Used for Summary Timeline Extension
 * Template Used for Summary Timeline Extension
 * Property Used for Summary Timeline Extension
-* Category Used for Summary Timeline Extension
 * Summary Timeline Extension Demo Page
 
 =========================
