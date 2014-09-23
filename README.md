@@ -17,6 +17,30 @@ other extensions
 form, templates, properties
 
 =========================
+INSTALLATION
+=========================
+
+Download the extension files to your extensions directory. Add the following line to LocalSettings.php:
+
+```html
+require_once "$IP/extensions/SummaryTimeline/SummaryTimeline.php";
+```
+
+Import the following two files using the "Import files" feature in MediaWiki:
+* SummaryTimeline-Form&Templates.xml
+* SummaryTimeline-Properties.xml
+
+Additionally, you may import the following file to see some example pages:
+* SummaryTimeline-ExtensionDemoPages.xml
+
+For reference, these pages have been given the following categories to ease in the export process:
+
+* Form Used for Summary Timeline Extension
+* Template Used for Summary Timeline Extension
+* Property Used for Summary Timeline Extension
+* Summary Timeline Extension Demo Page
+
+=========================
 ENTERING DATA
 =========================
 

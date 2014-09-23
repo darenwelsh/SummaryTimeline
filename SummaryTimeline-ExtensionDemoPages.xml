@@ -1,0 +1,1794 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>EVA Wiki</sitename>
+    <base>https://mod-dev2.jsc.nasa.gov/wiki/EVA/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.23.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">EVA Wiki</namespace>
+      <namespace key="5" case="first-letter">EVA Wiki talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="102" case="first-letter">Property</namespace>
+      <namespace key="103" case="first-letter">Property talk</namespace>
+      <namespace key="104" case="first-letter">Type</namespace>
+      <namespace key="105" case="first-letter">Type talk</namespace>
+      <namespace key="106" case="first-letter">Form</namespace>
+      <namespace key="107" case="first-letter">Form talk</namespace>
+      <namespace key="108" case="first-letter">Concept</namespace>
+      <namespace key="109" case="first-letter">Concept talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>USOS Reconfig EVAs</title>
+    <ns>0</ns>
+    <id>11852</id>
+    <revision>
+      <id>53040</id>
+      <parentid>52996</parentid>
+      <timestamp>2014-09-23T16:35:49Z</timestamp>
+      <contributor>
+        <username>Lwelsh</username>
+        <id>2</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1051">'''[[SSRMS]]: [[PM]] [[FRAM]] Relocate from [[ESP-3]] to [[ESP-2]]''': Completed
+
+{{Summary Timeline Output | 3A SSU &amp; PMM Prep EVA Summary Timeline }}
+
+{{Summary Timeline Output | PM Relocate / MTRA Install EVA Summary Timeline }}
+
+'''[[SpX-5]]: [[IDA Cable Bag A]]'''
+
+{{Summary Timeline Output | IDA 1 Deploy EVA Summary Timeline }}
+
+{{Summary Timeline Output | IDA 1 Route &amp; IDA 2 Deploy Summary Timeline }}
+
+{{Summary Timeline Output | C2V2 Installation EVA Summary Timeline }}
+
+{{Summary Timeline Output | IDA 1 Installation &amp; Outfitting EVA Summary Timeline }}
+
+'''[[SSRMS]]: [[BEAM]] Arrival on [[SpX-8]]'''
+
+{{Summary Timeline Output | PMA 3 &amp; PMM Prep EVA Summary Timeline }}
+
+'''[[SSRMS]]: [[PMM]] Relocate From [[Node 1]] Nadir to [[Node 3]] Forward '''
+
+'''[[SSRMS]]: [[PMA 3]] Relocate From [[Node 3]] Port to [[Node 2]] Zenith'''
+
+{{Summary Timeline Output | PMA 3 Connections EVA Summary Timeline }}
+
+{{Summary Timeline Output | IDA 2 Installation &amp; Outfitting EVA Summary Timeline }}
+
+[[Category:Summary Timeline Extension Demo Page]]</text>
+      <sha1>imxvlo5333he4yv3uozoqqdto9owzkc</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>3A SSU &amp; PMM Prep EVA Summary Timeline</title>
+    <ns>0</ns>
+    <id>11850</id>
+    <revision>
+      <id>53043</id>
+      <parentid>53041</parentid>
+      <timestamp>2014-09-23T16:39:02Z</timestamp>
+      <contributor>
+        <username>Lwelsh</username>
+        <id>2</id>
+      </contributor>
+      <text xml:space="preserve" bytes="2920">{{Summary Timeline
+|EVA Title=3A SSU &amp; PMM Prep EVA
+|Depends on=
+|Related article=SSU, PMM
+|EVA Duration hour=6
+|EVA Duration minute=30
+|Color Red Meaning=Eclipse Constrained SSU Tasks
+|Color Orange Meaning=SSU
+|Color Yellow Meaning=
+|Color Green Meaning=PMM Prep
+|Color Blue Meaning=
+|Color Purple Meaning=
+|Color Pink Meaning=
+|Color Gray Meaning=
+|Actor 1 name=MCC
+|Actor 2 name=EV1
+|Actor 3 name=EV2
+|Actor 1 Display in Compact View=No
+|Actor 2 Display in Compact View=Yes
+|Actor 3 Display in Compact View=Yes
+|Actor 1 Enable Get Aheads=No
+|Actor 2 Enable Get Aheads=Yes
+|Actor 3 Enable Get Aheads=Yes
+|Actor 1 Tasks={{Actor 1 Task
+|Title=Inhibit Pad
+|Duration hour=0
+|Duration minute=10
+|Color=gray
+|Related article=
+|Free text=Reference [[JEDI]] Message ...
+}}
+|Actor 2 Tasks={{Actor 2 Task
+|Title=Egress
+|Duration hour=0
+|Duration minute=30
+|Color=gray
+|Related article=
+|Free text=
+}}{{Actor 2 Task
+|Title=SSU Set Up
+|Duration hour=1
+|Duration minute=00
+|Color=orange
+|Related article=
+|Free text=
+}}{{Actor 2 Task
+|Title=SSU R&amp;R
+|Duration hour=0
+|Duration minute=30
+|Color=red
+|Related article=
+|Free text=
+}}{{Actor 2 Task
+|Title=SSU Worksite Cleanup
+|Duration hour=0
+|Duration minute=15
+|Color=orange
+|Related article=
+|Free text=
+}}{{Actor 2 Task
+|Title=APFR/TS Relocate
+|Duration hour=0
+|Duration minute=30
+|Color=green
+|Related article=
+|Free text=
+}}{{Actor 2 Task
+|Title=CP07 Camera Group / Stanchion Removal
+|Duration hour=1
+|Duration minute=15
+|Color=green
+|Related article=
+|Free text=
+}}{{Actor 2 Task
+|Title=WETA Relocate CP08 to CP11
+|Duration hour=0
+|Duration minute=45
+|Color=green
+|Related article=
+|Free text=
+}}{{Actor 2 Task
+|Title=Camera Group Install CP08
+|Duration hour=0
+|Duration minute=45
+|Color=green
+|Related article=
+|Free text=
+}}{{Actor 2 Task
+|Title=Ingress
+|Duration hour=0
+|Duration minute=30
+|Color=gray
+|Related article=
+|Free text=
+}}
+|Actor 3 Tasks={{Actor 3 Task
+|Title=Egress
+|Duration hour=0
+|Duration minute=30
+|Color=gray
+|Related article=
+|Free text=
+}}{{Actor 3 Task
+|Title=SSU Set Up
+|Duration hour=1
+|Duration minute=00
+|Color=orange
+|Related article=
+|Free text=
+}}{{Actor 3 Task
+|Title=SSU R&amp;R
+|Duration hour=0
+|Duration minute=30
+|Color=red
+|Related article=
+|Free text=
+}}{{Actor 3 Task
+|Title=SSU Worksite Cleanup
+|Duration hour=0
+|Duration minute=15
+|Color=orange
+|Related article=
+|Free text=
+}}{{Actor 3 Task
+|Title=APFR/TS Relocate
+|Duration hour=0
+|Duration minute=30
+|Color=green
+|Related article=
+|Free text=
+}}{{Actor 3 Task
+|Title=CP07 Camera Group / Stanchion Removal
+|Duration hour=1
+|Duration minute=15
+|Color=green
+|Related article=
+|Free text=
+}}{{Actor 3 Task
+|Title=Stanchion/WETA Relocate to CP11
+|Duration hour=1
+|Duration minute=30
+|Color=green
+|Related article=
+|Free text=
+}}{{Actor 3 Task
+|Title=Ingress
+|Duration hour=0
+|Duration minute=30
+|Color=gray
+|Related article=
+|Free text=
+}}
+}}
+[[Category:Summary Timeline Extension Demo Page]]</text>
+      <sha1>l32g6cfa9mnbtm3r90pek18qo2qtxlo</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>PM Relocate / MTRA Install EVA Summary Timeline</title>
+    <ns>0</ns>
+    <id>11851</id>
+    <revision>
+      <id>53044</id>
+      <parentid>52987</parentid>
+      <timestamp>2014-09-23T16:39:27Z</timestamp>
+      <contributor>
+        <username>Lwelsh</username>
+        <id>2</id>
+      </contributor>
+      <text xml:space="preserve" bytes="3237">{{Summary Timeline
+|EVA Title=PM Relocate / MTRA Install EVA
+|Depends on=PM FRAM Relocate from ESP-3 to ESP-2
+|Related article=PM, MTRA,
+|EVA Duration hour=6
+|EVA Duration minute=30
+|Color Red Meaning=
+|Color Orange Meaning=MTRA
+|Color Yellow Meaning=
+|Color Green Meaning=
+|Color Blue Meaning=PM
+|Color Purple Meaning=
+|Color Pink Meaning=
+|Color Gray Meaning=
+|Actor 1 name=
+|Actor 2 name=EV1
+|Actor 3 name=EV2
+|Actor 1 Display in Compact View=No
+|Actor 2 Display in Compact View=Yes
+|Actor 3 Display in Compact View=Yes
+|Actor 1 Enable Get Aheads=No
+|Actor 2 Enable Get Aheads=Yes
+|Actor 3 Enable Get Aheads=Yes
+|Actor 1 Tasks=
+|Actor 2 Tasks={{Actor 2 Task
+|Title=Egress
+|Duration hour=0
+|Duration minute=35
+|Color=gray
+|Related article=
+|Free text=
+}}{{Actor 2 Task
+|Title=Prep MLI Tent on ESP-2
+|Duration hour=0
+|Duration minute=30
+|Color=blue
+|Related article=ESP-2
+|Free text=Get-Ahead: Install Handrail Clamp on ESP-2 HR 8012
+}}{{Actor 2 Task
+|Title=MTRA Bag Temp Stow
+|Duration hour=0
+|Duration minute=25
+|Color=orange
+|Related article=MTRA
+|Free text=Retrieve MTRA Bag &amp; Cable Bag and stow zenith of MT or on CETA Cart
+}}{{Actor 2 Task
+|Title=Relocate EV2's ST to ESP-2
+|Duration hour=0
+|Duration minute=10
+|Color=blue
+|Related article=ST
+|Free text=
+}}{{Actor 2 Task
+|Title=Failed Pump Module Install on ESP-2
+|Duration hour=1
+|Duration minute=10
+|Color=blue
+|Related article=
+|Free text=
+}}{{Actor 2 Task
+|Title=AGB Stow
+|Duration hour=0
+|Duration minute=25
+|Color=blue
+|Related article=AGB
+|Free text=
+}}{{Actor 2 Task
+|Title=Failed PM Cleanup
+|Duration hour=0
+|Duration minute=30
+|Color=blue
+|Related article=
+|Free text=
+}}{{Actor 2 Task
+|Title=MTRA Box Installation
+|Duration hour=2
+|Duration minute=00
+|Color=orange
+|Related article=
+|Free text=MTRA Box Install
+
+Route W2/W4 Cable
+
+Mate W4 Connections
+}}{{Actor 2 Task
+|Title=Ingress
+|Duration hour=0
+|Duration minute=45
+|Color=gray
+|Related article=
+|Free text=
+}}
+|Actor 3 Tasks={{Actor 3 Task
+|Title=Egress
+|Duration hour=0
+|Duration minute=35
+|Color=gray
+|Related article=
+|Free text=
+}}{{Actor 3 Task
+|Title=SSRMS Setup
+|Duration hour=0
+|Duration minute=40
+|Color=blue
+|Related article=SSRMS
+|Free text=WIF Adapter Install
+}}{{Actor 3 Task
+|Title=Failed Pump Module Retrieve From POA
+|Duration hour=0
+|Duration minute=30
+|Color=blue
+|Related article=POA
+|Free text=
+}}{{Actor 3 Task
+|Title=Failed Pump Module Install on ESP-2
+|Duration hour=1
+|Duration minute=5
+|Color=blue
+|Related article=ESP-2
+|Free text=
+}}{{Actor 3 Task
+|Title=AGB Stow
+|Duration hour=0
+|Duration minute=20
+|Color=blue
+|Related article=AGB
+|Free text=
+}}{{Actor 3 Task
+|Title=ETVCG CP13 Light R&amp;R
+|Duration hour=0
+|Duration minute=50
+|Color=orange
+|Related article=ETVCG
+|Free text=
+}}{{Actor 3 Task
+|Title=SSRMS Cleanup
+|Duration hour=0
+|Duration minute=30
+|Color=blue
+|Related article=SSRMS
+|Free text=
+}}{{Actor 3 Task
+|Title=MTRA Box Installation
+|Duration hour=1
+|Duration minute=15
+|Color=orange
+|Related article=MTRA
+|Free text=Route MTRA W1/W3 Cable
+
+Mate Nadir Connections
+
+Mate Box Connections
+}}{{Actor 3 Task
+|Title=Ingress
+|Duration hour=0
+|Duration minute=45
+|Color=gray
+|Related article=
+|Free text=
+}}
+|Color White Meaning=
+}}
+[[Category:Summary Timeline Extension Demo Page]]</text>
+      <sha1>cnqternq27e1faijahe3e1v2ukp4anc</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>IDA 1 Deploy EVA Summary Timeline</title>
+    <ns>0</ns>
+    <id>11853</id>
+    <revision>
+      <id>53045</id>
+      <parentid>52989</parentid>
+      <timestamp>2014-09-23T16:39:32Z</timestamp>
+      <contributor>
+        <username>Lwelsh</username>
+        <id>2</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1657">{{Summary Timeline
+|EVA Title=IDA 1 Deploy EVA
+|Depends on=IDA Cable Bag A
+|Related article=IDA
+|EVA Duration hour=6
+|EVA Duration minute=30
+|Color Red Meaning=
+|Color Orange Meaning=
+|Color Yellow Meaning=
+|Color Green Meaning=IDA 1
+|Color Blue Meaning=
+|Color Purple Meaning=
+|Color Pink Meaning=
+|Color Gray Meaning=
+|Actor 1 name=
+|Actor 2 name=EV1
+|Actor 3 name=EV2
+|Actor 1 Display in Compact View=No
+|Actor 2 Display in Compact View=Yes
+|Actor 3 Display in Compact View=Yes
+|Actor 1 Enable Get Aheads=No
+|Actor 2 Enable Get Aheads=Yes
+|Actor 3 Enable Get Aheads=Yes
+|Actor 1 Tasks=
+|Actor 2 Tasks={{Actor 2 Task
+|Title=Egress
+|Duration hour=0
+|Duration minute=30
+|Color=gray
+|Related article=
+|Free text=
+}}{{Actor 2 Task
+|Title=Disconnect PMA 2
+|Duration hour=1
+|Duration minute=00
+|Color=green
+|Related article=PMA 2
+|Free text=
+}}{{Actor 2 Task
+|Title=IDA 1 Deploy
+|Duration hour=4
+|Duration minute=15
+|Color=green
+|Related article=IDA
+|Free text=Mod Kit #51727
+}}{{Actor 2 Task
+|Title=Ingress
+|Duration hour=0
+|Duration minute=45
+|Color=gray
+|Related article=
+|Free text=
+}}
+|Actor 3 Tasks={{Actor 3 Task
+|Title=Egress
+|Duration hour=0
+|Duration minute=30
+|Color=gray
+|Related article=
+|Free text=
+}}{{Actor 3 Task
+|Title=Disconnect PMA 2
+|Duration hour=1
+|Duration minute=00
+|Color=green
+|Related article=PMA 2
+|Free text=
+}}{{Actor 3 Task
+|Title=IDA 1 Deploy
+|Duration hour=4
+|Duration minute=15
+|Color=green
+|Related article=IDA
+|Free text=Mod Kit #51727
+}}{{Actor 3 Task
+|Title=Ingress
+|Duration hour=0
+|Duration minute=45
+|Color=gray
+|Related article=
+|Free text=
+}}
+|Color White Meaning=
+}}
+[[Category:Summary Timeline Extension Demo Page]]</text>
+      <sha1>sx6nkgm0jcgvq66kgjos3v755bw8epd</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>IDA 1 Route &amp; IDA 2 Deploy Summary Timeline</title>
+    <ns>0</ns>
+    <id>11854</id>
+    <revision>
+      <id>53046</id>
+      <parentid>52990</parentid>
+      <timestamp>2014-09-23T16:39:57Z</timestamp>
+      <contributor>
+        <username>Lwelsh</username>
+        <id>2</id>
+      </contributor>
+      <text xml:space="preserve" bytes="2225">{{Summary Timeline
+|EVA Title=IDA 1 Route &amp; IDA 2 Deploy
+|Depends on=IDA 1 Deploy EVA, IDA Cable Bag B,
+|Related article=IDA
+|EVA Duration hour=6
+|EVA Duration minute=30
+|Color Red Meaning=
+|Color Orange Meaning=
+|Color Yellow Meaning=
+|Color Green Meaning=IDA 1
+|Color Blue Meaning=
+|Color Purple Meaning=IDA 2
+|Color Pink Meaning=
+|Color Gray Meaning=
+|Actor 1 name=
+|Actor 2 name=EV1
+|Actor 3 name=EV2
+|Actor 1 Display in Compact View=No
+|Actor 2 Display in Compact View=Yes
+|Actor 3 Display in Compact View=Yes
+|Actor 1 Enable Get Aheads=No
+|Actor 2 Enable Get Aheads=Yes
+|Actor 3 Enable Get Aheads=Yes
+|Actor 1 Tasks=
+|Actor 2 Tasks={{Actor 2 Task
+|Title=Egress
+|Duration hour=0
+|Duration minute=30
+|Color=gray
+|Related article=
+|Free text=
+}}{{Actor 2 Task
+|Title=PMA 2 Cover Removal
+|Duration hour=1
+|Duration minute=00
+|Color=green
+|Related article=PMA 2 Cover
+|Free text=
+}}{{Actor 2 Task
+|Title=Complete IDA 1 Cable Route
+|Duration hour=2
+|Duration minute=00
+|Color=green
+|Related article=
+|Free text=W2256 – BLUE (IDA 2 STOW-JEM)
+
+W2254 - WHITE/RED (IDA 2 STOW)
+
+W2256 – BLUE (IDA 2 STOW-NODE 2)
+
+W2250- GREEN
+}}{{Actor 2 Task
+|Title=IDA 2 Cable
+|Duration hour=2
+|Duration minute=15
+|Color=purple
+|Related article=
+|Free text=W2288- White/Green(NODE 1 NADIR, FWD ENDCONE
+}}{{Actor 2 Task
+|Title=Ingress
+|Duration hour=0
+|Duration minute=45
+|Color=gray
+|Related article=
+|Free text=
+}}
+|Actor 3 Tasks={{Actor 3 Task
+|Title=Egress
+|Duration hour=0
+|Duration minute=30
+|Color=gray
+|Related article=
+|Free text=
+}}{{Actor 3 Task
+|Title=PMA 2 Cover Removal
+|Duration hour=1
+|Duration minute=00
+|Color=green
+|Related article=PMA 2 Cover
+|Free text=
+}}{{Actor 3 Task
+|Title=Complete IDA 1 Cable Route
+|Duration hour=2
+|Duration minute=00
+|Color=green
+|Related article=
+|Free text=W2272 – RED ( IDA 2 STOW)
+
+W2264  - ORANGE
+
+W2250 -  GREEN
+}}{{Actor 3 Task
+|Title=IDA 2 Cable
+|Duration hour=2
+|Duration minute=15
+|Color=purple
+|Related article=
+|Free text=W2260 – WHITE/ORANGE
+
+W2289 WHITE/ PURPLE
+
+W2287 - YELLOW (Get Ahead)
+}}{{Actor 3 Task
+|Title=Ingress
+|Duration hour=0
+|Duration minute=45
+|Color=gray
+|Related article=
+|Free text=
+}}
+|Color White Meaning=
+}}
+[[Category:Summary Timeline Extension Demo Page]]</text>
+      <sha1>2tww9gduy190gzlyej5p6r71538ucc1</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>C2V2 Installation EVA Summary Timeline</title>
+    <ns>0</ns>
+    <id>11863</id>
+    <revision>
+      <id>53047</id>
+      <parentid>52991</parentid>
+      <timestamp>2014-09-23T16:40:04Z</timestamp>
+      <contributor>
+        <username>Lwelsh</username>
+        <id>2</id>
+      </contributor>
+      <text xml:space="preserve" bytes="3349">{{Summary Timeline
+|EVA Title=C2V2 Installation EVA
+|Depends on=
+|Related article=C2V2
+|EVA Duration hour=6
+|EVA Duration minute=30
+|Color Red Meaning=
+|Color Orange Meaning=
+|Color Yellow Meaning=
+|Color Green Meaning=
+|Color Blue Meaning=
+|Color Purple Meaning=
+|Color Pink Meaning=C2V2
+|Color Gray Meaning=
+|Actor 1 name=
+|Actor 2 name=EV1
+|Actor 3 name=EV2
+|Actor 1 Display in Compact View=No
+|Actor 2 Display in Compact View=Yes
+|Actor 3 Display in Compact View=Yes
+|Actor 1 Enable Get Aheads=No
+|Actor 2 Enable Get Aheads=Yes
+|Actor 3 Enable Get Aheads=Yes
+|Actor 1 Tasks=
+|Actor 2 Tasks={{Actor 2 Task
+|Title=Egress
+|Duration hour=0
+|Duration minute=45
+|Color=gray
+|Related article=
+|Free text=
+}}{{Actor 2 Task
+|Title=MMOD Shield/C2V2 NZGL
+|Duration hour=0
+|Duration minute=35
+|Color=pink
+|Related article=MMOD Shield, NZGL
+|Free text=
+}}{{Actor 2 Task
+|Title=P3 Boom Install
+|Duration hour=0
+|Duration minute=35
+|Color=pink
+|Related article=
+|Free text=
+}}{{Actor 2 Task
+|Title=P3 Cable 1 Route
+|Duration hour=0
+|Duration minute=45
+|Color=pink
+|Related article=
+|Free text=
+}}{{Actor 2 Task
+|Title=P3 Cable 2 Route
+|Duration hour=0
+|Duration minute=45
+|Color=pink
+|Related article=
+|Free text=
+}}{{Actor 2 Task
+|Title=P3 Antenna Install
+|Duration hour=0
+|Duration minute=20
+|Color=pink
+|Related article=
+|Free text=
+}}{{Actor 2 Task
+|Title=Translate for S3 Route
+|Duration hour=0
+|Duration minute=15
+|Color=pink
+|Related article=
+|Free text=
+}}{{Actor 2 Task
+|Title=S3 Cable 1 Route
+|Duration hour=0
+|Duration minute=45
+|Color=pink
+|Related article=
+|Free text=
+}}{{Actor 2 Task
+|Title=S3 Cable 2 Route
+|Duration hour=0
+|Duration minute=45
+|Color=pink
+|Related article=
+|Free text=
+}}{{Actor 2 Task
+|Title=S3 Antenna Install
+|Duration hour=0
+|Duration minute=15
+|Color=pink
+|Related article=
+|Free text=
+}}{{Actor 2 Task
+|Title=Ingress
+|Duration hour=0
+|Duration minute=45
+|Color=gray
+|Related article=
+|Free text=
+}}
+|Actor 3 Tasks={{Actor 3 Task
+|Title=Egress
+|Duration hour=0
+|Duration minute=45
+|Color=gray
+|Related article=
+|Free text=
+}}{{Actor 3 Task
+|Title=MMOD Shield/C2V2 NZGL
+|Duration hour=0
+|Duration minute=45
+|Color=pink
+|Related article=MMOD Shield, NZGL
+|Free text=
+}}{{Actor 3 Task
+|Title=S3 Boom Install
+|Duration hour=0
+|Duration minute=30
+|Color=pink
+|Related article=
+|Free text=
+}}{{Actor 3 Task
+|Title=P3 Cable 1 Route
+|Duration hour=0
+|Duration minute=45
+|Color=pink
+|Related article=
+|Free text=
+}}{{Actor 3 Task
+|Title=P3 Cable 2 Route
+|Duration hour=0
+|Duration minute=45
+|Color=pink
+|Related article=
+|Free text=
+}}{{Actor 3 Task
+|Title=P3 Antenna Install
+|Duration hour=0
+|Duration minute=15
+|Color=pink
+|Related article=
+|Free text=
+}}{{Actor 3 Task
+|Title=Translate for S3 Route
+|Duration hour=0
+|Duration minute=15
+|Color=pink
+|Related article=
+|Free text=
+}}{{Actor 3 Task
+|Title=S3 Cable 1 Route
+|Duration hour=0
+|Duration minute=45
+|Color=pink
+|Related article=
+|Free text=
+}}{{Actor 3 Task
+|Title=S3 Cable 2 Route
+|Duration hour=0
+|Duration minute=45
+|Color=pink
+|Related article=
+|Free text=
+}}{{Actor 3 Task
+|Title=S3 Antenna Install
+|Duration hour=0
+|Duration minute=15
+|Color=pink
+|Related article=
+|Free text=
+}}{{Actor 3 Task
+|Title=Ingress
+|Duration hour=0
+|Duration minute=45
+|Color=gray
+|Related article=
+|Free text=
+}}
+|Color White Meaning=
+}}
+[[Category:Summary Timeline Extension Demo Page]]</text>
+      <sha1>4sl9jpjxdfr8ntkl2ds6in1j93xchw9</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>IDA 1 Installation &amp; Outfitting EVA Summary Timeline</title>
+    <ns>0</ns>
+    <id>11864</id>
+    <revision>
+      <id>53048</id>
+      <parentid>52992</parentid>
+      <timestamp>2014-09-23T16:40:09Z</timestamp>
+      <contributor>
+        <username>Lwelsh</username>
+        <id>2</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1440">{{Summary Timeline
+|EVA Title=IDA 1 Installation &amp; Outfitting EVA
+|Depends on=IDA 1 Route &amp; IDA 2 Deploy
+|Related article=IDA,
+|EVA Duration hour=6
+|EVA Duration minute=30
+|Color Red Meaning=
+|Color Orange Meaning=
+|Color Yellow Meaning=
+|Color Green Meaning=IDA 1
+|Color Blue Meaning=
+|Color Purple Meaning=
+|Color Pink Meaning=
+|Color Gray Meaning=
+|Actor 1 name=
+|Actor 2 name=EV1
+|Actor 3 name=EV2
+|Actor 1 Display in Compact View=No
+|Actor 2 Display in Compact View=Yes
+|Actor 3 Display in Compact View=Yes
+|Actor 1 Enable Get Aheads=No
+|Actor 2 Enable Get Aheads=Yes
+|Actor 3 Enable Get Aheads=Yes
+|Actor 1 Tasks=
+|Actor 2 Tasks={{Actor 2 Task
+|Title=Egress
+|Duration hour=0
+|Duration minute=30
+|Color=gray
+|Related article=
+|Free text=
+}}{{Actor 2 Task
+|Title=IDA 1 Installation &amp; Outfitting
+|Duration hour=4
+|Duration minute=40
+|Color=green
+|Related article=
+|Free text=
+}}{{Actor 2 Task
+|Title=Ingress
+|Duration hour=0
+|Duration minute=45
+|Color=gray
+|Related article=
+|Free text=
+}}
+|Actor 3 Tasks={{Actor 3 Task
+|Title=Egress
+|Duration hour=0
+|Duration minute=30
+|Color=gray
+|Related article=
+|Free text=
+}}{{Actor 3 Task
+|Title=IDA 1 Installation &amp; Outfitting
+|Duration hour=4
+|Duration minute=40
+|Color=green
+|Related article=
+|Free text=
+}}{{Actor 3 Task
+|Title=Ingress
+|Duration hour=0
+|Duration minute=45
+|Color=gray
+|Related article=
+|Free text=
+}}
+|Color White Meaning=
+}}
+[[Category:Summary Timeline Extension Demo Page]]</text>
+      <sha1>k2o0uarsqiidbvz878gzaqhuq7g00x9</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>PMA 3 &amp; PMM Prep EVA Summary Timeline</title>
+    <ns>0</ns>
+    <id>11865</id>
+    <revision>
+      <id>53049</id>
+      <parentid>52993</parentid>
+      <timestamp>2014-09-23T16:40:14Z</timestamp>
+      <contributor>
+        <username>Lwelsh</username>
+        <id>2</id>
+      </contributor>
+      <text xml:space="preserve" bytes="2623">{{Summary Timeline
+|EVA Title=PMA 3 &amp; PMM Prep EVA
+|Depends on=
+|Related article=PMA 3, PMM,
+|EVA Duration hour=6
+|EVA Duration minute=30
+|Color Red Meaning=
+|Color Orange Meaning=HD Camera
+|Color Yellow Meaning=Node 3/PMM
+|Color Green Meaning=
+|Color Blue Meaning=PMA 3
+|Color Purple Meaning=
+|Color Pink Meaning=
+|Color Gray Meaning=
+|Actor 1 name=
+|Actor 2 name=EV1
+|Actor 3 name=EV2
+|Actor 1 Display in Compact View=No
+|Actor 2 Display in Compact View=Yes
+|Actor 3 Display in Compact View=Yes
+|Actor 1 Enable Get Aheads=No
+|Actor 2 Enable Get Aheads=Yes
+|Actor 3 Enable Get Aheads=Yes
+|Actor 1 Tasks=
+|Actor 2 Tasks={{Actor 2 Task
+|Title=Egress
+|Duration hour=0
+|Duration minute=30
+|Color=gray
+|Related article=
+|Free text=
+}}{{Actor 2 Task
+|Title=PMA 3 Disconnect
+|Duration hour=1
+|Duration minute=30
+|Color=blue
+|Related article=PMA 3
+|Free text=
+}}{{Actor 2 Task
+|Title=Node 3 HR 0622 Removal
+|Duration hour=0
+|Duration minute=15
+|Color=yellow
+|Related article=
+|Free text=
+}}{{Actor 2 Task
+|Title=PMM CBM Prep (Node 3 Forward)
+|Duration hour=0
+|Duration minute=45
+|Color=yellow
+|Related article=PMM, CBM, Node 3
+|Free text=
+}}{{Actor 2 Task
+|Title=V-Guide Install
+|Duration hour=2
+|Duration minute=00
+|Color=gray
+|Related article=
+|Free text=
+}}{{Actor 2 Task
+|Title=HD Camera Install
+|Duration hour=1
+|Duration minute=00
+|Color=orange
+|Related article=
+|Free text=
+}}{{Actor 2 Task
+|Title=Ingress
+|Duration hour=0
+|Duration minute=30
+|Color=gray
+|Related article=
+|Free text=
+}}
+|Actor 3 Tasks={{Actor 3 Task
+|Title=Egress
+|Duration hour=0
+|Duration minute=30
+|Color=gray
+|Related article=
+|Free text=
+}}{{Actor 3 Task
+|Title=PMA 3 Disconnect
+|Duration hour=1
+|Duration minute=30
+|Color=blue
+|Related article=PMA 3
+|Free text=
+}}{{Actor 3 Task
+|Title=NPV Removal
+|Duration hour=0
+|Duration minute=45
+|Color=yellow
+|Related article=NPV
+|Free text=
+}}{{Actor 3 Task
+|Title=JEM Fwd Camera R&amp;R
+|Duration hour=1
+|Duration minute=00
+|Color=gray
+|Related article=
+|Free text=
+}}{{Actor 3 Task
+|Title=SSPTS Cable Connector Cap Removal
+|Duration hour=1
+|Duration minute=15
+|Color=gray
+|Related article=SSPTS
+|Free text=J440A/P440, J430A/P430, J113A/P113, and J114A/P114
+}}{{Actor 3 Task
+|Title=HD Camera Handoff
+|Duration hour=0
+|Duration minute=15
+|Color=orange
+|Related article=
+|Free text=
+}}{{Actor 3 Task
+|Title=SSPTS Cable Connector Cap Removal
+|Duration hour=0
+|Duration minute=30
+|Color=gray
+|Related article=SSPTS
+|Free text=
+}}{{Actor 3 Task
+|Title=Ingress
+|Duration hour=0
+|Duration minute=45
+|Color=gray
+|Related article=
+|Free text=
+}}
+|Color White Meaning=
+}}
+[[Category:Summary Timeline Extension Demo Page]]</text>
+      <sha1>qfgvn7kyl4bt1bdu4xs4gp258uhlw7o</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>PMA 3 Connections EVA Summary Timeline</title>
+    <ns>0</ns>
+    <id>11866</id>
+    <revision>
+      <id>53050</id>
+      <parentid>52994</parentid>
+      <timestamp>2014-09-23T16:40:18Z</timestamp>
+      <contributor>
+        <username>Lwelsh</username>
+        <id>2</id>
+      </contributor>
+      <text xml:space="preserve" bytes="2214">{{Summary Timeline
+|EVA Title=PMA 3 Connections EVA
+|Depends on=PMA 3 Cummerbund, Node 3 Axial Shields,
+|Related article=PMA 3 Cover
+|EVA Duration hour=6
+|EVA Duration minute=30
+|Color Red Meaning=
+|Color Orange Meaning=
+|Color Yellow Meaning=Node 3
+|Color Green Meaning=
+|Color Blue Meaning=PMA 3
+|Color Purple Meaning=
+|Color Pink Meaning=
+|Color Gray Meaning=
+|Actor 1 name=
+|Actor 2 name=EV1
+|Actor 3 name=EV2
+|Actor 1 Display in Compact View=No
+|Actor 2 Display in Compact View=Yes
+|Actor 3 Display in Compact View=Yes
+|Actor 1 Enable Get Aheads=No
+|Actor 2 Enable Get Aheads=Yes
+|Actor 3 Enable Get Aheads=Yes
+|Actor 1 Tasks=
+|Actor 2 Tasks={{Actor 2 Task
+|Title=Egress
+|Duration hour=0
+|Duration minute=30
+|Color=gray
+|Related article=
+|Free text=
+}}{{Actor 2 Task
+|Title=PMA 3 Connections
+|Duration hour=1
+|Duration minute=30
+|Color=blue
+|Related article=
+|Free text=
+}}{{Actor 2 Task
+|Title=NPV Install
+|Duration hour=0
+|Duration minute=45
+|Color=yellow
+|Related article=
+|Free text=
+}}{{Actor 2 Task
+|Title=PMA 3 Cover Removal
+|Duration hour=1
+|Duration minute=00
+|Color=blue
+|Related article=
+|Free text=
+}}{{Actor 2 Task
+|Title=Node 3 Axial Shields
+|Duration hour=2
+|Duration minute=00
+|Color=yellow
+|Related article=Node 3 Axial Shields
+|Free text=
+}}{{Actor 2 Task
+|Title=Ingress
+|Duration hour=0
+|Duration minute=45
+|Color=gray
+|Related article=
+|Free text=
+}}
+|Actor 3 Tasks={{Actor 3 Task
+|Title=Egress
+|Duration hour=0
+|Duration minute=30
+|Color=gray
+|Related article=
+|Free text=
+}}{{Actor 3 Task
+|Title=PMA 3 Connections
+|Duration hour=0
+|Duration minute=45
+|Color=blue
+|Related article=
+|Free text=
+}}{{Actor 3 Task
+|Title=PMA 3 Cummerbunds
+|Duration hour=1
+|Duration minute=30
+|Color=blue
+|Related article=PMA 3 Cummerbund
+|Free text=
+}}{{Actor 3 Task
+|Title=PMA 3 Cover Removal
+|Duration hour=1
+|Duration minute=00
+|Color=blue
+|Related article=
+|Free text=
+}}{{Actor 3 Task
+|Title=Node 3 Axial Shields
+|Duration hour=2
+|Duration minute=00
+|Color=yellow
+|Related article=Node 3 Axial Shields
+|Free text=
+}}{{Actor 3 Task
+|Title=Ingress
+|Duration hour=0
+|Duration minute=45
+|Color=gray
+|Related article=
+|Free text=
+}}
+|Color White Meaning=
+}}
+[[Category:Summary Timeline Extension Demo Page]]</text>
+      <sha1>1d20bz8en7l8sj5qkrybcyco4w0rlou</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>IDA 2 Installation &amp; Outfitting EVA Summary Timeline</title>
+    <ns>0</ns>
+    <id>11867</id>
+    <revision>
+      <id>53051</id>
+      <parentid>52995</parentid>
+      <timestamp>2014-09-23T16:40:23Z</timestamp>
+      <contributor>
+        <username>Lwelsh</username>
+        <id>2</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1930">{{Summary Timeline
+|EVA Title=IDA 2 Installation &amp; Outfitting EVA
+|Depends on=IDA 1 Route &amp; IDA 2 Deploy
+|Related article=IDA,
+|EVA Duration hour=6
+|EVA Duration minute=30
+|Color Red Meaning=
+|Color Orange Meaning=
+|Color Yellow Meaning=
+|Color Green Meaning=
+|Color Blue Meaning=
+|Color Purple Meaning=IDA 2
+|Color Pink Meaning=
+|Color Gray Meaning=
+|Actor 1 name=
+|Actor 2 name=EV1
+|Actor 3 name=EV2
+|Actor 1 Display in Compact View=No
+|Actor 2 Display in Compact View=Yes
+|Actor 3 Display in Compact View=Yes
+|Actor 1 Enable Get Aheads=No
+|Actor 2 Enable Get Aheads=Yes
+|Actor 3 Enable Get Aheads=Yes
+|Actor 1 Tasks=
+|Actor 2 Tasks={{Actor 2 Task
+|Title=Egress
+|Duration hour=0
+|Duration minute=30
+|Color=gray
+|Related article=
+|Free text=
+}}{{Actor 2 Task
+|Title=IDA 2 Installation
+|Duration hour=3
+|Duration minute=00
+|Color=purple
+|Related article=IDA
+|Free text=
+}}{{Actor 2 Task
+|Title=EWC Antenna Installation
+|Duration hour=1
+|Duration minute=00
+|Color=gray
+|Related article=EWC
+|Free text=
+}}{{Actor 2 Task
+|Title=IDA Outfitting
+|Duration hour=1
+|Duration minute=15
+|Color=purple
+|Related article=IDA
+|Free text=
+}}{{Actor 2 Task
+|Title=Ingress
+|Duration hour=0
+|Duration minute=45
+|Color=gray
+|Related article=
+|Free text=
+}}
+|Actor 3 Tasks={{Actor 3 Task
+|Title=Egress
+|Duration hour=0
+|Duration minute=30
+|Color=gray
+|Related article=
+|Free text=
+}}{{Actor 3 Task
+|Title=IDA 2 Installation
+|Duration hour=3
+|Duration minute=00
+|Color=purple
+|Related article=IDA
+|Free text=
+}}{{Actor 3 Task
+|Title=EWC Antenna Installation
+|Duration hour=1
+|Duration minute=30
+|Color=gray
+|Related article=EWC
+|Free text=
+}}{{Actor 3 Task
+|Title=IDA Outfitting
+|Duration hour=0
+|Duration minute=45
+|Color=purple
+|Related article=IDA
+|Free text=
+}}{{Actor 3 Task
+|Title=Ingress
+|Duration hour=0
+|Duration minute=45
+|Color=gray
+|Related article=
+|Free text=
+}}
+|Color White Meaning=
+}}
+[[Category:Summary Timeline Extension Demo Page]]</text>
+      <sha1>gvrb542lw62qp6b0k3a2phjefpmy3er</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>Template:ST Query Result</title>
+    <ns>10</ns>
+    <id>11827</id>
+    <revision>
+      <id>53074</id>
+      <parentid>53002</parentid>
+      <timestamp>2014-09-23T17:17:39Z</timestamp>
+      <contributor>
+        <username>Lwelsh</username>
+        <id>2</id>
+      </contributor>
+      <minor/>
+      <comment>Text replacement - &quot;[[Category:Used for Summary Timeline Extension]]&quot; to &quot;[[Category:Template Used for Summary Timeline Extension]]&quot;</comment>
+      <text xml:space="preserve" bytes="239">&lt;noinclude&gt;
+[[Category:Template Used for Summary Timeline Extension]]
+&lt;/noinclude&gt;&lt;includeonly&gt;
+&amp;&amp;&amp;{{{?Title|}}}@@@{{{?Duration hour|}}}@@@{{{?Duration minute|}}}@@@{{{?Related article|}}}@@@{{{?Color|}}}@@@{{{?Free text|}}}
+&lt;/includeonly&gt;</text>
+      <sha1>hoc92af1xf59s454uj1r0omsyh8irzx</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>Template:Summary Timeline Output</title>
+    <ns>10</ns>
+    <id>11828</id>
+    <revision>
+      <id>53059</id>
+      <parentid>53003</parentid>
+      <timestamp>2014-09-23T17:17:06Z</timestamp>
+      <contributor>
+        <username>Lwelsh</username>
+        <id>2</id>
+      </contributor>
+      <minor/>
+      <comment>Text replacement - &quot;[[Category:Used for Summary Timeline Extension]]&quot; to &quot;[[Category:Template Used for Summary Timeline Extension]]&quot;</comment>
+      <text xml:space="preserve" bytes="3315">&lt;noinclude&gt;
+
+For the compact version (default):
+&lt;pre&gt;{{Summary Timeline Output | Page name of summary timeline to display | Compact }}&lt;/pre&gt;
+
+To force the compact version to a fixed pixel width to fit on a specific page:
+&lt;pre&gt;{{Summary Timeline Output | Page name of summary timeline to display | Compact | 123 }}&lt;/pre&gt;
+
+For the full version:
+&lt;pre&gt;{{Summary Timeline Output | Page name of summary timeline to display | Full }}&lt;/pre&gt;
+
+[[Category:Template Used for Summary Timeline Extension]]
+&lt;/noinclude&gt;&lt;includeonly&gt;{{#summary-timeline:
+ | format={{{2|}}}
+ | fixedwidth={{{3|}}}
+ | st index={{#counter: SummaryTimeline }}
+ | title={{#show: {{{1|}}} | ?EVA title }}@@@{{{1|}}}
+ | depends on={{#show: {{{1|}}} | ?Depends on }}
+ | Parent Related Article={{#show: {{{1|}}} | ?Related article }}
+ | EVA Duration hours={{#show: {{{1|}}} | ?Duration hour }}
+ | EVA Duration minutes={{#show: {{{1|}}} | ?Duration minute }}
+ | Actor 1 name = {{#show: {{{1|}}} | ?Actor 1 name }}
+ | Actor 2 name = {{#show: {{{1|}}} | ?Actor 2 name }}
+ | Actor 3 name = {{#show: {{{1|}}} | ?Actor 3 name }}
+ | Actor 1 Display in Compact View = {{#show: {{{1|}}} |?Actor 1 Display in Compact View }}
+ | Actor 2 Display in Compact View = {{#show: {{{1|}}} |?Actor 2 Display in Compact View }}
+ | Actor 3 Display in Compact View = {{#show: {{{1|}}} |?Actor 3 Display in Compact View }}
+ | Actor 1 Enable Get Aheads = {{#show: {{{1|}}} | ?Actor 1 Enable Get Aheads }}
+ | Actor 2 Enable Get Aheads = {{#show: {{{1|}}} | ?Actor 2 Enable Get Aheads }}
+ | Actor 3 Enable Get Aheads = {{#show: {{{1|}}} | ?Actor 3 Enable Get Aheads }}
+ | Actor1={{#ask: [[From page::{{{1|}}}]] [[Assigned to::Actor1]] 
+| ?#=FromPage
+|mainlabel=-
+|?Index=Index
+|?Has text title=Title
+|?Duration hour=Duration hour
+|?Duration minute=Duration minute
+|?Depends on#list=Depends on
+|?Related article=Related article
+|?Color=Color
+|?Free text=Free text
+|?Actor
+|named args=yes
+|format=template
+|template=ST Query Result
+|sort=Assigned to, Index
+}}
+ | Actor2={{#ask: [[From page::{{{1|}}}]] [[Assigned to::Actor2]] 
+| ?#=FromPage
+|mainlabel=-
+|?Index=Index
+|?Has text title=Title
+|?Duration hour=Duration hour
+|?Duration minute=Duration minute
+|?Depends on#list=Depends on
+|?Related article=Related article
+|?Color=Color
+|?Free text=Free text
+|?Actor
+|named args=yes
+|format=template
+|template=ST Query Result
+|sort=Assigned to, Index
+}}
+ | Actor3={{#ask: [[From page::{{{1|}}}]] [[Assigned to::Actor3]] 
+| ?#=FromPage
+|mainlabel=-
+|?Index=Index
+|?Has text title=Title
+|?Duration hour=Duration hour
+|?Duration minute=Duration minute
+|?Depends on#list=Depends on
+|?Related article=Related article
+|?Color=Color
+|?Free text=Free text
+|?Actor
+|named args=yes
+|format=template
+|template=ST Query Result
+|sort=Assigned to, Index
+}}
+ | Color Gray Meaning={{#show: {{{1|}}} | ?Color Gray Meaning }}
+ | Color Red Meaning={{#show: {{{1|}}} | ?Color Red Meaning }}
+ | Color Orange Meaning={{#show: {{{1|}}} | ?Color Orange Meaning }}
+ | Color Yellow Meaning={{#show: {{{1|}}} | ?Color Yellow Meaning }}
+ | Color Blue Meaning={{#show: {{{1|}}} | ?Color Blue Meaning }}
+ | Color Green Meaning={{#show: {{{1|}}} | ?Color Green Meaning }}
+ | Color Pink Meaning={{#show: {{{1|}}} | ?Color Pink Meaning }}
+ | Color Purple Meaning={{#show: {{{1|}}} | ?Color Purple Meaning }}
+}}&lt;/includeonly&gt;</text>
+      <sha1>gyv4ve8e63pzri69l050vnemzzmovap</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>Template:Actor 1 Task</title>
+    <ns>10</ns>
+    <id>11807</id>
+    <revision>
+      <id>53061</id>
+      <parentid>52999</parentid>
+      <timestamp>2014-09-23T17:17:14Z</timestamp>
+      <contributor>
+        <username>Lwelsh</username>
+        <id>2</id>
+      </contributor>
+      <minor/>
+      <comment>Text replacement - &quot;[[Category:Used for Summary Timeline Extension]]&quot; to &quot;[[Category:Template Used for Summary Timeline Extension]]&quot;</comment>
+      <text xml:space="preserve" bytes="1265">&lt;noinclude&gt;
+Use this format:
+&lt;pre&gt;
+{{Actor 1 Task
+|Title=
+|Duration=
+|Color=
+|Related articles=
+|Free text=
+}}
+
+{{Task
+|Actor={{{Actor 1 name|}}}
+|Title={{{Title|}}}
+|Duration hour={{{Duration hour|}}}
+|Duration minute={{{Duration minute|}}}
+|Color={{{Color|}}}
+|Related article={{{Related article|}}}
+|Free text={{{Free text|}}}
+}}
+
+&lt;/pre&gt;
+
+[[Category:Template Used for Summary Timeline Extension]]
+&lt;/noinclude&gt;&lt;includeonly&gt;{{#set_internal:Task
+|Index={{#counter: Actor1 }}
+|Actor={{#var:Actor1name}}
+|Has text title={{{Title|}}}
+|Assigned to#list=Actor1
+|Duration={{{Duration hour|00}}}:{{{Duration minute|00}}}
+|Duration hour={{{Duration hour|00}}}
+|Duration minute={{{Duration minute|00}}}
+|Duration in minutes={{#expr: (({{{Duration hour|0}}} * 60) + {{{Duration minute|0}}}) }}
+|Related article#list={{{Related article|}}}
+|Color={{{Color|}}}
+|Free text={{{Free text|}}}
+|From page={{FULLPAGENAME}}
+|EVA title={{#var:EVATitle}}
+|Parent related article#list={{#var:pageRelatedArticle}}
+|EVA Duration={{#var:EVADurationHour}}:{{#var:EVADurationMinute}}
+}}
+&lt;!-- {{{Title|}}} ({{{Duration hour|}}}:{{{Duration minute|}}}) --&gt;
+&amp;&amp;&amp;{{{Title|}}}@@@{{{Duration hour|}}}@@@{{{Duration minute|}}}@@@{{{Related article|}}}@@@{{{Color|}}}@@@{{{Free text|}}}
+&lt;/includeonly&gt;</text>
+      <sha1>s54qmii6bce0cuktxpa3i09s3tarqlx</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>Template:Actor 2 Task</title>
+    <ns>10</ns>
+    <id>11808</id>
+    <revision>
+      <id>53077</id>
+      <parentid>53000</parentid>
+      <timestamp>2014-09-23T17:17:42Z</timestamp>
+      <contributor>
+        <username>Lwelsh</username>
+        <id>2</id>
+      </contributor>
+      <minor/>
+      <comment>Text replacement - &quot;[[Category:Used for Summary Timeline Extension]]&quot; to &quot;[[Category:Template Used for Summary Timeline Extension]]&quot;</comment>
+      <text xml:space="preserve" bytes="1619">&lt;noinclude&gt;
+Use this format:
+&lt;pre&gt;
+{{EV1 Task
+|Title=
+|Duration=
+|Color=
+|Related articles=
+|Free text=
+}}
+
+{{Task
+|Actor=EV1
+|Title={{{Title|}}}
+|Duration hour={{{Duration hour|}}}
+|Duration minute={{{Duration minute|}}}
+|Color={{{Color|}}}
+|Related article={{{Related article|}}}
+|Free text={{{Free text|}}}
+}}
+
+&lt;/pre&gt;
+
+[[Category:Template Used for Summary Timeline Extension]]
+&lt;/noinclude&gt;&lt;includeonly&gt;{{#set_internal:Task
+|Index={{#counter: Actor2 }}
+|Actor={{#var:Actor2name}}
+|Has text title={{{Title|}}}
+|Assigned to#list=Actor2
+|Duration={{{Duration hour|00}}}:{{{Duration minute|00}}}
+|Duration hour={{{Duration hour|00}}}
+|Duration minute={{{Duration minute|00}}}
+|Duration in minutes={{#expr: (({{{Duration hour|0}}} * 60) + {{{Duration minute|0}}}) }}
+|Related article#list={{{Related article|}}}
+|Color={{{Color|}}}
+|Free text={{{Free text|}}}
+|From page={{FULLPAGENAME}}
+|EVA title={{#var:EVATitle}}
+|Parent related article#list={{#var:pageRelatedArticle}}
+|EVA Duration={{#var:EVADurationHour}}:{{#var:EVADurationMinute}}
+|Color White Meaning={{#var:ColorWhiteMeaning}}
+|Color Red Meaning={{#var:ColorRedMeaning}}
+|Color Orange Meaning={{#var:ColorOrangeMeaning}}
+|Color Yellow Meaning={{#var:ColorYellowMeaning}}
+|Color Blue Meaning={{#var:ColorBlueMeaning}}
+|Color Green Meaning={{#var:ColorGreenMeaning}}
+|Color Pink Meaning={{#var:ColorPinkMeaning}}
+|Color Purple Meaning={{#var:ColorPurpleMeaning}}
+}}
+{{{Title|}}} ({{{Duration hour|}}}:{{{Duration minute|}}}) 
+&amp;&amp;&amp;{{{Title|}}}@@@{{{Duration hour|}}}@@@{{{Duration minute|}}}@@@{{{Related article|}}}@@@{{{Color|}}}@@@{{{Free text|}}}
+&lt;/includeonly&gt;</text>
+      <sha1>ihxe9eux5mrpuzrutv0erdisr0q7ih1</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>Template:Actor 3 Task</title>
+    <ns>10</ns>
+    <id>11809</id>
+    <revision>
+      <id>53082</id>
+      <parentid>53001</parentid>
+      <timestamp>2014-09-23T17:17:51Z</timestamp>
+      <contributor>
+        <username>Lwelsh</username>
+        <id>2</id>
+      </contributor>
+      <minor/>
+      <comment>Text replacement - &quot;[[Category:Used for Summary Timeline Extension]]&quot; to &quot;[[Category:Template Used for Summary Timeline Extension]]&quot;</comment>
+      <text xml:space="preserve" bytes="1245">&lt;noinclude&gt;
+Use this format:
+&lt;pre&gt;
+{{EV1 Task
+|Title=
+|Duration=
+|Color=
+|Related articles=
+|Free text=
+}}
+
+{{Task
+|Actor=EV2
+|Title={{{Title|}}}
+|Duration hour={{{Duration hour|}}}
+|Duration minute={{{Duration minute|}}}
+|Color={{{Color|}}}
+|Related article={{{Related article|}}}
+|Free text={{{Free text|}}}
+}}
+
+&lt;/pre&gt;
+
+[[Category:Template Used for Summary Timeline Extension]]
+&lt;/noinclude&gt;&lt;includeonly&gt;{{#set_internal:Task
+|Index={{#counter: Actor3 }}
+|Actor={{#var:Actor3name}}
+|Has text title={{{Title|}}}
+|Assigned to#list=Actor3
+|Duration={{{Duration hour|00}}}:{{{Duration minute|00}}}
+|Duration hour={{{Duration hour|00}}}
+|Duration minute={{{Duration minute|00}}}
+|Duration in minutes={{#expr: (({{{Duration hour|0}}} * 60) + {{{Duration minute|0}}}) }}
+|Related article#list={{{Related article|}}}
+|Color={{{Color|}}}
+|Free text={{{Free text|}}}
+|From page={{FULLPAGENAME}}
+|EVA title={{#var:EVATitle}}
+|Parent related article#list={{#var:pageRelatedArticle}}
+|EVA Duration={{#var:EVADurationHour}}:{{#var:EVADurationMinute}}
+}}
+&lt;!-- {{{Title|}}} ({{{Duration hour|}}}:{{{Duration minute|}}}) --&gt;
+&amp;&amp;&amp;{{{Title|}}}@@@{{{Duration hour|}}}@@@{{{Duration minute|}}}@@@{{{Related article|}}}@@@{{{Color|}}}@@@{{{Free text|}}}
+&lt;/includeonly&gt;</text>
+      <sha1>q0d306qxxjfg7ph4jyw26qgdmq7g2mw</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>Template:Summary Timeline</title>
+    <ns>10</ns>
+    <id>11806</id>
+    <revision>
+      <id>53083</id>
+      <parentid>52998</parentid>
+      <timestamp>2014-09-23T17:17:57Z</timestamp>
+      <contributor>
+        <username>Lwelsh</username>
+        <id>2</id>
+      </contributor>
+      <minor/>
+      <comment>Text replacement - &quot;[[Category:Used for Summary Timeline Extension]]&quot; to &quot;[[Category:Template Used for Summary Timeline Extension]]&quot;</comment>
+      <text xml:space="preserve" bytes="3812">&lt;noinclude&gt;
+This is the &quot;Summary Timeline&quot; template.
+It should be called by using the Summary Timeline form.
+
+Edit the page to see the template text.
+
+[[Category:Template Used for Summary Timeline Extension]]
+&lt;/noinclude&gt;&lt;includeonly&gt;
+{{#vardefine:EVATitle|{{{EVA Title|}}}}}
+{{#vardefine:pageRelatedArticle|{{#arraymap:{{{Related article|}}}|,|x|[[x]]}}}}
+{{#vardefine:EVADurationHour|{{{EVA Duration hour|}}}}}
+{{#vardefine:EVADurationMinute|{{{EVA Duration minute|}}}}}
+{{#vardefine:DependsOn|{{{Depends on|}}}}}
+{{#vardefine:ColorGrayMeaning|{{{Color Gray Meaning|}}}}}
+{{#vardefine:ColorRedMeaning|{{{Color Red Meaning|}}}}}
+{{#vardefine:ColorOrangeMeaning|{{{Color Orange Meaning|}}}}}
+{{#vardefine:ColorYellowMeaning|{{{Color Yellow Meaning|}}}}}
+{{#vardefine:ColorBlueMeaning|{{{Color Blue Meaning|}}}}}
+{{#vardefine:ColorGreenMeaning|{{{Color Green Meaning|}}}}}
+{{#vardefine:ColorPinkMeaning|{{{Color Pink Meaning|}}}}}
+{{#vardefine:ColorPurpleMeaning|{{{Color Purple Meaning|}}}}}
+{{#vardefine:Actor1name|{{{Actor 1 name|Actor 1}}}}}
+{{#vardefine:Actor2name|{{{Actor 2 name|Actor 2}}}}}
+{{#vardefine:Actor3name|{{{Actor 3 name|Actor 3}}}}}
+{{#set: EVA Title = {{{EVA Title|}}} }}
+{{#set: Duration hour = {{{EVA Duration hour|}}} }}
+{{#set: Duration minute = {{{EVA Duration minute|}}} }}
+{{#set: Depends on = {{{Depends on|}}} }}
+{{#set: Actor 1 name = {{{Actor 1 name|Actor 1}}} }}
+{{#set: Actor 2 name = {{{Actor 2 name|Actor 2}}} }}
+{{#set: Actor 3 name = {{{Actor 3 name|Actor 3}}} }}
+{{#set: Actor 1 Display in Compact View = {{{Actor 1 Display in Compact View|}}} }}
+{{#set: Actor 2 Display in Compact View = {{{Actor 2 Display in Compact View|}}} }}
+{{#set: Actor 3 Display in Compact View = {{{Actor 3 Display in Compact View|}}} }}
+{{#set: Actor 1 Enable Get Aheads = {{{Actor 1 Enable Get Aheads|}}} }}
+{{#set: Actor 2 Enable Get Aheads = {{{Actor 2 Enable Get Aheads|}}} }}
+{{#set: Actor 3 Enable Get Aheads = {{{Actor 3 Enable Get Aheads|}}} }}
+
+== Extension Output ==
+To display the output on another page, use the following template:
+
+Compact version: &lt;nowiki&gt;{{Summary Timeline Output | &lt;/nowiki&gt;{{PAGENAME}}&lt;nowiki&gt; }}&lt;/nowiki&gt;
+
+Compact version with fixed pixel width (change &quot;400&quot;): &lt;nowiki&gt;{{Summary Timeline Output | &lt;/nowiki&gt;{{PAGENAME}}&lt;nowiki&gt; | Compact | 400 }}&lt;/nowiki&gt;
+
+Full version: &lt;nowiki&gt;{{Summary Timeline Output | &lt;/nowiki&gt;{{PAGENAME}}&lt;nowiki&gt; | Full }}&lt;/nowiki&gt;
+
+{{Summary Timeline Output | {{PAGENAME}} }}
+
+
+{{Summary Timeline Output | {{PAGENAME}} | Full }}
+
+
+== Raw Template Output ==
+{{{EVA Title|}}} ({{{EVA Duration hour|}}}:{{{EVA Duration minute|}}})
+
+Gray:{{{Color Gray Meaning|}}}
+
+Red: {{{Color Red Meaning|}}}
+
+Orange:{{{Color Orange Meaning|}}}
+
+Yellow:{{{Color Yellow Meaning|}}}
+
+Blue:{{{Color Blue Meaning|}}}
+
+Green:{{{Color Green Meaning|}}}
+
+Pink:{{{Color Pink Meaning|}}}
+
+Purple:{{{Color Purple Meaning|}}}
+&lt;table&gt;&lt;tr&gt;
+&lt;th&gt;{{#var:Actor1name|Actor 1}}&lt;/th&gt;
+&lt;th&gt;{{#var:Actor2name|Actor 2}}&lt;/th&gt;
+&lt;th&gt;{{#var:Actor3name|Actor 3}}&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;vertical-align: top;&quot;&gt;{{{Actor 1 Tasks|}}}&lt;/td&gt;
+&lt;td style=&quot;vertical-align: top;&quot;&gt;{{{Actor 2 Tasks|}}}&lt;/td&gt;
+&lt;td style=&quot;vertical-align: top;&quot;&gt;{{{Actor 3 Tasks|}}}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+
+{{#arraymap:{{{Depends on|}}}|,|x|[[Depends on::x]]}}
+{{#arraymap:{{{Related article|}}}|,|x|[[Related article::x]]}}
+{{#set: Color Gray Meaning={{{Color Gray Meaning|}}}}}
+{{#set: Color Red Meaning={{{Color Red Meaning|}}}}}
+{{#set: Color Orange Meaning={{{Color Orange Meaning|}}}}}
+{{#set: Color Yellow Meaning={{{Color Yellow Meaning|}}}}}
+{{#set: Color Blue Meaning={{{Color Blue Meaning|}}}}}
+{{#set: Color Green Meaning={{{Color Green Meaning|}}}}}
+{{#set: Color Pink Meaning={{{Color Pink Meaning|}}}}}
+{{#set: Color Purple Meaning={{{Color Purple Meaning|}}}}}
+
+[[Category:Summary Timeline]]&lt;/includeonly&gt;</text>
+      <sha1>4fg6doucjr9eizb7t8jsdn2bma48shk</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

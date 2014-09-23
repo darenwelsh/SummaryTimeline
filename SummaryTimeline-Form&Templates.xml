@@ -1,0 +1,623 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>EVA Wiki</sitename>
+    <base>https://mod-dev2.jsc.nasa.gov/wiki/EVA/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.23.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">EVA Wiki</namespace>
+      <namespace key="5" case="first-letter">EVA Wiki talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="102" case="first-letter">Property</namespace>
+      <namespace key="103" case="first-letter">Property talk</namespace>
+      <namespace key="104" case="first-letter">Type</namespace>
+      <namespace key="105" case="first-letter">Type talk</namespace>
+      <namespace key="106" case="first-letter">Form</namespace>
+      <namespace key="107" case="first-letter">Form talk</namespace>
+      <namespace key="108" case="first-letter">Concept</namespace>
+      <namespace key="109" case="first-letter">Concept talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Form:Summary Timeline</title>
+    <ns>106</ns>
+    <id>11810</id>
+    <revision>
+      <id>53064</id>
+      <parentid>53042</parentid>
+      <timestamp>2014-09-23T17:17:16Z</timestamp>
+      <contributor>
+        <username>Lwelsh</username>
+        <id>2</id>
+      </contributor>
+      <minor/>
+      <comment>Text replacement - &quot;[[Category:Used for Summary Timeline Extension]]&quot; to &quot;[[Category:Form Used for Summary Timeline Extension]]&quot;</comment>
+      <text xml:space="preserve" bytes="6122">&lt;includeonly&gt;{{{info|page name=&lt;Summary Timeline[EVA Title]&gt; Summary Timeline}}}
+&lt;div id=&quot;wikiPreview&quot; style=&quot;display: none; padding-bottom: 25px; margin-bottom: 25px; border-bottom: 1px solid #AAAAAA;&quot;&gt;&lt;/div&gt;
+{{{for template|Summary Timeline}}}
+
+'''EVA Title:''' {{{field|EVA Title|input type=text|size=50|placeholder=FHRC EVA 1 Version B}}}
+
+The output of this form will be saved to a page entitled &quot;&lt;Your EVA Title&gt; Summary Timeline&quot; (it will add &quot;Summary Timeline&quot;).
+
+'''Depends on''': {{{field|Depends on|list|class=full-width no-links-allowed|values from namespace=Main|list|placeholder=SpX-5, US EVA 27}}}
+
+'''Related Articles:''' {{{field|Related article|class=full-width no-links-allowed|values from namespace=Main|list|placeholder=Related articles}}}
+
+'''EVA Duration (HH:MM):''' {{{field|EVA Duration hour|size=2|default=6}}} : {{{field|EVA Duration minute|size=2|default=30}}}
+
+'''Color Key:'''
+
+If you use the color feature for a task, briefly describe what that color indicates here.
+&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Red&lt;/td&gt;&lt;td&gt;{{{field|Color Red Meaning|input type=text|size=40}}}&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Orange&lt;/td&gt;&lt;td&gt;{{{field|Color Orange Meaning|input type=text|size=40}}}&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Yellow&lt;/td&gt;&lt;td&gt;{{{field|Color Yellow Meaning|input type=text|size=40}}}&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Green&lt;/td&gt;&lt;td&gt;{{{field|Color Green Meaning|input type=text|size=40}}}&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Blue&lt;/td&gt;&lt;td&gt;{{{field|Color Blue Meaning|input type=text|size=40}}}&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Purple&lt;/td&gt;&lt;td&gt;{{{field|Color Purple Meaning|input type=text|size=40}}}&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Pink&lt;/td&gt;&lt;td&gt;{{{field|Color Pink Meaning|input type=text|size=40}}}&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Gray&lt;/td&gt;&lt;td&gt;{{{field|Color Gray Meaning|input type=text|size=40}}}&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;table&gt;&lt;tr&gt;
+&lt;th&gt;Actor 1&lt;/th&gt;
+&lt;th&gt;Actor 2&lt;/th&gt;
+&lt;th&gt;Actor 3&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;Actor name:{{{field|Actor 1 name|input type=text|size=10|placeholder=IV}}}&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;Actor name:{{{field|Actor 2 name|input type=text|size=10|placeholder=EV1}}}&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;Actor name:{{{field|Actor 3 name|input type=text|size=10|placeholder=EV2}}}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;Check to include in compact view:{{{field|Actor 1 Display in Compact View|input type=checkbox|default=no}}}&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;Check to include in compact view:{{{field|Actor 2 Display in Compact View|input type=checkbox|default=yes}}}&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;Check to include in compact view:{{{field|Actor 3 Display in Compact View|input type=checkbox|default=yes}}}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;Check to enable get-ahead calculator:{{{field|Actor 1 Enable Get Aheads|input type=checkbox|default=no}}}&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;Check to enable get-ahead calculator:{{{field|Actor 2 Enable Get Aheads|input type=checkbox|default=yes}}}&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;Check to enable get-ahead calculator:{{{field|Actor 3 Enable Get Aheads|input type=checkbox|default=yes}}}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;vertical-align: top;&quot;&gt;{{{field|Actor 1 Tasks|holds template}}}&lt;/td&gt;
+&lt;td style=&quot;vertical-align: top;&quot;&gt;{{{field|Actor 2 Tasks|holds template}}}&lt;/td&gt;
+&lt;td style=&quot;vertical-align: top;&quot;&gt;{{{field|Actor 3 Tasks|holds template}}}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+
+{{{end template}}}
+
+{{{for template|Actor 1 Task|multiple|label=Actor 1 Task|embed in field=Summary Timeline[Actor 1 Tasks]|add button text=Add Task}}}
+
+Task Title: {{{field|Title|input type=text|class=full-width|placeholder=Task Title}}}
+
+Duration (H:M): &lt;div&gt;{{{field|Duration hour|size=1|default=0}}}:{{{field|Duration minute|size=2|default=00}}}&lt;/div&gt;
+
+Color: {{{field|Color|input type=dropdown|values=red,orange,yellow,green,blue,purple,pink,gray|default=gray|mandatory}}}
+
+Related articles: {{{field|Related article|class=full-width no-links-allowed|values from namespace=Main|list|placeholder=Related articles}}}
+
+Details: {{{field|Free text|input type=textarea|rows=1|class=full-width|autogrow|placeholder=Type full task details here}}}
+
+{{{end template}}}
+
+
+
+{{{for template|Actor 2 Task|multiple|label=Actor 2 Tasks|embed in field=Summary Timeline[Actor 2 Tasks]|add button text=Add Task}}}
+
+Task Title: {{{field|Title|input type=text|class=full-width|placeholder=Task Title}}}
+
+Duration (H:M): &lt;div&gt;{{{field|Duration hour|size=1|default=0}}}:{{{field|Duration minute|size=2|default=00}}}&lt;/div&gt;
+
+Color: {{{field|Color|input type=dropdown|values=red,orange,yellow,green,blue,purple,pink,gray|default=gray|mandatory}}}
+
+Related articles: {{{field|Related article|class=full-width no-links-allowed|values from namespace=Main|list|placeholder=Related articles}}}
+
+Details: {{{field|Free text|input type=textarea|rows=1|class=full-width|autogrow|placeholder=Type full task details here}}}
+
+{{{end template}}}
+
+
+
+
+{{{for template|Actor 3 Task|multiple|label=Actor 3 Tasks|embed in field=Summary Timeline[Actor 3 Tasks]|add button text=Add Task}}}
+
+Task Title: {{{field|Title|input type=text|class=full-width|placeholder=Task Title}}}
+
+Duration (H:M): &lt;div&gt;{{{field|Duration hour|size=1|default=0}}}:{{{field|Duration minute|size=2|default=00}}}&lt;/div&gt;
+
+Color: {{{field|Color|input type=dropdown|values=red,orange,yellow,green,blue,purple,pink,gray|default=gray|mandatory}}}
+
+Related articles: {{{field|Related article|class=full-width no-links-allowed|values from namespace=Main|list|placeholder=Related articles}}}
+
+Details: {{{field|Free text|input type=textarea|rows=1|class=full-width|autogrow|placeholder=Type full task details here}}}
+
+{{{end template}}}
+
+
+== Free text ==
+
+{{{standard input|free text|rows=0}}}
+
+{{{standard input|summary}}}
+
+{{{standard input|minor edit}}} {{{standard input|watch}}}
+
+{{{standard input|save}}} {{{standard input|preview}}} {{{standard input|changes}}} {{{standard input|cancel}}}
+&lt;/includeonly&gt;&lt;noinclude&gt;
+This is the &quot;Summary Timeline&quot; form.
+To create a page with this form, enter the page name below;
+if a page with that name already exists, you will be sent to a form to edit that page.
+
+
+{{#forminput:form=Summary Timeline}}
+
+[[Category:Form Used for Summary Timeline Extension]]
+&lt;/noinclude&gt;</text>
+      <sha1>m21nx20ncwbi1z63u1350ug3sof7u7y</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>Template:Summary Timeline Output</title>
+    <ns>10</ns>
+    <id>11828</id>
+    <revision>
+      <id>53059</id>
+      <parentid>53003</parentid>
+      <timestamp>2014-09-23T17:17:06Z</timestamp>
+      <contributor>
+        <username>Lwelsh</username>
+        <id>2</id>
+      </contributor>
+      <minor/>
+      <comment>Text replacement - &quot;[[Category:Used for Summary Timeline Extension]]&quot; to &quot;[[Category:Template Used for Summary Timeline Extension]]&quot;</comment>
+      <text xml:space="preserve" bytes="3315">&lt;noinclude&gt;
+
+For the compact version (default):
+&lt;pre&gt;{{Summary Timeline Output | Page name of summary timeline to display | Compact }}&lt;/pre&gt;
+
+To force the compact version to a fixed pixel width to fit on a specific page:
+&lt;pre&gt;{{Summary Timeline Output | Page name of summary timeline to display | Compact | 123 }}&lt;/pre&gt;
+
+For the full version:
+&lt;pre&gt;{{Summary Timeline Output | Page name of summary timeline to display | Full }}&lt;/pre&gt;
+
+[[Category:Template Used for Summary Timeline Extension]]
+&lt;/noinclude&gt;&lt;includeonly&gt;{{#summary-timeline:
+ | format={{{2|}}}
+ | fixedwidth={{{3|}}}
+ | st index={{#counter: SummaryTimeline }}
+ | title={{#show: {{{1|}}} | ?EVA title }}@@@{{{1|}}}
+ | depends on={{#show: {{{1|}}} | ?Depends on }}
+ | Parent Related Article={{#show: {{{1|}}} | ?Related article }}
+ | EVA Duration hours={{#show: {{{1|}}} | ?Duration hour }}
+ | EVA Duration minutes={{#show: {{{1|}}} | ?Duration minute }}
+ | Actor 1 name = {{#show: {{{1|}}} | ?Actor 1 name }}
+ | Actor 2 name = {{#show: {{{1|}}} | ?Actor 2 name }}
+ | Actor 3 name = {{#show: {{{1|}}} | ?Actor 3 name }}
+ | Actor 1 Display in Compact View = {{#show: {{{1|}}} |?Actor 1 Display in Compact View }}
+ | Actor 2 Display in Compact View = {{#show: {{{1|}}} |?Actor 2 Display in Compact View }}
+ | Actor 3 Display in Compact View = {{#show: {{{1|}}} |?Actor 3 Display in Compact View }}
+ | Actor 1 Enable Get Aheads = {{#show: {{{1|}}} | ?Actor 1 Enable Get Aheads }}
+ | Actor 2 Enable Get Aheads = {{#show: {{{1|}}} | ?Actor 2 Enable Get Aheads }}
+ | Actor 3 Enable Get Aheads = {{#show: {{{1|}}} | ?Actor 3 Enable Get Aheads }}
+ | Actor1={{#ask: [[From page::{{{1|}}}]] [[Assigned to::Actor1]] 
+| ?#=FromPage
+|mainlabel=-
+|?Index=Index
+|?Has text title=Title
+|?Duration hour=Duration hour
+|?Duration minute=Duration minute
+|?Depends on#list=Depends on
+|?Related article=Related article
+|?Color=Color
+|?Free text=Free text
+|?Actor
+|named args=yes
+|format=template
+|template=ST Query Result
+|sort=Assigned to, Index
+}}
+ | Actor2={{#ask: [[From page::{{{1|}}}]] [[Assigned to::Actor2]] 
+| ?#=FromPage
+|mainlabel=-
+|?Index=Index
+|?Has text title=Title
+|?Duration hour=Duration hour
+|?Duration minute=Duration minute
+|?Depends on#list=Depends on
+|?Related article=Related article
+|?Color=Color
+|?Free text=Free text
+|?Actor
+|named args=yes
+|format=template
+|template=ST Query Result
+|sort=Assigned to, Index
+}}
+ | Actor3={{#ask: [[From page::{{{1|}}}]] [[Assigned to::Actor3]] 
+| ?#=FromPage
+|mainlabel=-
+|?Index=Index
+|?Has text title=Title
+|?Duration hour=Duration hour
+|?Duration minute=Duration minute
+|?Depends on#list=Depends on
+|?Related article=Related article
+|?Color=Color
+|?Free text=Free text
+|?Actor
+|named args=yes
+|format=template
+|template=ST Query Result
+|sort=Assigned to, Index
+}}
+ | Color Gray Meaning={{#show: {{{1|}}} | ?Color Gray Meaning }}
+ | Color Red Meaning={{#show: {{{1|}}} | ?Color Red Meaning }}
+ | Color Orange Meaning={{#show: {{{1|}}} | ?Color Orange Meaning }}
+ | Color Yellow Meaning={{#show: {{{1|}}} | ?Color Yellow Meaning }}
+ | Color Blue Meaning={{#show: {{{1|}}} | ?Color Blue Meaning }}
+ | Color Green Meaning={{#show: {{{1|}}} | ?Color Green Meaning }}
+ | Color Pink Meaning={{#show: {{{1|}}} | ?Color Pink Meaning }}
+ | Color Purple Meaning={{#show: {{{1|}}} | ?Color Purple Meaning }}
+}}&lt;/includeonly&gt;</text>
+      <sha1>gyv4ve8e63pzri69l050vnemzzmovap</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>Template:Actor 1 Task</title>
+    <ns>10</ns>
+    <id>11807</id>
+    <revision>
+      <id>53061</id>
+      <parentid>52999</parentid>
+      <timestamp>2014-09-23T17:17:14Z</timestamp>
+      <contributor>
+        <username>Lwelsh</username>
+        <id>2</id>
+      </contributor>
+      <minor/>
+      <comment>Text replacement - &quot;[[Category:Used for Summary Timeline Extension]]&quot; to &quot;[[Category:Template Used for Summary Timeline Extension]]&quot;</comment>
+      <text xml:space="preserve" bytes="1265">&lt;noinclude&gt;
+Use this format:
+&lt;pre&gt;
+{{Actor 1 Task
+|Title=
+|Duration=
+|Color=
+|Related articles=
+|Free text=
+}}
+
+{{Task
+|Actor={{{Actor 1 name|}}}
+|Title={{{Title|}}}
+|Duration hour={{{Duration hour|}}}
+|Duration minute={{{Duration minute|}}}
+|Color={{{Color|}}}
+|Related article={{{Related article|}}}
+|Free text={{{Free text|}}}
+}}
+
+&lt;/pre&gt;
+
+[[Category:Template Used for Summary Timeline Extension]]
+&lt;/noinclude&gt;&lt;includeonly&gt;{{#set_internal:Task
+|Index={{#counter: Actor1 }}
+|Actor={{#var:Actor1name}}
+|Has text title={{{Title|}}}
+|Assigned to#list=Actor1
+|Duration={{{Duration hour|00}}}:{{{Duration minute|00}}}
+|Duration hour={{{Duration hour|00}}}
+|Duration minute={{{Duration minute|00}}}
+|Duration in minutes={{#expr: (({{{Duration hour|0}}} * 60) + {{{Duration minute|0}}}) }}
+|Related article#list={{{Related article|}}}
+|Color={{{Color|}}}
+|Free text={{{Free text|}}}
+|From page={{FULLPAGENAME}}
+|EVA title={{#var:EVATitle}}
+|Parent related article#list={{#var:pageRelatedArticle}}
+|EVA Duration={{#var:EVADurationHour}}:{{#var:EVADurationMinute}}
+}}
+&lt;!-- {{{Title|}}} ({{{Duration hour|}}}:{{{Duration minute|}}}) --&gt;
+&amp;&amp;&amp;{{{Title|}}}@@@{{{Duration hour|}}}@@@{{{Duration minute|}}}@@@{{{Related article|}}}@@@{{{Color|}}}@@@{{{Free text|}}}
+&lt;/includeonly&gt;</text>
+      <sha1>s54qmii6bce0cuktxpa3i09s3tarqlx</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>Template:ST Query Result</title>
+    <ns>10</ns>
+    <id>11827</id>
+    <revision>
+      <id>53074</id>
+      <parentid>53002</parentid>
+      <timestamp>2014-09-23T17:17:39Z</timestamp>
+      <contributor>
+        <username>Lwelsh</username>
+        <id>2</id>
+      </contributor>
+      <minor/>
+      <comment>Text replacement - &quot;[[Category:Used for Summary Timeline Extension]]&quot; to &quot;[[Category:Template Used for Summary Timeline Extension]]&quot;</comment>
+      <text xml:space="preserve" bytes="239">&lt;noinclude&gt;
+[[Category:Template Used for Summary Timeline Extension]]
+&lt;/noinclude&gt;&lt;includeonly&gt;
+&amp;&amp;&amp;{{{?Title|}}}@@@{{{?Duration hour|}}}@@@{{{?Duration minute|}}}@@@{{{?Related article|}}}@@@{{{?Color|}}}@@@{{{?Free text|}}}
+&lt;/includeonly&gt;</text>
+      <sha1>hoc92af1xf59s454uj1r0omsyh8irzx</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>Template:Actor 2 Task</title>
+    <ns>10</ns>
+    <id>11808</id>
+    <revision>
+      <id>53077</id>
+      <parentid>53000</parentid>
+      <timestamp>2014-09-23T17:17:42Z</timestamp>
+      <contributor>
+        <username>Lwelsh</username>
+        <id>2</id>
+      </contributor>
+      <minor/>
+      <comment>Text replacement - &quot;[[Category:Used for Summary Timeline Extension]]&quot; to &quot;[[Category:Template Used for Summary Timeline Extension]]&quot;</comment>
+      <text xml:space="preserve" bytes="1619">&lt;noinclude&gt;
+Use this format:
+&lt;pre&gt;
+{{EV1 Task
+|Title=
+|Duration=
+|Color=
+|Related articles=
+|Free text=
+}}
+
+{{Task
+|Actor=EV1
+|Title={{{Title|}}}
+|Duration hour={{{Duration hour|}}}
+|Duration minute={{{Duration minute|}}}
+|Color={{{Color|}}}
+|Related article={{{Related article|}}}
+|Free text={{{Free text|}}}
+}}
+
+&lt;/pre&gt;
+
+[[Category:Template Used for Summary Timeline Extension]]
+&lt;/noinclude&gt;&lt;includeonly&gt;{{#set_internal:Task
+|Index={{#counter: Actor2 }}
+|Actor={{#var:Actor2name}}
+|Has text title={{{Title|}}}
+|Assigned to#list=Actor2
+|Duration={{{Duration hour|00}}}:{{{Duration minute|00}}}
+|Duration hour={{{Duration hour|00}}}
+|Duration minute={{{Duration minute|00}}}
+|Duration in minutes={{#expr: (({{{Duration hour|0}}} * 60) + {{{Duration minute|0}}}) }}
+|Related article#list={{{Related article|}}}
+|Color={{{Color|}}}
+|Free text={{{Free text|}}}
+|From page={{FULLPAGENAME}}
+|EVA title={{#var:EVATitle}}
+|Parent related article#list={{#var:pageRelatedArticle}}
+|EVA Duration={{#var:EVADurationHour}}:{{#var:EVADurationMinute}}
+|Color White Meaning={{#var:ColorWhiteMeaning}}
+|Color Red Meaning={{#var:ColorRedMeaning}}
+|Color Orange Meaning={{#var:ColorOrangeMeaning}}
+|Color Yellow Meaning={{#var:ColorYellowMeaning}}
+|Color Blue Meaning={{#var:ColorBlueMeaning}}
+|Color Green Meaning={{#var:ColorGreenMeaning}}
+|Color Pink Meaning={{#var:ColorPinkMeaning}}
+|Color Purple Meaning={{#var:ColorPurpleMeaning}}
+}}
+{{{Title|}}} ({{{Duration hour|}}}:{{{Duration minute|}}}) 
+&amp;&amp;&amp;{{{Title|}}}@@@{{{Duration hour|}}}@@@{{{Duration minute|}}}@@@{{{Related article|}}}@@@{{{Color|}}}@@@{{{Free text|}}}
+&lt;/includeonly&gt;</text>
+      <sha1>ihxe9eux5mrpuzrutv0erdisr0q7ih1</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>Template:Actor 3 Task</title>
+    <ns>10</ns>
+    <id>11809</id>
+    <revision>
+      <id>53082</id>
+      <parentid>53001</parentid>
+      <timestamp>2014-09-23T17:17:51Z</timestamp>
+      <contributor>
+        <username>Lwelsh</username>
+        <id>2</id>
+      </contributor>
+      <minor/>
+      <comment>Text replacement - &quot;[[Category:Used for Summary Timeline Extension]]&quot; to &quot;[[Category:Template Used for Summary Timeline Extension]]&quot;</comment>
+      <text xml:space="preserve" bytes="1245">&lt;noinclude&gt;
+Use this format:
+&lt;pre&gt;
+{{EV1 Task
+|Title=
+|Duration=
+|Color=
+|Related articles=
+|Free text=
+}}
+
+{{Task
+|Actor=EV2
+|Title={{{Title|}}}
+|Duration hour={{{Duration hour|}}}
+|Duration minute={{{Duration minute|}}}
+|Color={{{Color|}}}
+|Related article={{{Related article|}}}
+|Free text={{{Free text|}}}
+}}
+
+&lt;/pre&gt;
+
+[[Category:Template Used for Summary Timeline Extension]]
+&lt;/noinclude&gt;&lt;includeonly&gt;{{#set_internal:Task
+|Index={{#counter: Actor3 }}
+|Actor={{#var:Actor3name}}
+|Has text title={{{Title|}}}
+|Assigned to#list=Actor3
+|Duration={{{Duration hour|00}}}:{{{Duration minute|00}}}
+|Duration hour={{{Duration hour|00}}}
+|Duration minute={{{Duration minute|00}}}
+|Duration in minutes={{#expr: (({{{Duration hour|0}}} * 60) + {{{Duration minute|0}}}) }}
+|Related article#list={{{Related article|}}}
+|Color={{{Color|}}}
+|Free text={{{Free text|}}}
+|From page={{FULLPAGENAME}}
+|EVA title={{#var:EVATitle}}
+|Parent related article#list={{#var:pageRelatedArticle}}
+|EVA Duration={{#var:EVADurationHour}}:{{#var:EVADurationMinute}}
+}}
+&lt;!-- {{{Title|}}} ({{{Duration hour|}}}:{{{Duration minute|}}}) --&gt;
+&amp;&amp;&amp;{{{Title|}}}@@@{{{Duration hour|}}}@@@{{{Duration minute|}}}@@@{{{Related article|}}}@@@{{{Color|}}}@@@{{{Free text|}}}
+&lt;/includeonly&gt;</text>
+      <sha1>q0d306qxxjfg7ph4jyw26qgdmq7g2mw</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>Template:Summary Timeline</title>
+    <ns>10</ns>
+    <id>11806</id>
+    <revision>
+      <id>53083</id>
+      <parentid>52998</parentid>
+      <timestamp>2014-09-23T17:17:57Z</timestamp>
+      <contributor>
+        <username>Lwelsh</username>
+        <id>2</id>
+      </contributor>
+      <minor/>
+      <comment>Text replacement - &quot;[[Category:Used for Summary Timeline Extension]]&quot; to &quot;[[Category:Template Used for Summary Timeline Extension]]&quot;</comment>
+      <text xml:space="preserve" bytes="3812">&lt;noinclude&gt;
+This is the &quot;Summary Timeline&quot; template.
+It should be called by using the Summary Timeline form.
+
+Edit the page to see the template text.
+
+[[Category:Template Used for Summary Timeline Extension]]
+&lt;/noinclude&gt;&lt;includeonly&gt;
+{{#vardefine:EVATitle|{{{EVA Title|}}}}}
+{{#vardefine:pageRelatedArticle|{{#arraymap:{{{Related article|}}}|,|x|[[x]]}}}}
+{{#vardefine:EVADurationHour|{{{EVA Duration hour|}}}}}
+{{#vardefine:EVADurationMinute|{{{EVA Duration minute|}}}}}
+{{#vardefine:DependsOn|{{{Depends on|}}}}}
+{{#vardefine:ColorGrayMeaning|{{{Color Gray Meaning|}}}}}
+{{#vardefine:ColorRedMeaning|{{{Color Red Meaning|}}}}}
+{{#vardefine:ColorOrangeMeaning|{{{Color Orange Meaning|}}}}}
+{{#vardefine:ColorYellowMeaning|{{{Color Yellow Meaning|}}}}}
+{{#vardefine:ColorBlueMeaning|{{{Color Blue Meaning|}}}}}
+{{#vardefine:ColorGreenMeaning|{{{Color Green Meaning|}}}}}
+{{#vardefine:ColorPinkMeaning|{{{Color Pink Meaning|}}}}}
+{{#vardefine:ColorPurpleMeaning|{{{Color Purple Meaning|}}}}}
+{{#vardefine:Actor1name|{{{Actor 1 name|Actor 1}}}}}
+{{#vardefine:Actor2name|{{{Actor 2 name|Actor 2}}}}}
+{{#vardefine:Actor3name|{{{Actor 3 name|Actor 3}}}}}
+{{#set: EVA Title = {{{EVA Title|}}} }}
+{{#set: Duration hour = {{{EVA Duration hour|}}} }}
+{{#set: Duration minute = {{{EVA Duration minute|}}} }}
+{{#set: Depends on = {{{Depends on|}}} }}
+{{#set: Actor 1 name = {{{Actor 1 name|Actor 1}}} }}
+{{#set: Actor 2 name = {{{Actor 2 name|Actor 2}}} }}
+{{#set: Actor 3 name = {{{Actor 3 name|Actor 3}}} }}
+{{#set: Actor 1 Display in Compact View = {{{Actor 1 Display in Compact View|}}} }}
+{{#set: Actor 2 Display in Compact View = {{{Actor 2 Display in Compact View|}}} }}
+{{#set: Actor 3 Display in Compact View = {{{Actor 3 Display in Compact View|}}} }}
+{{#set: Actor 1 Enable Get Aheads = {{{Actor 1 Enable Get Aheads|}}} }}
+{{#set: Actor 2 Enable Get Aheads = {{{Actor 2 Enable Get Aheads|}}} }}
+{{#set: Actor 3 Enable Get Aheads = {{{Actor 3 Enable Get Aheads|}}} }}
+
+== Extension Output ==
+To display the output on another page, use the following template:
+
+Compact version: &lt;nowiki&gt;{{Summary Timeline Output | &lt;/nowiki&gt;{{PAGENAME}}&lt;nowiki&gt; }}&lt;/nowiki&gt;
+
+Compact version with fixed pixel width (change &quot;400&quot;): &lt;nowiki&gt;{{Summary Timeline Output | &lt;/nowiki&gt;{{PAGENAME}}&lt;nowiki&gt; | Compact | 400 }}&lt;/nowiki&gt;
+
+Full version: &lt;nowiki&gt;{{Summary Timeline Output | &lt;/nowiki&gt;{{PAGENAME}}&lt;nowiki&gt; | Full }}&lt;/nowiki&gt;
+
+{{Summary Timeline Output | {{PAGENAME}} }}
+
+
+{{Summary Timeline Output | {{PAGENAME}} | Full }}
+
+
+== Raw Template Output ==
+{{{EVA Title|}}} ({{{EVA Duration hour|}}}:{{{EVA Duration minute|}}})
+
+Gray:{{{Color Gray Meaning|}}}
+
+Red: {{{Color Red Meaning|}}}
+
+Orange:{{{Color Orange Meaning|}}}
+
+Yellow:{{{Color Yellow Meaning|}}}
+
+Blue:{{{Color Blue Meaning|}}}
+
+Green:{{{Color Green Meaning|}}}
+
+Pink:{{{Color Pink Meaning|}}}
+
+Purple:{{{Color Purple Meaning|}}}
+&lt;table&gt;&lt;tr&gt;
+&lt;th&gt;{{#var:Actor1name|Actor 1}}&lt;/th&gt;
+&lt;th&gt;{{#var:Actor2name|Actor 2}}&lt;/th&gt;
+&lt;th&gt;{{#var:Actor3name|Actor 3}}&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;vertical-align: top;&quot;&gt;{{{Actor 1 Tasks|}}}&lt;/td&gt;
+&lt;td style=&quot;vertical-align: top;&quot;&gt;{{{Actor 2 Tasks|}}}&lt;/td&gt;
+&lt;td style=&quot;vertical-align: top;&quot;&gt;{{{Actor 3 Tasks|}}}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+
+{{#arraymap:{{{Depends on|}}}|,|x|[[Depends on::x]]}}
+{{#arraymap:{{{Related article|}}}|,|x|[[Related article::x]]}}
+{{#set: Color Gray Meaning={{{Color Gray Meaning|}}}}}
+{{#set: Color Red Meaning={{{Color Red Meaning|}}}}}
+{{#set: Color Orange Meaning={{{Color Orange Meaning|}}}}}
+{{#set: Color Yellow Meaning={{{Color Yellow Meaning|}}}}}
+{{#set: Color Blue Meaning={{{Color Blue Meaning|}}}}}
+{{#set: Color Green Meaning={{{Color Green Meaning|}}}}}
+{{#set: Color Pink Meaning={{{Color Pink Meaning|}}}}}
+{{#set: Color Purple Meaning={{{Color Purple Meaning|}}}}}
+
+[[Category:Summary Timeline]]&lt;/includeonly&gt;</text>
+      <sha1>4fg6doucjr9eizb7t8jsdn2bma48shk</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>
