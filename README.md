@@ -8,13 +8,15 @@ The input is an array of tasks and durations for two crew members.
 DEPENDENCIES
 =========================
 
-Extension:Semantic Mediawiki
-Extension:Semantic Forms
-Extension:Semantic Internal Objects
-Extension:Variables
-Extension:NumerAlpha
-other extensions
-form, templates, properties
+* Extension:Semantic Mediawiki
+* Extension:Semantic Forms
+* Extension:Semantic Internal Objects
+* Extension:Variables
+* Extension:NumerAlpha
+
+other extensions?
+
+Semantic form, templates, properties included in xml files
 
 =========================
 INSTALLATION
