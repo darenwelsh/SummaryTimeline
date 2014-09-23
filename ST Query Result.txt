@@ -1,5 +1,0 @@
-<noinclude>
-
-</noinclude><includeonly>
-&&&{{{?Title|}}}@@@{{{?Duration hour|}}}@@@{{{?Duration minute|}}}@@@{{{?Related article|}}}@@@{{{?Color|}}}@@@{{{?Free text|}}}
-</includeonly>
