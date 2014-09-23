@@ -18,8 +18,6 @@
 Considerations for improvement
 
 STUFF TO DO BEFORE INITIAL RELEASE:
-* Full version details are not showing up even without html
-
 * Test out non-EV timelines like SSRMS or launch
 
 * Property:Depends on - should this only allow values from SIO-Task and Mission? Probably not.

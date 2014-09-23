@@ -55,6 +55,7 @@ For the full version:
 |?Depends on#list=Depends on
 |?Related article=Related article
 |?Color=Color
+|?Free text=Free text
 |?Actor
 |named args=yes
 |format=template
@@ -71,6 +72,7 @@ For the full version:
 |?Depends on#list=Depends on
 |?Related article=Related article
 |?Color=Color
+|?Free text=Free text
 |?Actor
 |named args=yes
 |format=template
