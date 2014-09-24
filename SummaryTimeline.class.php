@@ -17,16 +17,19 @@
 /*
 Considerations for improvement
 
-STUFF TO DO BEFORE INITIAL RELEASE:
-* Property:Depends on - should this only allow values from SIO-Task and Mission? Probably not.
-*    Task depends on can be a list of 
-*     Actor1##{{TASK NAME}},
-*     {{EVA NAME}}##{{EV2}}##{{TASK NAME}}, //[[SSU EVA]] ([[SSU EVA Summary Timeline]])
-*     {{MISSION NAME}}##{{HARDWARE NAME}}  // Manifest
-
-
-
-------
+MISSION PAGES (VV):
+* Add Property:Required for EVA#list for values EVA title
+** Modify Template:Manifest item on mission
+** This can be queried via Template:Summary Timeline Output for Manifest item on mission::+
+** where [[Required for EVA::EVA title]]
+** Upgrade: Allow for listing [[Required for Task::Has text title]]
+*
+* ORIGINAL IDEA:
+** Property:Depends on - should this only allow values from SIO-Task and Mission? Probably not.
+**    Task depends on can be a list of 
+**     Actor1##{{TASK NAME}},
+**     {{EVA NAME}}##{{EV2}}##{{TASK NAME}}, //[[SSU EVA]] ([[SSU EVA Summary Timeline]])
+**     {{MISSION NAME}}##{{HARDWARE NAME}}  // Manifest <-- remove this becasue Mission Pages idea is better
 
 COMPACT OUTPUT:
 * Get-Aheads is currently always second-to-last. This doesn't work for non-EVA (w/ Ingress) timelines
@@ -213,8 +216,28 @@ class SummaryTimeline
 			}
 		} unset($actor);
 
-
-
+		//Manifest Dependencies
+		//This only works for the EVA wiki (using Template:Mission pages with manifest info)
+		//As such, page Property:Required for EVA is not included in the xml dump
+		$manifestDependenciesText = "";
+		$a = 1;
+		foreach ( $options['hardware required for eva'] as $hardware ){
+			if ($a>1){
+				$manifestDependenciesText .= 
+					", "
+					. $hardware['title']
+					. " (" . $hardware['mission'] . ")";
+			} else { //First item
+				$manifestDependenciesText .=
+					$hardware['title']
+					. " (" . $hardware['mission'] . ")";				
+			}
+			$a++;
+		} 
+		//This is to remove any hidden newlines or carriage returns. 
+		//I have no idea why, but one sneaks in between the final 'mission' and ")"
+		//Ref: http://stackoverflow.com/questions/10757671/removing-line-breaks-no-characters-from-string-retrieved-from-database
+		$manifestDependenciesText = preg_replace( "/\r|\n/", "", $manifestDependenciesText );
 
 		//FULL VERSION CONTENT DEFINITIONS
 		//Define the Actor1 column output
@@ -293,6 +316,11 @@ class SummaryTimeline
 			// Task dependencies
 			. "<div style='position: relative; margin: 0px 10px 0px 10px;
 				font-size: 100%;'>Dependencies: " . $options['depends on']
+			. "</div>"
+
+			// Hardware dependencies
+			. "<div style='position: relative; margin: 0px 10px 0px 10px;
+				font-size: 100%;'>Manifest Dependencies: " . $manifestDependenciesText
 			. "</div>"
 
 			// EVA related articles
@@ -579,6 +607,19 @@ class SummaryTimeline
 				        if ( isset($value) ) {
 				        	$options[$name] = $value;
 				        }
+				        break;
+			        case 'hardware required for eva':
+				        $i = 1; /* Task id */
+					    if( isset($value) && $value!="" ){
+						    $tempHardware = explode ( '&&&', $value, 2 );
+						    $hardware = explode ( '&&&', $tempHardware[1] );
+						    foreach ( $hardware as $item ) {
+						    	$itemDetails = explode( '@@@', $item);
+						    	$options['hardware required for eva'][$i]['title'] = trim($itemDetails[0]);
+						    	$options['hardware required for eva'][$i]['mission'] = trim($itemDetails[1]);
+						    	$i++;
+						    }
+						}
 				        break;
 			        case 'parent related article':
 				        if ( isset($value) ) {

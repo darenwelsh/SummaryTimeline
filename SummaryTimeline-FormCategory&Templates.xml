@@ -181,16 +181,14 @@ if a page with that name already exists, you will be sent to a form to edit that
     <ns>10</ns>
     <id>11828</id>
     <revision>
-      <id>53059</id>
-      <parentid>53003</parentid>
-      <timestamp>2014-09-23T17:17:06Z</timestamp>
+      <id>53165</id>
+      <parentid>53164</parentid>
+      <timestamp>2014-09-24T17:57:04Z</timestamp>
       <contributor>
         <username>Lwelsh</username>
         <id>2</id>
       </contributor>
-      <minor/>
-      <comment>Text replacement - &quot;[[Category:Used for Summary Timeline Extension]]&quot; to &quot;[[Category:Template Used for Summary Timeline Extension]]&quot;</comment>
-      <text xml:space="preserve" bytes="3315">&lt;noinclude&gt;
+      <text xml:space="preserve" bytes="3636">&lt;noinclude&gt;
 
 For the compact version (default):
 &lt;pre&gt;{{Summary Timeline Output | Page name of summary timeline to display | Compact }}&lt;/pre&gt;
@@ -201,13 +199,23 @@ To force the compact version to a fixed pixel width to fit on a specific page:
 For the full version:
 &lt;pre&gt;{{Summary Timeline Output | Page name of summary timeline to display | Full }}&lt;/pre&gt;
 
-[[Category:Template Used for Summary Timeline Extension]]
-&lt;/noinclude&gt;&lt;includeonly&gt;{{#summary-timeline:
+[[Category:Used for Summary Timeline Extension]]
+&lt;/noinclude&gt;&lt;includeonly&gt;{{#vardefine:tempEVAtitle|{{#show: {{{1|}}} | ?EVA title }} }}{{#summary-timeline:
  | format={{{2|}}}
  | fixedwidth={{{3|}}}
  | st index={{#counter: SummaryTimeline }}
  | title={{#show: {{{1|}}} | ?EVA title }}@@@{{{1|}}}
  | depends on={{#show: {{{1|}}} | ?Depends on }}
+ | hardware required for eva = 
+{{#ask: [[Manifest item on mission::+]] [[Required for EVA::{{#var:tempEVAtitle}}]] 
+| ?#=FromPage
+|mainlabel=-
+|?Has title=Title
+|?Manifest item on mission=Mission
+|named args=yes
+|format=template
+|template=ST Manifest Query Result
+}}
  | Parent Related Article={{#show: {{{1|}}} | ?Related article }}
  | EVA Duration hours={{#show: {{{1|}}} | ?Duration hour }}
  | EVA Duration minutes={{#show: {{{1|}}} | ?Duration minute }}
@@ -280,7 +288,7 @@ For the full version:
  | Color Pink Meaning={{#show: {{{1|}}} | ?Color Pink Meaning }}
  | Color Purple Meaning={{#show: {{{1|}}} | ?Color Purple Meaning }}
 }}&lt;/includeonly&gt;</text>
-      <sha1>gyv4ve8e63pzri69l050vnemzzmovap</sha1>
+      <sha1>hzfrbe00r1zr94x22etsn25jep0pu78</sha1>
       <model>wikitext</model>
       <format>text/x-wiki</format>
     </revision>
@@ -446,6 +454,28 @@ This template is used with the Summary Timeline form.
       <text xml:space="preserve" bytes="96">[[Has default form::Summary Timeline]]
 [[Category:Category Used for Summary Timeline Extension]]</text>
       <sha1>jmlpyocbq63xrgav0purfxgctmrinr8</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>Template:ST Manifest Query Result</title>
+    <ns>10</ns>
+    <id>11885</id>
+    <revision>
+      <id>53163</id>
+      <parentid>53162</parentid>
+      <timestamp>2014-09-24T17:54:21Z</timestamp>
+      <contributor>
+        <username>Lwelsh</username>
+        <id>2</id>
+      </contributor>
+      <text xml:space="preserve" bytes="145">&lt;noinclude&gt;
+[[Category:Template Used for Summary Timeline Extension]]
+&lt;/noinclude&gt;&lt;includeonly&gt;
+&amp;&amp;&amp;{{{?Title|}}}@@@{{{?Mission|}}}
+&lt;/includeonly&gt;</text>
+      <sha1>tr6j0usoj6o2ilz2nzifxsfrwpezt49</sha1>
       <model>wikitext</model>
       <format>text/x-wiki</format>
     </revision>
