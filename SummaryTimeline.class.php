@@ -299,9 +299,10 @@ class SummaryTimeline
 
 			$text .= ";'>"
 
-			// Title
+			// ST Title
 			. "<div style='position: relative; margin: 10px 10px 0px 10px;
-				font-weight: bold;'>[[" . $options['title link'] . "|" . $options['title'] . "]] (" 
+				font-weight: bold;'>" . $options['title'] . " (" 
+				// font-weight: bold;'>[[" . $options['title link'] . "|" . $options['title'] . "]] (" 
         	. $options['eva duration hours'] . ":";
 
 	    	if ( strlen($options['eva duration minutes']) == 1 ){
@@ -310,35 +311,56 @@ class SummaryTimeline
 				$text .= $options['eva duration minutes'];
 	    	}
 
-        	$text .= ")"
-			. "</div>"
+        	$text .= ") <span style='font-size: 80%; font-weight: normal;'>([[" . $options['title link'] . "|edit this summary timeline]])"
+			. "</span></div>";
 
-			// Task dependencies
-			. "<div style='position: relative; margin: 0px 10px 0px 10px;
-				font-size: 100%;'>Dependencies: " . $options['depends on']
-			. "</div>"
+			// Only show Event page if user added one
+			if ( strlen($options['eva title']) > 0 ){
+				// Event Page (EVA title)
+	    		$text .= 
+					"<div style='position: relative; margin: 0px 10px 0px 10px;
+					font-size: 100%;'>Event page: [[" . $options['eva title']
+					. "]]</div>";
+	    	}
 
-			// Hardware dependencies
-			. "<div style='position: relative; margin: 0px 10px 0px 10px;
-				font-size: 100%;'>Manifest Dependencies: " . $manifestDependenciesText
-			. "</div>"
+			// Only show EVA dependencies if user added one
+			if ( strlen($options['depends on']) > 0 ){
+				// EVA dependencies
+				$text .= "<div style='position: relative; margin: 0px 10px 0px 10px;
+					font-size: 100%;'>Dependencies: " . $options['depends on']
+				. "</div>";
+			}
 
-			// EVA related articles
-			. "<div style='position: relative; margin: 0px 10px 0px 10px;
-				font-size: 100%;'>Related articles: " . $options['parent related article']
-			. "</div>"
+			// Only show Manifest dependencies if user added one
+			if ( strlen($manifestDependenciesText) > 0 ){
+				// Hardware dependencies
+				$text .= "<div style='position: relative; margin: 0px 10px 0px 10px;
+					font-size: 100%;'>Manifest dependencies: " . $manifestDependenciesText
+				. "</div>";
+			}
+
+			// Only show EVA related articles if user added one
+			if ( strlen($options['parent related article']) > 0 ){
+				// EVA related articles
+				$text .= "<div style='position: relative; margin: 0px 10px 0px 10px;
+					font-size: 100%;'>Related articles: " . $options['parent related article']
+				. "</div>";
+			}
 
 			// Begin main div
-			. "<div class='summary-timeline-compact-version' id='summary-timeline-" . $options['st index'] . "'>"
+			$text .= "<div class='summary-timeline-compact-version' id='summary-timeline-" . $options['st index'] . "'>";
 
-			// Color key
-			. "<div style='"
-			. "position: relative; margin: 0px 10px 0px 10px;"
-				. "'>" . $colorKeyText
-			. "</div>"
+			// Only show Color Key if user defined a color
+			if ( strlen($colorKeyText) > 0 ){
+				// Color key
+				$text .= "<div style='"
+				. "position: relative; margin: 0px 10px 0px 10px; font-size: 100%;'>Color key: "
+					. $colorKeyText
+				. "</div>";
+			}
 
 			// Begin outer container
-			. "<div class='container'>"
+			$text .= "<div class='container'>"
 
 			// Begin left label column
 			. "<div class='left column'>"
@@ -601,6 +623,11 @@ class SummaryTimeline
 				        	$titleParts = explode( '@@@', $value);
 				        	$options[$name] = $titleParts[0];
 				        	$options['title link'] = $titleParts[1];
+				        }
+				        break;
+				    case 'eva title':
+					    if ( isset($value) && $value!="" ) {
+				        	$options[$name] = $value;
 				        }
 				        break;
 			        case 'depends on':

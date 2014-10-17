@@ -31,6 +31,8 @@
       <namespace key="107" case="first-letter">Form talk</namespace>
       <namespace key="108" case="first-letter">Concept</namespace>
       <namespace key="109" case="first-letter">Concept talk</namespace>
+      <namespace key="5000" case="first-letter">Issue</namespace>
+      <namespace key="5001" case="first-letter">Issue talk</namespace>
     </namespaces>
   </siteinfo>
   <page>
@@ -783,6 +785,25 @@
       <text xml:space="preserve" bytes="189">This property has type [[Has type::Number]] and is intended to be used to state the intended order of a Multiple Instance Template.
 [[Category:Property Used for Summary Timeline Extension]]</text>
       <sha1>t0ih7ldu77tkgxp10ki1s39rc8vpvtu</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>Property:ST title</title>
+    <ns>102</ns>
+    <id>11888</id>
+    <revision>
+      <id>53196</id>
+      <parentid>53189</parentid>
+      <timestamp>2014-10-17T15:03:14Z</timestamp>
+      <contributor>
+        <username>Lwelsh</username>
+        <id>2</id>
+      </contributor>
+      <text xml:space="preserve" bytes="78">[[Has type::String]]
+[[Category:Property Used for Summary Timeline Extension]]</text>
+      <sha1>c8rktsbjo02fmys14o23zb3xzyta07o</sha1>
       <model>wikitext</model>
       <format>text/x-wiki</format>
     </revision>

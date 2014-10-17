@@ -31,6 +31,8 @@
       <namespace key="107" case="first-letter">Form talk</namespace>
       <namespace key="108" case="first-letter">Concept</namespace>
       <namespace key="109" case="first-letter">Concept talk</namespace>
+      <namespace key="5000" case="first-letter">Issue</namespace>
+      <namespace key="5001" case="first-letter">Issue talk</namespace>
     </namespaces>
   </siteinfo>
   <page>
@@ -38,28 +40,32 @@
     <ns>106</ns>
     <id>11810</id>
     <revision>
-      <id>53136</id>
-      <parentid>53100</parentid>
-      <timestamp>2014-09-23T22:23:56Z</timestamp>
+      <id>53194</id>
+      <parentid>53192</parentid>
+      <timestamp>2014-10-17T15:00:58Z</timestamp>
       <contributor>
         <username>Lwelsh</username>
         <id>2</id>
       </contributor>
-      <text xml:space="preserve" bytes="6639">&lt;includeonly&gt;{{{info|page name=&lt;Summary Timeline[EVA Title]&gt; Summary Timeline}}}
+      <text xml:space="preserve" bytes="6937">&lt;includeonly&gt;{{{info|page name=&lt;Summary Timeline[ST Title]&gt; Summary Timeline}}}
 &lt;div id=&quot;wikiPreview&quot; style=&quot;display: none; padding-bottom: 25px; margin-bottom: 25px; border-bottom: 1px solid #AAAAAA;&quot;&gt;&lt;/div&gt;
 {{{for template|Summary Timeline}}}
 
-The output of this form will be saved to a page entitled &quot;&lt;EVA Title&gt; Summary Timeline&quot; (it will add &quot;Summary Timeline&quot; to the end). Use something that is not tied to a date like &quot;Lab LTL IFHX R&amp;R EVA 1&quot; or &quot;EVA Ice Cream Sandwich&quot;. You may also choose to create multiple versions of your timeline during the development phase such as &quot;EVA Ice Cream Sandwich Version 1&quot; and &quot;EVA Ice Cream Sandwich Version 2&quot;.
+The output of this form will be saved to a page entitled &quot;&lt;Summary Timeline Title&gt; Summary Timeline&quot; (it will add &quot;Summary Timeline&quot; to the end). Use something that is not tied to a date like &quot;Lab LTL IFHX R&amp;R EVA 1&quot; or &quot;EVA Ice Cream Sandwich&quot;. You may also choose to create multiple versions of your timeline during the development phase such as &quot;EVA Ice Cream Sandwich Version 1&quot; and &quot;EVA Ice Cream Sandwich Version 2&quot;.
 
-'''EVA Title:''' {{{field|EVA Title|input type=text|size=50|placeholder=FHRC EVA 1 Version B}}}
+'''Summary Timeline Title:''' {{{field|ST Title|input type=text|size=50|placeholder=FHRC EVA 1 Version B|mandatory}}} Summary Timeline
 
-List any dependencies in the next field. If this EVA is dependent on the completion of a prior EVA, list that EVA. If it depends on hardware launching on a vehicle (such as [[SpX-5]]), list the vehicle mission and the hardware page name.
+The next field allows you to link the summary timeline to a single related event page. This is optional, but encouraged for events with planning pages.
+
+'''Event Title:''' {{{field|EVA Title|input type=text|size=50|placeholder=FHRC EVA 1}}}
+
+List any dependencies in the next field. If this event is an EVA dependent on the completion of a prior EVA, list that EVA. If it depends on hardware launching on a vehicle (such as [[SpX-5]]), list the vehicle mission and the hardware page name.
 
 '''Depends on''': {{{field|Depends on|class=full-width no-links-allowed|values from namespace=Main|list|placeholder=SpX-5, US EVA 27}}}
 
 '''Related Articles:''' {{{field|Related article|class=full-width no-links-allowed|values from namespace=Main|list|placeholder=Related articles}}}
 
-'''EVA Duration (HH:MM):''' {{{field|EVA Duration hour|size=2|default=6}}} : {{{field|EVA Duration minute|size=2|default=30}}}
+'''Duration (HH:MM):''' {{{field|EVA Duration hour|size=2|default=6}}} : {{{field|EVA Duration minute|size=2|default=30}}}
 
 '''Color Key:'''
 
@@ -171,7 +177,7 @@ if a page with that name already exists, you will be sent to a form to edit that
 
 [[Category:Form Used for Summary Timeline Extension]]
 &lt;/noinclude&gt;</text>
-      <sha1>jp34h31f7lgg1g57w9tcunvp8pav0pe</sha1>
+      <sha1>kkx4epiir7bpcgpxfouy36yr55jqt2n</sha1>
       <model>wikitext</model>
       <format>text/x-wiki</format>
     </revision>
@@ -368,14 +374,14 @@ This template is used with the Summary Timeline form.
     <ns>10</ns>
     <id>11806</id>
     <revision>
-      <id>53171</id>
-      <parentid>53134</parentid>
-      <timestamp>2014-09-24T22:54:15Z</timestamp>
+      <id>53195</id>
+      <parentid>53191</parentid>
+      <timestamp>2014-10-17T15:01:20Z</timestamp>
       <contributor>
         <username>Lwelsh</username>
         <id>2</id>
       </contributor>
-      <text xml:space="preserve" bytes="2833">&lt;noinclude&gt;
+      <text xml:space="preserve" bytes="2873">&lt;noinclude&gt;
 This is the &quot;Summary Timeline&quot; template.
 It should be called by using the Summary Timeline form.
 
@@ -410,6 +416,7 @@ Full version: &lt;nowiki&gt;{{Summary Timeline Output | &lt;/nowiki&gt;{{PAGENAM
 
 &lt;!-- SET PROPERTIES OF SUMMARY TIMELINE --&gt; 
 {{#set: EVA title = {{{EVA Title|}}} }}  
+{{#set: ST title = {{{ST Title|}}} }}  
 {{#set: Duration hour = {{{EVA Duration hour|}}} }} 
 {{#set: Duration minute = {{{EVA Duration minute|}}} }}  
 {{#set: Actor 1 name = {{{Actor 1 name|Actor 1}}} }}  
@@ -436,7 +443,7 @@ Full version: &lt;nowiki&gt;{{Summary Timeline Output | &lt;/nowiki&gt;{{PAGENAM
 {{{Actor 1 Tasks|}}}{{{Actor 2 Tasks|}}}{{{Actor 3 Tasks|}}}
 
 [[Category:Summary Timeline]]&lt;/includeonly&gt;</text>
-      <sha1>248om2tble3c9o1lz2euu4nh1r0rn09</sha1>
+      <sha1>j5yh1di1qbkt1cukqi4ahqjf3ffrz7s</sha1>
       <model>wikitext</model>
       <format>text/x-wiki</format>
     </revision>
@@ -446,14 +453,14 @@ Full version: &lt;nowiki&gt;{{Summary Timeline Output | &lt;/nowiki&gt;{{PAGENAM
     <ns>10</ns>
     <id>11828</id>
     <revision>
-      <id>53172</id>
-      <parentid>53165</parentid>
-      <timestamp>2014-09-24T22:54:26Z</timestamp>
+      <id>53198</id>
+      <parentid>53190</parentid>
+      <timestamp>2014-10-17T15:10:21Z</timestamp>
       <contributor>
         <username>Lwelsh</username>
         <id>2</id>
       </contributor>
-      <text xml:space="preserve" bytes="3645">&lt;noinclude&gt;
+      <text xml:space="preserve" bytes="3728">&lt;noinclude&gt;
 
 For the compact version (default):
 &lt;pre&gt;{{Summary Timeline Output | Page name of summary timeline to display | Compact }}&lt;/pre&gt;
@@ -469,9 +476,11 @@ For the full version:
  | format={{{2|}}}
  | fixedwidth={{{3|}}}
  | st index={{#counter: SummaryTimeline }}
- | title={{#show: {{{1|}}} | ?EVA title }}@@@{{{1|}}}
+ | title={{#show: {{{1|}}} | ?ST title }}@@@{{{1|}}}
+ | eva title={{#show: {{{1|}}} | ?EVA title }}
  | depends on={{#show: {{{1|}}} | ?Depends on }}
  | hardware required for eva = 
+{{#if: {{#var:tempEVAtitle}} | 
 {{#ask: [[Manifest item on mission::+]] [[Required for EVA::{{#var:tempEVAtitle}}]] 
 | ?#=FromPage
 |mainlabel=-
@@ -480,7 +489,7 @@ For the full version:
 |named args=yes
 |format=template
 |template=ST Manifest Query Result
-}}
+}} | }}
  | Parent Related Article={{#show: {{{1|}}} | ?Related article }}
  | EVA Duration hours={{#show: {{{1|}}} | ?Duration hour }}
  | EVA Duration minutes={{#show: {{{1|}}} | ?Duration minute }}
@@ -553,7 +562,7 @@ For the full version:
  | Color Pink Meaning={{#show: {{{1|}}} | ?Color Pink Meaning }}
  | Color Purple Meaning={{#show: {{{1|}}} | ?Color Purple Meaning }}
 }}&lt;/includeonly&gt;</text>
-      <sha1>1jxaw6uollgrhdxtwi50apgh5b0l98x</sha1>
+      <sha1>4p3djomtgunpd7ul40a30m3dl3b7zgr</sha1>
       <model>wikitext</model>
       <format>text/x-wiki</format>
     </revision>

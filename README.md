@@ -52,7 +52,7 @@ The form will generate a page with content like the following example:
 
 ```html
 {{Summary Timeline
-|EVA Title=IDA 2 Installation & Outfitting EVA
+|ST Title=IDA 2 Installation & Outfitting EVA
 |Depends on=IDA 1 Route & IDA 2 Deploy
 |Related article=IDA,
 |EVA Duration hour=6
