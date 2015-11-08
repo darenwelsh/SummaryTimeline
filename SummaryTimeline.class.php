@@ -2,7 +2,7 @@
 /**
  * The SummaryTimeline extension generates a graphic representation
  * of an EVA summary timeline within MediaWiki.
- * 
+ *
  * Documentation: https://github.com/darenwelsh/SummaryTimeline
  * Support:       https://github.com/darenwelsh/SummaryTimeline
  * Source code:   https://github.com/darenwelsh/SummaryTimeline
@@ -26,7 +26,7 @@ MISSION PAGES (VV):
 *
 * ORIGINAL IDEA:
 ** Property:Depends on - should this only allow values from SIO-Task and Mission? Probably not.
-**    Task depends on can be a list of 
+**    Task depends on can be a list of
 **     Actor1##{{TASK NAME}},
 **     {{EVA NAME}}##{{EV2}}##{{TASK NAME}}, //[[SSU EVA]] ([[SSU EVA Summary Timeline]])
 **     {{MISSION NAME}}##{{HARDWARE NAME}}  // Manifest <-- remove this becasue Mission Pages idea is better
@@ -58,7 +58,7 @@ FULL VERSION (more of an outline format)
 * HTML vs text (html currently breaks it)
 
 TEMPLATE
-* Remove raw output? 
+* Remove raw output?
 ** SIO is the only required content?
 ** Better document how each component works
 
@@ -111,8 +111,8 @@ class SummaryTimeline
 
 		$parser->setFunctionHook(
 			// name of parser function
-			// same as $magicWords value set in MasonryMainPage.i18n.php 
-			'summary-timeline', 
+			// same as $magicWords value set in MasonryMainPage.i18n.php
+			'summary-timeline',
 			array(
 				'SummaryTimeline',  // class to call function from
 				'renderSummaryTimeline' // function to call within that class
@@ -130,7 +130,7 @@ class SummaryTimeline
 
 		//Generate color key
 		$colorKeyText = "";
-		$colors = array("red","orange","yellow","green","blue","purple","pink","white"); 
+		$colors = array("red","orange","yellow","green","blue","purple","pink","white");
 		foreach ($colors as $value) {
 			if ($options["color $value meaning"] != '') {
 				$colorKeyText .= "<div class='color-key'>"
@@ -151,7 +151,7 @@ class SummaryTimeline
 		    . "'>0:00</div>";
 	    //Hours in the middle
 		for ($i = 1; $i < $hours-1; $i++) {
-		    $compactTimeTickerText .= "<div class='time' style='width:" 
+		    $compactTimeTickerText .= "<div class='time' style='width:"
 		    . ((floor($hourTickerDivWidth * ($i+1))) - (floor($hourTickerDivWidth * ($i))))
 		    . "%;"
 		    . " margin-left:" . (floor($hourTickerDivWidth * $i)) . "%;"
@@ -161,7 +161,7 @@ class SummaryTimeline
 		$compactTimeTickerText .= "<div class='time' "
 			. "style='"
 			. "width:" . (100 - (((floor($hourTickerDivWidth * ($i))) - (floor($hourTickerDivWidth * ($i-1)))) + (floor($hourTickerDivWidth * ($i-1))))) . "%;"
-		    . " margin-left:" 
+		    . " margin-left:"
 		    . (((floor($hourTickerDivWidth * ($i))) - (floor($hourTickerDivWidth * ($i-1)))) + (floor($hourTickerDivWidth * ($i-1))))
 		    . "%;"
 		    . "'>" . $i . ":00</div>";
@@ -170,7 +170,7 @@ class SummaryTimeline
 	    // *************************************
 		//  COMPACT VERSION CONTENT DEFINITIONS
 	    // *************************************
-	    foreach ( $options['rows'] as &$actor ){ 
+	    foreach ( $options['rows'] as &$actor ){
 			if( $actor['display in compact view']=='true' && count( $actor['tasks']) > 0 ){
 			    $compactTextActorSumOfDurationMinutes = 0;
 				$actor['compact text'] = "";
@@ -181,13 +181,13 @@ class SummaryTimeline
 					$blockWidth = (/* margin-left of next block */
 						(floor((($compactTextActorSumOfDurationMinutes //Total tasks duration in minutes so far
 							//Duration in minutes of next task
-							+ ( (60 * $actor['tasks'][($compactTexti)]['durationHour']) 
+							+ ( (60 * $actor['tasks'][($compactTexti)]['durationHour'])
 								+ $actor['tasks'][($compactTexti)]['durationMinute'] ) )
 							/ $options['eva duration in minutes'])*100))
 						 - (floor(($compactTextActorSumOfDurationMinutes / $options['eva duration in minutes'])*100)) );
 					$blockMarginLeft = (floor(($compactTextActorSumOfDurationMinutes / $options['eva duration in minutes'])*100));
 
-					$actor['compact text'] .= 
+					$actor['compact text'] .=
 					"<div class='cell-border task-block' style='width:"
 					. $blockWidth
 					. "%;"
@@ -206,7 +206,7 @@ class SummaryTimeline
 				    	. $actor['tasks'][$compactTexti]['durationMinute'] . ")"
 						. "</div>"
 						//***********************************************
-						// 
+						//
 						//***********************************************
 						. "</div>"
 					. "</div>";
@@ -223,18 +223,18 @@ class SummaryTimeline
 		$a = 1;
 		foreach ( $options['hardware required for eva'] as $hardware ){
 			if ($a>1){
-				$manifestDependenciesText .= 
+				$manifestDependenciesText .=
 					", "
 					. $hardware['title']
 					. " (" . $hardware['mission'] . ")";
 			} else { //First item
 				$manifestDependenciesText .=
 					$hardware['title']
-					. " (" . $hardware['mission'] . ")";				
+					. " (" . $hardware['mission'] . ")";
 			}
 			$a++;
-		} 
-		//This is to remove any hidden newlines or carriage returns. 
+		}
+		//This is to remove any hidden newlines or carriage returns.
 		//I have no idea why, but one sneaks in between the final 'mission' and ")"
 		//Ref: http://stackoverflow.com/questions/10757671/removing-line-breaks-no-characters-from-string-retrieved-from-database
 		$manifestDependenciesText = preg_replace( "/\r|\n/", "", $manifestDependenciesText );
@@ -244,7 +244,7 @@ class SummaryTimeline
 		$textActor1 = "";
 		$textActor1i = 1;
 		foreach ( $options['rows']['actor1']['tasks'] as $task ) {
-			$textActor1 .= $textActor1i . ". " 
+			$textActor1 .= $textActor1i . ". "
 			. $options['rows']['actor1']['tasks'][$textActor1i]['title'] . ": "
 	    	. "(" . $options['rows']['actor1']['tasks'][$textActor1i]['durationHour'] . ":"
 	    	. $options['rows']['actor1']['tasks'][$textActor1i]['durationMinute'] . ")" . "\r\n\r\n"
@@ -257,7 +257,7 @@ class SummaryTimeline
 		$textActor2 = "";
 		$textActor2i = 1;
 		foreach ( $options['rows']['actor2']['tasks'] as $task ) {
-			$textActor2 .= $textActor2i . ". " 
+			$textActor2 .= $textActor2i . ". "
 			. $options['rows']['actor2']['tasks'][$textActor2i]['title'] . ": "
 	    	. "(" . $options['rows']['actor2']['tasks'][$textActor2i]['durationHour'] . ":"
 	    	. $options['rows']['actor2']['tasks'][$textActor2i]['durationMinute'] . ")" . "\r\n\r\n"
@@ -270,7 +270,7 @@ class SummaryTimeline
 		$textActor3 = "";
 		$textActor3i = 1;
 		foreach ( $options['rows']['actor3']['tasks'] as $task ) {
-			$textActor3 .= $textActor3i . ". " 
+			$textActor3 .= $textActor3i . ". "
 			. $options['rows']['actor3']['tasks'][$textActor3i]['title'] . ": "
 	    	. "(" . $options['rows']['actor3']['tasks'][$textActor3i]['durationHour'] . ":"
 	    	. $options['rows']['actor3']['tasks'][$textActor3i]['durationMinute'] . ")" . "\r\n\r\n"
@@ -285,7 +285,7 @@ class SummaryTimeline
 		if ($options['format'] == 'compact'){
 
 			/**********************
-			
+
 			Compact Version Output
 
 			**********************/
@@ -301,8 +301,8 @@ class SummaryTimeline
 
 			// ST Title
 			. "<div style='position: relative; margin: 10px 10px 0px 10px;
-				font-weight: bold;'>" . $options['title'] . " (" 
-				// font-weight: bold;'>[[" . $options['title link'] . "|" . $options['title'] . "]] (" 
+				font-weight: bold;'>" . $options['title'] . " ("
+				// font-weight: bold;'>[[" . $options['title link'] . "|" . $options['title'] . "]] ("
         	. $options['eva duration hours'] . ":";
 
 	    	if ( strlen($options['eva duration minutes']) == 1 ){
@@ -317,7 +317,7 @@ class SummaryTimeline
 			// Only show Event page if user added one
 			if ( strlen($options['eva title']) > 0 ){
 				// Event Page (EVA title)
-	    		$text .= 
+	    		$text .=
 					"<div style='position: relative; margin: 0px 10px 0px 10px;
 					font-size: 100%;'>Event page: [[" . $options['eva title']
 					. "]]</div>";
@@ -367,7 +367,7 @@ class SummaryTimeline
 			. "<div class='summary-timeline-row' style='height: 0px; border-left-width: 0px; '>"
 			. "</div>";
 
-				foreach ( $options['rows'] as $actor ){ 
+				foreach ( $options['rows'] as $actor ){
 					if( $actor['display in compact view']=='true' && count( $actor['tasks']) > 0 ){
 					// Begin Actor Row
 					$text .= "<div class='tasks summary-timeline-row' style='font-weight: bold;'>"
@@ -395,7 +395,7 @@ class SummaryTimeline
 			. "</div>";
 
 			// Actor Rows
-			foreach ( $options['rows'] as $actor ){ 
+			foreach ( $options['rows'] as $actor ){
 				if( $actor['display in compact view']=='true' && count( $actor['tasks']) > 0 ){
 				// Begin Actor Row
 				$text .= "<div id='summary-timeline-row-" . $actor['name'] . "' class='summary-timeline-row summary-timeline-tasks-row'>"
@@ -435,7 +435,7 @@ class SummaryTimeline
 	    } elseif ($options['format'] == 'full'){
 
 			/*******************
-			
+
 			Full Version Output
 
 			*******************/
@@ -443,14 +443,14 @@ class SummaryTimeline
 			// NEED TO SPLIT TO "FULL" AND "ONE-PAGE" VERSION
 			// Title
 			$text .= "<div style='position: relative; margin: 10px 10px 0px 10px;
-				font-weight: bold;'>[[" . $options['title link'] . "|" . $options['title'] . "]] (" 
+				font-weight: bold;'>[[" . $options['title link'] . "|" . $options['title'] . "]] ("
         	. $options['eva duration hours'] . ":";
 
 	    	if ( strlen($options['eva duration minutes']) == 1 ){
 	    		$text .= "0" . $options['eva duration minutes'];
 	    	} else {
 				$text .= $options['eva duration minutes'];
-	    	}       	
+	    	}
 
         	$text .= ")"
 			. "</div>"
@@ -578,6 +578,7 @@ class SummaryTimeline
 	 * @return array $results
 	 */
 	static function extractOptions( $frame, array $args ) {
+		//initiate variables
 		$options = array();
 		$tempTasks = array();
 		$tasks = array();
@@ -590,7 +591,20 @@ class SummaryTimeline
 		// $tasksDurationPercentTotal['ev2'] = 0; DELETE
 		// $tasksDurationPercentTotal['iv'] = 0; /* This will be removed once the IV section is fixed */
 		$options['number of colors designated'] = 0;
-	 
+		$options["color red meaning"]="";
+		$options["color white meaning"]="";
+		$options["color orange meaning"]="";
+		$options["color pink meaning"]="";
+		$options["color green meaning"]="";
+		$options["color yellow meaning"]="";
+		$options["color blue meaning"]="";
+		$options["color gray meaning"]="";
+		$options["color purple meaning"]="";
+		$options['rows']['actor1']['tasks']="";
+		$options['rows']['actor2']['tasks']="";
+		$options['rows']['actor3']['tasks']="";
+		$options['fixedwidth']="";
+
 		foreach ( $args as $arg ) {
 			//Convert args with "=" into an array of options
 			$pair = explode( '=', $frame->expand($arg) , 2 );
@@ -600,7 +614,7 @@ class SummaryTimeline
 
 				//this switch could be consolidated
 				switch ($name) {
-					case 'format': 
+					case 'format':
 						$value = strtolower($value);
 						if ( $value=="full" ) {
 				        	$options[$name] = "full";
@@ -608,7 +622,7 @@ class SummaryTimeline
 				        	$options[$name] = "compact";
 				        }
 				        break;
-					case 'fixedwidth': 
+					case 'fixedwidth':
 						if ( $value != "" ) {
 				        	$options[$name] = $value;
 				        }
@@ -735,7 +749,7 @@ class SummaryTimeline
 					    if( isset($value) && $value!="" ){
 						    $tempTasks = explode ( '&&&', $value, 2 );
 						    $tasks = explode ( '&&&', $tempTasks[1] );
-						    
+
 						    foreach ( $tasks as $task ) {
 						    	$taskDetails = explode( '@@@', $task);
 						    	$options['rows'][$name]['tasks'][$i]['title'] = $taskDetails[0];
@@ -870,7 +884,7 @@ class SummaryTimeline
 
 	static function extractTasks( string $value ) {
 		$tasks = array();
-	 
+
 		foreach ( $args as $arg ) {
 			//Convert args with "=" into an array of options
 			$pair = explode( '=', $frame->expand($arg) , 2 );
@@ -891,18 +905,7 @@ class SummaryTimeline
 		}
 	}
 
-	static function addScripts ( $out ){
-		global $wgScriptPath;
-
-		$out->addScriptFile( $wgScriptPath .'/extensions/SummaryTimeline/SummaryTimeline.js' );
-
-		$out->addLink( array(
-			'rel' => 'stylesheet',
-			'type' => 'text/css',
-			'media' => "screen",
-			'href' => "$wgScriptPath/extensions/SummaryTimeline/SummaryTimeline.css"
-		) );
-		
-		return true;
+	static function addScripts ( &$out, &$skin ){
+		$out->addModules( 'ext.summarytimeline.base' );
 	}
 }

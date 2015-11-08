@@ -1,8 +1,8 @@
 <?php
-/** 
+/**
  * The SummaryTimeline generates a graphic representation
  * of an EVA summary timeline within MediaWiki
- * 
+ *
  * Documentation: https://github.com/darenwelsh/SummaryTimeline
  * Support:       https://github.com/darenwelsh/SummaryTimeline
  * Source code:   https://github.com/darenwelsh/SummaryTimeline
@@ -25,7 +25,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'url'            => 'http://github.com/darenwelsh/SummaryTimeline',
 	'author'         => '[https://www.mediawiki.org/wiki/User:Darenwelsh Daren Welsh]',
 	'descriptionmsg' => 'summarytimeline-desc',
-	'version'        => '0.1.0'
+	'version'        => '0.1.1'
 );
 
 # $dir: the directory of this file, e.g. something like:
@@ -39,7 +39,7 @@ $dir = dirname( __FILE__ ) . '/';
 #	easily switch to the desired language.
 $wgExtensionMessagesFiles['SummaryTimeline'] = $dir . 'SummaryTimeline.i18n.php';
 
-# The "class" file will contain the bulk of a simple parser function extension. 
+# The "class" file will contain the bulk of a simple parser function extension.
 #	NEED MORE INFO HERE.
 #
 $wgAutoloadClasses['SummaryTimeline'] = $dir . 'SummaryTimeline.class.php';
@@ -50,6 +50,14 @@ $wgAutoloadClasses['SummaryTimeline'] = $dir . 'SummaryTimeline.class.php';
 $wgHooks['ParserFirstCallInit'][] = 'SummaryTimeline::setup';
 
 /**
- *  Add CSS
+ *  Add CSS and JS
  **/
-$wgHooks['AjaxAddScript'][] = 'SummaryTimeline::addScripts';
+$wgResourceModules['ext.summarytimeline.base'] = array(
+	'scripts' => array( 'SummaryTimeline.js'  ),
+	'styles' =>  array( 'SummaryTimeline.css' ),
+	'localBasePath' => __DIR__,
+	'remoteExtPath' => 'SummaryTimeline',
+	'position' => 'top',
+);
+
+$wgHooks['BeforePageDisplay'][] = 'SummaryTimeline::addScripts';
