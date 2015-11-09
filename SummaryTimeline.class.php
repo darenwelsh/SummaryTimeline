@@ -600,9 +600,10 @@ class SummaryTimeline
 		$options["color blue meaning"]="";
 		$options["color gray meaning"]="";
 		$options["color purple meaning"]="";
-		$options['rows']['actor1']['tasks']="";
-		$options['rows']['actor2']['tasks']="";
-		$options['rows']['actor3']['tasks']="";
+        $options['rows']['actor1']['tasks']=array();
+        $options['rows']['actor2']['tasks']=array();
+        $options['rows']['actor3']['tasks']=array();
+        $options['hardware required for eva']=array();
 		$options['fixedwidth']="";
 
 		foreach ( $args as $arg ) {
