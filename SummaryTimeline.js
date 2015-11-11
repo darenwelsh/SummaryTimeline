@@ -1,9 +1,9 @@
 /**
  * Uses canvas.measureText to compute and return the width of the given text of given font in pixels.
- * 
+ *
  * @param text The text to be rendered.
  * @param {String} font The css font descriptor that text is to be rendered with (e.g. "bold 14px verdana").
- * 
+ *
  * @see http://stackoverflow.com/questions/118241/calculate-text-width-with-javascript/21015393#21015393
  */
 getTextWidth = function(text, font) {
@@ -21,7 +21,7 @@ function assignBlockIDs(){
     var rowIDFull = $(e).attr('id');
     var rowID = rowIDFull.slice(21);
     $(e).find(".responsive-text").each( function(i,e){
-      $(e).attr('summary-timeline-row-block-id',rowID + '-' + i); 
+      $(e).attr('summary-timeline-row-block-id',rowID + '-' + i);
     });
   });
 }
@@ -45,9 +45,9 @@ function writeFooter(){
         rowFooterContents += ( "[" + blockRowIndex + "] " + $(el).attr('hidden-text') + "<br />");
 
       });
-      if(rowNeedsFooter==true){ 
+      if(rowNeedsFooter==true){
         var tempFooterID = "#summary-timeline-footer-" + (indexA + 1);
-        $(tempFooterID).append( 
+        $(tempFooterID).append(
           "<div class='footer-column'>"
           + "<span style='font-weight: bold;'>" + rowID + ":</span><br />"
           + rowFooterContents
@@ -61,7 +61,7 @@ function writeFooter(){
 }
 
 function evaluateBlockText() {
-  $(".responsive-text").each( function(i,e){ 
+  $(".responsive-text").each( function(i,e){
     var text = $(e).text(); //Text in div "FHRC Prep (0:15)"
     var textWidth = getTextWidth(text, "10.5pt arial").width; //Width of entire text
     var divWidth = $(e).width(); //Width of div
@@ -90,7 +90,7 @@ function reEvaluateBlockText() {
   //An attempt to increase the block width as necessary
   //Currently this doesn't work because the remaining blocks have already been created and positioned
   $(".task-block").each (function (index,element){
-    $(element).find(".responsive-text").each( function(i,e){ 
+    $(element).find(".responsive-text").each( function(i,e){
       var text = $(e).text(); //Text in div "FHRC Prep (0:15)"
       var textWidth = getTextWidth(text, "9pt arial").width; //Width of entire text
       var divWidth = $(e).width(); //Width of div
@@ -101,7 +101,7 @@ function reEvaluateBlockText() {
       textWords.forEach(function(word){
         //compare wordWidth to divWidth
         textWordWidth[i] = getTextWidth(word, "9pt arial").width;
-        if(textWordWidth[i] > divWidth){ 
+        if(textWordWidth[i] > divWidth){
           //Make div width bigger
           var newWidth = $(element).width() + 1;
           console.log(newWidth);
@@ -128,11 +128,92 @@ function resetBlockText(){
   });
 }
 
-$(document).ready( function(){ 
+/**
+ *  Collapsible sections
+ **/
+$(function(){
+
+    var addCollapsibleContent = function(){
+
+        $(".ST-collapsible").each(function(index,element){
+
+            var collapseText = $(element).attr("data-collapsetext") || "Collapse";
+            var expandText = $(element).attr("data-expandtext") || "Expand";
+            var buttonText;
+
+            // if no <a> tags within collapsible, then it hasn't been setup yet
+            // this only performed the first time on each collapsible
+            if ( ! $(element).find(".collapsible-trigger").size() ) {
+
+                if ($(element).hasClass("mw-collapsed")) {
+                    $(element).children(".mw-collapsible-content").first().hide();
+                    buttonText = expandText;
+                }
+                else {
+                    $(element).children(".mw-collapsible-content").first().show();
+                    buttonText = collapseText;
+                }
+
+                // if there is a pre-trigger element, insert the trigger after it
+                // otherwise, insert the trigger as the first element (prepend)
+                if( $(element).find(".pre-trigger").size() )
+                    $(element).find(".pre-trigger").after("<a href='#' class='collapsible-trigger'>" + buttonText + "</a>");
+                else
+                        $(element).prepend("<a href='#' class='collapsible-trigger'>" + buttonText + "</a>");
+
+            }
+
+            $(element).find("a.collapsible-trigger").unbind("click").click(function(ev){
+
+                if( $(ev.target).parent().hasClass("mw-collapsed") ) {
+                    $(ev.target).parent().find(".mw-collapsible-content").first().slideDown("slow");
+
+                    // change button to collapse
+                    $(ev.target).text(collapseText);
+                }
+                else {
+                    $(ev.target).parent().find(".mw-collapsible-content").first().slideUp("slow");
+
+                    // change button to expand
+                    $(ev.target).text(expandText);
+                }
+
+                $(ev.target).parent().toggleClass("mw-collapsed");
+
+                return false;
+
+            });
+
+        });
+
+    };
+
+
+    // add these functions to the page initially
+    addCollapsibleContent();
+
+    // clicking the "add" button in a Semantic Form will not automatically apply Javascript to new elements
+    // this re-fires certain functions so they can apply themselves to new elements
+    $(".multipleTemplateAdder").click(function(){
+
+        // setTimeout so we're sure the link-check is performed after new elements are added
+        setTimeout(
+            function(){
+                addCollapsibleContent();
+            },
+            100
+        );
+    });
+
+})();
+
+
+$(document).ready( function(){
   assignBlockIDs();
   evaluateBlockText();
-  writeFooter(); 
+  writeFooter();
   // reEvaluateBlockText();
+  addCollapsibleContent();
 });
 
 $(window).resize( function(){
