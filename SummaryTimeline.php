@@ -25,7 +25,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'url'            => 'http://github.com/darenwelsh/SummaryTimeline',
 	'author'         => '[https://www.mediawiki.org/wiki/User:Darenwelsh Daren Welsh]',
 	'descriptionmsg' => 'summarytimeline-desc',
-	'version'        => '0.1.1'
+	'version'        => '0.1.3'
 );
 
 # $dir: the directory of this file, e.g. something like:
