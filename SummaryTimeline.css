@@ -3,8 +3,8 @@
  * This styling is for the output of the SummaryTimeline parser function
  */
 
-body { 
-  font-family: sans-serif; 
+body {
+  font-family: sans-serif;
 }
 
 .summary-timeline-compact-version {
@@ -134,6 +134,9 @@ body {
 
 
 /* TASK BLOCK COLORS */
+.summary-timeline-compact-version .black {
+  background-color:   #000000;
+}
 .summary-timeline-compact-version .gray {
   background-color:   #E6E6E6;
 }
