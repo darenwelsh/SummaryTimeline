@@ -130,7 +130,7 @@ class SummaryTimeline
 
 		//Generate color key
 		$colorKeyText = "";
-		$colors = array("red","orange","yellow","green","blue","purple","pink","white","gray","black","white");
+		$colors = array("red","orange","yellow","green","blue","purple","pink","white","gray","black",);
 		foreach ($colors as $value) {
 			if ($options["color $value meaning"] != '') {
 				$colorKeyText .= "<div class='color-key'>"

@@ -79,6 +79,8 @@ If you use the color feature for a task, briefly describe what that color indica
 &lt;tr&gt;&lt;td&gt;Purple&lt;/td&gt;&lt;td&gt;{{{field|Color Purple Meaning|input type=text|size=40}}}&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;&lt;td&gt;Pink&lt;/td&gt;&lt;td&gt;{{{field|Color Pink Meaning|input type=text|size=40}}}&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;&lt;td&gt;Gray&lt;/td&gt;&lt;td&gt;{{{field|Color Gray Meaning|input type=text|size=40}}}&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Black&lt;/td&gt;&lt;td&gt;{{{field|Color Black Meaning|input type=text|size=40}}}&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;White&lt;/td&gt;&lt;td&gt;{{{field|Color White Meaning|input type=text|size=40}}}&lt;/td&gt;&lt;/tr&gt;
 &lt;/table&gt;
 
 &lt;table&gt;&lt;tr&gt;
@@ -116,7 +118,7 @@ If you use the color feature for a task, briefly describe what that color indica
 
 &lt;div&gt;{{{field|Duration hour|size=1|default=0}}}:{{{field|Duration minute|size=2|default=00}}}&lt;/div&gt;&lt;div class=&quot;ST-collapsible mw-collapsed&quot; data-collapsetext=&quot;Hide Details&quot; data-expandtext=&quot;Show Details&quot;&gt;&lt;div class=&quot;mw-collapsible-content&quot;&gt;
 
-Color: {{{field|Color|input type=dropdown|values=red,orange,yellow,green,blue,purple,pink,gray|default=gray|mandatory}}}
+Color: {{{field|Color|input type=dropdown|values=red,orange,yellow,green,blue,purple,pink,gray,black,white|default=gray|mandatory}}}
 
 Related articles: {{{field|Related article|class=full-width no-links-allowed|values from namespace=Main|list|placeholder=Related articles}}}
 
@@ -132,7 +134,7 @@ Details: {{{field|Free text|input type=textarea|rows=1|class=full-width|autogrow
 
 &lt;div&gt;{{{field|Duration hour|size=1|default=0}}}:{{{field|Duration minute|size=2|default=00}}}&lt;/div&gt;&lt;div class=&quot;ST-collapsible mw-collapsed&quot; data-collapsetext=&quot;Hide Details&quot; data-expandtext=&quot;Show Details&quot;&gt;&lt;div class=&quot;mw-collapsible-content&quot;&gt;
 
-Color: {{{field|Color|input type=dropdown|values=red,orange,yellow,green,blue,purple,pink,gray|default=gray|mandatory}}}
+Color: {{{field|Color|input type=dropdown|values=red,orange,yellow,green,blue,purple,pink,gray,black,white|default=gray|mandatory}}}
 
 Related articles: {{{field|Related article|class=full-width no-links-allowed|values from namespace=Main|list|placeholder=Related articles}}}
 
@@ -149,7 +151,7 @@ Details: {{{field|Free text|input type=textarea|rows=1|class=full-width|autogrow
 
 &lt;div&gt;{{{field|Duration hour|size=1|default=0}}}:{{{field|Duration minute|size=2|default=00}}}&lt;/div&gt;&lt;div class=&quot;ST-collapsible mw-collapsed&quot; data-collapsetext=&quot;Hide Details&quot; data-expandtext=&quot;Show Details&quot;&gt;&lt;div class=&quot;mw-collapsible-content&quot;&gt;
 
-Color: {{{field|Color|input type=dropdown|values=red,orange,yellow,green,blue,purple,pink,gray|default=gray|mandatory}}}
+Color: {{{field|Color|input type=dropdown|values=red,orange,yellow,green,blue,purple,pink,gray,black,white|default=gray|mandatory}}}
 
 Related articles: {{{field|Related article|class=full-width no-links-allowed|values from namespace=Main|list|placeholder=Related articles}}}
 
@@ -258,6 +260,8 @@ This template is used with the Summary Timeline form.
 |Parent related article#list={{#var:pageRelatedArticle}}
 |EVA Duration={{#var:EVADurationHour}}:{{#var:EVADurationMinute}}
 |Color White Meaning={{#var:ColorWhiteMeaning}}
+|Color Black Meaning={{#var:ColorBlackMeaning}}
+|Color Gray Meaning={{#var:ColorGrayMeaning}}
 |Color Red Meaning={{#var:ColorRedMeaning}}
 |Color Orange Meaning={{#var:ColorOrangeMeaning}}
 |Color Yellow Meaning={{#var:ColorYellowMeaning}}
@@ -431,6 +435,8 @@ Full version: &lt;nowiki&gt;{{Summary Timeline Output | &lt;/nowiki&gt;{{PAGENAM
 {{#arraymap:{{{Depends on|}}}|,|x|{{#set: Depends on=x}}}}
 {{#arraymap:{{{Related article|}}}|,|x|{{#set: Related article=x}}}}
 {{#set: Color Gray Meaning={{{Color Gray Meaning|}}}}}
+{{#set: Color Black Meaning={{{Color Black Meaning|}}}}}
+{{#set: Color White Meaning={{{Color White Meaning|}}}}}
 {{#set: Color Red Meaning={{{Color Red Meaning|}}}}}
 {{#set: Color Orange Meaning={{{Color Orange Meaning|}}}}}
 {{#set: Color Yellow Meaning={{{Color Yellow Meaning|}}}}}
@@ -554,6 +560,8 @@ For the full version:
 |sort=Assigned to, Index
 }}
  | Color Gray Meaning={{#show: {{{1|}}} | ?Color Gray Meaning }}
+ | Color Black Meaning={{#show: {{{1|}}} | ?Color Black Meaning }}
+ | Color White Meaning={{#show: {{{1|}}} | ?Color White Meaning }}
  | Color Red Meaning={{#show: {{{1|}}} | ?Color Red Meaning }}
  | Color Orange Meaning={{#show: {{{1|}}} | ?Color Orange Meaning }}
  | Color Yellow Meaning={{#show: {{{1|}}} | ?Color Yellow Meaning }}
