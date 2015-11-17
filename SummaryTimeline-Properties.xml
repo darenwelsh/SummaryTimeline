@@ -835,4 +835,99 @@
       <sha1>4a9as5sdz8fqlko3t5gav2a8z9wgcag</sha1>
     </revision>
   </page>
+  <page>
+    <title>Property:Insolation Duration</title>
+    <ns>102</ns>
+    <id>63</id>
+    <revision>
+      <id>138</id>
+      <parentid>132</parentid>
+      <timestamp>2015-11-17T04:32:00Z</timestamp>
+      <contributor>
+        <ip>192.168.56.1</ip>
+      </contributor>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="107">This is a property of type [[Has type::Number]].
+
+[[Category:Property Used for Summary Timeline Extension]]</text>
+      <sha1>22c2tldsy5i75ie6myl66qt6ptb3wzm</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Property:Eclipse Duration</title>
+    <ns>102</ns>
+    <id>64</id>
+    <revision>
+      <id>139</id>
+      <parentid>133</parentid>
+      <timestamp>2015-11-17T04:32:04Z</timestamp>
+      <contributor>
+        <ip>192.168.56.1</ip>
+      </contributor>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="107">This is a property of type [[Has type::Number]].
+
+[[Category:Property Used for Summary Timeline Extension]]</text>
+      <sha1>22c2tldsy5i75ie6myl66qt6ptb3wzm</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Property:Include Day Night</title>
+    <ns>102</ns>
+    <id>65</id>
+    <revision>
+      <id>149</id>
+      <parentid>140</parentid>
+      <timestamp>2015-11-17T05:14:58Z</timestamp>
+      <contributor>
+        <ip>192.168.56.1</ip>
+      </contributor>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="107">This is a property of type [[Has type::String]].
+
+[[Category:Property Used for Summary Timeline Extension]]</text>
+      <sha1>sv4g1fci748xej3xe0r8glk67wu6rke</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Property:First Cycle Duration</title>
+    <ns>102</ns>
+    <id>66</id>
+    <revision>
+      <id>141</id>
+      <parentid>135</parentid>
+      <timestamp>2015-11-17T04:32:12Z</timestamp>
+      <contributor>
+        <ip>192.168.56.1</ip>
+      </contributor>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="107">This is a property of type [[Has type::Number]].
+
+[[Category:Property Used for Summary Timeline Extension]]</text>
+      <sha1>22c2tldsy5i75ie6myl66qt6ptb3wzm</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Property:First Cycle Day Night</title>
+    <ns>102</ns>
+    <id>67</id>
+    <revision>
+      <id>150</id>
+      <parentid>142</parentid>
+      <timestamp>2015-11-17T05:15:14Z</timestamp>
+      <contributor>
+        <ip>192.168.56.1</ip>
+      </contributor>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="107">This is a property of type [[Has type::String]].
+
+[[Category:Property Used for Summary Timeline Extension]]</text>
+      <sha1>sv4g1fci748xej3xe0r8glk67wu6rke</sha1>
+    </revision>
+  </page>
 </mediawiki>

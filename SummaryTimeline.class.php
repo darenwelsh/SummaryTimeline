@@ -394,6 +394,75 @@ class SummaryTimeline
 			// End top time labels row
 			. "</div>";
 
+			// Begin Day/Night Cycle Row
+			if( $options['include day night'] == "yes" ){
+				$text .= "<div class='summary-timeline-row'>";
+
+				$insolationWidth = $options['insolation duration'];
+				$eclipseWidth =  $options['eclipse duration'];
+				$dayNightRowLength = 0; //init length of day/night row
+				// $options['eva duration in minutes'] //total length of row to use
+
+				$firstCycleWidth = $options['first cycle duration'];
+				$text .= $options['first cycle day night'];
+
+
+				$compactTextDayNightSumOfDurationMinutes = 0;
+
+				// Use the same logic as for task blocks, but use a while statement (while width < total width)
+				// Use special logic for first and last blocks.
+
+
+				$actor['compact text'] = "";
+
+				// Tasks
+				$compactTexti = 1;
+				foreach ( $actor['tasks'] as $task ) {
+					$blockWidth = (/* margin-left of next block */
+						(floor((($compactTextDayNightSumOfDurationMinutes //Total tasks duration in minutes so far
+							//Duration in minutes of next task
+							+ ( (60 * $actor['tasks'][($compactTexti)]['durationHour'])
+								+ $actor['tasks'][($compactTexti)]['durationMinute'] ) )
+							/ $options['eva duration in minutes'])*100))
+						 - (floor(($compactTextDayNightSumOfDurationMinutes / $options['eva duration in minutes'])*100)) );
+					$blockMarginLeft = (floor(($compactTextDayNightSumOfDurationMinutes / $options['eva duration in minutes'])*100));
+
+					$actor['compact text'] .=
+					"<div class='cell-border task-block' style='width:"
+					. $blockWidth
+					. "%;"
+					. " margin-left: "
+					. $blockMarginLeft
+					. "%;"
+					. "'>"
+						. "<div class='cell-body'>"
+						//***********************************************
+						//      TASK BLOCKS
+						//***********************************************
+						. "<div style='height: 10px;' class='" . $actor['tasks'][$compactTexti]['color'] . "'></div>"
+						. "<div class='responsive-text'>"
+						. $actor['tasks'][$compactTexti]['title'] . " "
+				    	. "(" . $actor['tasks'][$compactTexti]['durationHour'] . ":"
+				    	. $actor['tasks'][$compactTexti]['durationMinute'] . ")"
+						. "</div>"
+						//***********************************************
+						//
+						//***********************************************
+						. "</div>"
+					. "</div>";
+				   	$compactTextDayNightSumOfDurationMinutes += ( (60 * $actor['tasks'][$compactTexti]['durationHour']) + $actor['tasks'][$compactTexti]['durationMinute'] );
+				   	$compactTexti++;
+
+			   }
+
+
+
+
+
+				$text .= "</div>";
+			}
+			// End Day/Night Cycle Row
+
 			// Actor Rows
 			foreach ( $options['rows'] as $actor ){
 				if( $actor['display in compact view']=='true' && count( $actor['tasks']) > 0 ){
@@ -607,6 +676,11 @@ class SummaryTimeline
         $options['rows']['actor3']['tasks']=array();
         $options['hardware required for eva']=array();
 		$options['fixedwidth']="";
+		$options['insolation duration']="";
+		$options['eclipse duration']="";
+		$options['include day night']="";
+		$options['first cycle day night']="";
+		$options['first cycle duration']="";
 
 		foreach ( $args as $arg ) {
 			//Convert args with "=" into an array of options
@@ -851,6 +925,16 @@ class SummaryTimeline
 			        case 'ev2':
 				        // Unique things for this column?
 				        break;
+			        case 'insolation duration':
+			        case 'eclipse duration':
+			        case 'first cycle duration':
+			        case 'include day night':
+			        case 'first cycle day night':
+				        $value = strtolower(trim($value));
+			        	if ( isset($value) && $value!="" ) {
+				        	$options[$name] = $value;
+				        }
+			        	break;
 			        default: //What to do with args not defined above
 				}
 

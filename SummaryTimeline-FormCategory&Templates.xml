@@ -1,8 +1,9 @@
-<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.10/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.10/ http://www.mediawiki.org/xml/export-0.10.xsd" version="0.10" xml:lang="en">
   <siteinfo>
-    <sitename>EVA Wiki</sitename>
-    <base>https://mod-dev2.jsc.nasa.gov/wiki/EVA/index.php?title=Main_Page</base>
-    <generator>MediaWiki 1.23.2</generator>
+    <sitename>Demo Wiki</sitename>
+    <dbname>wiki_demo</dbname>
+    <base>http://192.168.56.112/demo/index.php/Main_Page</base>
+    <generator>MediaWiki 1.25.1</generator>
     <case>first-letter</case>
     <namespaces>
       <namespace key="-2" case="first-letter">Media</namespace>
@@ -11,8 +12,8 @@
       <namespace key="1" case="first-letter">Talk</namespace>
       <namespace key="2" case="first-letter">User</namespace>
       <namespace key="3" case="first-letter">User talk</namespace>
-      <namespace key="4" case="first-letter">EVA Wiki</namespace>
-      <namespace key="5" case="first-letter">EVA Wiki talk</namespace>
+      <namespace key="4" case="first-letter">Demo Wiki</namespace>
+      <namespace key="5" case="first-letter">Demo Wiki talk</namespace>
       <namespace key="6" case="first-letter">File</namespace>
       <namespace key="7" case="first-letter">File talk</namespace>
       <namespace key="8" case="first-letter">MediaWiki</namespace>
@@ -31,23 +32,27 @@
       <namespace key="107" case="first-letter">Form talk</namespace>
       <namespace key="108" case="first-letter">Concept</namespace>
       <namespace key="109" case="first-letter">Concept talk</namespace>
-      <namespace key="5000" case="first-letter">Issue</namespace>
-      <namespace key="5001" case="first-letter">Issue talk</namespace>
+      <namespace key="420" case="first-letter">Layer</namespace>
+      <namespace key="421" case="first-letter">Layer talk</namespace>
+      <namespace key="460" case="case-sensitive">Campaign</namespace>
+      <namespace key="461" case="case-sensitive">Campaign talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
     </namespaces>
   </siteinfo>
   <page>
     <title>Form:Summary Timeline</title>
     <ns>106</ns>
-    <id>11810</id>
+    <id>53</id>
     <revision>
-      <id>53194</id>
-      <parentid>53192</parentid>
-      <timestamp>2014-10-17T15:00:58Z</timestamp>
+      <id>156</id>
+      <parentid>154</parentid>
+      <timestamp>2015-11-17T05:24:20Z</timestamp>
       <contributor>
-        <username>Lwelsh</username>
-        <id>2</id>
+        <ip>192.168.56.1</ip>
       </contributor>
-      <text xml:space="preserve" bytes="6937">&lt;includeonly&gt;{{{info|page name=&lt;Summary Timeline[ST Title]&gt; Summary Timeline}}}
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="8085">&lt;includeonly&gt;{{{info|page name=&lt;Summary Timeline[ST Title]&gt; Summary Timeline}}}
 &lt;div id=&quot;wikiPreview&quot; style=&quot;display: none; padding-bottom: 25px; margin-bottom: 25px; border-bottom: 1px solid #AAAAAA;&quot;&gt;&lt;/div&gt;
 {{{for template|Summary Timeline}}}
 
@@ -82,6 +87,17 @@ If you use the color feature for a task, briefly describe what that color indica
 &lt;tr&gt;&lt;td&gt;Black&lt;/td&gt;&lt;td&gt;{{{field|Color Black Meaning|input type=text|size=40}}}&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;&lt;td&gt;White&lt;/td&gt;&lt;td&gt;{{{field|Color White Meaning|input type=text|size=40}}}&lt;/td&gt;&lt;/tr&gt;
 &lt;/table&gt;
+
+'''Day/Night Band'''
+
+{{{field|Include Day Night|input type=radiobutton|values=yes,no|default=no|mandatory}}} Check to include day/night band
+
+{{{field|Insolation Duration|size=2|default=50}}} Duration of insolation (minutes)&lt;br /&gt;
+{{{field|Eclipse Duration|size=2|default=40}}} Duration of eclipse (minutes)&lt;br /&gt;
+
+Is the first cycle insolation or eclipse?&lt;br /&gt;
+{{{field|First Cycle Day Night|input type=radiobutton|values=Insolation,Eclipse|default=day|mandatory}}}&lt;br /&gt;
+{{{field|First Cycle Duration|size=2|default=15}}} Duration of first cycle (minutes)
 
 &lt;table&gt;&lt;tr&gt;
 &lt;th&gt;Actor 1&lt;/th&gt;
@@ -179,67 +195,71 @@ if a page with that name already exists, you will be sent to a form to edit that
 
 [[Category:Form Used for Summary Timeline Extension]]
 &lt;/noinclude&gt;</text>
-      <sha1>kkx4epiir7bpcgpxfouy36yr55jqt2n</sha1>
-      <model>wikitext</model>
-      <format>text/x-wiki</format>
+      <sha1>7p3l0gkbarxk2qle3eq2rmpti7s94is</sha1>
     </revision>
   </page>
   <page>
     <title>Category:Summary Timeline</title>
     <ns>14</ns>
-    <id>11811</id>
+    <id>54</id>
     <revision>
-      <id>53096</id>
-      <parentid>52374</parentid>
-      <timestamp>2014-09-23T19:16:41Z</timestamp>
+      <id>110</id>
+      <parentid>109</parentid>
+      <timestamp>2015-11-17T00:59:34Z</timestamp>
       <contributor>
-        <username>Lwelsh</username>
-        <id>2</id>
+        <username>Admin</username>
+        <id>1</id>
       </contributor>
+      <minor/>
+      <comment>1 revision imported: asdf</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
       <text xml:space="preserve" bytes="96">[[Has default form::Summary Timeline]]
 [[Category:Category Used for Summary Timeline Extension]]</text>
       <sha1>jmlpyocbq63xrgav0purfxgctmrinr8</sha1>
-      <model>wikitext</model>
-      <format>text/x-wiki</format>
     </revision>
   </page>
   <page>
     <title>Template:ST Query Result</title>
     <ns>10</ns>
-    <id>11827</id>
+    <id>55</id>
     <revision>
-      <id>53074</id>
-      <parentid>53002</parentid>
-      <timestamp>2014-09-23T17:17:39Z</timestamp>
+      <id>112</id>
+      <parentid>111</parentid>
+      <timestamp>2015-11-17T00:59:35Z</timestamp>
       <contributor>
-        <username>Lwelsh</username>
-        <id>2</id>
+        <username>Admin</username>
+        <id>1</id>
       </contributor>
       <minor/>
-      <comment>Text replacement - &quot;[[Category:Used for Summary Timeline Extension]]&quot; to &quot;[[Category:Template Used for Summary Timeline Extension]]&quot;</comment>
+      <comment>1 revision imported: asdf</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
       <text xml:space="preserve" bytes="239">&lt;noinclude&gt;
 [[Category:Template Used for Summary Timeline Extension]]
 &lt;/noinclude&gt;&lt;includeonly&gt;
 &amp;&amp;&amp;{{{?Title|}}}@@@{{{?Duration hour|}}}@@@{{{?Duration minute|}}}@@@{{{?Related article|}}}@@@{{{?Color|}}}@@@{{{?Free text|}}}
 &lt;/includeonly&gt;</text>
       <sha1>hoc92af1xf59s454uj1r0omsyh8irzx</sha1>
-      <model>wikitext</model>
-      <format>text/x-wiki</format>
     </revision>
   </page>
   <page>
     <title>Template:Actor 2 Task</title>
     <ns>10</ns>
-    <id>11808</id>
+    <id>56</id>
     <revision>
-      <id>53109</id>
-      <parentid>53077</parentid>
-      <timestamp>2014-09-23T21:38:00Z</timestamp>
+      <id>114</id>
+      <parentid>113</parentid>
+      <timestamp>2015-11-17T00:59:35Z</timestamp>
       <contributor>
-        <username>Lwelsh</username>
-        <id>2</id>
+        <username>Admin</username>
+        <id>1</id>
       </contributor>
-      <text xml:space="preserve" bytes="1180">&lt;noinclude&gt;
+      <minor/>
+      <comment>1 revision imported: asdf</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="1274">&lt;noinclude&gt;
 This template is used with the Summary Timeline form.
 
 [[Category:Template Used for Summary Timeline Extension]]
@@ -270,23 +290,25 @@ This template is used with the Summary Timeline form.
 |Color Pink Meaning={{#var:ColorPinkMeaning}}
 |Color Purple Meaning={{#var:ColorPurpleMeaning}}
 }}&lt;/includeonly&gt;</text>
-      <sha1>axo9h25gipugdu3riz2p0v11tcn74z4</sha1>
-      <model>wikitext</model>
-      <format>text/x-wiki</format>
+      <sha1>ln48s7hkrpg1rh4gvtb9u6b1bpr6zn1</sha1>
     </revision>
   </page>
   <page>
     <title>Template:Actor 3 Task</title>
     <ns>10</ns>
-    <id>11809</id>
+    <id>57</id>
     <revision>
-      <id>53112</id>
-      <parentid>53082</parentid>
-      <timestamp>2014-09-23T21:41:41Z</timestamp>
+      <id>116</id>
+      <parentid>115</parentid>
+      <timestamp>2015-11-17T00:59:35Z</timestamp>
       <contributor>
-        <username>Lwelsh</username>
-        <id>2</id>
+        <username>Admin</username>
+        <id>1</id>
       </contributor>
+      <minor/>
+      <comment>1 revision imported: asdf</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
       <text xml:space="preserve" bytes="798">&lt;noinclude&gt;
 This template is used with the Summary Timeline form.
 
@@ -309,44 +331,48 @@ This template is used with the Summary Timeline form.
 |EVA Duration={{#var:EVADurationHour}}:{{#var:EVADurationMinute}}
 }}&lt;/includeonly&gt;</text>
       <sha1>3guk434s3w0vz80zcvfju5tsdu329iv</sha1>
-      <model>wikitext</model>
-      <format>text/x-wiki</format>
     </revision>
   </page>
   <page>
     <title>Template:ST Manifest Query Result</title>
     <ns>10</ns>
-    <id>11885</id>
+    <id>58</id>
     <revision>
-      <id>53163</id>
-      <parentid>53162</parentid>
-      <timestamp>2014-09-24T17:54:21Z</timestamp>
+      <id>118</id>
+      <parentid>117</parentid>
+      <timestamp>2015-11-17T00:59:36Z</timestamp>
       <contributor>
-        <username>Lwelsh</username>
-        <id>2</id>
+        <username>Admin</username>
+        <id>1</id>
       </contributor>
+      <minor/>
+      <comment>1 revision imported: asdf</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
       <text xml:space="preserve" bytes="145">&lt;noinclude&gt;
 [[Category:Template Used for Summary Timeline Extension]]
 &lt;/noinclude&gt;&lt;includeonly&gt;
 &amp;&amp;&amp;{{{?Title|}}}@@@{{{?Mission|}}}
 &lt;/includeonly&gt;</text>
       <sha1>tr6j0usoj6o2ilz2nzifxsfrwpezt49</sha1>
-      <model>wikitext</model>
-      <format>text/x-wiki</format>
     </revision>
   </page>
   <page>
     <title>Template:Actor 1 Task</title>
     <ns>10</ns>
-    <id>11807</id>
+    <id>59</id>
     <revision>
-      <id>53170</id>
-      <parentid>53108</parentid>
-      <timestamp>2014-09-24T22:53:35Z</timestamp>
+      <id>120</id>
+      <parentid>119</parentid>
+      <timestamp>2015-11-17T00:59:37Z</timestamp>
       <contributor>
-        <username>Lwelsh</username>
-        <id>2</id>
+        <username>Admin</username>
+        <id>1</id>
       </contributor>
+      <minor/>
+      <comment>1 revision imported: asdf</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
       <text xml:space="preserve" bytes="798">&lt;noinclude&gt;
 This template is used with the Summary Timeline form.
 
@@ -369,23 +395,22 @@ This template is used with the Summary Timeline form.
 |EVA Duration={{#var:EVADurationHour}}:{{#var:EVADurationMinute}}
 }}&lt;/includeonly&gt;</text>
       <sha1>mjkihbtgnu4ntf772u1n9agohupokau</sha1>
-      <model>wikitext</model>
-      <format>text/x-wiki</format>
     </revision>
   </page>
   <page>
     <title>Template:Summary Timeline</title>
     <ns>10</ns>
-    <id>11806</id>
+    <id>60</id>
     <revision>
-      <id>53195</id>
-      <parentid>53191</parentid>
-      <timestamp>2014-10-17T15:01:20Z</timestamp>
+      <id>144</id>
+      <parentid>122</parentid>
+      <timestamp>2015-11-17T04:39:04Z</timestamp>
       <contributor>
-        <username>Lwelsh</username>
-        <id>2</id>
+        <ip>192.168.56.1</ip>
       </contributor>
-      <text xml:space="preserve" bytes="2873">&lt;noinclude&gt;
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="3233">&lt;noinclude&gt;
 This is the &quot;Summary Timeline&quot; template.
 It should be called by using the Summary Timeline form.
 
@@ -444,29 +469,33 @@ Full version: &lt;nowiki&gt;{{Summary Timeline Output | &lt;/nowiki&gt;{{PAGENAM
 {{#set: Color Green Meaning={{{Color Green Meaning|}}}}}
 {{#set: Color Pink Meaning={{{Color Pink Meaning|}}}}}
 {{#set: Color Purple Meaning={{{Color Purple Meaning|}}}}}
+{{#set: Insolation Duration={{{Insolation Duration|}}}}}
+{{#set: Eclipse Duration={{{Eclipse Duration|}}}}}
+{{#set: Include Day Night={{{Include Day Night|}}}}}
+{{#set: First Cycle Day Night={{{First Cycle Day Night|}}}}}
+{{#set: First Cycle Duration={{{First Cycle Duration|}}}}}
 
 &lt;!-- SET INTERNAL OBJECTS --&gt;
 {{{Actor 1 Tasks|}}}{{{Actor 2 Tasks|}}}{{{Actor 3 Tasks|}}}
 
 [[Category:Summary Timeline]]&lt;/includeonly&gt;</text>
-      <sha1>j5yh1di1qbkt1cukqi4ahqjf3ffrz7s</sha1>
-      <model>wikitext</model>
-      <format>text/x-wiki</format>
+      <sha1>eapufoivjrg2znajiykunutvat3f56s</sha1>
     </revision>
   </page>
   <page>
     <title>Template:Summary Timeline Output</title>
     <ns>10</ns>
-    <id>11828</id>
+    <id>61</id>
     <revision>
-      <id>53198</id>
-      <parentid>53190</parentid>
-      <timestamp>2014-10-17T15:10:21Z</timestamp>
+      <id>155</id>
+      <parentid>148</parentid>
+      <timestamp>2015-11-17T05:23:27Z</timestamp>
       <contributor>
-        <username>Lwelsh</username>
-        <id>2</id>
+        <ip>192.168.56.1</ip>
       </contributor>
-      <text xml:space="preserve" bytes="3728">&lt;noinclude&gt;
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="4187">&lt;noinclude&gt;
 
 For the compact version (default):
 &lt;pre&gt;{{Summary Timeline Output | Page name of summary timeline to display | Compact }}&lt;/pre&gt;
@@ -569,10 +598,13 @@ For the full version:
  | Color Green Meaning={{#show: {{{1|}}} | ?Color Green Meaning }}
  | Color Pink Meaning={{#show: {{{1|}}} | ?Color Pink Meaning }}
  | Color Purple Meaning={{#show: {{{1|}}} | ?Color Purple Meaning }}
+ | Insolation Duration={{#show: {{{1|}}} | ?Insolation Duration }}
+ | Eclipse Duration={{#show: {{{1|}}} | ?Eclipse Duration }}
+ | Include Day Night={{#show: {{{1|}}} | ?Include Day Night }}
+ | First Cycle Day Night={{#show: {{{1|}}} | ?First Cycle Day Night }}
+ | First Cycle Duration={{#show: {{{1|}}} | ?First Cycle Duration }}
 }}&lt;/includeonly&gt;</text>
-      <sha1>4p3djomtgunpd7ul40a30m3dl3b7zgr</sha1>
-      <model>wikitext</model>
-      <format>text/x-wiki</format>
+      <sha1>hwdktmjyak3yehhd8uurhbavikahhlk</sha1>
     </revision>
   </page>
 </mediawiki>
