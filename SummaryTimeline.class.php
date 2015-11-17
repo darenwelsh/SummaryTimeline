@@ -130,7 +130,7 @@ class SummaryTimeline
 
 		//Generate color key
 		$colorKeyText = "";
-		$colors = array("red","orange","yellow","green","blue","purple","pink","white");
+		$colors = array("red","orange","yellow","green","blue","purple","pink","white","gray","black",);
 		foreach ($colors as $value) {
 			if ($options["color $value meaning"] != '') {
 				$colorKeyText .= "<div class='color-key'>"
@@ -599,6 +599,8 @@ class SummaryTimeline
 		$options["color yellow meaning"]="";
 		$options["color blue meaning"]="";
 		$options["color gray meaning"]="";
+		$options["color black meaning"]="";
+		$options["color white meaning"]="";
 		$options["color purple meaning"]="";
         $options['rows']['actor1']['tasks']=array();
         $options['rows']['actor2']['tasks']=array();
@@ -836,6 +838,8 @@ class SummaryTimeline
 			        case 'color green meaning':
 			        case 'color pink meaning':
 			        case 'color purple meaning':
+			        case 'color gray meaning':
+			        case 'color black meaning':
 				        if ( isset($value) && $value!="" ) {
 				        	$options[$name] = $value;
 				        	$options['number of colors designated'] ++;
