@@ -394,74 +394,205 @@ class SummaryTimeline
 			// End top time labels row
 			. "</div>";
 
+			//***********************************************
 			// Begin Day/Night Cycle Row
+			//***********************************************
 			if( $options['include day night'] == "yes" ){
 				$text .= "<div class='summary-timeline-row'>";
 
-				$insolationWidth = $options['insolation duration'];
-				$eclipseWidth =  $options['eclipse duration'];
-				$dayNightRowLength = 0; //init length of day/night row
-				// $options['eva duration in minutes'] //total length of row to use
-
-				$firstCycleWidth = $options['first cycle duration'];
-				$text .= $options['first cycle day night'];
-
-
-				$compactTextDayNightSumOfDurationMinutes = 0;
+				$evaDurationMinutes = $options['eva duration in minutes'];
+				$insolationMinutes = $options['insolation duration'];
+				$insolationWidth = ($insolationMinutes / $evaDurationMinutes) * 100;
+				$eclipseMinutes = $options['eclipse duration'];
+				$eclipseWidth = ($eclipseMinutes / $evaDurationMinutes) * 100;
+				$dayNightSumOfDurationMinutes = 0;
 
 				// Use the same logic as for task blocks, but use a while statement (while width < total width)
 				// Use special logic for first and last blocks.
 
 
-				$actor['compact text'] = "";
-
-				// Tasks
-				$compactTexti = 1;
-				foreach ( $actor['tasks'] as $task ) {
-					$blockWidth = (/* margin-left of next block */
-						(floor((($compactTextDayNightSumOfDurationMinutes //Total tasks duration in minutes so far
-							//Duration in minutes of next task
-							+ ( (60 * $actor['tasks'][($compactTexti)]['durationHour'])
-								+ $actor['tasks'][($compactTexti)]['durationMinute'] ) )
-							/ $options['eva duration in minutes'])*100))
-						 - (floor(($compactTextDayNightSumOfDurationMinutes / $options['eva duration in minutes'])*100)) );
-					$blockMarginLeft = (floor(($compactTextDayNightSumOfDurationMinutes / $options['eva duration in minutes'])*100));
-
-					$actor['compact text'] .=
-					"<div class='cell-border task-block' style='width:"
-					. $blockWidth
-					. "%;"
-					. " margin-left: "
-					. $blockMarginLeft
-					. "%;"
-					. "'>"
-						. "<div class='cell-body'>"
-						//***********************************************
-						//      TASK BLOCKS
-						//***********************************************
-						. "<div style='height: 10px;' class='" . $actor['tasks'][$compactTexti]['color'] . "'></div>"
-						. "<div class='responsive-text'>"
-						. $actor['tasks'][$compactTexti]['title'] . " "
-				    	. "(" . $actor['tasks'][$compactTexti]['durationHour'] . ":"
-				    	. $actor['tasks'][$compactTexti]['durationMinute'] . ")"
-						. "</div>"
-						//***********************************************
-						//
-						//***********************************************
-						. "</div>"
-					. "</div>";
-				   	$compactTextDayNightSumOfDurationMinutes += ( (60 * $actor['tasks'][$compactTexti]['durationHour']) + $actor['tasks'][$compactTexti]['durationMinute'] );
-				   	$compactTexti++;
-
-			   }
+				$dayNightRowOutput = ""; //init output for this row
+				// $dayNightRowLength = 0; //init length of day/night row
+				$firstCycleMinutes = $options['first cycle duration'];
+				$firstCycleWidth = ($firstCycleMinutes / $evaDurationMinutes) * 100;
 
 
+				// First day/night block
+				$dayNightSumOfDurationMinutes += $firstCycleMinutes;
+				$dayNightRowOutput .= "<div class='daynight " . $options['first cycle day night'] . "' "
+					. "style='width:" . floor($firstCycleWidth) . "%;"
+				    . " margin-left: 0%;"
+				    . "'></div>";
+
+				// Blocks in the middle
+				$needMoreMiddleDayNightBlocks = true;
+				$lastBlockType = $options['first cycle day night'];
+				if( $firstCycleMinutes >= $evaDurationMinutes ){ // For a really, really short EVA
+					$needMoreMiddleDayNightBlocks = false;
+				}
+				if( $lastBlockType == "insolation" ){
+					$thisBlockType = "eclipse";
+					$thisBlockWidth = $eclipseWidth;
+					$thisBlockMinutes = $eclipseMinutes;
+					if( $firstCycleMinutes + $eclipseMinutes >= $evaDurationMinutes ){
+						$needMoreMiddleDayNightBlocks = false;
+					}
+				}
+				if( $lastBlockType == "eclipse" ){
+					$thisBlockType = "insolation";
+					$thisBlockWidth = $insolationWidth;
+					$thisBlockMinutes = $insolationMinutes;
+					if( $firstCycleMinutes + $insolationMinutes >= $evaDurationMinutes ){
+						$needMoreMiddleDayNightBlocks = false;
+					}
+				}
+
+				$blockMarginLeft = (floor(($dayNightSumOfDurationMinutes / $evaDurationMinutes)*100));
+
+				//*** TODO: Need to adjust so width fills out to left margin of next potential block
+			    while( $needMoreMiddleDayNightBlocks == true ){
+			    	$blockMarginLeft = (floor(($dayNightSumOfDurationMinutes / $evaDurationMinutes)*100));
+					// Generate a block
+					$dayNightRowOutput .= "<div class='daynight " . $thisBlockType . "' "
+						. "style='width:" . floor($thisBlockWidth) . "%;"
+					    . " margin-left: "
+					    . $blockMarginLeft
+					    . "%;'></div>";
+
+					// Update conditions to determine if more blocks are necessary
+				    $dayNightSumOfDurationMinutes += $thisBlockMinutes;
+					if( $thisBlockType == "insolation" ){
+						$thisBlockType = "eclipse";
+						$thisBlockWidth = $eclipseWidth;
+						$thisBlockMinutes = $eclipseMinutes;
+						if( $dayNightSumOfDurationMinutes + $eclipseMinutes >= $evaDurationMinutes ){
+							$needMoreMiddleDayNightBlocks = false;
+						}
+					} else
+					if( $thisBlockType == "eclipse" ){
+						$thisBlockType = "insolation";
+						$thisBlockWidth = $insolationWidth;
+						$thisBlockMinutes = $insolationMinutes;
+						if( $dayNightSumOfDurationMinutes + $insolationMinutes >= $evaDurationMinutes ){
+							$needMoreMiddleDayNightBlocks = false;
+						}
+					}
+			    }
 
 
+
+
+
+
+
+			    //Blocks in the middle
+				// for ($i = 1; $i < $hours-1; $i++) {
+				//     $dayNightRowOutput .= "<div class='time' style='width:"
+				//     . ((floor($hourTickerDivWidth * ($i+1))) - (floor($hourTickerDivWidth * ($i))))
+				//     . "%;"
+				//     . " margin-left:" . (floor($hourTickerDivWidth * $i)) . "%;"
+				//     . "'>" . $i . ":00</div>";
+				// }
+				// //Final day/night block
+				// $dayNightRowOutput .= "<div class='time' "
+				// 	. "style='"
+				// 	. "width:" . (100 - (((floor($hourTickerDivWidth * ($i))) - (floor($hourTickerDivWidth * ($i-1)))) + (floor($hourTickerDivWidth * ($i-1))))) . "%;"
+				//     . " margin-left:"
+				//     . (((floor($hourTickerDivWidth * ($i))) - (floor($hourTickerDivWidth * ($i-1)))) + (floor($hourTickerDivWidth * ($i-1))))
+				//     . "%;"
+				//     . "'>" . $i . ":00</div>";
+
+
+
+				// generate first day/night block
+				// $firstCycleWidth = (/* margin-left of next block */
+				// 		(floor((($compactTextDayNightSumOfDurationMinutes //Total tasks duration in minutes so far
+				// 			//Duration in minutes of next task
+				// 			+ ( (60 * $actor['tasks'][($compactTexti)]['durationHour'])
+				// 				+ $actor['tasks'][($compactTexti)]['durationMinute'] ) )
+				// 			/ $options['eva duration in minutes'])*100))
+				// 		 - (floor(($compactTextDayNightSumOfDurationMinutes / $options['eva duration in minutes'])*100)) );
+				// 	$blockMarginLeft = (floor(($compactTextDayNightSumOfDurationMinutes / $options['eva duration in minutes'])*100));
+
+				// $dayNightRowOutput .=
+				// 	"<div class='cell-border task-block' style='width:"
+				// 	. $blockWidth
+				// 	. "%;"
+				// 	. " margin-left: "
+				// 	. $blockMarginLeft
+				// 	. "%;"
+				// 	. "'>"
+				// 		. "<div class='cell-body'>"
+				// 		//***********************************************
+				// 		//      BLOCKS
+				// 		//***********************************************
+				// 		. "<div style='height: 10px;' class='" . $actor['tasks'][$compactTexti]['color'] . "'></div>"
+				// 		. "<div class='responsive-text'>"
+				// 		. $actor['tasks'][$compactTexti]['title'] . " "
+				//     	. "(" . $actor['tasks'][$compactTexti]['durationHour'] . ":"
+				//     	. $actor['tasks'][$compactTexti]['durationMinute'] . ")"
+				// 		. "</div>"
+				// 		//***********************************************
+				// 		//
+				// 		//***********************************************
+				// 		. "</div>"
+				// 	. "</div>";
+
+				// generate remaining day/night blocks
+				// while( $dayNightRowLength < 100 ){
+
+				// }
+
+
+
+				// $compactTexti = 1;
+				// foreach ( $actor['tasks'] as $task ) {
+				// 	$blockWidth = (/* margin-left of next block */
+				// 		(floor((($compactTextDayNightSumOfDurationMinutes //Total tasks duration in minutes so far
+				// 			//Duration in minutes of next task
+				// 			+ ( (60 * $actor['tasks'][($compactTexti)]['durationHour'])
+				// 				+ $actor['tasks'][($compactTexti)]['durationMinute'] ) )
+				// 			/ $options['eva duration in minutes'])*100))
+				// 		 - (floor(($compactTextDayNightSumOfDurationMinutes / $options['eva duration in minutes'])*100)) );
+				// 	$blockMarginLeft = (floor(($compactTextDayNightSumOfDurationMinutes / $options['eva duration in minutes'])*100));
+
+				// 	$actor['compact text'] .=
+				// 	"<div class='cell-border task-block' style='width:"
+				// 	. $blockWidth
+				// 	. "%;"
+				// 	. " margin-left: "
+				// 	. $blockMarginLeft
+				// 	. "%;"
+				// 	. "'>"
+				// 		. "<div class='cell-body'>"
+				// 		//***********************************************
+				// 		//      BLOCKS
+				// 		//***********************************************
+				// 		. "<div style='height: 10px;' class='" . $actor['tasks'][$compactTexti]['color'] . "'></div>"
+				// 		. "<div class='responsive-text'>"
+				// 		. $actor['tasks'][$compactTexti]['title'] . " "
+				//     	. "(" . $actor['tasks'][$compactTexti]['durationHour'] . ":"
+				//     	. $actor['tasks'][$compactTexti]['durationMinute'] . ")"
+				// 		. "</div>"
+				// 		//***********************************************
+				// 		//
+				// 		//***********************************************
+				// 		. "</div>"
+				// 	. "</div>";
+				//    	$compactTextDayNightSumOfDurationMinutes += ( (60 * $actor['tasks'][$compactTexti]['durationHour']) + $actor['tasks'][$compactTexti]['durationMinute'] );
+				//    	$compactTexti++;
+
+			 //   }
+
+
+
+				$text .= $dayNightRowOutput;
 
 				$text .= "</div>";
 			}
+			//***********************************************
 			// End Day/Night Cycle Row
+			//***********************************************
 
 			// Actor Rows
 			foreach ( $options['rows'] as $actor ){
