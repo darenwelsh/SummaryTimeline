@@ -432,159 +432,56 @@ class SummaryTimeline
 				}
 				if( $lastBlockType == "insolation" ){
 					$thisBlockType = "eclipse";
-					$thisBlockWidth = $eclipseWidth;
 					$thisBlockMinutes = $eclipseMinutes;
-					if( $firstCycleMinutes + $eclipseMinutes >= $evaDurationMinutes ){
-						$needMoreMiddleDayNightBlocks = false;
-					}
 				}
 				if( $lastBlockType == "eclipse" ){
 					$thisBlockType = "insolation";
-					$thisBlockWidth = $insolationWidth;
 					$thisBlockMinutes = $insolationMinutes;
-					if( $firstCycleMinutes + $insolationMinutes >= $evaDurationMinutes ){
-						$needMoreMiddleDayNightBlocks = false;
-					}
+				}
+				if( $firstCycleMinutes + $thisBlockMinutes >= $evaDurationMinutes ){
+					$needMoreMiddleDayNightBlocks = false;
 				}
 
-				$blockMarginLeft = (floor(($dayNightSumOfDurationMinutes / $evaDurationMinutes)*100));
-
-				//*** TODO: Need to adjust so width fills out to left margin of next potential block
 			    while( $needMoreMiddleDayNightBlocks == true ){
-			    	$blockMarginLeft = (floor(($dayNightSumOfDurationMinutes / $evaDurationMinutes)*100));
-					// Generate a block
+			    	if( $thisBlockType == "insolation" ){
+						$nextBlockType = "eclipse";
+						$nextBlockMinutes = $eclipseMinutes;
+					} else {
+						$nextBlockType = "insolation";
+						$nextBlockMinutes = $insolationMinutes;
+					}
+
+			    	$blockMarginLeft = floor(($dayNightSumOfDurationMinutes / $evaDurationMinutes)*100);
+					$thisBlockWidth = floor(($dayNightSumOfDurationMinutes + $thisBlockMinutes) / $evaDurationMinutes*100)
+							- floor($dayNightSumOfDurationMinutes / $evaDurationMinutes*100);
+
 					$dayNightRowOutput .= "<div class='daynight " . $thisBlockType . "' "
-						. "style='width:" . floor($thisBlockWidth) . "%;"
+						. "style='width:" . $thisBlockWidth . "%;"
 					    . " margin-left: "
 					    . $blockMarginLeft
 					    . "%;'></div>";
 
-					// Update conditions to determine if more blocks are necessary
-				    $dayNightSumOfDurationMinutes += $thisBlockMinutes;
-					if( $thisBlockType == "insolation" ){
-						$thisBlockType = "eclipse";
-						$thisBlockWidth = $eclipseWidth;
-						$thisBlockMinutes = $eclipseMinutes;
-						if( $dayNightSumOfDurationMinutes + $eclipseMinutes >= $evaDurationMinutes ){
-							$needMoreMiddleDayNightBlocks = false;
-						}
-					} else
-					if( $thisBlockType == "eclipse" ){
-						$thisBlockType = "insolation";
-						$thisBlockWidth = $insolationWidth;
-						$thisBlockMinutes = $insolationMinutes;
-						if( $dayNightSumOfDurationMinutes + $insolationMinutes >= $evaDurationMinutes ){
-							$needMoreMiddleDayNightBlocks = false;
-						}
+					if( $dayNightSumOfDurationMinutes + $nextBlockMinutes >= $evaDurationMinutes ){
+						$needMoreMiddleDayNightBlocks = false;
 					}
+
+					$dayNightSumOfDurationMinutes += $thisBlockMinutes;
+					$thisBlockType = $nextBlockType;
+					$thisBlockMinutes = $nextBlockMinutes;
 			    }
 
+				// Final day/night block
+				if( $dayNightSumOfDurationMinutes < $evaDurationMinutes ){
+					$blockMarginLeft = floor(($dayNightSumOfDurationMinutes / $evaDurationMinutes)*100);
+					$thisBlockWidth = 100
+							- floor($dayNightSumOfDurationMinutes / $evaDurationMinutes*100);
 
-
-
-
-
-
-			    //Blocks in the middle
-				// for ($i = 1; $i < $hours-1; $i++) {
-				//     $dayNightRowOutput .= "<div class='time' style='width:"
-				//     . ((floor($hourTickerDivWidth * ($i+1))) - (floor($hourTickerDivWidth * ($i))))
-				//     . "%;"
-				//     . " margin-left:" . (floor($hourTickerDivWidth * $i)) . "%;"
-				//     . "'>" . $i . ":00</div>";
-				// }
-				// //Final day/night block
-				// $dayNightRowOutput .= "<div class='time' "
-				// 	. "style='"
-				// 	. "width:" . (100 - (((floor($hourTickerDivWidth * ($i))) - (floor($hourTickerDivWidth * ($i-1)))) + (floor($hourTickerDivWidth * ($i-1))))) . "%;"
-				//     . " margin-left:"
-				//     . (((floor($hourTickerDivWidth * ($i))) - (floor($hourTickerDivWidth * ($i-1)))) + (floor($hourTickerDivWidth * ($i-1))))
-				//     . "%;"
-				//     . "'>" . $i . ":00</div>";
-
-
-
-				// generate first day/night block
-				// $firstCycleWidth = (/* margin-left of next block */
-				// 		(floor((($compactTextDayNightSumOfDurationMinutes //Total tasks duration in minutes so far
-				// 			//Duration in minutes of next task
-				// 			+ ( (60 * $actor['tasks'][($compactTexti)]['durationHour'])
-				// 				+ $actor['tasks'][($compactTexti)]['durationMinute'] ) )
-				// 			/ $options['eva duration in minutes'])*100))
-				// 		 - (floor(($compactTextDayNightSumOfDurationMinutes / $options['eva duration in minutes'])*100)) );
-				// 	$blockMarginLeft = (floor(($compactTextDayNightSumOfDurationMinutes / $options['eva duration in minutes'])*100));
-
-				// $dayNightRowOutput .=
-				// 	"<div class='cell-border task-block' style='width:"
-				// 	. $blockWidth
-				// 	. "%;"
-				// 	. " margin-left: "
-				// 	. $blockMarginLeft
-				// 	. "%;"
-				// 	. "'>"
-				// 		. "<div class='cell-body'>"
-				// 		//***********************************************
-				// 		//      BLOCKS
-				// 		//***********************************************
-				// 		. "<div style='height: 10px;' class='" . $actor['tasks'][$compactTexti]['color'] . "'></div>"
-				// 		. "<div class='responsive-text'>"
-				// 		. $actor['tasks'][$compactTexti]['title'] . " "
-				//     	. "(" . $actor['tasks'][$compactTexti]['durationHour'] . ":"
-				//     	. $actor['tasks'][$compactTexti]['durationMinute'] . ")"
-				// 		. "</div>"
-				// 		//***********************************************
-				// 		//
-				// 		//***********************************************
-				// 		. "</div>"
-				// 	. "</div>";
-
-				// generate remaining day/night blocks
-				// while( $dayNightRowLength < 100 ){
-
-				// }
-
-
-
-				// $compactTexti = 1;
-				// foreach ( $actor['tasks'] as $task ) {
-				// 	$blockWidth = (/* margin-left of next block */
-				// 		(floor((($compactTextDayNightSumOfDurationMinutes //Total tasks duration in minutes so far
-				// 			//Duration in minutes of next task
-				// 			+ ( (60 * $actor['tasks'][($compactTexti)]['durationHour'])
-				// 				+ $actor['tasks'][($compactTexti)]['durationMinute'] ) )
-				// 			/ $options['eva duration in minutes'])*100))
-				// 		 - (floor(($compactTextDayNightSumOfDurationMinutes / $options['eva duration in minutes'])*100)) );
-				// 	$blockMarginLeft = (floor(($compactTextDayNightSumOfDurationMinutes / $options['eva duration in minutes'])*100));
-
-				// 	$actor['compact text'] .=
-				// 	"<div class='cell-border task-block' style='width:"
-				// 	. $blockWidth
-				// 	. "%;"
-				// 	. " margin-left: "
-				// 	. $blockMarginLeft
-				// 	. "%;"
-				// 	. "'>"
-				// 		. "<div class='cell-body'>"
-				// 		//***********************************************
-				// 		//      BLOCKS
-				// 		//***********************************************
-				// 		. "<div style='height: 10px;' class='" . $actor['tasks'][$compactTexti]['color'] . "'></div>"
-				// 		. "<div class='responsive-text'>"
-				// 		. $actor['tasks'][$compactTexti]['title'] . " "
-				//     	. "(" . $actor['tasks'][$compactTexti]['durationHour'] . ":"
-				//     	. $actor['tasks'][$compactTexti]['durationMinute'] . ")"
-				// 		. "</div>"
-				// 		//***********************************************
-				// 		//
-				// 		//***********************************************
-				// 		. "</div>"
-				// 	. "</div>";
-				//    	$compactTextDayNightSumOfDurationMinutes += ( (60 * $actor['tasks'][$compactTexti]['durationHour']) + $actor['tasks'][$compactTexti]['durationMinute'] );
-				//    	$compactTexti++;
-
-			 //   }
-
-
+					$dayNightRowOutput .= "<div class='daynight " . $thisBlockType . "' "
+						. "style='width:" . $thisBlockWidth . "%;"
+					    . " margin-left: "
+					    . $blockMarginLeft
+					    . "%;'></div>";
+				}
 
 				$text .= $dayNightRowOutput;
 
