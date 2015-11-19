@@ -347,6 +347,13 @@ class SummaryTimeline
 				. "</div>";
 			}
 
+			// Show day/night info, if user added it
+			if( $options['include day night']=="yes" ){
+				$text .= "<div style='position: relative; margin: 0px 10px 0px 10px; font-size: 100%;'>"
+				. "Initial Condition: " . $options['first cycle duration'] . " minutes of " . $options['first cycle day night']
+				. "</div>";
+			}
+
 			// Begin main div
 			$text .= "<div class='summary-timeline-compact-version' id='summary-timeline-" . $options['st index'] . "'>";
 
@@ -364,8 +371,20 @@ class SummaryTimeline
 
 			// Begin left label column
 			. "<div class='left column'>"
-			. "<div class='summary-timeline-row' style='height: 0px; border-left-width: 0px; '>"
-			. "</div>";
+			. "<div class='summary-timeline-row' style='height: 20px; border-left-width: 0px; '>PET</div>";
+			if( $options['include day night']=="yes" ){
+				$text .= "<div class='summary-timeline-row' "
+				. "style='width: 76px; margin: 0px 4px 0px 0px; height: 20px; "
+				. "border-top: solid 1px #000000;"
+				. "border-bottom: solid 1px #000000;"
+				. "border-left: solid 1px #000000;"
+				. "'>"
+				. "<div style='display: inline-block; height: 20px; width:50%; background-color: #ffffff;'>"
+				. $options['insolation duration'] . "</div>"
+				. "<div style='display: inline-block; height: 20px; width:50%; background-color: #000000; color: #ffffff'>"
+				. $options['eclipse duration'] . "</div>"
+				. "</div>";
+			}
 
 				foreach ( $options['rows'] as $actor ){
 					if( $actor['display in compact view']=='true' && count( $actor['tasks']) > 0 ){
@@ -393,6 +412,100 @@ class SummaryTimeline
 
 			// End top time labels row
 			. "</div>";
+
+			//***********************************************
+			// Begin Day/Night Cycle Row
+			//***********************************************
+			if( $options['include day night'] == "yes" ){
+				$text .= "<div class='summary-timeline-row' style='border: 1px solid #000000;'>";
+
+				$evaDurationMinutes = $options['eva duration in minutes'];
+				$insolationMinutes = $options['insolation duration'];
+				$insolationWidth = ($insolationMinutes / $evaDurationMinutes) * 100;
+				$eclipseMinutes = $options['eclipse duration'];
+				$eclipseWidth = ($eclipseMinutes / $evaDurationMinutes) * 100;
+				$dayNightSumOfDurationMinutes = 0;
+
+
+				$dayNightRowOutput = ""; //init output for this row
+				// $dayNightRowLength = 0; //init length of day/night row
+				$firstCycleMinutes = $options['first cycle duration'];
+				$firstCycleWidth = ($firstCycleMinutes / $evaDurationMinutes) * 100;
+
+
+				// First day/night block
+				$dayNightSumOfDurationMinutes += $firstCycleMinutes;
+				$dayNightRowOutput .= "<div class='daynight " . $options['first cycle day night'] . "' "
+					. "style='width:" . floor($firstCycleWidth) . "%;"
+				    . " margin-left: 0%;"
+				    . "'></div>";
+
+				// Blocks in the middle
+				$needMoreMiddleDayNightBlocks = true;
+				$lastBlockType = $options['first cycle day night'];
+				if( $firstCycleMinutes >= $evaDurationMinutes ){ // For a really, really short EVA
+					$needMoreMiddleDayNightBlocks = false;
+				}
+				if( $lastBlockType == "insolation" ){
+					$thisBlockType = "eclipse";
+					$thisBlockMinutes = $eclipseMinutes;
+				}
+				if( $lastBlockType == "eclipse" ){
+					$thisBlockType = "insolation";
+					$thisBlockMinutes = $insolationMinutes;
+				}
+				if( $firstCycleMinutes + $thisBlockMinutes >= $evaDurationMinutes ){
+					$needMoreMiddleDayNightBlocks = false;
+				}
+
+			    while( $needMoreMiddleDayNightBlocks == true ){
+			    	if( $thisBlockType == "insolation" ){
+						$nextBlockType = "eclipse";
+						$nextBlockMinutes = $eclipseMinutes;
+					} else {
+						$nextBlockType = "insolation";
+						$nextBlockMinutes = $insolationMinutes;
+					}
+
+			    	$blockMarginLeft = floor(($dayNightSumOfDurationMinutes / $evaDurationMinutes)*100);
+					$thisBlockWidth = floor(($dayNightSumOfDurationMinutes + $thisBlockMinutes) / $evaDurationMinutes*100)
+							- floor($dayNightSumOfDurationMinutes / $evaDurationMinutes*100);
+
+					$dayNightRowOutput .= "<div class='daynight " . $thisBlockType . "' "
+						. "style='width:" . $thisBlockWidth . "%;"
+					    . " margin-left: "
+					    . $blockMarginLeft
+					    . "%;'></div>";
+
+					if( $dayNightSumOfDurationMinutes + $nextBlockMinutes >= $evaDurationMinutes ){
+						$needMoreMiddleDayNightBlocks = false;
+					}
+
+					$dayNightSumOfDurationMinutes += $thisBlockMinutes;
+					$thisBlockType = $nextBlockType;
+					$thisBlockMinutes = $nextBlockMinutes;
+			    }
+
+				// Final day/night block
+				if( $dayNightSumOfDurationMinutes < $evaDurationMinutes ){
+					$blockMarginLeft = floor(($dayNightSumOfDurationMinutes / $evaDurationMinutes)*100);
+					$thisBlockWidth = 100
+							- floor($dayNightSumOfDurationMinutes / $evaDurationMinutes*100);
+
+					$dayNightRowOutput .= "<div class='daynight " . $thisBlockType . "' "
+						. "style='width:" . $thisBlockWidth . "%;"
+					    . " margin-left: "
+					    . $blockMarginLeft
+					    . "%;'></div>";
+				}
+
+				$text .= $dayNightRowOutput;
+
+				$text .= "</div>";
+			}
+			//***********************************************
+			// End Day/Night Cycle Row
+			//***********************************************
 
 			// Actor Rows
 			foreach ( $options['rows'] as $actor ){
@@ -607,6 +720,11 @@ class SummaryTimeline
         $options['rows']['actor3']['tasks']=array();
         $options['hardware required for eva']=array();
 		$options['fixedwidth']="";
+		$options['insolation duration']="";
+		$options['eclipse duration']="";
+		$options['include day night']="";
+		$options['first cycle day night']="";
+		$options['first cycle duration']="";
 
 		foreach ( $args as $arg ) {
 			//Convert args with "=" into an array of options
@@ -851,6 +969,16 @@ class SummaryTimeline
 			        case 'ev2':
 				        // Unique things for this column?
 				        break;
+			        case 'insolation duration':
+			        case 'eclipse duration':
+			        case 'first cycle duration':
+			        case 'include day night':
+			        case 'first cycle day night':
+				        $value = strtolower(trim($value));
+			        	if ( isset($value) && $value!="" ) {
+				        	$options[$name] = $value;
+				        }
+			        	break;
 			        default: //What to do with args not defined above
 				}
 
