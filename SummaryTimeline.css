@@ -21,7 +21,7 @@ body {
 }
 .summary-timeline-compact-version .color-key {
   display: inline-block;
-  margin: 0px 5px 0px 0px;
+  margin: 5px 5px 0px 0px;
   padding: 0px;
   border: 1px solid #000000;
 }
@@ -36,14 +36,14 @@ body {
   margin:  0px;
 }
 .summary-timeline-compact-version .left {
-    width:  60px;
+    width:  80px;
     position: absolute;
-    top: 3px; /*Adjust for borders above*/
+    top: 0px; /*Adjust for borders above; was 3px */
     left: 0px;
     text-align: center;
 }
 .summary-timeline-compact-version .right {
-    margin-left: 60px;
+    margin-left: 80px;
 }
 .summary-timeline-compact-version .summary-timeline-row {
   display: inline-block;

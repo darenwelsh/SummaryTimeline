@@ -347,6 +347,13 @@ class SummaryTimeline
 				. "</div>";
 			}
 
+			// Show day/night info, if user added it
+			if( $options['include day night']=="yes" ){
+				$text .= "<div style='position: relative; margin: 0px 10px 0px 10px; font-size: 100%;'>"
+				. "Initial Condition: " . $options['first cycle duration'] . " minutes of " . $options['first cycle day night']
+				. "</div>";
+			}
+
 			// Begin main div
 			$text .= "<div class='summary-timeline-compact-version' id='summary-timeline-" . $options['st index'] . "'>";
 
@@ -364,8 +371,20 @@ class SummaryTimeline
 
 			// Begin left label column
 			. "<div class='left column'>"
-			. "<div class='summary-timeline-row' style='height: 0px; border-left-width: 0px; '>"
-			. "</div>";
+			. "<div class='summary-timeline-row' style='height: 20px; border-left-width: 0px; '>PET</div>";
+			if( $options['include day night']=="yes" ){
+				$text .= "<div class='summary-timeline-row' "
+				. "style='width: 76px; margin: 0px 4px 0px 0px; height: 20px; "
+				. "border-top: solid 1px #000000;"
+				. "border-bottom: solid 1px #000000;"
+				. "border-left: solid 1px #000000;"
+				. "'>"
+				. "<div style='display: inline-block; height: 20px; width:50%; background-color: #ffffff;'>"
+				. $options['insolation duration'] . "</div>"
+				. "<div style='display: inline-block; height: 20px; width:50%; background-color: #000000; color: #ffffff'>"
+				. $options['eclipse duration'] . "</div>"
+				. "</div>";
+			}
 
 				foreach ( $options['rows'] as $actor ){
 					if( $actor['display in compact view']=='true' && count( $actor['tasks']) > 0 ){
@@ -398,7 +417,7 @@ class SummaryTimeline
 			// Begin Day/Night Cycle Row
 			//***********************************************
 			if( $options['include day night'] == "yes" ){
-				$text .= "<div class='summary-timeline-row'>";
+				$text .= "<div class='summary-timeline-row' style='border: 1px solid #000000;'>";
 
 				$evaDurationMinutes = $options['eva duration in minutes'];
 				$insolationMinutes = $options['insolation duration'];
@@ -406,9 +425,6 @@ class SummaryTimeline
 				$eclipseMinutes = $options['eclipse duration'];
 				$eclipseWidth = ($eclipseMinutes / $evaDurationMinutes) * 100;
 				$dayNightSumOfDurationMinutes = 0;
-
-				// Use the same logic as for task blocks, but use a while statement (while width < total width)
-				// Use special logic for first and last blocks.
 
 
 				$dayNightRowOutput = ""; //init output for this row
