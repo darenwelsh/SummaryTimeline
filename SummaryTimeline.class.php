@@ -378,6 +378,7 @@ class SummaryTimeline
 				. "border-top: solid 1px #000000;"
 				. "border-bottom: solid 1px #000000;"
 				. "border-left: solid 1px #000000;"
+				. "white-space: nowrap; overflow: hidden;"
 				. "'>"
 				. "<div style='display: inline-block; height: 20px; width:50%; background-color: #ffffff;'>"
 				. $options['insolation duration'] . "</div>"
