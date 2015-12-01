@@ -6,6 +6,27 @@
  *
  * @see http://stackoverflow.com/questions/118241/calculate-text-width-with-javascript/21015393#21015393
  */
+
+$(document).ready( function(){
+  assignBlockIDs();
+  // reEvaluateBlockText();
+  setTimeout(
+            function(){
+                evaluateBlockText();
+                writeFooter();
+            },
+            100
+        );
+});
+
+$(window).resize( function(){
+  clearFooter();
+  resetBlockText();
+  evaluateBlockText();
+  writeFooter();
+});
+
+
 getTextWidth = function(text, font) {
     // if given, use cached canvas for better performance
     // else, create new canvas
@@ -131,7 +152,7 @@ function resetBlockText(){
 /**
  *  Collapsible sections
  **/
-$(function(){
+$(document).ready(function(){
 
     var addCollapsibleContent = function(){
 
@@ -191,6 +212,7 @@ $(function(){
 
     // add these functions to the page initially
     addCollapsibleContent();
+    // alert('foo');
 
     // clicking the "add" button in a Semantic Form will not automatically apply Javascript to new elements
     // this re-fires certain functions so they can apply themselves to new elements
@@ -205,22 +227,6 @@ $(function(){
         );
     });
 
-})();
-
-
-$(document).ready( function(){
-  assignBlockIDs();
-  evaluateBlockText();
-  writeFooter();
-  // reEvaluateBlockText();
-  addCollapsibleContent();
-});
-
-$(window).resize( function(){
-  clearFooter();
-  resetBlockText();
-  evaluateBlockText();
-  writeFooter();
 });
 
 // For each row id, run all the above
