@@ -417,7 +417,7 @@ class SummaryTimeline
 			// Begin Day/Night Cycle Row
 			//***********************************************
 			if( $options['include day night'] == "yes" ){
-				$text .= "<div class='summary-timeline-row' style='border: 1px solid #000000;'>";
+				$text .= "<div class='summary-timeline-row'>";
 
 				$evaDurationMinutes = $options['eva duration in minutes'];
 				$insolationMinutes = $options['insolation duration'];
@@ -477,7 +477,7 @@ class SummaryTimeline
 					    . $blockMarginLeft
 					    . "%;'></div>";
 
-					if( $dayNightSumOfDurationMinutes + $nextBlockMinutes >= $evaDurationMinutes ){
+					if( $dayNightSumOfDurationMinutes + $thisBlockMinutes + $nextBlockMinutes >= $evaDurationMinutes ){
 						$needMoreMiddleDayNightBlocks = false;
 					}
 
