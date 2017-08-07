@@ -2,7 +2,7 @@
 
 This extension creates a graphic representation of a summary timeline. It is designed for EVA planning, but can be used for any  kind of timeline planning. While the parser function could be used on its own, it is best to use the supplied semantic form to build timelines.
 
-![Sample Summary Timeline Image](https://github.com/darenwelsh/SummaryTimeline/blob/master/SampleSummaryTimeline.png)
+![Sample Summary Timeline Image](SampleSummaryTimeline.png)
 
 ## OVERHAUL PROJECT
 See [this page](OVERHAUL.md) for details on a project to remove the dependency on forms and instead to use a drag 'n drop, WYSIWYG-style interface.
@@ -44,6 +44,10 @@ For reference, these pages have been given the following categories to ease in t
 ## ENTERING DATA
 
 Begin by clicking a link to Special:FormEdit/Summary_Timeline. There you can give a name to the timeline like "Failed FHRC Removal EVA Version 2". You can list out dependencies, related articles, the duration of the EVA, and then the details of each task. If you choose to mark some tasks with a color, use the color key to explain what each color indicates. Clicking "Save page" creates the page with all the entered data.
+
+Here is an example of what editing a timeline via the form could look like:
+
+![Sample Summary Timeline Edit by Form Screenshot](SampleSummaryTimeline-FormEdit.png)
 
 The data is handled by the main Template:Summary Timeline and the multiple-instance templates for each actor. Currently, this extension is limited to three actors. In the future, I plan to allow more actors and make the form better accommodate this many columns.
 
