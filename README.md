@@ -5,7 +5,7 @@ This extension creates a graphic representation of a summary timeline. It is des
 ![Sample Summary Timeline Image](https://github.com/darenwelsh/SummaryTimeline/blob/master/SampleSummaryTimeline.png)
 
 ## OVERHAUL PROJECT
-See [this page](SummaryTimeline/OVERHAUL.md) for details on a project to remove the dependency on forms and instead to use a drag 'n drop, WYSIWYG-style interface.
+See [this page](OVERHAUL.md) for details on a project to remove the dependency on forms and instead to use a drag 'n drop, WYSIWYG-style interface.
 
 ## DEPENDENCIES
 
