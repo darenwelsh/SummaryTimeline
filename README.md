@@ -55,20 +55,21 @@ The form will generate a page with content like the following example:
 
 ```html
 {{Summary Timeline
-|ST Title=IDA 2 Installation & Outfitting EVA
-|Depends on=IDA 1 Route & IDA 2 Deploy
-|Related article=IDA,
+|ST Title=US EVA PMA3 NOD3 Shields Ext MDM
+|EVA Title=US EVA PMA3 NOD3 Shields
+|Depends on=PMA 3 Cummerbund, Node 3 Axial Shield
+|Related article=PMA 3 Connections, PMA 3 Cummerbunds Install, PMA 3 Cover Removal, Node 3 Axial Shields Install
 |EVA Duration hour=6
 |EVA Duration minute=30
-|Color Red Meaning=
-|Color Orange Meaning=
-|Color Yellow Meaning=
-|Color Green Meaning=
-|Color Blue Meaning=
-|Color Purple Meaning=IDA 2
-|Color Pink Meaning=
-|Color Gray Meaning=
-|Actor 1 name=
+|Color Yellow Meaning=NOD3
+|Color Blue Meaning=PMA3
+|Color Purple Meaning=S0
+|Include Day Night=yes
+|Insolation Duration=62
+|Eclipse Duration=31
+|First Cycle Day Night=Insolation
+|First Cycle Duration=40
+|Actor 1 name=IV
 |Actor 2 name=EV1
 |Actor 3 name=EV2
 |Actor 1 Display in Compact View=No
@@ -77,78 +78,61 @@ The form will generate a page with content like the following example:
 |Actor 1 Enable Get Aheads=No
 |Actor 2 Enable Get Aheads=Yes
 |Actor 3 Enable Get Aheads=Yes
-|Actor 1 Tasks=
 |Actor 2 Tasks={{Actor 2 Task
 |Title=Egress
 |Duration hour=0
 |Duration minute=30
 |Color=gray
-|Related article=
-|Free text=
 }}{{Actor 2 Task
-|Title=IDA 2 Installation
-|Duration hour=3
-|Duration minute=00
-|Color=purple
-|Related article=IDA
-|Free text=
-}}{{Actor 2 Task
-|Title=EWC Antenna Installation
+|Title=Ext EPIC MDM R&R
 |Duration hour=1
 |Duration minute=00
-|Color=gray
-|Related article=EWC
-|Free text=
-}}{{Actor 2 Task
-|Title=IDA Outfitting
-|Duration hour=1
-|Duration minute=15
 |Color=purple
-|Related article=IDA
-|Free text=
+}}{{Actor 2 Task
+|Title=[[Node 3 Axial Shields Install]]
+|Duration hour=2
+|Duration minute=30
+|Color=yellow
+}}{{Actor 2 Task
+|Title=[[PMA 3 Cummerbunds Install]]
+|Duration hour=0
+|Duration minute=45
+|Color=blue
 }}{{Actor 2 Task
 |Title=Ingress
 |Duration hour=0
 |Duration minute=45
 |Color=gray
-|Related article=
-|Free text=
 }}
 |Actor 3 Tasks={{Actor 3 Task
 |Title=Egress
 |Duration hour=0
 |Duration minute=30
 |Color=gray
-|Related article=
-|Free text=
 }}{{Actor 3 Task
-|Title=IDA 2 Installation
-|Duration hour=3
-|Duration minute=00
-|Color=purple
-|Related article=IDA
-|Free text=
+|Title=[[PMA 3 Connections]]
+|Duration minute=10
+|Color=blue
 }}{{Actor 3 Task
-|Title=EWC Antenna Installation
-|Duration hour=1
+|Title=[[PMA 3 Cover Removal]]
+|Duration hour=0
+|Duration minute=50
+|Color=blue
+}}{{Actor 3 Task
+|Title=[[Node 3 Axial Shields Install]]
+|Duration hour=2
 |Duration minute=30
-|Color=gray
-|Related article=EWC
-|Free text=
+|Color=yellow
 }}{{Actor 3 Task
-|Title=IDA Outfitting
+|Title=[[PMA 3 Cummerbunds Install]]
 |Duration hour=0
 |Duration minute=45
-|Color=purple
-|Related article=IDA
-|Free text=
+|Color=blue
 }}{{Actor 3 Task
 |Title=Ingress
 |Duration hour=0
 |Duration minute=45
 |Color=gray
-|Related article=
-|Free text=
 }}
 }}
 ```
