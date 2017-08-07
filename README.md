@@ -1,11 +1,13 @@
-SummaryTimeline
-=========================
+# SummaryTimeline
 
 This extension creates a graphic representation of a summary timeline. It is designed for EVA planning, but can be used for any  kind of timeline planning. While the parser function could be used on its own, it is best to use the supplied semantic form to build timelines.
 
-=========================
-DEPENDENCIES
-=========================
+![Sample Summary Timeline Image](https://github.com/darenwelsh/SummaryTimeline/blob/master/SampleSummaryTimeline.png)
+
+## OVERHAUL PROJECT
+See [this page](SummaryTimeline/OVERHAUL.md) for details on a project to remove the dependency on forms and instead to use a drag 'n drop, WYSIWYG-style interface.
+
+## DEPENDENCIES
 
 * Extension:Semantic Mediawiki
 * Extension:Semantic Forms
@@ -15,9 +17,8 @@ DEPENDENCIES
 
 Semantic form, templates, properties included in xml files
 
-=========================
-INSTALLATION
-=========================
+
+## INSTALLATION
 
 Download the extension files to your extensions directory. Add the following line to LocalSettings.php:
 
@@ -40,9 +41,7 @@ For reference, these pages have been given the following categories to ease in t
 * Property Used for Summary Timeline Extension
 * Summary Timeline Extension Demo Page
 
-=========================
-ENTERING DATA
-=========================
+## ENTERING DATA
 
 Begin by clicking a link to Special:FormEdit/Summary_Timeline. There you can give a name to the timeline like "Failed FHRC Removal EVA Version 2". You can list out dependencies, related articles, the duration of the EVA, and then the details of each task. If you choose to mark some tasks with a color, use the color key to explain what each color indicates. Clicking "Save page" creates the page with all the entered data.
 
@@ -150,9 +149,7 @@ The form will generate a page with content like the following example:
 }}
 ```
 
-=========================
-DISPLAYING DATA
-=========================
+## DISPLAYING DATA
 
 The output of a summary timeline is handled by Template:Summary Timeline Output.
 
