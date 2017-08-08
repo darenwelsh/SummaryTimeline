@@ -11,4 +11,4 @@ Currently, this extension heavily relies on Extension:PageForms (previously know
 1. In the edit interface, a user should be able to drag an activity block earlier or later in the timeline within a single row
 1. In the edit interface, a user should be able to drag an activity block from one row ("actor") to another
 1. In the edit interface, a user should be able to click an activity block and then drag its border to make it shorter or longer in duration
-1. In the edit interface, the color scheme should have the default option for the tool to automatically choose appropriate colors based on the activity grouping. The color scheme shoudl have another option for the user to specify colors they choose using a simple color wheel (no text required).
+1. In the edit interface, the color scheme should have the default option for the tool to automatically choose appropriate colors based on the activity grouping. The color scheme should have another option for the user to specify colors they choose using a simple color wheel (no text required).
