@@ -12,3 +12,13 @@ Currently, this extension heavily relies on Extension:PageForms (previously know
 1. In the edit interface, a user should be able to drag an activity block from one row ("actor") to another
 1. In the edit interface, a user should be able to click an activity block and then drag its border to make it shorter or longer in duration
 1. In the edit interface, the color scheme should have the default option for the tool to automatically choose appropriate colors based on the activity grouping. The color scheme should have another option for the user to specify colors they choose using a simple color wheel (no text required).
+
+## BONUS POINTS
+The current visualization shows explicit values for each block's duration. See the example below:
+
+![Sample Summary Timeline Image](SampleSummaryTimeline.png)
+
+It would be nice to be able to show the variance for each block's duration, as determined by analyzing training data. For example, we might perform 5 training runs for a particular task in the [NBL](https://en.wikipedia.org/wiki/Neutral_Buoyancy_Laboratory). From those data we can calculate a set of summary statistics including the minimum, maximum, mean, median, and standard deviation for duration. Bonus points will be awarded for designing and implementing an effective and intuitive way of visualizing the variance in duration for each block in a timeline. See the image below for some concepts:
+
+![Timeline Variance Concepts Image](TimelineVarianceConcepts.jpg)
+
