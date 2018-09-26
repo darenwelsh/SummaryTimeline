@@ -238,7 +238,7 @@ if a page with that name already exists, you will be sent to a form to edit that
       <text xml:space="preserve" bytes="239">&lt;noinclude&gt;
 [[Category:Template Used for Summary Timeline Extension]]
 &lt;/noinclude&gt;&lt;includeonly&gt;
-&amp;&amp;&amp;{{{?Title|}}}@@@{{{?Duration hour|}}}@@@{{{?Duration minute|}}}@@@{{{?Related article|}}}@@@{{{?Color|}}}@@@{{{?Free text|}}}
+&amp;&amp;&amp;{{{Title|}}}@@@{{{Duration hour|}}}@@@{{{Duration minute|}}}@@@{{{Related article|}}}@@@{{{Color|}}}@@@{{{Free text|}}}
 &lt;/includeonly&gt;</text>
       <sha1>hoc92af1xf59s454uj1r0omsyh8irzx</sha1>
     </revision>
@@ -352,7 +352,7 @@ This template is used with the Summary Timeline form.
       <text xml:space="preserve" bytes="145">&lt;noinclude&gt;
 [[Category:Template Used for Summary Timeline Extension]]
 &lt;/noinclude&gt;&lt;includeonly&gt;
-&amp;&amp;&amp;{{{?Title|}}}@@@{{{?Mission|}}}
+&amp;&amp;&amp;{{{Title|}}}@@@{{{Mission|}}}
 &lt;/includeonly&gt;</text>
       <sha1>tr6j0usoj6o2ilz2nzifxsfrwpezt49</sha1>
     </revision>
