@@ -1481,7 +1481,7 @@ W2287 - YELLOW (Get Ahead)
       <text xml:space="preserve" bytes="239">&lt;noinclude&gt;
 [[Category:Template Used for Summary Timeline Extension]]
 &lt;/noinclude&gt;&lt;includeonly&gt;
-&amp;&amp;&amp;{{{?Title|}}}@@@{{{?Duration hour|}}}@@@{{{?Duration minute|}}}@@@{{{?Related article|}}}@@@{{{?Color|}}}@@@{{{?Free text|}}}
+&amp;&amp;&amp;{{{Title|}}}@@@{{{Duration hour|}}}@@@{{{Duration minute|}}}@@@{{{Related article|}}}@@@{{{Color|}}}@@@{{{Free text|}}}
 &lt;/includeonly&gt;</text>
       <sha1>hoc92af1xf59s454uj1r0omsyh8irzx</sha1>
       <model>wikitext</model>
@@ -1823,7 +1823,7 @@ Full version: &lt;nowiki&gt;{{Summary Timeline Output | &lt;/nowiki&gt;{{PAGENAM
       <text xml:space="preserve" bytes="145">&lt;noinclude&gt;
 [[Category:Template Used for Summary Timeline Extension]]
 &lt;/noinclude&gt;&lt;includeonly&gt;
-&amp;&amp;&amp;{{{?Title|}}}@@@{{{?Mission|}}}
+&amp;&amp;&amp;{{{Title|}}}@@@{{{Mission|}}}
 &lt;/includeonly&gt;</text>
       <sha1>tr6j0usoj6o2ilz2nzifxsfrwpezt49</sha1>
       <model>wikitext</model>

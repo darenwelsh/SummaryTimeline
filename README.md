@@ -20,6 +20,8 @@ Semantic form, templates, properties included in xml files
 
 ## INSTALLATION
 
+Note that v0.2.0 works with SMW 2.0+. Once you upgrade to SMW 3.0, you will need Summary Timeline v0.2.1 or higher.
+
 Download the extension files to your extensions directory. Add the following line to LocalSettings.php:
 
 ```html
