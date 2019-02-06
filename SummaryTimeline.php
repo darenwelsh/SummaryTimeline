@@ -14,6 +14,10 @@
  * @licence GNU GPL v3+
  */
 
+//Updates by Joe Bartos
+//Working on making a different display output
+//Working on allowing a user to select events to sync
+
 # Not a valid entry point, skip unless MEDIAWIKI is defined
 if (!defined('MEDIAWIKI')) {
 	die( "SummaryTimeline extension" );
