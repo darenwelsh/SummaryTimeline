@@ -28,7 +28,7 @@ Download the extension files to your extensions directory. Add the following lin
 require_once "$IP/extensions/SummaryTimeline/SummaryTimeline.php";
 ```
 
-Import the following two files using the "Import files" feature in MediaWiki:
+Import the following two files using the "Special:Import" feature in MediaWiki. For the "Interwiki prefix:" input "en".
 * SummaryTimeline-FormCategory&Templates.xml
 * SummaryTimeline-Properties.xml
 
